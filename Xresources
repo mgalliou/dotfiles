@@ -1,0 +1,25 @@
+! Themes
+!---------------------
+
+!#include "/home/jio/dotfiles/Xthemes/base16.xresources"
+!#include "Users/mgalliou/dotfiles/Xthemes/gruvbox-dark.xresources"
+#include "/home/jio/dotfiles/Xthemes/gruvbox-urxvt256.xresources"
+!#include "/home/jio/dotfiles/Xthemes/blaquemagick.xresources"
+
+! URxvt Config
+!---------------------
+
+URxvt*depth: 32
+URxvt*font: xft:RobotoMono:size=9
+URxvt*internalBorder: 5
+URxvt*externalBorder: 0
+!# scrollbar - true (default) or false
+URxvt*scrollBar: false
+URxvt*scrollBar_floating: false
+URxvt*background.border: false
+
+!# scrollbar position - left=false (default) or right=true
+URxvt*scrollBar_right: right
+
+!# scrollbar style - rxvt (default), plain, next, or xterm
+URxvt*scrollstyle: plain

@@ -1,0 +1,60 @@
+#update system clock
+timedatectl set-ntp true
+
+#partitioning
+parted /dev/sda
+mkfs.ext4 /dev/sda1
+mount /dev/sda1/mnt
+
+#edit mirror priority
+vi /etc/pacman.d/mirrorlist
+
+
+#install base
+pacstrap /mnt base
+
+#fstab
+genfstab -U /mnt >> /mnt/etc/fstab
+
+#change root
+arch-chroot /mnt
+
+#time
+ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+hwclock --systohc
+
+#local
+local-gen
+vi /etc/locale.gen
+
+#host
+vi /etc/hostname
+vi /etc/hosts
+vi /etc/vconsole.conf
+
+#change consol font
+echo FONT=Lat2-Terminus16 > /etc/vconsole.conf
+
+#network
+systemctl enable dhcpcd.service
+
+#setup password
+passwd
+
+#install boot loader
+pacman -S intel-ucode
+pacman -S grub
+grub-install --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+
+#exit chroot and reboot
+exit
+unmount -R /mnt
+reboot
+
+#post install
+useradd -m -g users -s /bin/bash user
+passwd user
+
+pacman -S sudo
+echo 'user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
