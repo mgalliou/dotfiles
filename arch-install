@@ -24,16 +24,19 @@ ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 hwclock --systohc
 
 #local
-local-gen
 vi /etc/locale.gen
+locale-gen
 
 #host
-vi /etc/hostname
-vi /etc/hosts
-vi /etc/vconsole.conf
+echo "myhostname" > /etc/hostname
+cat <<EOF > /etc/hosts
+127.0.0.1	localhost
+::1			localhost
+127.0.1.1	myhostname.localdomain myhostname
+EOF
 
 #change consol font
-echo FONT=Lat2-Terminus16 > /etc/vconsole.conf
+echo "FONT=Lat2-Terminus16" > /etc/vconsole.conf
 
 #network
 systemctl enable dhcpcd.service
