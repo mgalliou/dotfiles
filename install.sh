@@ -43,6 +43,6 @@ read SETUPI3
 if [ "$SETUPI3" = "y" ]; then
 	echo "[I3 SETUP]"
 	mkdir -p ~/.config/i3 ~/.config/i3status
-	symlink_dotfile "config/i3"
-	symlink_dotfile "config/i3status"
+	symlink_dotfile "config/i3/config"
+	symlink_dotfile "config/i3status/config"
 fi

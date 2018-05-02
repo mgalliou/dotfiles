@@ -1,16 +1,24 @@
 # jio's i3 config file
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# VARIABLES
+# **************************************************************************** #
+# VARIABLES                                                                    #
+# **************************************************************************** #
 
 #modifier
-set $mod Mod3
+set $mod Mod4
 
 #fonts
 set $font1 Monaco
 set $font2 Roboto Mono Bold
 #set $font3 gohu
 set $font3 bitbuntufull
+
+#term
+set $term urxvt
+#mixer
+set $mixer amixer
+
 
 #dunst
 set $NOTI_BRIGHTESS	notify-send -u low -t 100 -a BRIGHTNESS $(xbacklight -get)
@@ -90,13 +98,13 @@ exec_always --no-startup-id compton -f
 #bindsym XF86Sleep
 bindsym XF86MonBrightnessUp		exec xbacklight -inc 5 && $NOTI_BRIGHTESS
 bindsym XF86MonBrightnessDown	exec xbacklight -dec 5 && $NOTI_BRIGHTESS
-bindsym XF86AudioRaiseVolume	exec amixer set Master 5%+ && $NOTI_SOUND
-bindsym XF86AudioLowerVolume	exec amixer set Master 5%- && $NOTI_SOUND
-bindsym XF86AudioMute			exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume	exec $mixer set Master 5%+ && $NOTI_SOUND
+bindsym XF86AudioLowerVolume	exec $mixer set Master 5%- && $NOTI_SOUND
+bindsym XF86AudioMute			exec $mixer set Master toggle
 
 # start a terminal
 # default: bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt256c
+bindsym $mod+Return exec urxvt256c || exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill

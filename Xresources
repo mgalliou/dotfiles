@@ -1,10 +1,10 @@
 ! Themes
 !---------------------
 
-!#include "/home/jio/dotfiles/Xthemes/base16.xresources"
-!#include "Users/mgalliou/dotfiles/Xthemes/gruvbox-dark.xresources"
-#include "/home/jio/dotfiles/Xthemes/gruvbox-urxvt256.xresources"
-!#include "/home/jio/dotfiles/Xthemes/blaquemagick.xresources"
+!#include "./dotfiles/Xthemes/base16.xresources"
+#include "./dotfiles/Xthemes/gruvbox-dark.xresources"
+!include "./dotfiles/Xthemes/gruvbox-urxvt256.xresources"
+!#include "./dotfiles/Xthemes/blaquemagick.xresources"
 
 ! URxvt Config
 !---------------------

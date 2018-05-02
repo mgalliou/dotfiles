@@ -9,7 +9,6 @@ mount /dev/sda1/mnt
 #edit mirror priority
 vi /etc/pacman.d/mirrorlist
 
-
 #install base
 pacstrap /mnt base
 
@@ -44,6 +43,7 @@ systemctl enable dhcpcd.service
 #setup password
 passwd
 
+#install core
 #install boot loader
 pacman -S intel-ucode
 pacman -S grub
@@ -56,8 +56,10 @@ unmount -R /mnt
 reboot
 
 #post install
-useradd -m -g users -s /bin/bash user
-passwd user
-
-pacman -S sudo
+echo -n "	user name: "
+read USER
+useradd -m -g users -s /bin/bash $USER
+passwd $USER
 echo 'user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+
+pacman -S base base-devel sudo alsa-utils mesa xorg i3 urxvt compton
