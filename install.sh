@@ -1,37 +1,48 @@
-install_conf_file()
+#FONCTIONS DEFINITION
+flush_stdin()
 {
-	echo "[$1 SETUP]"
-	echo "create $2 symlink?"
+	while read -t 0; do read -r;done
+}
+
+symlink_dotfile()
+{
+	echo -n "create $1 symlink? (y/n)"
+	flush_stdin
 	read CREATE
-	if [ $CREATE = "y" ]; then
-		mv ~/.$2 ~/.$2_old_`date +%Y%m%d%H%M%S`
-		ln -sv ~/dotfiles/$2 ~/.$2
+	if [ "$CREATE" = "y" ]; then
+		#create a backup
+		#link
+		ln -sv ~/dotfiles/$1 ~/.$1
 	fi
 }
 
-install_conf_file "VIMRC" "vimrc"
-install_conf_file "VIM" "vim"
-install_conf_file "TMUX" "tmux.conf"
-install_conf_file "XRESOURCES" "Xresources"
-install_conf_file "Xmodmap" "Xressources"
-#install_conf_file "ZSH" "zshrc"
+#VIM SETUP
+echo -n "setup vim? (y/n)"
+flush_stdin
+read SETUPVIM
+if [ "$SETUPVIM" = "y" ]; then
+	echo "[VIM SETUP]"
+	symlink_dotfile vimrc
+	symlink_dotfile vim
+	mkdir -p ~/dotfiles/backup/undo ~/dotfiles/bundle
+	echo "Created backup/undo and bundle directories"
+fi
 
-cd ~/.vim
-mkdir -p backup/undo
-mkdir -p bundle
-echo "Created backup and bunlde directories"
-git submodule update --init
+#TMUX SETUP
+symlink_dotfile "tmux.conf"
 
-#echo "[VIM SETUP]"
-#mv ~/.vimrc ~/.vimrcold
-#ln -sv ~/dotfiles/vimrc ~/.vimrc
-#echo "Linked .vimrc file"
-#mv ~/.vim ~/.vimold
-#ln -sv ~/dotfiles/vim ~/.vim
-#echo "Linked .vim directory"
-#echo "[ZSH SETUP]"
-#mv ~/.zshrc ~/.zshrcold
-#ln -sv ~/dotfiles/zshrc ~/.zshrc
-#echo "[TMUX SETUP]"
-#mv ~/.tmux.conf ~/.tmux.confold
-#ln -sv ~/dotfiles/zshrc ~/.zshrc
+#XORG SETUP
+symlink_dotfile "Xresources"
+symlink_dotfile "xinitrc"
+symlink_dotfile "xmodmap"
+
+#I3 SETUP
+flush_stdin
+echo -n "setup i3? (y/n)"
+read SETUPI3
+if [ "$SETUPI3" = "y" ]; then
+	echo "[I3 SETUP]"
+	mkdir -p ~/.config/i3 ~/.config/i3status
+	symlink_dotfile "config/i3"
+	symlink_dotfile "config/i3status"
+fi
