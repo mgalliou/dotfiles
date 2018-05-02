@@ -1,15 +1,20 @@
 install_conf_file()
 {
 	echo "[$1 SETUP]"
-	rm ~/.$2old
-	mv ~/.$2 ~/.$2old
-	ln -sv ~/dotfiles/$2 ~/.$2
+	echo "create $2 symlink?"
+	read CREATE
+	if [ $CREATE = "y" ]; then
+		mv ~/.$2 ~/.$2_old_`date +%Y%m%d%H%M%S`
+		ln -sv ~/dotfiles/$2 ~/.$2
+	fi
 }
 
 install_conf_file "VIMRC" "vimrc"
 install_conf_file "VIM" "vim"
 install_conf_file "TMUX" "tmux.conf"
-install_conf_file "ZSH" "zshrc"
+install_conf_file "XRESOURCES" "Xresources"
+install_conf_file "Xmodmap" "Xressources"
+#install_conf_file "ZSH" "zshrc"
 
 cd ~/.vim
 mkdir -p backup/undo
