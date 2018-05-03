@@ -21,7 +21,7 @@ set $mixer amixer
 
 
 #dunst
-set $NOTI_BRIGHTESS	notify-send -u low -t 100 -a BRIGHTNESS $(xbacklight -get)
+set $NOTI_BRIGHTESS	notify-send -u low -t 1000 -a BRIGHTNESS $(xbacklight -get)
 set $NOTI_SOUND notify-send -u low -t 100 -a SOUND $(amixer get Master |grep % |awk '{print $5}'|sed -e 's/\[//' -e 's/\]//')
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -87,6 +87,7 @@ hide_edge_borders both
 
 exec_always --no-startup-id hsetroot -solid "#000000"
 exec_always --no-startup-id compton -f
+exec_always --no-startup-id dunst
 #exec_always --no-startup-id usr/lib/node_moudules/msi-keyboard-cli/msi-keyboard-CLI.js
 
 # BIND
