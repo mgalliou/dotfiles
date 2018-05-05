@@ -10,11 +10,16 @@ symlink_dotfile()
 	flush_stdin
 	read CREATE
 	if [ "$CREATE" = "y" ]; then
-		#create a backup
 		#link
-		ln -sv ~/dotfiles/$1 ~/.$1
+		ln -svb ~/dotfiles/$1 ~/.$1
 	fi
 }
+
+#BASH SETUP
+symlink_dotfile "bashrc"
+
+#TMUX SETUP
+symlink_dotfile "tmux.conf"
 
 #VIM SETUP
 echo -n "setup vim? (y/n)"
@@ -24,12 +29,9 @@ if [ "$SETUPVIM" = "y" ]; then
 	echo "[VIM SETUP]"
 	symlink_dotfile vimrc
 	symlink_dotfile vim
-	mkdir -p ~/dotfiles/backup/undo ~/dotfiles/bundle
+	mkdir -vp ~/dotfiles/backup/undo ~/dotfiles/bundle
 	echo "Created backup/undo and bundle directories"
 fi
-
-#TMUX SETUP
-symlink_dotfile "tmux.conf"
 
 #XORG SETUP
 symlink_dotfile "Xresources"
