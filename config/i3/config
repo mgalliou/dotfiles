@@ -96,6 +96,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id hsetroot -solid "#000000"
 exec_always --no-startup-id compton -f
 exec_always --no-startup-id dunst
+exec_always --no-startup-id redshift
 #exec_always --no-startup-id usr/lib/node_moudules/msi-keyboard-cli/msi-keyboard-CLI.js
 
 # **************************************************************************** #
