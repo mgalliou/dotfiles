@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/05/16 11:42:47 by mgalliou         ###   ########.fr        "
+"    Updated: 2018/05/16 11:56:29 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -45,6 +45,8 @@ set scrolloff=4
 set sidescrolloff=4
 set splitright
 set splitbelow
+"disable auto comment
+set formatoptions-=cro
 
 " Indentation
 
@@ -78,7 +80,8 @@ set showmatch
 " Folding
 set foldmethod=marker
 
-" Mappings
+" **************************************************************************** "
+" Mappings {{{
 
 " save
 nnoremap <leader>q :q<CR>
@@ -100,6 +103,9 @@ nnoremap <leader>t <ESC>:Texplore<CR>
 " reload vimrc
 nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
 
+"}}},
+" **************************************************************************** "
+
 " Backup
 set history=200
 set noswapfile
@@ -111,7 +117,8 @@ else
 	set undofile undodir=~/.vim/backup/undo/
 endif
 
-" Statusline
+" **************************************************************************** "
+" Statusline {{{
 
 set laststatus=2
 set ruler
@@ -171,8 +178,8 @@ if version >= 700
    autocmd InsertEnter * highlight link User4 DiffAdd 
    autocmd VimEnter,WinEnter,BufEnter * call SetStatusLine(1)
    autocmd WinLeave * call SetStatusLine(0)
-endif
-
+endif"}}}
+" **************************************************************************** "
 
 " Plugins settings
 
