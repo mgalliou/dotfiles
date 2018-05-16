@@ -3,10 +3,10 @@
 "                                                         :::      ::::::::    "
 "    .vimrc                                             :+:      :+:    :+:    "
 "                                                     +:+ +:+         +:+      "
-"    By: mgalliou <marvin@42.fr>                    +#+  +:+       +#+         "
+"    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/04/25 20:56:00 by mgalliou         ###   ########.fr        "
+"    Updated: 2018/05/16 11:42:47 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -18,8 +18,22 @@ syntax on
 filetype plugin indent on
 colorschem gruvbox
 set background=dark
-set term=screen-256color
-set t_ut=
+
+if has("win32") && !has("gui_running")
+	set term=xterm
+	set t_Co=256
+"	let &t_AB="\e[48;5;%dm"
+"	let &t_AF="\e[38;5;%dm"
+else 
+	if !has("gui_running")
+		set term=screen-256color
+		set t_ut=
+	endif
+endif
+
+if has("gui_running")
+	set guifont=Dina
+endif
 
 " Behavior
 
@@ -52,7 +66,7 @@ set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 
 "Bell
 set noerrorbells
-set visualbell
+"set visualbell
 
 " Searching
 "set hlsearch
@@ -89,8 +103,13 @@ nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
 " Backup
 set history=200
 set noswapfile
-set backup backupdir=~/.vim/backup/
-set undofile undodir=~/.vim/backup/undo/
+if has("win32")
+	set backup backupdir=~/vimfiles/backup/
+	set undofile undodir=~/vimfiles/backup/undo/
+else
+	set backup backupdir=~/.vim/backup/
+	set undofile undodir=~/.vim/backup/undo/
+endif
 
 " Statusline
 
