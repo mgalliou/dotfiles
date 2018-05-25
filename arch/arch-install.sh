@@ -1,3 +1,6 @@
+# WORK IN PROGESS
+# DON'T USE THIS FILE AS A SCRIPT
+
 #update system clock
 timedatectl set-ntp true
 

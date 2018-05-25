@@ -1,0 +1,5 @@
+#Remove all true orphans
+pacman -Rns $(pacman -Qtdq)
+
+#Remove all orphans
+pacman -Rns $(pacman -Qttdq)

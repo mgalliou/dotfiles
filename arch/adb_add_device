@@ -1,0 +1,18 @@
+# deps: android-tools, libmtp, android-udev
+# TRY NOW
+
+# get [VENDOR ID], and [PRODUCT ID]
+lsusb 
+
+# add rule to /etc/udev/rules.d/51-android.rules
+UBSYSTEM=="usb", ATTR{idVendor}=="[VENDOR ID]", MODE="0660", GROUP="adbusers"
+SUBSYSTEM=="usb",ATTR{idVendor}=="[VENDOR ID]",ATTR{idProduct}=="[PRODUCT
+ID]",SYMLINK+="android_adb"
+SUBSYSTEM=="usb",ATTR{idVendor}=="[VENDOR ID]",ATTR{idProduct}=="[PRODUCT
+ID]",SYMLINK+="android_fastboot"
+
+# reload rules
+udevadm control --reload-rules
+
+# add user to adbuser
+gpasswd -a user adbusers
