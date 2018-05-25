@@ -25,7 +25,7 @@ set $mixer amixer
 
 # Notificiation
 set $NOTI_BRIGHTESS	dunstify -u low -t 1000 -r 48 -a BRIGHTNESS $(xbacklight -get)
-set $NOTI_SOUND 	dunstify -u low -t 1000 -r 48 -a SOUND $(amixer get Master |grep % |awk '{print $4}'|sed -e 's/\[//' -e 's/\]//')
+set $NOTI_SOUND 	dunstify -u low -t 1000 -r 48 -a SOUND $(amixer get Master | grep % | awk '{print $4}'|sed -e 's/\[//' -e 's/\]//')
 
 # Colors
 set_from_resource	$bg			background
@@ -59,10 +59,10 @@ for_window [class=".*"] title_format "<span font='$font6 6'> > %class | %title</
 
 # class						border		backgr.		text	indicator	child_border
 client.focused				$fg			$fg			$bg		$fg			$fg
-client.focused_inactive 	$fg			$bg			$fg		$fg			$fg
+client.focused_inactive 	$bg			$bg			$fg		$fg			$fg
 client.unfocused			$black		$black		$fg		$black		$black
 client.urgent				$dred		$dred		$bg		$dred 		$dred
-client.placeholder			$dgray		$bg			$fg		$dgray		$dgray
+client.placeholder			$dgray		$dgray		$fg		$dgray		$dgray
 client.background			$bg
 
 bar {
@@ -86,7 +86,7 @@ bar {
 # WINDOWS
 # **************************************************************************** #
 
-new_window normal 0
+new_window normal 1
 hide_edge_borders both
 
 # **************************************************************************** #
@@ -107,6 +107,9 @@ exec_always --no-startup-id redshift
 # start a terminal
 bindsym $mod+Return exec $term -f "$font6:size=8"
 
+# open browser
+bindsym $mod+b exec $browser
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -115,7 +118,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run -b -p 'exec :' -fn '$font6-8' -nb 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -b -p 'exec :' -fn '$font1-8' -nb '$bg' -nf '$fg' -sb '$fg' -sf '$bg'"
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -b -p 'exec :' -fn '$font6-8' -nb '$bg' -nf '$fg' -sb '$fg' -sf '$bg'"
 
 # change focus
 
