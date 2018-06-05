@@ -11,7 +11,7 @@ symlink_dotfile()
 	read CREATE
 	if [ "$CREATE" = "y" ]; then
 		#link
-		ln -svb ~/dotfiles/$1 ~/.$1
+		ln -sv ~/dotfiles/$1 ~/.$1
 	fi
 }
 
@@ -29,7 +29,7 @@ if [ "$SETUPVIM" = "y" ]; then
 	echo "[VIM SETUP]"
 	symlink_dotfile vimrc
 	symlink_dotfile vim
-	mkdir -vp ~/dotfiles/backup/undo ~/dotfiles/bundle
+	mkdir -vp ~/dotfiles/vim/backup/undo ~/dotfiles/vim/bundle
 	echo "Created backup/undo and bundle directories"
 fi
 
