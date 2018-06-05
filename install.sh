@@ -1,3 +1,4 @@
+#!/bin/bash
 #FONCTIONS DEFINITION
 flush_stdin()
 {
