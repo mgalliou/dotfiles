@@ -2,11 +2,8 @@
 vim/.netrwhist
 vim/backup/
 vim/view/
-vim/bundle/setcolors.vim/
-vim/bundle/vim-colorschemes/
-vim/bundle/vim-pathogen/
-vim/bundle/vim-repeat/
-vim/bundle/vim-surround/
+vim/bundle/*
+!vim/bundle/header42
 
 # MISC
 **/*.DS_Store
