@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir -p ~/dotfiles/vim/backup/undo
 cd ~/dotfiles/vim/bundle
 git clone https://github.com/tpope/vim-pathogen.git

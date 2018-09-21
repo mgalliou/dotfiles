@@ -59,24 +59,24 @@ battery all {
 }
 
 cpu_usage {
-	format = "%usage"
+	format = "C: %usage"
 	max_threshold = 75
-	format_above_threshold = "%usage"
+	format_above_threshold = "C: %usage"
 	degraded_threshold = 25
-	format_above_degraded_threshold = "%usage"
+	format_above_degraded_threshold = "C: %usage"
 }
 
 cpu_temperature 0 {
-        format = "T: %degrees °C"
+        format = "T: %degrees°C"
 		max_threshold = 42
         path = "/sys/bus/acpi/devices/LNXTHERM:00/thermal_zone/temp"
 }
 
 volume master {
 		align = center
-		min_width		= "---------"
-        format			= "Vol: %volume" #♪
-        format_muted	= "Vol: #%volume"
+		min_width		= "-------"
+        format			= "V: %volume" #♪
+        format_muted	= "V: #%volume"
         device = "default"
         mixer = "Master"
         mixer_idx = 0

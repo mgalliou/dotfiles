@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/09/21 14:30:59 by mgalliou         ###   ########.fr        "
+"    Updated: 2018/09/21 15:38:04 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -14,31 +14,31 @@
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-syntax on
 filetype plugin indent on
-colorschem gruvbox
-set background=dark
+syntax on
 
+" enable 256 color and set tmux as term if in a Windows terminal
 if has("win32") && !has("gui_running")
 	set term=xterm
 	set t_Co=256
-	"let &t_AB="\e[48;5;%dm"
-	"let &t_AF="\e[38;5;%dm"
+	colorscheme gruvbox
+"	let &t_AB="\e[48;5;%dm"
+"	let &t_AF="\e[38;5;%dm"
+" enable 256 color in capable terminals 
+elseif (-1 < stridx($TERM, "256"))
+	set t_Co=256
+	colorscheme gruvbox
 else
-	if !has("gui_running")
-		if (!has('nvim'))
-			set term=screen-256color
-		endif
-		set t_ut=
-	endif
+	colorscheme default
 endif
+set background=dark
 
+" set font in gvim
 if has("gui_running")
 	set guifont=Dina
 endif
 
 " Behavior
-
 set hidden
 set mouse=a
 set mousehide
@@ -47,11 +47,10 @@ set scrolloff=4
 set sidescrolloff=4
 set splitright
 set splitbelow
-"disable auto comment
+" disable auto comment:
 set formatoptions-=cro
 
 " Indentation
-
 set autoindent
 set tabstop=4
 set softtabstop=0
@@ -68,7 +67,7 @@ set showcmd
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 "
 
-"Bell
+" Bell
 set noerrorbells
 "set visualbell
 
@@ -185,8 +184,8 @@ function! SetStatusLine(cur)
 endfunction
 
 highlight link User1 PmenuSel
-highlight link User2 PmenuSbar
-highlight link User3 DiffDelete
+highlight link User2 ToolLine
+highlight link User3 DiffText
 highlight link User4 DiffChange
 
 if version >= 700
