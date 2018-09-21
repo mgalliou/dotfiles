@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/05/16 11:56:29 by mgalliou         ###   ########.fr        "
+"    Updated: 2018/09/21 14:30:59 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -22,11 +22,13 @@ set background=dark
 if has("win32") && !has("gui_running")
 	set term=xterm
 	set t_Co=256
-"	let &t_AB="\e[48;5;%dm"
-"	let &t_AF="\e[38;5;%dm"
-else 
+	"let &t_AB="\e[48;5;%dm"
+	"let &t_AF="\e[38;5;%dm"
+else
 	if !has("gui_running")
-		set term=screen-256color
+		if (!has('nvim'))
+			set term=screen-256color
+		endif
 		set t_ut=
 	endif
 endif
@@ -103,12 +105,26 @@ nnoremap <leader>t <ESC>:Texplore<CR>
 " reload vimrc
 nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
 
+" autoclosing mappings
+" inoremap ( ()<Left>
+" inoremap ) ()<Left>
+" inoremap { {}<Left>
+" inoremap } {}<Left>
+" inoremap [ []<Left>
+" inoremap ] []<Left>
+" inoremap > <><Left>
+" inoremap < <><Left>
+" inoremap " ""<Left>
+" inoremap ' ''<Left>
+
 "}}},
+
 " **************************************************************************** "
 
 " Backup
 set history=200
 set noswapfile
+
 if has("win32")
 	set backup backupdir=~/vimfiles/backup/
 	set undofile undodir=~/vimfiles/backup/undo/
@@ -124,47 +140,47 @@ set laststatus=2
 set ruler
 
 let g:currentmode=
-\{
-\'n'  : 'Normal',
-\'no' : 'N-Operator Pending',
-\'v'  : 'Visual',
-\'V'  : 'V-Line',
-\'' : 'V-Block',
-\'s'  : 'Select',
-\'S'  : 'S-Line',
-\'' : 'S-Block',
-\'i'  : 'Insert',
-\'R'  : 'Replace',
-\'Rv' : 'V-Replace',
-\'c'  : 'Command',
-\'cv' : 'Vim Ex',
-\'ce' : 'Ex',
-\'r'  : 'Prompt',
-\'rm' : 'More',
-\'r?' : 'Confirm',
-\'!'  : 'Shell',
-\}
+			\{
+			\'n'  : 'Normal',
+			\'no' : 'N-Operator Pending',
+			\'v'  : 'Visual',
+			\'V'  : 'V-Line',
+			\'' : 'V-Block',
+			\'s'  : 'Select',
+			\'S'  : 'S-Line',
+			\'' : 'S-Block',
+			\'i'  : 'Insert',
+			\'R'  : 'Replace',
+			\'Rv' : 'V-Replace',
+			\'c'  : 'Command',
+			\'cv' : 'Vim Ex',
+			\'ce' : 'Ex',
+			\'r'  : 'Prompt',
+			\'rm' : 'More',
+			\'r?' : 'Confirm',
+			\'!'  : 'Shell',
+			\}
 
 function! SetStatusLine(cur)
 	"if !(exists("b:NERDTree") && b:NERDTree.isTabTree())
-		setl statusline=
-		setl statusline+=%(%1*%3{&filetype!='help'?bufnr('%'):''}\ %) "buffer nb
-		if (a:cur)
-			setl statusline+=%0*\  "separator
-			setl statusline+=%(%4*\ %{toupper(g:currentmode[mode()])}\ %) "mode
-		endif
+	setl statusline=
+	setl statusline+=%(%1*%3{&filetype!='help'?bufnr('%'):''}\ %) "buffer nb
+	if (a:cur)
 		setl statusline+=%0*\  "separator
-		setl statusline+=%(%2*\ %f\ %) "filepath
-		setl statusline+=%<
-		setl statusline+=%0*\  "separator
-		setl statusline+=%(%3*%{&modified?'\ +\ ':''}%2*%) "modif indicator
-		setl statusline+=%{&readonly?'\ #\ ':''} "read-only indicator
-		setl statusline+=%(%h\ %) "help indicator
-		setl statusline+=%0*%=
-		setl statusline+=%(%2*\ %p\ %%\ %)
-		setl statusline+=%0*\  "separator
-		setl statusline+=%(%2*\ %{''!=#&filetype?&filetype:'none'}\ %)
-		setl statusline+=%0*\  "separator
+		setl statusline+=%(%4*\ %{toupper(g:currentmode[mode()])}\ %) "mode
+	endif
+	setl statusline+=%0*\  "separator
+	setl statusline+=%(%2*\ %f\ %) "filepath
+	setl statusline+=%<
+	setl statusline+=%0*\  "separator
+	setl statusline+=%(%3*%{&modified?'\ +\ ':''}%2*%) "modif indicator
+	setl statusline+=%{&readonly?'\ #\ ':''} "read-only indicator
+	setl statusline+=%(%h\ %) "help indicator
+	setl statusline+=%0*%=
+	setl statusline+=%(%2*\ %p\ %%\ %)
+	setl statusline+=%0*\  "separator
+	setl statusline+=%(%2*\ %{''!=#&filetype?&filetype:'none'}\ %)
+	setl statusline+=%0*\  "separator
 	"endif
 endfunction
 
@@ -174,11 +190,12 @@ highlight link User3 DiffDelete
 highlight link User4 DiffChange
 
 if version >= 700
-   autocmd InsertLeave * highlight link User4 DiffChange
-   autocmd InsertEnter * highlight link User4 DiffAdd 
-   autocmd VimEnter,WinEnter,BufEnter * call SetStatusLine(1)
-   autocmd WinLeave * call SetStatusLine(0)
-endif"}}}
+	autocmd InsertLeave * highlight link User4 DiffChange
+	autocmd InsertEnter * highlight link User4 DiffAdd
+	autocmd VimEnter,WinEnter,BufEnter * call SetStatusLine(1)
+	autocmd WinLeave * call SetStatusLine(0)
+endif
+"}}},
 " **************************************************************************** "
 
 " Plugins settings
