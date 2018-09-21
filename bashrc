@@ -24,6 +24,14 @@ if [ -x $(command -v exa) ]; then
 fi
 alias la="ls -la"
 
+# git
+if [ -x $(command -v git) ]; then
+	alias gs="git status"
+	alias ga="git add"
+	alias gc="git commit"
+	alias gd="git diff"
+fi
+
 # vim/nvim
 if [ -x $(command -v nvim) ]; then
 	alias vim="nvim"
