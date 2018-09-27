@@ -6,18 +6,24 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/09/21 15:38:04 by mgalliou         ###   ########.fr        "
+"    Updated: 2018/09/27 10:47:50 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
-" Pathogen / Syntax / Filetype / Colorschem...
+" **************************************************************************** "
+" Pathogen / Syntax / Filetype / Colorscheme... {{{
+" **************************************************************************** "
 
+" Pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+
+" Colorsheme
 filetype plugin indent on
 syntax on
+colorscheme gruvbox
 
-" enable 256 color and set tmux as term if in a Windows terminal
+" enable 256 color and set tmux as term if in a Windows terminal {{{
 if has("win32") && !has("gui_running")
 	set term=xterm
 	set t_Co=256
@@ -25,12 +31,13 @@ if has("win32") && !has("gui_running")
 "	let &t_AB="\e[48;5;%dm"
 "	let &t_AF="\e[38;5;%dm"
 " enable 256 color in capable terminals 
-elseif (-1 < stridx($TERM, "256"))
+elseif (-1 < stridx("256", $TERM))
 	set t_Co=256
-	colorscheme gruvbox
-else
+elseif (-1 < stridx("xterm", $TERM))
 	colorscheme default
 endif
+"}}},
+
 set background=dark
 
 " set font in gvim
@@ -49,13 +56,15 @@ set splitright
 set splitbelow
 " disable auto comment:
 set formatoptions-=cro
+set nowrap
 
 " Indentation
 set autoindent
 set tabstop=4
-set softtabstop=0
-set noexpandtab
 set shiftwidth=4
+set softtabstop=0
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
 
 "UI
 set wildmenu
@@ -81,8 +90,12 @@ set showmatch
 " Folding
 set foldmethod=marker
 
+"}}},
+" **************************************************************************** "
+
 " **************************************************************************** "
 " Mappings {{{
+" **************************************************************************** "
 
 " save
 nnoremap <leader>q :q<CR>
@@ -117,10 +130,12 @@ nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
 " inoremap ' ''<Left>
 
 "}}},
-
 " **************************************************************************** "
 
-" Backup
+" **************************************************************************** "
+" Backup {{{
+" **************************************************************************** "
+
 set history=200
 set noswapfile
 
@@ -132,72 +147,12 @@ else
 	set undofile undodir=~/.vim/backup/undo/
 endif
 
-" **************************************************************************** "
-" Statusline {{{
-
-set laststatus=2
-set ruler
-
-let g:currentmode=
-			\{
-			\'n'  : 'Normal',
-			\'no' : 'N-Operator Pending',
-			\'v'  : 'Visual',
-			\'V'  : 'V-Line',
-			\'' : 'V-Block',
-			\'s'  : 'Select',
-			\'S'  : 'S-Line',
-			\'' : 'S-Block',
-			\'i'  : 'Insert',
-			\'R'  : 'Replace',
-			\'Rv' : 'V-Replace',
-			\'c'  : 'Command',
-			\'cv' : 'Vim Ex',
-			\'ce' : 'Ex',
-			\'r'  : 'Prompt',
-			\'rm' : 'More',
-			\'r?' : 'Confirm',
-			\'!'  : 'Shell',
-			\}
-
-function! SetStatusLine(cur)
-	"if !(exists("b:NERDTree") && b:NERDTree.isTabTree())
-	setl statusline=
-	setl statusline+=%(%1*%3{&filetype!='help'?bufnr('%'):''}\ %) "buffer nb
-	if (a:cur)
-		setl statusline+=%0*\  "separator
-		setl statusline+=%(%4*\ %{toupper(g:currentmode[mode()])}\ %) "mode
-	endif
-	setl statusline+=%0*\  "separator
-	setl statusline+=%(%2*\ %f\ %) "filepath
-	setl statusline+=%<
-	setl statusline+=%0*\  "separator
-	setl statusline+=%(%3*%{&modified?'\ +\ ':''}%2*%) "modif indicator
-	setl statusline+=%{&readonly?'\ #\ ':''} "read-only indicator
-	setl statusline+=%(%h\ %) "help indicator
-	setl statusline+=%0*%=
-	setl statusline+=%(%2*\ %p\ %%\ %)
-	setl statusline+=%0*\  "separator
-	setl statusline+=%(%2*\ %{''!=#&filetype?&filetype:'none'}\ %)
-	setl statusline+=%0*\  "separator
-	"endif
-endfunction
-
-highlight link User1 PmenuSel
-highlight link User2 ToolLine
-highlight link User3 DiffText
-highlight link User4 DiffChange
-
-if version >= 700
-	autocmd InsertLeave * highlight link User4 DiffChange
-	autocmd InsertEnter * highlight link User4 DiffAdd
-	autocmd VimEnter,WinEnter,BufEnter * call SetStatusLine(1)
-	autocmd WinLeave * call SetStatusLine(0)
-endif
 "}}},
 " **************************************************************************** "
 
-" Plugins settings
+" **************************************************************************** "
+" Plugins settings {{{
+" **************************************************************************** "
 
 "	NERDTree
 if exists("*NERDTree")
@@ -217,3 +172,6 @@ endif
 if exists("*ToggleHardMode")
 	nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 endif
+
+"}}},
+" **************************************************************************** "

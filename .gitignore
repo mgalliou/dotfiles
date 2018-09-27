@@ -4,6 +4,7 @@ vim/backup/
 vim/view/
 vim/bundle/*
 !vim/bundle/header42
+!vim/bundle/jsl
 
 # MISC
 **/*.DS_Store
