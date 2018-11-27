@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/09/27 10:47:50 by mgalliou         ###   ########.fr        "
+"    Updated: 2018/11/27 15:23:19 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -97,6 +97,8 @@ set foldmethod=marker
 " Mappings {{{
 " **************************************************************************** "
 
+" reload vimrc
+nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
 " save
 nnoremap <leader>q :q<CR>
 " quit
@@ -114,8 +116,8 @@ nnoremap <leader>e <ESC>:Explore<CR>
 nnoremap <leader>v <ESC>:Vexplore<CR>
 nnoremap <leader>s <ESC>:Sexplore<CR>
 nnoremap <leader>t <ESC>:Texplore<CR>
-" reload vimrc
-nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
+" save files with root privileges.
+cmap w!! w !sudo tee % >/dev/null
 
 " autoclosing mappings
 " inoremap ( ()<Left>
@@ -154,24 +156,31 @@ endif
 " Plugins settings {{{
 " **************************************************************************** "
 
-"	NERDTree
+" define a group `vimrc` and initialize.
+augroup vimrc
+  autocmd!
+augroup END
+
+" NERDTree
 if exists("*NERDTree")
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+	autocmd vimrc StdinReadPre * let s:std_in=1
+	autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 	let g:NERDTreeWinSize = 29
 endif
 
-"	NERDCommenter
+" NERDCommenter
 if exists("g:NERDDefaultAlign")
 	let g:NERDDefaultAlign = 'left'
 endif
 
-"	Hardmode
-
+" Hardmode
 if exists("*ToggleHardMode")
 	nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 endif
+
+" IndentLine
+"let g:indentLine_char = '|'
 
 "}}},
 " **************************************************************************** "
