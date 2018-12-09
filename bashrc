@@ -22,13 +22,13 @@ PS1='\[${BLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
 ################################################################################
 
 # listing
-if [ -x $(command -v exa) ]; then
+if command -v exa >/dev/null 2>&1; then
 	alias ls="exa"
 fi
 alias la="ls -la"
 
 # git
-if [$(command -v git)]; then
+if command -v git >/dev/null 2>&1; then
 	alias gs="git status"
 	alias ga="git add"
 	alias gc="git commit"
@@ -36,8 +36,8 @@ if [$(command -v git)]; then
 fi
 
 # vim/nvim
-if [$(command -v nvim)]; then
-	#alias vim="nvim"
+if command -v nvim >/dev/null 2>&1; then
+	alias vim="nvim"
 fi
 
 alias gccf="gcc -Wall -Wextra -Werror"
