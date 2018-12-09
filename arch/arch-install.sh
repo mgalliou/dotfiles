@@ -1,6 +1,9 @@
 # WORK IN PROGESS
 # DON'T USE THIS FILE AS A SCRIPT
 
+KDE_PKGS=plasma-meta kde-applications-meta networkmanager network-manager-applet
+#after that disable dhcpcd, and enable NetworkManager services
+
 #update system clock
 timedatectl set-ntp true
 
