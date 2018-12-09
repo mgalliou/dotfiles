@@ -68,4 +68,5 @@ useradd -m -g users -s /bin/bash $USER
 passwd $USER
 echo 'user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
+sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/ s/#//' /mnt/etc/pacman.conf
 pacman -S base base-devel sudo alsa-utils mesa xorg i3 urxvt compton
