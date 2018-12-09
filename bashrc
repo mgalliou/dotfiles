@@ -28,7 +28,7 @@ fi
 alias la="ls -la"
 
 # git
-if [ -x $(command -v git) ]; then
+if [$(command -v git)]; then
 	alias gs="git status"
 	alias ga="git add"
 	alias gc="git commit"
@@ -36,8 +36,8 @@ if [ -x $(command -v git) ]; then
 fi
 
 # vim/nvim
-if [ -x $(command -v nvim) ]; then
-	alias vim="nvim"
+if [$(command -v nvim)]; then
+	#alias vim="nvim"
 fi
 
 alias gccf="gcc -Wall -Wextra -Werror"
