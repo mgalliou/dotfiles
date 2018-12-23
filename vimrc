@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/11/27 15:23:19 by mgalliou         ###   ########.fr        "
+"    Updated: 2018/12/23 16:06:40 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -179,8 +179,14 @@ if exists("*ToggleHardMode")
 	nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 endif
 
+" rainbow
+if exists("RainbowToggle")
+	nnoremap <leader>b <Esc>:RainbowToggle<CR>
+endif
+
 " IndentLine
 "let g:indentLine_char = '|'
+
 
 "}}},
 " **************************************************************************** "
