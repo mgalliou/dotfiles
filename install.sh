@@ -30,6 +30,7 @@ if [ "$SETUPVIM" = "y" ]; then
 	echo "[VIM SETUP]"
 	symlink_dotfile vimrc
 	symlink_dotfile vim
+	symlink_dotfile config/nvim/init.vim
 	mkdir -vp ~/dotfiles/vim/backup/undo ~/dotfiles/vim/bundle
 	echo "Created backup/undo and bundle directories"
 fi
