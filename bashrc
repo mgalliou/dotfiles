@@ -54,7 +54,8 @@ alias checker="sh ~/Applications/42FileChecker/42FileChecker.sh"
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
-export MAVEN_HOME=/Users/mgalliou/tools/maven/
+#export MAVEN_HOME=/Users/mgalliou/tools/maven/
+#export PYTHON_HOME=
 
 ################################################################################
 # PATH 
@@ -69,14 +70,14 @@ export MAVEN_HOME=/Users/mgalliou/tools/maven/
 # custom binaries
 #export PATH=$HOME/bin:$PATH
 
-# custom scrips
-export PATH=$PATH:~/dotfiles/scripts
-
 # maven
-export PATH=$PATH:$MAVEN_HOME/bin
+#export PATH=$MAVEN_HOME/bin:$PATH
 
 # mysql
-export PATH=$PATH:/usr/local/Cellar/mysql@5.6/5.6.40/bin
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# custom scrips
+export PATH=$PATH:~/dotfiles/scripts
 
 ################################################################################
 # COMPLETION 
