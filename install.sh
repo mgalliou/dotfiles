@@ -50,3 +50,6 @@ if [ "$SETUPI3" = "y" ]; then
 	symlink_dotfile "config/i3/config"
 	symlink_dotfile "config/i3status/config"
 fi
+
+#FISH SETUP
+symlink_dotfile "config/fish/config.fish"
