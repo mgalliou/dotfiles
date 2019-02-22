@@ -1,4 +1,8 @@
 fish_vi_key_bindings
+set -U fish_color_cwd white
+set -U fish_color_host brgrey
+set -U fish_color_user brblue
+set -U fish_greeting ""
 
 function fish_mode_prompt
 # NOOP - Disable vim mode indicator
