@@ -1,8 +1,13 @@
 fish_vi_key_bindings
+
 set -U fish_color_cwd white
 set -U fish_color_host brgrey
 set -U fish_color_user brblue
 set -U fish_greeting ""
+
+alias ls exa
+alias cat bat
+alias vim nvim
 
 function fish_mode_prompt
 # NOOP - Disable vim mode indicator
@@ -41,3 +46,4 @@ function fish_prompt --description 'Write out the prompt'
     echo -n '$ '
     set_color normal
 end
+
