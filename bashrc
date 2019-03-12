@@ -12,19 +12,27 @@
 #PS1='\u@\H \w \\$ \[$(tput sgr0)\]'
 #PS1='\w \\$ \[$(tput sgr0)\]'
 BLUE="$(tput setaf 4)"
+BBLUE="$(tput setaf 14)"
 NOCOLOR="$(tput sgr0)"
 GREY="$(tput setaf 8)"
 
-PS1='\[${BLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
+PS1='\[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
 
 ################################################################################
 # ALIASES
 ################################################################################
 
+function replace_cmd {
+	if command -v $2 >/dev/null 2>&1; then
+		alias $1=$2
+	fi
+}
+
+replace_cmd "ls" "exa"
+replace_cmd "vim" "nvim"
+replace_cmd "cat" "bat"
+
 # listing
-if command -v exa >/dev/null 2>&1; then
-	alias ls="exa"
-fi
 alias la="ls -la"
 
 # git
@@ -33,11 +41,6 @@ if command -v git >/dev/null 2>&1; then
 	alias ga="git add"
 	alias gc="git commit"
 	alias gd="git diff"
-fi
-
-# vim/nvim
-if command -v nvim >/dev/null 2>&1; then
-	alias vim="nvim"
 fi
 
 alias gccf="gcc -Wall -Wextra -Werror"
