@@ -16,6 +16,10 @@ end
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
 
+	set BLINK (tput blink)
+	set NOCOLOR (tput sgr0)
+	echo -n [(date +%H)$BLINK:$NOCOLOR(date +%M)]\ 
+
     # User
     set_color $fish_color_user
     echo -n (whoami)
