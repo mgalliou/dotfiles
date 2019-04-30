@@ -16,7 +16,7 @@ BBLUE="$(tput setaf 14)"
 NOCOLOR="$(tput sgr0)"
 GREY="$(tput setaf 8)"
 
-PS1='\[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
+PS1='\A \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
 
 ################################################################################
 # ALIASES
