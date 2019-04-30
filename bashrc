@@ -13,10 +13,12 @@
 #PS1='\w \\$ \[$(tput sgr0)\]'
 BLUE="$(tput setaf 4)"
 BBLUE="$(tput setaf 14)"
-NOCOLOR="$(tput sgr0)"
 GREY="$(tput setaf 8)"
+BLINK="$(tput blink)"
+NOCOLOR="$(tput sgr0)"
+TIME="$(date +%H)${BLINK}:${NOCOLOR}$(date +%M)"
 
-PS1='\A \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
+PS1='[${TIME}] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
 
 ################################################################################
 # ALIASES
