@@ -30,6 +30,7 @@ if [ "$SETUPVIM" = "y" ]; then
 	echo "[VIM SETUP]"
 	symlink_dotfile vimrc
 	symlink_dotfile vim
+	symlink_dotfile config/nvim/init.vim
 	mkdir -vp ~/dotfiles/vim/backup/undo ~/dotfiles/vim/bundle
 	echo "Created backup/undo and bundle directories"
 fi
@@ -49,3 +50,6 @@ if [ "$SETUPI3" = "y" ]; then
 	symlink_dotfile "config/i3/config"
 	symlink_dotfile "config/i3status/config"
 fi
+
+#FISH SETUP
+symlink_dotfile "config/fish/config.fish"

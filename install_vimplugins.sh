@@ -10,9 +10,12 @@ git clone https://github.com/tpope/vim-repeat.git
 git clone https://github.com/tpope/vim-surround.git
 #linter
 git clone https://github.com/w0rp/ale
+#autocompletion
+git clone https://github.com/Shougo/deoplete.nvim.git
 #syntax
 git clone https://github.com/leafgarland/typescript-vim.git
 git clone https://github.com/cespare/vim-toml.git
+git clone https://github.com/dag/vim-fish.git
 #brackets
 git clone https://github.com/luochen1990/rainbow
 cd -
