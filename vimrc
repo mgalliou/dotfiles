@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2018/12/23 16:06:40 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/11 13:15:22 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -42,7 +42,7 @@ set background=dark
 
 " set font in gvim
 if has("gui_running")
-	set guifont=Dina
+	set guifont=InputMonoCondensed
 endif
 
 " Behavior
