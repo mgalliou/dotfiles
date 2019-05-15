@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/11 13:15:22 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/15 09:34:10 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -47,7 +47,7 @@ endif
 
 " Behavior
 set hidden
-set mouse=a
+"set mouse=a
 set mousehide
 set backspace=indent,eol,start
 set scrolloff=4
@@ -66,7 +66,7 @@ set softtabstop=0
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
 
-"UI
+" UI
 set wildmenu
 set textwidth=80
 set colorcolumn=81
