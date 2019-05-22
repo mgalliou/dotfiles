@@ -2,9 +2,9 @@
 vim/.netrwhist
 vim/backup/
 vim/view/
-vim/bundle/*
-!vim/bundle/header42
-!vim/bundle/jsl
+vim/pack/plugins/start/*
+!vim/pack/plugins/start/header42
+!vim/pack/plugins/start/jsl
 
 # MISC
 **/*.DS_Store

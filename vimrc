@@ -6,17 +6,13 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/22 11:12:15 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/22 14:25:10 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 " **************************************************************************** "
-" Pathogen / Syntax / Filetype / Colorscheme... {{{
+" Syntax / Filetype / Colorscheme... {{{
 " **************************************************************************** "
-
-" Pathogen
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
 
 " Colorsheme
 filetype plugin indent on

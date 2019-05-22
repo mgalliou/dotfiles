@@ -1,11 +1,12 @@
 #!/bin/bash
 
+PLUGINS_PATH=~/dotfiles/vim/pack/plugins/start
 mkdir -p ~/dotfiles/vim/backup/undo
-mkdir -p ~/dotfiles/vim/bundle
-cd ~/dotfiles/vim/bundle
-git clone https://github.com/tpope/vim-pathogen.git
+mkdir -p ${PLUGINS_PATH}
+cd ${PLUGINS_PATH}
+pwd
 git clone https://github.com/felixhummel/setcolors.vim.git
-git clone https://github.com/flazz/vim-colorschemes.git
+#git clone https://github.com/flazz/vim-colorschemes.git
 git clone https://github.com/tpope/vim-repeat.git
 git clone https://github.com/tpope/vim-surround.git
 #linter
