@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/22 15:39:50 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/22 17:42:05 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -53,6 +53,7 @@ set splitbelow
 " disable auto comment:
 set formatoptions-=cro
 set nowrap
+set updatetime=100
 
 " Indentation
 set autoindent
