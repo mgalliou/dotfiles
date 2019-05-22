@@ -16,9 +16,13 @@ BBLUE="$(tput setaf 14)"
 GREY="$(tput setaf 8)"
 BLINK="$(tput blink)"
 NOCOLOR="$(tput sgr0)"
-TIME="$(date +%H)${BLINK}:${NOCOLOR}$(date +%M)"
 
-PS1='[${TIME}] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
+function print_time()
+{
+	printf "$(date +%H)${BLINK}:${NOCOLOR}$(date +%M)"
+}
+
+PS1='[$(print_time)] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
 
 ################################################################################
 # ALIASES
