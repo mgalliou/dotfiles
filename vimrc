@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/15 09:34:10 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/22 11:12:15 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -30,7 +30,7 @@ if has("win32") && !has("gui_running")
 	colorscheme gruvbox
 "	let &t_AB="\e[48;5;%dm"
 "	let &t_AF="\e[38;5;%dm"
-" enable 256 color in capable terminals 
+" enable 256 color in capable terminals
 elseif (-1 < stridx("256", $TERM))
 	set t_Co=256
 elseif (-1 < stridx("xterm", $TERM))
@@ -70,7 +70,6 @@ autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
 set wildmenu
 set textwidth=80
 set colorcolumn=81
-set number
 set noshowmode
 set showcmd
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
@@ -109,8 +108,8 @@ nnoremap <leader>l :nohl<CR>
 nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``
 " toggle invisible chars
 nnoremap <leader>i :set list!<CR>
-" toggle relativenumber
-nnoremap <leader>n :set relativenumber!<CR>
+" toggle relative line number
+nnoremap <leader>n <ESC>:call ToggleLineNumberMode()<CR>
 " explore netrw
 nnoremap <leader>e <ESC>:Explore<CR>
 nnoremap <leader>v <ESC>:Vexplore<CR>
@@ -130,6 +129,17 @@ cmap w!! w !sudo tee % >/dev/null
 " inoremap < <><Left>
 " inoremap " ""<Left>
 " inoremap ' ''<Left>
+
+function! ToggleLineNumberMode()
+	if &number == 0 && &relativenumber == 0
+		set number
+	elseif &number != 0 && &relativenumber == 0
+		set nonumber
+		set relativenumber
+	elseif &relativenumber != 0
+		set norelativenumber
+	endif
+endfunction
 
 "}}},
 " **************************************************************************** "
