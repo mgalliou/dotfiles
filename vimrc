@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/22 14:25:10 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/22 14:59:46 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -180,14 +180,10 @@ if exists("g:NERDDefaultAlign")
 	let g:NERDDefaultAlign = 'left'
 endif
 
-" Hardmode
-if exists("*ToggleHardMode")
-	nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
-endif
-
 " rainbow
-if exists("RainbowToggle")
-	nnoremap <leader>b <Esc>:RainbowToggle<CR>
+if &runtimepath =~ "rainbow"
+	let g:rainbow_active = 1
+	nnoremap <leader>b <ESC>:RainbowToggle<CR>
 endif
 
 " IndentLine
