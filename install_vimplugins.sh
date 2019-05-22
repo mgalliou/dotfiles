@@ -19,6 +19,7 @@ repos=(https://github.com/felixhummel/setcolors.vim
 	#brackets
 	https://github.com/luochen1990/rainbow
 	#git integration
+	https://github.com/tpope/vim-fugitive
 	https://github.com/airblade/vim-gitgutter)
 for repo in "${repos[@]}"
 do
