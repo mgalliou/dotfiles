@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/22 14:59:46 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/22 15:39:50 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -167,28 +167,31 @@ augroup vimrc
   autocmd!
 augroup END
 
-" NERDTree
-if exists("*NERDTree")
-	autocmd vimrc StdinReadPre * let s:std_in=1
-	autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-	let g:NERDTreeWinSize = 29
-endif
+function! SetPluginSettings()
+	" NERDTree
+	if exists("*NERDTree")
+		autocmd vimrc StdinReadPre * let s:std_in=1
+		autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+		autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+		let g:NERDTreeWinSize = 29
+	endif
 
-" NERDCommenter
-if exists("g:NERDDefaultAlign")
-	let g:NERDDefaultAlign = 'left'
-endif
+	" NERDCommenter
+	if exists("g:NERDDefaultAlign")
+		let g:NERDDefaultAlign = 'left'
+	endif
 
-" rainbow
-if &runtimepath =~ "rainbow"
-	let g:rainbow_active = 1
-	nnoremap <leader>b <ESC>:RainbowToggle<CR>
-endif
+	" rainbow
+	if exists(":RainbowToggle")
+		let g:rainbow_active = 1
+		nnoremap <leader>b <ESC>:RainbowToggle<CR>
+	endif
 
-" IndentLine
-"let g:indentLine_char = '|'
+	" IndentLine
+	"let g:indentLine_char = '|'
+endfunction
 
+autocmd VimEnter * call SetPluginSettings()
 
 "}}},
 " **************************************************************************** "
