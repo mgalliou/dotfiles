@@ -18,25 +18,25 @@ function fish_prompt --description 'Write out the prompt'
 
 	set BLINK (tput blink)
 	set NOCOLOR (tput sgr0)
-	echo -n [(date +%H)$BLINK:$NOCOLOR(date +%M)]\ 
+	printf [(date +%H)$BLINK:$NOCOLOR(date +%M)]\ 
 
     # User
     set_color $fish_color_user
-    echo -n (whoami)
+    printf (whoami)
     set_color normal
 
-    echo -n '@'
+    printf '@'
 
     # Host
     set_color $fish_color_host
-    echo -n (prompt_hostname)
+    printf (prompt_hostname)
     set_color normal
 
-    echo -n ':'
+    printf ':'
 
     # PWD
     set_color $fish_color_cwd
-    echo -n ' '(prompt_pwd)
+    printf ' '(prompt_pwd)
     set_color normal
 
     __terlar_git_prompt
@@ -47,7 +47,7 @@ function fish_prompt --description 'Write out the prompt'
         set_color $fish_color_error
     end
 
-    echo -n '$ '
+    printf '$ '
     set_color normal
 end
 
