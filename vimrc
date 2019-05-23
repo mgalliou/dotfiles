@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/22 17:42:05 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/23 18:00:06 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -17,7 +17,10 @@
 " Colorsheme
 filetype plugin indent on
 syntax on
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
+set background=dark
 
 " enable 256 color and set tmux as term if in a Windows terminal {{{
 if has("win32") && !has("gui_running")
@@ -33,8 +36,6 @@ elseif (-1 < stridx("xterm", $TERM))
 	colorscheme default
 endif
 "}}},
-
-set background=dark
 
 " set font in gvim
 if has("gui_running")
@@ -70,7 +71,6 @@ set colorcolumn=81
 set noshowmode
 set showcmd
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
-"
 
 " Bell
 set noerrorbells

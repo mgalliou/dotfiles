@@ -4,8 +4,12 @@ PLUGINS_PATH=~/dotfiles/vim/pack/plugins/start
 mkdir -pv ~/dotfiles/vim/backup/undo
 mkdir -pv ${PLUGINS_PATH}
 cd ${PLUGINS_PATH}
-repos=(https://github.com/felixhummel/setcolors.vim
+repos=(
+	#coloschems
+	https://github.com/felixhummel/setcolors.vim
+	https://github.com/morhetz/gruvbox.git
 	#"https://github.com/flazz/vim-colorschemes.git"
+	#feature
 	https://github.com/tpope/vim-repeat
 	https://github.com/tpope/vim-surround
 	#linter
@@ -20,7 +24,8 @@ repos=(https://github.com/felixhummel/setcolors.vim
 	https://github.com/luochen1990/rainbow
 	#git integration
 	https://github.com/tpope/vim-fugitive
-	https://github.com/airblade/vim-gitgutter)
+	https://github.com/airblade/vim-gitgutter
+	)
 for repo in "${repos[@]}"
 do
 	git clone $repo
