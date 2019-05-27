@@ -20,6 +20,7 @@ repos=(
 	https://github.com/leafgarland/typescript-vim
 	https://github.com/cespare/vim-toml
 	https://github.com/dag/vim-fish
+	https://github.com/vim-scripts/tf2.vim.git
 	#brackets
 	https://github.com/luochen1990/rainbow
 	#git integration
