@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/23 18:00:06 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/05/27 20:39:11 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -85,6 +85,12 @@ set showmatch
 
 " Folding
 set foldmethod=marker
+
+" filetype
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+augroup END
 
 "}}},
 " **************************************************************************** "
@@ -190,6 +196,11 @@ function! SetPluginSettings()
 
 	" IndentLine
 	"let g:indentLine_char = '|'
+
+	" Ale
+	let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Werror -Iinclude -Ilibft/include'
+	let g:ale_c_gcc_options = '-std=c11 -Wall -Wextra -Werror -Iinclude -Ilibft/include'
+
 endfunction
 
 autocmd VimEnter * call SetPluginSettings()
