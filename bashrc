@@ -17,7 +17,7 @@ GREY="$(tput setaf 8)"
 BLINK="$(tput blink)"
 NOCOLOR="$(tput sgr0)"
 
-function print_time()
+print_time()
 {
 	printf "$(date +%H)${BLINK}:${NOCOLOR}$(date +%M)"
 }
@@ -28,7 +28,8 @@ PS1='[$(print_time)] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \
 # ALIASES
 ################################################################################
 
-function replace_cmd {
+replace_cmd()
+{
 	if command -v $2 >/dev/null 2>&1; then
 		alias $1=$2
 	fi
