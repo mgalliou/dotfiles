@@ -38,6 +38,9 @@ if [ "$SETUPVIM" = "y" ]; then
 	echo "Created backup/undo and bundle directories"
 fi
 
+#TASKEL
+symlink_dotfile "config/taskell"
+
 #XORG SETUP
 symlink_dotfile "Xresources"
 symlink_dotfile "xinitrc"
