@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/05/27 20:39:11 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/06/07 10:28:07 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -204,6 +204,9 @@ function! SetPluginSettings()
 endfunction
 
 autocmd VimEnter * call SetPluginSettings()
+
+" FZF
+set rtp+=/usr/local/opt/fzf
 
 "}}},
 " **************************************************************************** "

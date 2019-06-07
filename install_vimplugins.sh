@@ -1,10 +1,9 @@
 #!/bin/bash
 
-PLUGINS_PATH=~/dotfiles/vim/pack/plugins/start
-mkdir -pv ~/dotfiles/vim/backup/undo
-mkdir -pv ${PLUGINS_PATH}
-cd ${PLUGINS_PATH}
-repos=(
+main()
+{
+	PLUGINS_PATH=~/dotfiles/vim/pack/plugins/start
+	REPOS=(
 	#coloschems
 	https://github.com/felixhummel/setcolors.vim
 	https://github.com/morhetz/gruvbox.git
@@ -12,6 +11,7 @@ repos=(
 	#feature
 	https://github.com/tpope/vim-repeat
 	https://github.com/tpope/vim-surround
+	https://github.com/junegunn/fzf.vim
 	#linter
 	https://github.com/w0rp/ale
 	#autocompletion
@@ -27,8 +27,15 @@ repos=(
 	https://github.com/tpope/vim-fugitive
 	https://github.com/airblade/vim-gitgutter
 	)
-for repo in "${repos[@]}"
-do
-	git clone $repo
-done
-cd -
+
+	mkdir -pv ~/dotfiles/vim/backup/undo
+	mkdir -pv ${PLUGINS_PATH}
+	cd ${PLUGINS_PATH}
+	for REPO in "${REPOS[@]}"
+	do
+		git clone $REPO
+	done
+	cd -
+}
+
+main
