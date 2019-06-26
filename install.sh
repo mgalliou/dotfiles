@@ -1,18 +1,19 @@
 #!/bin/bash
+
 #FONCTIONS DEFINITION
 flush_stdin()
 {
-	while read -t 0; do read -r;done
+	while read -rt 0; do read -r;done
 }
 
 symlink_dotfile()
 {
 	echo -n "create $1 symlink? (y/n)"
 	flush_stdin
-	read CREATE
+	read -r CREATE
 	if [ "$CREATE" = "y" ]; then
-		mkdir -pv ~/.$(dirname $1)
-		ln -sv ~/dotfiles/$1 ~/.$1
+		mkdir -pv ~/."$(dirname "$1")"
+		ln -sv ~/dotfiles/"$1" ~/."$1"
 	fi
 }
 
@@ -28,7 +29,7 @@ symlink_dotfile "tmux.conf"
 #VIM SETUP
 echo -n "setup vim? (y/n)"
 flush_stdin
-read SETUPVIM
+read -r SETUPVIM
 if [ "$SETUPVIM" = "y" ]; then
 	echo "[VIM SETUP]"
 	symlink_dotfile vimrc
@@ -52,7 +53,7 @@ symlink_dotfile "config/termite/config"
 #I3 SETUP
 echo -n "setup i3? (y/n)"
 flush_stdin
-read SETUPI3
+read -r SETUPI3
 if [ "$SETUPI3" = "y" ]; then
 	echo "[I3 SETUP]"
 	mkdir -pv ~/.config/i3 ~/.config/i3status

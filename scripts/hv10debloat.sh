@@ -1,7 +1,7 @@
 #!/bin/sh
 
 main() {
-	PACKAGES=(
+	PACKAGES="
 	#com.huawei.HwMultiScreenShot
 	com.huawei.android.launcher #Huawei Launcher
 	#com.huawei.android.tips
@@ -53,11 +53,11 @@ main() {
 	com.google.android.videos
 	com.google.android.apps.tachyon #Google Duo
 	com.google.android.chrome
-	)
+	"
 	
-	for PACKAGE in "${PACKAGES[@]}"
+	for PACKAGE in $PACKAGES
 	do
-		printf "Uninstalling: $PACKAGE\n"
+		printf "Uninstalling: %s\n" "$PACKAGE"
 		adb shell "pm uninstall -k --user 0 $PACKAGE"
 	done
 }
