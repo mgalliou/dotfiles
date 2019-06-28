@@ -1,14 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
-#FONCTIONS DEFINITION
 flush_stdin()
 {
-	while read -rt 0; do read -r;done
+	echo | read -r
 }
 
 symlink_dotfile()
 {
-	echo -n "create $1 symlink? (y/n)"
+	printf "create %1rsymlink? (y/n) " "$1"
 	flush_stdin
 	read -r CREATE
 	if [ "$CREATE" = "y" ]; then
@@ -17,47 +16,39 @@ symlink_dotfile()
 	fi
 }
 
-#BASH SETUP
-symlink_dotfile "bashrc"
+main ()
+{
+	symlink_dotfile "bashrc"
+	symlink_dotfile "config/fish/config.fish"
+	symlink_dotfile "tmux.conf"
 
-#FISH SETUP
-symlink_dotfile "config/fish/config.fish"
+	printf "setup vim? (y/n) "
+	flush_stdin
+	read -r SETUPVIM
+	if [ "$SETUPVIM" = "y" ]; then
+		echo "[VIM SETUP]"
+		symlink_dotfile vimrc
+		symlink_dotfile vim
+		symlink_dotfile config/nvim/init.vim
+		mkdir -pv ~/dotfiles/vim/backup/undo ~/dotfiles/vim/bundle
+		echo "Created backup/undo and bundle directories"
+	fi
 
-#TMUX SETUP
-symlink_dotfile "tmux.conf"
+	symlink_dotfile "config/taskell"
+	symlink_dotfile "Xresources"
+	symlink_dotfile "xinitrc"
+	symlink_dotfile "xmodmap"
+	symlink_dotfile "config/termite/config"
 
-#VIM SETUP
-echo -n "setup vim? (y/n)"
-flush_stdin
-read -r SETUPVIM
-if [ "$SETUPVIM" = "y" ]; then
-	echo "[VIM SETUP]"
-	symlink_dotfile vimrc
-	symlink_dotfile vim
-	symlink_dotfile config/nvim/init.vim
-	mkdir -pv ~/dotfiles/vim/backup/undo ~/dotfiles/vim/bundle
-	echo "Created backup/undo and bundle directories"
-fi
+	printf "setup i3? (y/n) "
+	flush_stdin
+	read -r SETUPI3
+	if [ "$SETUPI3" = "y" ]; then
+		echo "[I3 SETUP]"
+		mkdir -pv ~/.config/i3 ~/.config/i3status
+		symlink_dotfile "config/i3/config"
+		symlink_dotfile "config/i3status/config"
+	fi
+}
 
-#TASKEL
-symlink_dotfile "config/taskell"
-
-#XORG SETUP
-symlink_dotfile "Xresources"
-symlink_dotfile "xinitrc"
-symlink_dotfile "xmodmap"
-
-#TERMITE
-symlink_dotfile "config/termite/config"
-
-#I3 SETUP
-echo -n "setup i3? (y/n)"
-flush_stdin
-read -r SETUPI3
-if [ "$SETUPI3" = "y" ]; then
-	echo "[I3 SETUP]"
-	mkdir -pv ~/.config/i3 ~/.config/i3status
-	symlink_dotfile "config/i3/config"
-	symlink_dotfile "config/i3status/config"
-fi
-
+main

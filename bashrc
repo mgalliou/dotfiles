@@ -19,7 +19,7 @@ NOCOLOR="$(tput sgr0)"
 
 print_time()
 {
-	printf "$(date +%H)${BLINK}:${NOCOLOR}$(date +%M)"
+	printf "%s%s:%s%s" "$(date +%H)" "${BLINK}" "${NOCOLOR}" "$(date +%M)"
 }
 
 PS1='[$(print_time)] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
@@ -30,8 +30,8 @@ PS1='[$(print_time)] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \
 
 replace_cmd()
 {
-	if command -v $2 >/dev/null 2>&1; then
-		alias $1=$2
+	if command -v "$2" >/dev/null 2>&1; then
+		alias "$1"="$2"
 	fi
 }
 
@@ -89,6 +89,9 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 # custom scrips
 export PATH=$PATH:~/dotfiles/scripts
 
+# cargo
+#export PATH="$HOME/.cargo/bin:$PATH"
+
 ################################################################################
 # COMPLETION 
 ################################################################################
@@ -97,9 +100,7 @@ export PATH=$PATH:~/dotfiles/scripts
 #source /usr/share/git/competion/git-completion.bash
 
 # brew
-if type brew 2&>/dev/null; then
-  for completion_file in $(brew --prefix)/etc/bash_completion.d/*; do
-    source "$completion_file"
-  done
-fi
+for completion_file in $(brew --prefix)/etc/bash_completion.d/* ; do
+	source $completion_file
+done
 
