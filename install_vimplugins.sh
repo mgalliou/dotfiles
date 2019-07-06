@@ -18,6 +18,7 @@ main()
 	https://github.com/luochen1990/rainbow
 	https://github.com/tpope/vim-fugitive
 	https://github.com/airblade/vim-gitgutter
+	https://github.com/tbastos/vim-lua
 	"
 	#https://github.com/flazz/vim-colorschemes.git
 
