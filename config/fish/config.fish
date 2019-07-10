@@ -19,6 +19,19 @@ replace_cmd ls exa
 replace_cmd cat bat
 replace_cmd vim nvim
 
+alias gs  "git status" 
+alias gd  "git diff"   
+alias gc  "git clone"  
+alias gp  "git pull"   
+alias ga  "git add"    
+                       
+alias m   "make"       
+alias mc  "make clean" 
+alias mfc "make fclean"
+alias mr  "make re"    
+alias md  "make debug"    
+alias mt  "make test"    
+
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
 
