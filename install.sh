@@ -7,7 +7,7 @@ flush_stdin()
 
 symlink_dotfile()
 {
-	printf "create %1rsymlink? (y/n) " "$1"
+	printf "create %s symlink? (y/n) " "$1"
 	flush_stdin
 	read -r CREATE
 	if [ "$CREATE" = "y" ]; then
