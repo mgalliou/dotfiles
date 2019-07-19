@@ -22,8 +22,10 @@ replace_cmd vim nvim
 alias gs  "git status" 
 alias gd  "git diff"   
 alias gc  "git clone"  
-alias gp  "git pull"   
+alias gpl "git pull"   
 alias ga  "git add"    
+alias gcm "git commit"
+alias gps "git push"   
                        
 alias m   "make"       
 alias mc  "make clean" 
