@@ -19,6 +19,7 @@ main()
 	https://github.com/tpope/vim-fugitive
 	https://github.com/airblade/vim-gitgutter
 	https://github.com/tbastos/vim-lua
+	https://github.com/ludovicchabant/vim-gutentags.git
 	"
 	#https://github.com/flazz/vim-colorschemes.git
 
