@@ -1,4 +1,4 @@
-fish_vi_key_bindings
+#fish_vi_key_bindings
 
 function fish_mode_prompt
 # NOOP - Disable vim mode indicator
@@ -33,6 +33,17 @@ alias mfc "make fclean"
 alias mr  "make re"    
 alias md  "make debug"    
 alias mt  "make test"    
+
+bind -M insert \cf forward-char
+bind -M insert \cb backward-char
+bind -M insert \ef forward-word
+bind -M insert \eb backward-word
+bind -M insert \ca beginning-of-line
+bind -M insert \ce end-of-line
+bind -M insert \cn history-search-forward
+bind -M insert \cp history-search-backward
+bind -M insert \co accept-autosuggestion
+bind -M insert \ck kill-line
 
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
