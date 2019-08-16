@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/06/07 10:28:07 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/07/28 15:24:40 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -108,7 +108,7 @@ nnoremap <leader><space> :w<CR>
 " remove highlights
 nnoremap <leader>l :nohl<CR>
 " remove trailing whitespace
-nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``
+nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``:w<CR>
 " toggle invisible chars
 nnoremap <leader>i :set list!<CR>
 " toggle relative line number
