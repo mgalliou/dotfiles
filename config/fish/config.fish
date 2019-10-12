@@ -83,3 +83,6 @@ function fish_prompt --description 'Write out the prompt'
     set_color normal
 end
 
+if [ (uname -o) = "Android" ]
+	source $HOME/dotfiles/config/fish/completions/pass.fish
+end
