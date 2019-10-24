@@ -1,14 +1,8 @@
 #!/bin/sh
 
-flush_stdin()
-{
-	echo | read -r
-}
-
 symlink_dotfile()
 {
 	printf "create %s symlink? (y/n) " "$1"
-	flush_stdin
 	read -r CREATE
 	if [ "$CREATE" = "y" ]; then
 		mkdir -pv ~/."$(dirname "$1")"
@@ -16,14 +10,13 @@ symlink_dotfile()
 	fi
 }
 
-main ()
+main()
 {
 	symlink_dotfile "bashrc"
 	symlink_dotfile "config/fish/config.fish"
 	symlink_dotfile "tmux.conf"
 
 	printf "setup vim? (y/n) "
-	flush_stdin
 	read -r SETUPVIM
 	if [ "$SETUPVIM" = "y" ]; then
 		echo "[VIM SETUP]"
@@ -41,7 +34,6 @@ main ()
 	symlink_dotfile "config/termite/config"
 
 	printf "setup i3? (y/n) "
-	flush_stdin
 	read -r SETUPI3
 	if [ "$SETUPI3" = "y" ]; then
 		echo "[I3 SETUP]"
