@@ -17,10 +17,12 @@
 " Colorsheme
 filetype plugin indent on
 syntax on
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-set background=dark
+if exists("gruvbox")
+	let g:gruvbox_italic=1
+	let g:gruvbox_contrast_dark='hard'
+	colorscheme gruvbox
+	set background=dark
+end
 
 " enable 256 color and set tmux as term if in a Windows terminal {{{
 if has("win32") && !has("gui_running")
