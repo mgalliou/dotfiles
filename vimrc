@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/08/19 10:59:09 by mgalliou         ###   ########.fr        "
+"    Updated: 2019/10/31 15:21:24 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -17,12 +17,12 @@
 " Colorsheme
 filetype plugin indent on
 syntax on
-if exists("gruvbox")
+try
 	let g:gruvbox_italic=1
 	let g:gruvbox_contrast_dark='hard'
 	colorscheme gruvbox
 	set background=dark
-end
+endtry
 
 " enable 256 color and set tmux as term if in a Windows terminal {{{
 if has("win32") && !has("gui_running")
@@ -68,7 +68,7 @@ autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
 
 " UI
 set wildmenu
-set textwidth=80
+"set textwidth=80
 set colorcolumn=81
 set noshowmode
 set showcmd
