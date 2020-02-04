@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2019/10/31 15:21:24 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/02/03 15:57:40 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -93,6 +93,8 @@ augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 augroup END
+
+let g:asmsyntax = 'nasm'
 
 "}}},
 " **************************************************************************** "
