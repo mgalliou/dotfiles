@@ -28,7 +28,7 @@ main()
 	cd ${PLUGINS_PATH} || return
 	for REPO in ${REPOS}
 	do
-		git clone "$REPO"
+		git clone --depth 1 "$REPO"
 	done
 	cd - || return
 }
