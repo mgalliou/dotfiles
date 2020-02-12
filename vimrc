@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/02/27 16:30:28 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/03/12 18:46:54 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -207,8 +207,8 @@ function! SetPluginSettings()
 	"let g:indentLine_char = '|'
 
 	" Ale
-	let g:ale_c_clang_options = '-std=c11 -Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
-	let g:ale_c_gcc_options = '-std=c11 -Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
+	let g:ale_c_clang_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
+	let g:ale_c_gcc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
 	" TODO: add OS check
 	let g:ale_nasm_nasm_options = '-f macho64'
 
