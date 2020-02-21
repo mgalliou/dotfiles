@@ -19,13 +19,13 @@ replace_cmd ls exa
 replace_cmd cat bat
 replace_cmd vim nvim
 
-alias gs  "git status" 
-alias gd  "git diff"   
-alias gc  "git clone"  
-alias gpl "git pull"   
-alias ga  "git add"    
-alias gcm "git commit"
-alias gps "git push"   
+alias gs   "git status" 
+alias gd   "git diff"   
+alias gc   "git clone"  
+alias gpl  "git pull"   
+alias ga   "git add"    
+alias gcmt "git commit"
+alias gpsh "git push"   
                        
 alias m   "make"       
 alias mc  "make clean" 
