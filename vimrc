@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/02/11 14:43:24 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/02/27 16:30:28 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -20,6 +20,11 @@ syntax on
 try
 	let g:gruvbox_italic=1
 	let g:gruvbox_contrast_dark='hard'
+	let g:gruvbox_contrast_light='hard'
+	let g:gruvbox_number_column="bg2"
+	"let g:gruvbox_improved_strings=1
+	let g:gruvbox_improved_warnings=1
+	let g:gruvbox_invert_signs=1
 	colorscheme gruvbox
 	set background=dark
 endtry

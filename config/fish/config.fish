@@ -32,7 +32,7 @@ alias mc  "make clean"
 alias mfc "make fclean"
 alias mr  "make re"    
 alias md  "make debug"    
-alias mt  "make test"    
+alias mc  "make check"    
 
 bind -M insert \cf forward-char
 bind -M insert \cb backward-char
