@@ -5,6 +5,8 @@ vim/view/
 vim/pack/plugins/start/*
 !vim/pack/plugins/start/header42
 !vim/pack/plugins/start/jsl
+vim/plugged
+vim/autoload
 
 # MISC
 **/*.DS_Store

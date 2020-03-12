@@ -6,13 +6,38 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/03/12 18:46:54 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/03/12 22:00:32 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 " **************************************************************************** "
 " Syntax / Filetype / Colorscheme... {{{
 " **************************************************************************** "
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'felixhummel/setcolors.vim'
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
+"Plug 'Shougo/deoplete.nvim'
+Plug 'leafgarland/typescript-vim'
+Plug 'cespare/vim-toml'
+Plug 'dag/vim-fish'
+Plug 'vim-scripts/tf2.vim'
+Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tbastos/vim-lua'
+"Plug 'ludovicchabant/vim-gutentags'
+call plug#end()
 
 " Colorsheme
 filetype plugin indent on
