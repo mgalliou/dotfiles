@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/03/23 09:08:39 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/10/27 18:20:52 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -75,6 +75,7 @@ Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
 Plug 'vim-scripts/tf2.vim'
 Plug 'tbastos/vim-lua'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 call PlugRainbow()
