@@ -10,3 +10,4 @@ vim/autoload
 
 # MISC
 **/*.DS_Store
+tags

@@ -6,35 +6,78 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/03/13 09:35:43 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/03/13 12:22:02 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
-" Vim-Plugin {{{
+" Plugins {{{
+
+function! PlugAle()
+	Plug 'w0rp/ale',  
+	let g:ale_linters =  {'c': ['clang', 'gcc']}
+	let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+	let g:ale_c_clang_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
+	let g:ale_c_gcc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
+	" TODO: add OS check
+	let g:ale_nasm_nasm_options = '-f macho64'
+endfunction
+
+function! PlugIndentLine()
+	Plug 'Yggdroot/indentLine'
+	let g:indentLine_char = '|'
+endfunction
+	
+function! PlugRainbow()
+	Plug 'luochen1990/rainbow'
+	let g:rainbow_active = 1
+	nnoremap <leader>b <ESC>:RainbowToggle<CR>
+endfunction
+
+function! PlugFZF()
+	Plug 'junegunn/fzf.vim'
+	set rtp+=/usr/local/opt/fzf
+endfunction
+
+function! PlugNERDTree()
+	Plug 'preservim/nerdtree'
+	autocmd vimrc StdinReadPre * let s:std_in=1
+	autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+	let g:NERDTreeWinSize = 29
+endfunction
+
+function! PlugNERDCommenter()
+	Plug 'preservim/nerdcommenter'
+	let g:NERDDefaultAlign = 'left'
+endfunction
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'felixhummel/setcolors.vim'
 Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
-"Plug 'Shougo/deoplete.nvim'
 Plug 'leafgarland/typescript-vim'
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
 Plug 'vim-scripts/tf2.vim'
-Plug 'luochen1990/rainbow'
+Plug 'tbastos/vim-lua'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+call PlugRainbow()
+"call PlugIndentLine()
+"call PlugNERDTree()
+"call PlugNERDCommenter()
+call PlugAle()
+"Plug 'Shougo/deoplete.nvim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'tbastos/vim-lua'
-"Plug 'ludovicchabant/vim-gutentags'
+call PlugFZF()
+call plug#helptags()
 call plug#end()
 "}}}
 
@@ -175,44 +218,4 @@ else
 	set backup backupdir=~/.vim/backup/
 	set undofile undodir=~/.vim/backup/undo/
 endif
-"}}}
-
-" Plugins settings {{{
-
-augroup vimrc
-	function! SetPluginSettings()
-		" NERDTree
-		if exists("*NERDTree")
-			autocmd vimrc StdinReadPre * let s:std_in=1
-			autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-			autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-			let g:NERDTreeWinSize = 29
-		endif
-
-		" NERDCommenter
-		if exists("g:NERDDefaultAlign")
-			let g:NERDDefaultAlign = 'left'
-		endif
-
-		" rainbow
-		if exists(":RainbowToggle")
-			let g:rainbow_active = 1
-			nnoremap <leader>b <ESC>:RainbowToggle<CR>
-		endif
-
-		" IndentLine
-		"let g:indentLine_char = '|'
-
-		" Ale
-		let g:ale_c_clang_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
-		let g:ale_c_gcc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
-		" TODO: add OS check
-		let g:ale_nasm_nasm_options = '-f macho64'
-	endfunction
-
-	autocmd VimEnter * call SetPluginSettings()
-
-	" FZF
-	set rtp+=/usr/local/opt/fzf
-augroup END
 "}}}
