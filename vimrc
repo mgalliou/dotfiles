@@ -6,13 +6,11 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/03/12 22:00:32 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/03/13 09:35:43 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
-" **************************************************************************** "
-" Syntax / Filetype / Colorscheme... {{{
-" **************************************************************************** "
+" Vim-Plugin {{{
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -38,6 +36,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tbastos/vim-lua'
 "Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
+"}}}
+
+" Syntax / Filetype / Colorscheme... {{{
 
 " Colorsheme
 filetype plugin indent on
@@ -118,20 +119,16 @@ set showmatch
 " Folding
 set foldmethod=marker
 
-" filetype
+" Filetype
 augroup project
     autocmd!
     autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 augroup END
 
 let g:asmsyntax = 'nasm'
+"}}}
 
-"}}},
-" **************************************************************************** "
-
-" **************************************************************************** "
 " Mappings {{{
-" **************************************************************************** "
 
 " reload vimrc
 nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
@@ -145,8 +142,6 @@ nnoremap <leader>l :nohl<CR>
 nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``:w<CR>
 " toggle invisible chars
 nnoremap <leader>i :set list!<CR>
-" toggle relative line number
-nnoremap <leader>n <ESC>:call ToggleLineNumberMode()<CR>
 " explore netrw
 nnoremap <leader>e <ESC>:Explore<CR>
 nnoremap <leader>v <ESC>:Vexplore<CR>
@@ -154,18 +149,6 @@ nnoremap <leader>s <ESC>:Sexplore<CR>
 nnoremap <leader>t <ESC>:Texplore<CR>
 " save files with root privileges.
 cmap w!! w !sudo tee % >/dev/null
-
-" autoclosing mappings
-" inoremap ( ()<Left>
-" inoremap ) ()<Left>
-" inoremap { {}<Left>
-" inoremap } {}<Left>
-" inoremap [ []<Left>
-" inoremap ] []<Left>
-" inoremap > <><Left>
-" inoremap < <><Left>
-" inoremap " ""<Left>
-" inoremap ' ''<Left>
 
 function! ToggleLineNumberMode()
 	if &number == 0 && &relativenumber == 0
@@ -177,13 +160,10 @@ function! ToggleLineNumberMode()
 		set norelativenumber
 	endif
 endfunction
+nnoremap <leader>n <ESC>:call ToggleLineNumberMode()<CR>
+"}}}
 
-"}}},
-" **************************************************************************** "
-
-" **************************************************************************** "
 " Backup {{{
-" **************************************************************************** "
 
 set history=200
 set noswapfile
@@ -195,54 +175,44 @@ else
 	set backup backupdir=~/.vim/backup/
 	set undofile undodir=~/.vim/backup/undo/
 endif
+"}}}
 
-"}}},
-" **************************************************************************** "
-
-" **************************************************************************** "
 " Plugins settings {{{
-" **************************************************************************** "
 
-" define a group `vimrc` and initialize.
 augroup vimrc
-  autocmd!
+	function! SetPluginSettings()
+		" NERDTree
+		if exists("*NERDTree")
+			autocmd vimrc StdinReadPre * let s:std_in=1
+			autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+			autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+			let g:NERDTreeWinSize = 29
+		endif
+
+		" NERDCommenter
+		if exists("g:NERDDefaultAlign")
+			let g:NERDDefaultAlign = 'left'
+		endif
+
+		" rainbow
+		if exists(":RainbowToggle")
+			let g:rainbow_active = 1
+			nnoremap <leader>b <ESC>:RainbowToggle<CR>
+		endif
+
+		" IndentLine
+		"let g:indentLine_char = '|'
+
+		" Ale
+		let g:ale_c_clang_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
+		let g:ale_c_gcc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
+		" TODO: add OS check
+		let g:ale_nasm_nasm_options = '-f macho64'
+	endfunction
+
+	autocmd VimEnter * call SetPluginSettings()
+
+	" FZF
+	set rtp+=/usr/local/opt/fzf
 augroup END
-
-function! SetPluginSettings()
-	" NERDTree
-	if exists("*NERDTree")
-		autocmd vimrc StdinReadPre * let s:std_in=1
-		autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-		autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-		let g:NERDTreeWinSize = 29
-	endif
-
-	" NERDCommenter
-	if exists("g:NERDDefaultAlign")
-		let g:NERDDefaultAlign = 'left'
-	endif
-
-	" rainbow
-	if exists(":RainbowToggle")
-		let g:rainbow_active = 1
-		nnoremap <leader>b <ESC>:RainbowToggle<CR>
-	endif
-
-	" IndentLine
-	"let g:indentLine_char = '|'
-
-	" Ale
-	let g:ale_c_clang_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
-	let g:ale_c_gcc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
-	" TODO: add OS check
-	let g:ale_nasm_nasm_options = '-f macho64'
-
-endfunction
-
-autocmd VimEnter * call SetPluginSettings()
-
-" FZF
-set rtp+=/usr/local/opt/fzf
-
-"}}},
-" **************************************************************************** "
+"}}}
