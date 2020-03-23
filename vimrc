@@ -6,11 +6,17 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/03/13 12:22:02 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/03/23 09:08:39 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 " Plugins {{{
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 function! PlugAle()
 	Plug 'w0rp/ale',  
@@ -51,11 +57,15 @@ function! PlugNERDCommenter()
 	let g:NERDDefaultAlign = 'left'
 endfunction
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+function! PlugGutentags_Plus()
+	Plug 'skywind3000/gutentags_plus'
+	" enable gtags module
+	let g:gutentags_modules = ['ctags', 'gtags_cscope']
+	" config project root markers.
+	let g:gutentags_project_root = ['.root']
+	" generate datebases in my cache directory, prevent gtags files polluting my project
+	let g:gutentags_cache_dir = expand('~/.cache/tags')
+endfunction
 
 call plug#begin('~/.vim/plugged')
 Plug 'felixhummel/setcolors.vim'
@@ -74,6 +84,7 @@ call PlugRainbow()
 call PlugAle()
 "Plug 'Shougo/deoplete.nvim'
 Plug 'ludovicchabant/vim-gutentags'
+call PlugGutentags_Plus()
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 call PlugFZF()
