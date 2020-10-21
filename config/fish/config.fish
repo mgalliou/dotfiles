@@ -42,7 +42,6 @@ bind -M insert \ca beginning-of-line
 bind -M insert \ce end-of-line
 bind -M insert \cn history-search-forward
 bind -M insert \cp history-search-backward
-bind -M insert \co accept-autosuggestion
 bind -M insert \ck kill-line
 # left
 bind \e\[D ''
