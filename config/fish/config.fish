@@ -44,6 +44,14 @@ bind -M insert \cn history-search-forward
 bind -M insert \cp history-search-backward
 bind -M insert \co accept-autosuggestion
 bind -M insert \ck kill-line
+# left
+bind \e\[D ''
+# right
+bind \e\[C ''
+# up
+bind \e\[A ''
+# down
+bind \e\[B ''
 
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
