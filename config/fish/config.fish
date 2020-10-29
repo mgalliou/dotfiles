@@ -19,21 +19,20 @@ replace_cmd ls exa
 replace_cmd cat bat
 replace_cmd vim nvim
 
-alias gs   "git status" 
-alias gd   "git diff"   
-alias gc   "git clone"  
-alias gpl  "git pull"   
-alias ga   "git add"    
-alias gcmt "git commit"
-alias gpsh "git push"   
-                       
-alias m   "make"       
-alias mc  "make clean" 
-alias mfc "make fclean"
-alias mr  "make re"    
-alias md  "make debug"    
-alias mc  "make check"    
+abbr -a gs   "git status" 
+abbr -a gd   "git diff"   
+abbr -a gc   "git clone"  
+abbr -a gpl  "git pull"   
+abbr -a ga   "git add"    
+abbr -a gcmt "git commit"
+abbr -a gpsh "git push"   
 
+abbr -a m   "make"       
+abbr -a mc  "make clean" 
+abbr -a mfc "make fclean"
+abbr -a mr  "make re"    
+abbr -a md  "make debug"    
+abbr -a mc  "make check"    
 # left
 bind \e\[D ''
 # right
