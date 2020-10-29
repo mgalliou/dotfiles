@@ -34,15 +34,6 @@ alias mr  "make re"
 alias md  "make debug"    
 alias mc  "make check"    
 
-bind -M insert \cf forward-char
-bind -M insert \cb backward-char
-bind -M insert \ef forward-word
-bind -M insert \eb backward-word
-bind -M insert \ca beginning-of-line
-bind -M insert \ce end-of-line
-bind -M insert \cn history-search-forward
-bind -M insert \cp history-search-backward
-bind -M insert \ck kill-line
 # left
 bind \e\[D ''
 # right
