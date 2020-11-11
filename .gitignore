@@ -1,12 +1,12 @@
 # VIM
-vim/.netrwhist
-vim/backup/
-vim/view/
-vim/pack/plugins/start/*
-!vim/pack/plugins/start/header42
-!vim/pack/plugins/start/jsl
-vim/plugged
-vim/autoload
+vim/.vim/.netrwhist
+vim/.vim/backup/
+vim/.vim/view/
+vim/.vim/pack/plugins/start/*
+!vim/.vim/pack/plugins/start/header42
+!vim/.vim/pack/plugins/start/jsl
+vim/.vim/plugged
+vim/.vim/autoload
 
 # MISC
 **/*.DS_Store

@@ -11,7 +11,7 @@ set -U fish_greeting ""
 
 function replace_cmd
 	if type -q $argv[2]
-		alias $argv[1] $argv[2]
+		abbr $argv[1] $argv[2]
 	end
 end
 
@@ -33,6 +33,7 @@ abbr -a mfc "make fclean"
 abbr -a mr  "make re"    
 abbr -a md  "make debug"    
 abbr -a mc  "make check"    
+
 # left
 bind \e\[D ''
 # right

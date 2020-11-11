@@ -100,7 +100,7 @@ export PATH=$PATH:~/dotfiles/scripts
 #source /usr/share/git/competion/git-completion.bash
 
 # brew
-for completion_file in $(brew --prefix)/etc/bash_completion.d/* ; do
-	source $completion_file
-done
+#for completion_file in $(brew --prefix)/etc/bash_completion.d/* ; do
+#	source $completion_file
+#done
 
