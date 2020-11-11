@@ -8,6 +8,9 @@ vim/.vim/pack/plugins/start/*
 vim/.vim/plugged
 vim/.vim/autoload
 
+# FISH
+fish/.config/fish/fish_variables
+
 # MISC
 **/*.DS_Store
 tags*
