@@ -1,6 +1,9 @@
 # VIM
 vim/.vim/.netrwhist
-vim/.vim/backup/
+vim/.vim/backup/*
+!vim/.vim/backup/undo
+vim/.vim/backup/undo/*
+!vim/.vim/backup/undo/.gitkeep
 vim/.vim/view/
 vim/.vim/pack/plugins/start/*
 !vim/.vim/pack/plugins/start/header42
