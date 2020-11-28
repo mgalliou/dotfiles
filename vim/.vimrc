@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/10/28 10:05:23 by mgalliou         ###   ########.fr        "
+"    Updated: 2020/11/28 07:06:17 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -67,6 +67,14 @@ function! PlugGutentags_Plus()
 	let g:gutentags_cache_dir = expand('~/.cache/tags')
 endfunction
 
+function! PlugGutentags()
+	Plug 'ludovicchabant/vim-gutentags'
+	if 1 != executable("ctags")
+		let g:gutentags_enabled = 0
+	endif
+	call PlugGutentags_Plus()
+endfunction
+
 call plug#begin('~/.vim/plugged')
 Plug 'felixhummel/setcolors.vim'
 Plug 'morhetz/gruvbox'
@@ -84,8 +92,7 @@ call PlugRainbow()
 "call PlugNERDCommenter()
 call PlugAle()
 "Plug 'Shougo/deoplete.nvim'
-Plug 'ludovicchabant/vim-gutentags'
-call PlugGutentags_Plus()
+call PlugGutentags()
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 call PlugFZF()
