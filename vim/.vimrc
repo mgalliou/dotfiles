@@ -6,13 +6,13 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2021/02/10 11:15:18 by mgalliou         ###   ########.fr        "
+"    Updated: 2021/02/10 11:26:27 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 " Plugins {{{
 
-if empty(glob('~/.vim/autoload/plug.vim'))
+if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -75,7 +75,7 @@ function! PlugGutentags()
 	call PlugGutentags_Plus()
 endfunction
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
