@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2020/11/28 07:06:17 by mgalliou         ###   ########.fr        "
+"    Updated: 2021/02/10 11:15:18 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -132,11 +132,6 @@ elseif (-1 < stridx("xterm", $TERM))
 	colorscheme default
 endif
 "}}},
-
-" set font in gvim
-if has("gui_running")
-	set guifont=InputMonoCondensed
-endif
 
 " Behavior
 set hidden
