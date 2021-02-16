@@ -20,6 +20,7 @@ replace_cmd cat bat
 replace_cmd vim nvim
 
 abbr -a gs   "git status" 
+abbr -a gl   "git log" 
 abbr -a gd   "git diff"   
 abbr -a gc   "git clone"  
 abbr -a gpl  "git pull"   
@@ -35,13 +36,13 @@ abbr -a md  "make debug"
 abbr -a mc  "make check"    
 
 # left
-bind \e\[D ''
+#bind \e\[D ''
 # right
-bind \e\[C ''
+#bind \e\[C ''
 # up
-bind \e\[A ''
+#bind \e\[A ''
 # down
-bind \e\[B ''
+#bind \e\[B ''
 
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
