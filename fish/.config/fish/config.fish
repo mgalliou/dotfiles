@@ -19,26 +19,27 @@ replace_cmd ls exa
 replace_cmd cat bat
 replace_cmd vim nvim
 
-function enable_abbrv
-	abbr -a gs   "git status" 
-	abbr -a gl   "git log" 
-	abbr -a gd   "git diff"   
-	abbr -a gc   "git clone"  
-	abbr -a gpl  "git pull"   
+function enable_abbr
 	abbr -a ga   "git add"    
+	abbr -a gc   "git clone"  
+	abbr -a gcm  "git commit"
 	abbr -a gco  "git checkout"
-	abbr -a gcm "git commit"
-	abbr -a gps "git push"   
+	abbr -a gd   "git diff"   
+	abbr -a gl   "git log" 
+	abbr -a gpl  "git pull"   
+	abbr -a gps  "git push"   
+	abbr -a gr   "git restore"
+	abbr -a gs   "git status" 
 
 	abbr -a m   "make"       
+	abbr -a mc  "make check"    
 	abbr -a mc  "make clean" 
+	abbr -a md  "make debug"    
 	abbr -a mfc "make fclean"
 	abbr -a mr  "make re"    
-	abbr -a md  "make debug"    
-	abbr -a mc  "make check"    
 end
 
-enable_abbrv
+enable_abbr
 
 # left
 #bind \e\[D ''
