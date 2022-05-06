@@ -1,13 +1,20 @@
+# **************************************************************************** #
+# Behavior {{{
+# **************************************************************************** #
+
 #fish_vi_key_bindings
+#}}},
 
-function fish_mode_prompt
-# NOOP - Disable vim mode indicator
-end
+# **************************************************************************** #
+# PATH {{{
+# **************************************************************************** #
 
-set -U fish_color_cwd white
-set -U fish_color_host brgrey
-set -U fish_color_user brblue
-set -U fish_greeting ""
+set PATH $PATH "$HOME/.linuxbrew/bin"
+
+#}}},
+# **************************************************************************** #
+# Abbreviations {{{
+# **************************************************************************** #
 
 function replace_cmd
 	if type -q $argv[2]
@@ -41,6 +48,11 @@ end
 
 enable_abbr
 
+#}}},
+# **************************************************************************** #
+# Keybinds {{{
+# **************************************************************************** #
+
 # left
 #bind \e\[D ''
 # right
@@ -50,12 +62,26 @@ enable_abbr
 # down
 #bind \e\[B ''
 
+#}}},
+# **************************************************************************** #
+# Prompt {{{
+# **************************************************************************** #
+
+function fish_mode_prompt
+# NOOP - Disable vim mode indicator
+end
+
+set -U fish_color_cwd white
+set -U fish_color_host brgrey
+set -U fish_color_user brblue
+set -U fish_greeting ""
+
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
 
 	set BLINK (tput blink)
 	set NOCOLOR (tput sgr0)
-	printf [(date +%H)$BLINK:$NOCOLOR(date +%M)]\ 
+	printf [(date +%H)$NOCOLOR(date +%M)]\ 
 
     # User
     set_color $fish_color_user
@@ -91,3 +117,4 @@ end
 if [ (uname -o) = "Android" ]
 	source $HOME/dotfiles/config/fish/completions/pass.fish
 end
+
