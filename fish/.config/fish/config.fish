@@ -4,7 +4,6 @@
 
 #fish_vi_key_bindings
 #}}},
-
 # **************************************************************************** #
 # PATH {{{
 # **************************************************************************** #
@@ -79,9 +78,10 @@ set -U fish_greeting ""
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
 
-	set BLINK (tput blink)
-	set NOCOLOR (tput sgr0)
-	printf [(date +%H)$NOCOLOR(date +%M)]\ 
+	# Time
+	#set BLINK (tput blink)
+	#set NOCOLOR (tput sgr0)
+	printf [(date +%H):(date +%M)]\ 
 
     # User
     set_color $fish_color_user
@@ -100,18 +100,18 @@ function fish_prompt --description 'Write out the prompt'
     # PWD
     set_color $fish_color_cwd
     printf ' '(prompt_pwd)
-    set_color normal
 
     __terlar_git_prompt
     __fish_hg_prompt
     echo
 
-    if not test $last_status -eq 0
-        set_color $fish_color_error
-    end
-
-    printf '$ '
-    set_color normal
+	# Exit status
+	if not test $last_status -eq 0
+		set_color $fish_color_error
+	else
+		set_color normal
+	end
+	printf '$ '
 end
 
 if [ (uname -o) = "Android" ]
