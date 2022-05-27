@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2021/02/15 23:36:49 by mgalliou         ###   ########.fr        "
+"    Updated: 2022/05/27 13:19:24 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -85,19 +85,21 @@ Plug 'tbastos/vim-lua'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 call PlugRainbow()
 "call PlugIndentLine()
-"call PlugNERDTree()
-"call PlugNERDCommenter()
 call PlugAle()
 "Plug 'Shougo/deoplete.nvim'
 call PlugGutentags()
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'sbdchd/neoformat'
+Plug 'vimwiki/vimwiki'
 call PlugFZF()
 "Plug 'DanilaMihailov/beacon.nvim'
 call plug#helptags()
 call plug#end()
+
 "}}}
 
 " Syntax / Filetype / Colorscheme... {{{
@@ -143,7 +145,7 @@ set splitright
 set splitbelow
 " disable auto comment:
 set formatoptions-=cro
-set nowrap
+" set nowrap
 set updatetime=100
 
 " Indentation
@@ -151,8 +153,11 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
-autocmd FileType html setlocal shiftwidth=2 softtabstop=2
-autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
+augroup indentation
+	autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+	autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
+	autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 
+augroup END
 
 " UI
 set wildmenu
@@ -164,7 +169,7 @@ set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 
 " Bell
 set noerrorbells
-"set visualbell
+set visualbell
 
 " Searching
 "set hlsearch
@@ -232,4 +237,10 @@ else
 	set backup backupdir=~/.vim/backup/
 	set undofile undodir=~/.vim/backup/undo/
 endif
+"}}}
+
+" Merlin {{{
+
+set rtp+=<SHARE_DIR>/merlin/vim
+
 "}}}
