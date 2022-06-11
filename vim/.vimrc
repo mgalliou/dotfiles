@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2022/05/27 13:19:24 by mgalliou         ###   ########.fr        "
+"    Updated: 2022/06/11 21:08:04 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -74,6 +74,12 @@ function! PlugGutentags()
 	call PlugGutentags_Plus()
 endfunction
 
+function! PlugVimspector()
+	Plug 'puremourning/vimspector'
+	let g:vimspector_enable_mappings = 'HUMAN'
+	"packadd! vimspector
+endfunction
+
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'morhetz/gruvbox'
@@ -95,12 +101,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'sbdchd/neoformat'
 Plug 'vimwiki/vimwiki'
+call PlugVimspector()
 call PlugFZF()
-"Plug 'DanilaMihailov/beacon.nvim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#helptags()
 call plug#end()
 
 "}}}
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Syntax / Filetype / Colorscheme... {{{
 
