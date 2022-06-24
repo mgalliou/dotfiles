@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2022/06/13 10:07:17 by mgalliou         ###   ########.fr        "
+"    Updated: 2022/06/24 16:22:22 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -80,6 +80,13 @@ function! PlugVimspector()
 	"packadd! vimspector
 endfunction
 
+function! PlugUltiSnips()
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsListSnippets="<s-tab>"
+	let g:UltiSnipsJumpForwardTrigger="<c-b>"
+	let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+endfunction
+
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'morhetz/gruvbox'
@@ -99,23 +106,20 @@ call PlugAle()
 "call PlugGutentags()
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'sbdchd/neoformat'
+"Plug 'sbdchd/neoformat'
 Plug 'vimwiki/vimwiki'
 call PlugVimspector()
 call PlugFZF()
-Plug 'SirVer/ultisnips'
+call PlugUltiSnips()
 Plug 'honza/vim-snippets'
 call plug#helptags()
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-classpath'
+Plug 'DanilaMihailov/beacon.nvim'
 call plug#end()
 
 "}}}
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Syntax / Filetype / Colorscheme... {{{
 
@@ -252,6 +256,12 @@ else
 	set backup backupdir=~/.vim/backup/
 	set undofile undodir=~/.vim/backup/undo/
 endif
+"}}}
+
+" netrw {{{
+let g:netrw_banner = 0
+let g:netrw_keepdir = 0
+"let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 "}}}
 
 " Merlin {{{
