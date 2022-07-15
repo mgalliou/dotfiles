@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2022/06/24 16:22:22 by mgalliou         ###   ########.fr        "
+"    Updated: 2022/07/15 06:01:49 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -90,6 +90,8 @@ endfunction
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'morhetz/gruvbox'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'leafgarland/typescript-vim'
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
@@ -108,34 +110,34 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'sbdchd/neoformat'
 Plug 'vimwiki/vimwiki'
-call PlugVimspector()
+"call PlugVimspector()
 call PlugFZF()
-call PlugUltiSnips()
-Plug 'honza/vim-snippets'
+"call PlugUltiSnips()
+"Plug 'honza/vim-snippets'
 call plug#helptags()
 Plug 'github/copilot.vim'
-Plug 'tpope/vim-classpath'
+"Plug 'tpope/vim-classpath'
 Plug 'DanilaMihailov/beacon.nvim'
 call plug#end()
 
 "}}}
-
 
 " Syntax / Filetype / Colorscheme... {{{
 
 " Colorsheme
 filetype plugin indent on
 syntax on
+# TODO: add check on enabled gruvbox
 try
+	let g:gruvbox_bold=1
 	let g:gruvbox_italic=1
-	let g:gruvbox_contrast_dark='hard'
-	let g:gruvbox_contrast_light='hard'
-	let g:gruvbox_number_column="bg2"
+	"let g:gruvbox_contrast_dark='hard'
+	"let g:gruvbox_contrast_light='hard'
+	"let g:gruvbox_number_column="bg2"
 	"let g:gruvbox_improved_strings=1
-	let g:gruvbox_improved_warnings=1
+	"let g:gruvbox_improved_warnings=1
 	let g:gruvbox_invert_signs=1
-	colorscheme gruvbox
-	set background=dark
+	autocmd vimenter * ++nested colorscheme gruvbox
 endtry
 
 " enable 256 color and set tmux as term if in a Windows terminal {{{
