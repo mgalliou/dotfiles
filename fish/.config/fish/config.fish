@@ -9,6 +9,7 @@
 # PATH {{{
 # **************************************************************************** #
 
+set PATH "$HOME/bin" "$PATH"
 set PATH $PATH "$HOME/.linuxbrew/bin"
 set PATH $PATH "$HOME/.opam/bin"
 
