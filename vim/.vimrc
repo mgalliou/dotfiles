@@ -6,7 +6,7 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2022/07/15 06:01:49 by mgalliou         ###   ########.fr        "
+"    Updated: 2022/07/16 23:12:22 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -127,7 +127,7 @@ call plug#end()
 " Colorsheme
 filetype plugin indent on
 syntax on
-# TODO: add check on enabled gruvbox
+"TODO: add check on enabled gruvbox
 try
 	let g:gruvbox_bold=1
 	let g:gruvbox_italic=1
