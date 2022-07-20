@@ -6,12 +6,14 @@
 "    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2022/07/16 23:12:22 by mgalliou         ###   ########.fr        "
+"    Updated: 2022/07/18 12:18:32 by mgalliou         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
+
 " Plugins {{{
 
+" auto install vimplug
 if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -87,11 +89,40 @@ function! PlugUltiSnips()
 	let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 endfunction
 
+function! PlugLightline()
+	Plug 'itchyny/lightline.vim'
+	Plug 'shinchu/lightline-gruvbox.vim'
+	set laststatus=2
+	set noshowmode
+	let g:lightline = { 'colorscheme' : 'gruvbox' }
+	let g:lightline = {
+      \ 'mode_map': {
+        \ 'n' : 'N',
+        \ 'i' : 'I',
+        \ 'R' : 'R',
+        \ 'v' : 'V',
+        \ 'V' : 'VL',
+        \ "\<C-v>": 'VB',
+        \ 'c' : 'C',
+        \ 's' : 'S',
+        \ 'S' : 'SL',
+        \ "\<C-s>": 'SB',
+        \ 't': 'T',
+        \ },
+      \ }
+endfunction
+
+function! PlugTmuxLine()
+	Plug 'edkolev/tmuxline.vim'
+endfunction
+
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'morhetz/gruvbox'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+call PlugLightline()
+call PlugTmuxLine()
 Plug 'leafgarland/typescript-vim'
 Plug 'cespare/vim-toml'
 Plug 'dag/vim-fish'
@@ -119,14 +150,15 @@ Plug 'github/copilot.vim'
 "Plug 'tpope/vim-classpath'
 Plug 'DanilaMihailov/beacon.nvim'
 call plug#end()
-
 "}}}
+
 
 " Syntax / Filetype / Colorscheme... {{{
 
 " Colorsheme
 filetype plugin indent on
 syntax on
+set background=dark
 "TODO: add check on enabled gruvbox
 try
 	let g:gruvbox_bold=1
@@ -137,6 +169,7 @@ try
 	"let g:gruvbox_improved_strings=1
 	"let g:gruvbox_improved_warnings=1
 	let g:gruvbox_invert_signs=1
+	colorscheme gruvbox
 	autocmd vimenter * ++nested colorscheme gruvbox
 endtry
 
@@ -184,13 +217,11 @@ augroup END
 set wildmenu
 "set textwidth=80
 set colorcolumn=81
-set noshowmode
-set showcmd
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 
 " Bell
-set noerrorbells
-set visualbell
+"set noerrorbells
+"set visualbell
 
 " Searching
 "set hlsearch
@@ -210,6 +241,7 @@ augroup END
 
 let g:asmsyntax = 'nasm'
 "}}}
+
 
 " Mappings {{{
 
@@ -246,6 +278,7 @@ endfunction
 nnoremap <leader>n <ESC>:call ToggleLineNumberMode()<CR>
 "}}}
 
+
 " Backup {{{
 
 set history=200
@@ -260,11 +293,14 @@ else
 endif
 "}}}
 
+
 " netrw {{{
+
 let g:netrw_banner = 0
 let g:netrw_keepdir = 0
 "let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 "}}}
+
 
 " Merlin {{{
 
@@ -305,5 +341,4 @@ let g:netrw_keepdir = 0
 "  source "/sgoinfre/goinfre/Perso/mgalliou/.opam/default/share/ocp-indent/vim/indent/ocaml.vim"
 "endif
 " ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
-"
 "}}}
