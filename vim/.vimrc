@@ -41,8 +41,9 @@ function! PlugRainbow()
 endfunction
 
 function! PlugFZF()
-	Plug 'junegunn/fzf.vim'
-	set rtp+=/usr/local/opt/fzf
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	"Plug 'junegunn/fzf.vim'
+	"set rtp+=/usr/local/opt/fzf
 endfunction
 
 function! PlugNERDTree()
