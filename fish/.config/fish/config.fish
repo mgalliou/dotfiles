@@ -84,7 +84,7 @@ function fish_prompt --description 'Write out the prompt'
 	# Time
 	#set BLINK (tput blink)
 	#set NOCOLOR (tput sgr0)
-	printf [(date +%H):(date +%M)]\
+	printf (date +%H):(date +%M):\
 
     # User
     set_color $fish_color_user
