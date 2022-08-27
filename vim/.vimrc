@@ -46,19 +46,6 @@ function! PlugFZF()
 	"set rtp+=/usr/local/opt/fzf
 endfunction
 
-function! PlugNERDTree()
-	Plug 'preservim/nerdtree'
-	autocmd vimrc StdinReadPre * let s:std_in=1
-	autocmd vimrc VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	autocmd vimrc VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-	let g:NERDTreeWinSize = 29
-endfunction
-
-function! PlugNERDCommenter()
-	Plug 'preservim/nerdcommenter'
-	let g:NERDDefaultAlign = 'left'
-endfunction
-
 function! PlugGutentags_Plus()
 	Plug 'skywind3000/gutentags_plus'
 	" enable gtags module
@@ -119,7 +106,7 @@ endfunction
 
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 call PlugLightline()
@@ -146,10 +133,10 @@ Plug 'vimwiki/vimwiki'
 call PlugFZF()
 "call PlugUltiSnips()
 "Plug 'honza/vim-snippets'
-call plug#helptags()
 Plug 'github/copilot.vim'
 "Plug 'tpope/vim-classpath'
 Plug 'DanilaMihailov/beacon.nvim'
+call plug#helptags()
 call plug#end()
 "}}}
 
