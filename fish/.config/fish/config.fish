@@ -3,8 +3,8 @@
 # **************************************************************************** #
 
 #fish_vi_key_bindings
-#}}},
 
+#}}},
 # **************************************************************************** #
 # PATH {{{
 # **************************************************************************** #
@@ -115,10 +115,6 @@ function fish_prompt --description 'Write out the prompt'
 		set_color normal
 	end
 	printf '$ '
-end
-
-if [ (uname -o) = "Android" ]
-	source $HOME/dotfiles/config/fish/completions/pass.fish
 end
 
 # opam configuration
