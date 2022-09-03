@@ -60,6 +60,8 @@ function enable_abbr
 		abbr -a ll  "$lister -l"
 		abbr -a la  "$lister -la"
 	end
+
+	abbr -a t "taskell"
 end
 
 
