@@ -112,12 +112,12 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 call PlugLightline()
 call PlugTmuxLine()
-Plug 'leafgarland/typescript-vim'
-Plug 'cespare/vim-toml'
-Plug 'dag/vim-fish'
-Plug 'vim-scripts/tf2.vim'
-Plug 'tbastos/vim-lua'
-Plug 'tmux-plugins/vim-tmux'
+Plug 'leafgarland/typescript-vim', { 'on': 'typesript' }
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'vim-scripts/tf2.vim', { 'for': 'tf2' }
+Plug 'tbastos/vim-lua', { 'for': 'lua' }
+Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
