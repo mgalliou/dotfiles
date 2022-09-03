@@ -86,21 +86,20 @@ function! PlugLightline()
 	Plug 'shinchu/lightline-gruvbox.vim'
 	set laststatus=2
 	set noshowmode
-	let g:lightline = {
-				\ 'colorscheme' : 'gruvbox',
-				\ 'mode_map': {
-					\ 'n' : 'N',
-					\ 'i' : 'I',
-					\ 'R' : 'R',
-					\ 'v' : 'V',
-					\ 'V' : 'VL',
-					\ "\<C-v>": 'VB',
-					\ 'c' : 'C',
-					\ 's' : 'S',
-					\ 'S' : 'SL',
-					\ "\<C-s>": 'SB',
-					\ 't': 'T',
-					\ },
+	let g:lightline = {}
+	"let g:lightline.colorscheme = 'gruvbox'
+	let g:lightline.mode_map = {
+				\ 'n' : 'N',
+				\ 'i' : 'I',
+				\ 'R' : 'R',
+				\ 'v' : 'V',
+				\ 'V' : 'VL',
+				\ "\<C-v>": 'VB',
+				\ 'c' : 'C',
+				\ 's' : 'S',
+				\ 'S' : 'SL',
+				\ "\<C-s>": 'SB',
+				\ 't': 'T',
 				\ }
 endfunction
 
@@ -156,13 +155,9 @@ syntax on
 set background=dark
 "TODO: add check on enabled gruvbox
 try
-	let g:gruvbox_bold=1
 	let g:gruvbox_italic=1
-	"let g:gruvbox_contrast_dark='hard'
-	"let g:gruvbox_contrast_light='hard'
-	"let g:gruvbox_number_column="bg2"
-	"let g:gruvbox_improved_strings=1
-	"let g:gruvbox_improved_warnings=1
+	let g:gruvbox_contrast_dark='hard'
+	let g:gruvbox_contrast_light='soft'
 	let g:gruvbox_invert_signs=1
 	colorscheme gruvbox
 endtry
@@ -216,6 +211,7 @@ augroup END
 set wildmenu
 "set textwidth=80
 set colorcolumn=81
+set cursorline
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 
 " Bell
@@ -268,9 +264,10 @@ function! ToggleLineNumberMode()
 	if &number == 0 && &relativenumber == 0
 		set number
 	elseif &number != 0 && &relativenumber == 0
-		set nonumber
+		set number
 		set relativenumber
 	elseif &relativenumber != 0
+		set nonumber
 		set norelativenumber
 	endif
 endfunction
