@@ -20,9 +20,12 @@ if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+function! PluginIsLoaded(plugin)
+	return has_key(g:plugs, a:plugin)
+endfunction
 
 function! PlugAle()
-	Plug 'w0rp/ale',  
+	Plug 'w0rp/ale',
 	let g:ale_linters =  {'c': ['clang', 'gcc']}
 	let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
 	let g:ale_c_cc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
@@ -34,7 +37,7 @@ function! PlugIndentLine()
 	Plug 'Yggdroot/indentLine'
 	let g:indentLine_char = '|'
 endfunction
-	
+
 function! PlugRainbow()
 	Plug 'luochen1990/rainbow'
 	let g:rainbow_active = 1
@@ -162,7 +165,6 @@ try
 	"let g:gruvbox_improved_warnings=1
 	let g:gruvbox_invert_signs=1
 	colorscheme gruvbox
-	autocmd vimenter * ++nested colorscheme gruvbox
 endtry
 
 " enable 256 color and set tmux as term if in a Windows terminal {{{
@@ -179,6 +181,11 @@ elseif (-1 < stridx("xterm", $TERM))
 	colorscheme default
 endif
 "}}},
+
+" needs to be loaded last to not be overwritten by colorscheme
+if PluginIsLoaded("beacon.nvim")
+	highlight Beacon guibg=white ctermbg=15
+endif
 
 " Behavior
 set hidden
@@ -202,7 +209,7 @@ set softtabstop=0
 augroup indentation
 	autocmd FileType html setlocal shiftwidth=2 softtabstop=2
 	autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
-	autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 
+	autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2
 augroup END
 
 " UI
