@@ -130,6 +130,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'sbdchd/neoformat'
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/goyo.vim'
 "call PlugVimspector()
 call PlugFZF()
 "call PlugUltiSnips()
