@@ -11,7 +11,6 @@ if type -q fzf
 end
 
 #}}},
-#}}},
 # **************************************************************************** #
 # PATH {{{
 # **************************************************************************** #
@@ -20,6 +19,7 @@ set PATH "$HOME/bin" "$PATH"
 set PATH $PATH "$HOME/.linuxbrew/bin"
 set PATH $PATH "$HOME/.opam/bin"
 
+#}}},
 # **************************************************************************** #
 # Abbreviations {{{
 # **************************************************************************** #
@@ -30,11 +30,11 @@ function replace_cmd
 	end
 end
 
-replace_cmd ls exa
-replace_cmd cat bat
-replace_cmd vim nvim
-
 function enable_abbr
+	replace_cmd ls exa
+	replace_cmd cat bat
+	replace_cmd vim nvim
+
 	abbr -a ga   "git add"
 	abbr -a gc   "git clone"
 	abbr -a gcm  "git commit"
@@ -52,7 +52,14 @@ function enable_abbr
 	abbr -a md  "make debug"
 	abbr -a mfc "make fclean"
 	abbr -a mr  "make re"
+
+	set lister "exa" 
+	if type -q $lister
+		abbr -a ll  "$lister -l"
+		abbr -a la  "$lister -la"
+	end
 end
+
 
 enable_abbr
 
