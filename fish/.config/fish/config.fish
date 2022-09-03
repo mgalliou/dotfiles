@@ -35,6 +35,8 @@ function enable_abbr
 	replace_cmd cat bat
 	replace_cmd vim nvim
 
+	abbr -a rm "rm -I"
+
 	abbr -a ga   "git add"
 	abbr -a gc   "git clone"
 	abbr -a gcm  "git commit"
