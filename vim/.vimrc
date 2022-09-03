@@ -20,6 +20,7 @@ if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 function! PlugAle()
 	Plug 'w0rp/ale',  
 	let g:ale_linters =  {'c': ['clang', 'gcc']}
@@ -271,15 +272,10 @@ nnoremap <leader>n <ESC>:call ToggleLineNumberMode()<CR>
 
 set history=200
 set noswapfile
-
-if has("win32")
-	set backup backupdir=~/vimfiles/backup/
-	set undofile undodir=~/vimfiles/backup/undo/
-else
-	set backup backupdir=~/.vim/backup/
-	set undofile undodir=~/.vim/backup/undo/
-endif
-"}}}
+set backup
+set backupdir-=.
+set undofile
+set undodir-=.
 
 
 " netrw {{{
