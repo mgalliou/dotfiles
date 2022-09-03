@@ -4,6 +4,13 @@
 
 #fish_vi_key_bindings
 
+# FZF
+if type -q fzf
+	export FZF_DEFAULT_COMMAND="find * -type f"
+	fzf_key_bindings
+end
+
+#}}},
 #}}},
 # **************************************************************************** #
 # PATH {{{
@@ -13,7 +20,6 @@ set PATH "$HOME/bin" "$PATH"
 set PATH $PATH "$HOME/.linuxbrew/bin"
 set PATH $PATH "$HOME/.opam/bin"
 
-#}}},
 # **************************************************************************** #
 # Abbreviations {{{
 # **************************************************************************** #
