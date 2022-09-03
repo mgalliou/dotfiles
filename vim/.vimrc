@@ -108,7 +108,6 @@ endfunction
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 call PlugLightline()
 call PlugTmuxLine()
@@ -124,7 +123,6 @@ Plug 'tpope/vim-commentary'
 call PlugRainbow()
 "call PlugIndentLine()
 call PlugAle()
-"Plug 'Shougo/deoplete.nvim'
 "call PlugGutentags()
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -135,9 +133,13 @@ Plug 'junegunn/goyo.vim'
 call PlugFZF()
 "call PlugUltiSnips()
 "Plug 'honza/vim-snippets'
-Plug 'github/copilot.vim'
 "Plug 'tpope/vim-classpath'
-Plug 'DanilaMihailov/beacon.nvim'
+if has("nvim")
+	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+	Plug 'DanilaMihailov/beacon.nvim'
+	"Plug 'Shougo/deoplete.nvim'
+	Plug 'github/copilot.vim'
+endif
 call plug#helptags()
 call plug#end()
 "}}}
