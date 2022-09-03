@@ -111,7 +111,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 call PlugLightline()
 call PlugTmuxLine()
-Plug 'leafgarland/typescript-vim', { 'on': 'typesript' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typesript' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'vim-scripts/tf2.vim', { 'for': 'tf2' }
