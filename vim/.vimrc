@@ -25,9 +25,14 @@ function! s:PluginIsLoaded(plugin)
 endfunction
 
 function! s:PlugAle()
-	Plug 'w0rp/ale',
-	let g:ale_linters =  {'c': ['clang', 'gcc']}
-	let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+	let g:ale_completion_enabled = 1
+	Plug 'dense-analysis/ale',
+	let g:ale_linters =  {
+	 			\'c': ['clang', 'gcc']
+	 			\}
+	 let g:ale_fixers = {
+	 			\'*': ['remove_trailing_lines', 'trim_whitespace']
+	 			\}
 	let g:ale_c_cc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
 	" TODO: add OS check
 	let g:ale_nasm_nasm_options = '-f macho64'
@@ -286,6 +291,10 @@ if s:PluginIsLoaded("harpoon")
 	nnoremap <leader>Ha <CMD>lua require("harpoon.mark").add_file()<CR>
 	nnoremap <leader>Ht <CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>
 	nnoremap <leader><leader>h <CMD>lua require("harpoon.ui").nav_file(vim.v.count1)<CR>
+endif
+
+if s:PluginIsLoaded("ale")
+	nnoremap <leader>ar <CMD>ALERename<CR>
 endif
 
 "}}}
