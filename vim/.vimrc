@@ -246,22 +246,22 @@ let g:asmsyntax = 'nasm'
 
 let mapleader = " "
 " reload vimrc
-nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
-" save
-nnoremap <leader>q :q<CR>
+nnoremap <leader>r <CMD>so $MYVIMRC<CR>
 " quit
-nnoremap <leader><space> :w<CR>
+"nnoremap <leader>q <CMD>q<CR>
+" save
+"nnoremap <leader><space> <CMD>w<CR>
 " remove highlights
-nnoremap <leader>l :nohl<CR>
+nnoremap <leader>l <CMD>nohl<CR>
 " remove trailing whitespace
 nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``:w<CR>
 " toggle invisible chars
-nnoremap <leader>i :set list!<CR>
+nnoremap <leader>i <CMD>set list!<CR>
 " explore netrw
-nnoremap <leader>e <ESC>:Explore<CR>
-nnoremap <leader>v <ESC>:Vexplore<CR>
-nnoremap <leader>s <ESC>:Sexplore<CR>
-nnoremap <leader>t <ESC>:Texplore<CR>
+nnoremap <leader>e <CMD>Explore<CR>
+nnoremap <leader>v <CMD>Vexplore<CR>
+nnoremap <leader>s <CMD>Sexplore<CR>
+nnoremap <leader>t <CMD>Texplore<CR>
 " save files with root privileges.
 cmap w!! w !sudo tee % >/dev/null
 
@@ -276,15 +276,16 @@ function! ToggleLineNumberMode()
 		set norelativenumber
 	endif
 endfunction
-nnoremap <leader>n <ESC>:call ToggleLineNumberMode()<CR>
+nnoremap <leader>n <CMD>call ToggleLineNumberMode()<CR>
 
 if s:PluginIsLoaded("fzf.vim")
-	nnoremap <leader>f <ESC>:Files<CR>
+	nnoremap <leader>f <CMD>Files<CR>
 endif
 
 if s:PluginIsLoaded("harpoon")
-	nnoremap <leader>Ha <ESC>:lua require("harpoon.mark").add_file()<CR>
-	nnoremap <leader>Ht <ESC>:lua require("harpoon.ui").toggle_quick_menu()<CR>
+	nnoremap <leader>Ha <CMD>lua require("harpoon.mark").add_file()<CR>
+	nnoremap <leader>Ht <CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>
+	nnoremap <leader><leader>h <CMD>lua require("harpoon.ui").nav_file(vim.v.count1)<CR>
 endif
 
 "}}}
