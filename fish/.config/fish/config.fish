@@ -57,7 +57,7 @@ function enable_abbr
 	abbr -a mfc "make fclean"
 	abbr -a mr  "make re"
 
-	set lister "exa" 
+	set lister "exa"
 	if type -q $lister
 		abbr -a ll  "$lister -l"
 		abbr -a la  "$lister -la"
@@ -92,40 +92,47 @@ function fish_mode_prompt
 # NOOP - Disable vim mode indicator
 end
 
-set -U fish_color_cwd white
-set -U fish_color_host brgrey
-set -U fish_color_user brblue
-set -U fish_greeting ""
+set -f fish_color_cwd yellow
+set -f fish_color_host magenta
+set -f fish_color_user cyan
+set -f fish_greeting ""
+set -f fish_uid_symbol '$'
+
+if test (id -u) -eq 0
+	set -f fish_uid_symbol '#'
+end
 
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
 
-	# Time
-	#set BLINK (tput blink)
-	#set NOCOLOR (tput sgr0)
-	printf (date +%H):(date +%M):\
+	## Time
+	# set BLINK (tput blink)
+	# set NOCOLOR (tput sgr0)
+	# printf (date +%H):(date +%M):\
 
-    # User
-    set_color $fish_color_user
-    printf (whoami)
-    set_color normal
+    ## User
+    # $set_color $fish_color_user
+	# printf (whoami)
+	# set_color normal
 
-    printf '@'
+	## Separator
+    # printf '@'
 
-    # Host
-    set_color $fish_color_host
-    printf (prompt_hostname)
-    set_color normal
+    ## Host
+    # set_color $fish_color_host
+    # printf (prompt_hostname)
+    # set_color normal
 
-    printf ':'
 
     # PWD
+	# printf ': '
     set_color $fish_color_cwd
-    printf ' '(prompt_pwd)
+	printf (prompt_pwd)
 
     __terlar_git_prompt
     __fish_hg_prompt
-    echo
+	## echo without arg just print a newline
+	# echo
 
 	# Exit status
 	if not test $last_status -eq 0
@@ -133,7 +140,7 @@ function fish_prompt --description 'Write out the prompt'
 	else
 		set_color normal
 	end
-	printf '$ '
+	printf ' %c ' $fish_uid_symbol
 end
 
 # opam configuration
