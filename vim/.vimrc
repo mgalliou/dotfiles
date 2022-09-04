@@ -20,11 +20,11 @@ if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-function! PluginIsLoaded(plugin)
+function! s:PluginIsLoaded(plugin)
 	return has_key(g:plugs, a:plugin)
 endfunction
 
-function! PlugAle()
+function! s:PlugAle()
 	Plug 'w0rp/ale',
 	let g:ale_linters =  {'c': ['clang', 'gcc']}
 	let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
@@ -33,24 +33,24 @@ function! PlugAle()
 	let g:ale_nasm_nasm_options = '-f macho64'
 endfunction
 
-function! PlugIndentLine()
+function! s:PlugIndentLine()
 	Plug 'Yggdroot/indentLine'
 	let g:indentLine_char = '|'
 endfunction
 
-function! PlugRainbow()
+function! s:PlugRainbow()
 	Plug 'luochen1990/rainbow'
 	let g:rainbow_active = 1
 	nnoremap <leader>b <ESC>:RainbowToggle<CR>
 endfunction
 
-function! PlugFZF()
+function! s:PlugFZF()
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	"set rtp+=/usr/local/opt/fzf
 endfunction
 
-function! PlugGutentags_Plus()
+function! s:PlugGutentags_Plus()
 	Plug 'skywind3000/gutentags_plus'
 	" enable gtags module
 	let g:gutentags_modules = ['ctags', 'gtags_cscope']
@@ -60,28 +60,28 @@ function! PlugGutentags_Plus()
 	let g:gutentags_cache_dir = expand('~/.cache/tags')
 endfunction
 
-function! PlugGutentags()
+function! s:PlugGutentags()
 	Plug 'ludovicchabant/vim-gutentags'
 	if 1 != executable("ctags")
 		let g:gutentags_enabled = 0
 	endif
-	call PlugGutentags_Plus()
+	call s:PlugGutentags_Plus()
 endfunction
 
-function! PlugVimspector()
+function! s:PlugVimspector()
 	Plug 'puremourning/vimspector'
 	let g:vimspector_enable_mappings = 'HUMAN'
 	"packadd! vimspector
 endfunction
 
-function! PlugUltiSnips()
+function! s:PlugUltiSnips()
 	let g:UltiSnipsExpandTrigger="<tab>"
 	let g:UltiSnipsListSnippets="<s-tab>"
 	let g:UltiSnipsJumpForwardTrigger="<c-b>"
 	let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 endfunction
 
-function! PlugLightline()
+function! s:PlugLightline()
 	Plug 'itchyny/lightline.vim'
 	Plug 'shinchu/lightline-gruvbox.vim'
 	set laststatus=2
@@ -103,7 +103,7 @@ function! PlugLightline()
 				\ }
 endfunction
 
-function! PlugTmuxLine()
+function! s:PlugTmuxLine()
 	Plug 'edkolev/tmuxline.vim'
 endfunction
 
@@ -111,8 +111,8 @@ call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
-call PlugLightline()
-call PlugTmuxLine()
+call s:PlugLightline()
+call s:PlugTmuxLine()
 Plug 'leafgarland/typescript-vim', { 'for': 'typesript' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
@@ -122,28 +122,32 @@ Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-call PlugRainbow()
-"call PlugIndentLine()
-call PlugAle()
+call s:PlugRainbow()
+"call s:PlugIndentLine()
+call s:PlugAle()
 "call PlugGutentags()
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Plug 'sbdchd/neoformat'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
-"call PlugVimspector()
-call PlugFZF()
-"call PlugUltiSnips()
+"call s:PlugVimspector()
+call s:PlugFZF()
+"call s:PlugUltiSnips()
 "Plug 'honza/vim-snippets'
 "Plug 'tpope/vim-classpath'
 if has("nvim")
+	Plug 'nvim-lua/plenary.nvim'
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'DanilaMihailov/beacon.nvim'
 	"Plug 'Shougo/deoplete.nvim'
+	Plug 'ThePrimeagen/harpoon'
 	Plug 'github/copilot.vim'
 endif
 call plug#helptags()
 call plug#end()
+
+
 "}}}
 
 
@@ -152,15 +156,15 @@ call plug#end()
 " Colorsheme
 filetype plugin indent on
 syntax on
-set background=dark
 "TODO: add check on enabled gruvbox
-try
+if s:PluginIsLoaded("gruvbox")
+	set background=dark
 	let g:gruvbox_italic=1
 	let g:gruvbox_contrast_dark='hard'
 	let g:gruvbox_contrast_light='soft'
 	let g:gruvbox_invert_signs=1
 	colorscheme gruvbox
-endtry
+endif
 
 " enable 256 color and set tmux as term if in a Windows terminal {{{
 if has("win32") && !has("gui_running")
@@ -178,7 +182,7 @@ endif
 "}}},
 
 " needs to be loaded last to not be overwritten by colorscheme
-if PluginIsLoaded("beacon.nvim")
+if s:PluginIsLoaded("beacon.nvim")
 	highlight Beacon guibg=white ctermbg=15
 endif
 
@@ -240,6 +244,7 @@ let g:asmsyntax = 'nasm'
 
 " Mappings {{{
 
+let mapleader = " "
 " reload vimrc
 nnoremap <leader>r <ESC>:so $MYVIMRC<CR>
 " save
@@ -272,6 +277,16 @@ function! ToggleLineNumberMode()
 	endif
 endfunction
 nnoremap <leader>n <ESC>:call ToggleLineNumberMode()<CR>
+
+if s:PluginIsLoaded("fzf.vim")
+	nnoremap <leader>f <ESC>:Files<CR>
+endif
+
+if s:PluginIsLoaded("harpoon")
+	nnoremap <leader>Ha <ESC>:lua require("harpoon.mark").add_file()<CR>
+	nnoremap <leader>Ht <ESC>:lua require("harpoon.ui").toggle_quick_menu()<CR>
+endif
+
 "}}}
 
 
