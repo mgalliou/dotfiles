@@ -44,6 +44,7 @@ function enable_abbr
 	abbr -a gcm  "git commit"
 	abbr -a gco  "git checkout"
 	abbr -a gd   "git diff"
+	abbr -a gds  "git diff --staged"
 	abbr -a gl   "git log"
 	abbr -a gpl  "git pull"
 	abbr -a gps  "git push"
