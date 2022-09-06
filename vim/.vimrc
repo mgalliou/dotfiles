@@ -145,6 +145,7 @@ if has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'DanilaMihailov/beacon.nvim'
+	Plug 'lukas-reineke/indent-blankline.nvim'
 	"Plug 'Shougo/deoplete.nvim'
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'github/copilot.vim'
