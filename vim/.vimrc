@@ -148,6 +148,7 @@ if has("nvim")
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'lukas-reineke/virt-column.nvim'
 	"Plug 'Shougo/deoplete.nvim'
+	Plug 'neovim/nvim-lspconfig'
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'github/copilot.vim'
 endif
@@ -155,6 +156,10 @@ call plug#helptags()
 call plug#end()
 
 
+if s:PluginIsLoaded('nvim-lspconfig')
+	lua require'lspconfig'.vimls.setup{}
+	lua require'lspconfig'.solargraph.setup{}
+endif
 "}}}
 
 
