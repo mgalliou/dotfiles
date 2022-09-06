@@ -93,14 +93,13 @@ function fish_mode_prompt
 # NOOP - Disable vim mode indicator
 end
 
-set -f fish_color_cwd yellow
-set -f fish_color_host magenta
-set -f fish_color_user cyan
-set -f fish_greeting ""
-set -f fish_uid_symbol '$'
-
+set -U fish_color_cwd yellow
+set -U fish_color_host magenta
+set -U fish_color_user cyan
+set -U fish_greeting ""
+set -U fish_uid_symbol '$'
 if test (id -u) -eq 0
-	set -f fish_uid_symbol '#'
+	set -U fish_uid_symbol '#'
 end
 
 function fish_prompt --description 'Write out the prompt'
@@ -127,6 +126,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # PWD
 	# printf ': '
+	printf ' '
     set_color $fish_color_cwd
 	printf (prompt_pwd)
 
