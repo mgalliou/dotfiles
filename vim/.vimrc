@@ -147,6 +147,8 @@ if has("nvim")
 	Plug 'DanilaMihailov/beacon.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'lukas-reineke/virt-column.nvim'
+	Plug 'folke/todo-comments.nvim'
+	Plug 'kyazdani42/nvim-web-devicons'
 	"Plug 'Shougo/deoplete.nvim'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'ThePrimeagen/harpoon'
@@ -154,7 +156,6 @@ if has("nvim")
 endif
 call plug#helptags()
 call plug#end()
-
 
 if s:PluginIsLoaded('nvim-lspconfig')
 	lua require'lspconfig'.vimls.setup{}
@@ -168,7 +169,6 @@ endif
 " Colorsheme
 filetype plugin indent on
 syntax on
-"TODO: add check on enabled gruvbox
 if s:PluginIsLoaded("gruvbox")
 	set background=dark
 	let g:gruvbox_italic=1
@@ -197,6 +197,10 @@ endif
 if s:PluginIsLoaded("beacon.nvim")
 	highlight Beacon guibg=white ctermbg=15
 endif
+
+if s:PluginIsLoaded("todo-comments")
+	lua require("todo-comments").setup{}
+end
 
 " Behavior
 set hidden
@@ -306,7 +310,6 @@ if s:PluginIsLoaded("ale")
 endif
 
 "}}}
-
 
 " Backup {{{
 
