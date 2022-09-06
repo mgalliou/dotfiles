@@ -146,6 +146,7 @@ if has("nvim")
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'DanilaMihailov/beacon.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
+	Plug 'lukas-reineke/virt-column.nvim'
 	"Plug 'Shougo/deoplete.nvim'
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'github/copilot.vim'
@@ -221,6 +222,7 @@ augroup END
 set wildmenu
 "set textwidth=80
 set colorcolumn=81
+lua require("virt-column").setup()
 set cursorline
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 
