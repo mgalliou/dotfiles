@@ -15,9 +15,14 @@ end
 # PATH {{{
 # **************************************************************************** #
 
-set PATH "$HOME/bin" $PATH
-set PATH $PATH "$HOME/.linuxbrew/bin"
-set PATH $PATH "$HOME/.opam/bin"
+function add_path_for_command
+	fish_add_path -p $argv[1] $argv[2]
+end
+
+fish_add_path -Pp "$HOME/bin"
+add_path_for_command "$HOME/.linuxbrew/bin" brew
+add_path_for_command "$HOME/.opam/bin" opam
+add_path_for_command "$HOME/.local/share/gem/ruby/3.0.0/bin" ruby
 
 set CDPATH $HOME
 
@@ -35,7 +40,9 @@ end
 function enable_abbr
 	replace_cmd ls exa
 	replace_cmd cat bat
-	replace_cmd vim nvim
+	replace_cmd v vi
+	replace_cmd v vim
+	replace_cmd v nvim
 
 	abbr -a rm "rm -I"
 
@@ -49,6 +56,7 @@ function enable_abbr
 	abbr -a gpl  "git pull"
 	abbr -a gps  "git push"
 	abbr -a gr   "git restore"
+	abbr -a grs  "git restore --staged"
 	abbr -a gs   "git status"
 
 	abbr -a m   "make"
@@ -58,10 +66,9 @@ function enable_abbr
 	abbr -a mfc "make fclean"
 	abbr -a mr  "make re"
 
-	set lister "exa"
-	if type -q $lister
-		abbr -a ll  "$lister -l"
-		abbr -a la  "$lister -la"
+	if type -q exa
+		abbr -a ll  "exa -l"
+		abbr -a la  "exa -la"
 	end
 
 	abbr -a t "taskell"
