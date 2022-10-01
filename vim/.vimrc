@@ -151,6 +151,7 @@ if has("nvim")
 	Plug 'kyazdani42/nvim-web-devicons'
 	"Plug 'Shougo/deoplete.nvim'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'github/copilot.vim'
 endif
@@ -198,7 +199,7 @@ if s:PluginIsLoaded("beacon.nvim")
 	highlight Beacon guibg=white ctermbg=15
 endif
 
-if s:PluginIsLoaded("todo-comments")
+if s:PluginIsLoaded("todo-comments.nvim")
 	lua require("todo-comments").setup{}
 end
 
@@ -310,6 +311,7 @@ if s:PluginIsLoaded("ale")
 endif
 
 "}}}
+
 
 " Backup {{{
 
