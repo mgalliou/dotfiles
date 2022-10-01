@@ -24,7 +24,7 @@ add_path_for_command "$HOME/.linuxbrew/bin" brew
 add_path_for_command "$HOME/.opam/bin" opam
 add_path_for_command "$HOME/.local/share/gem/ruby/3.0.0/bin" ruby
 
-set CDPATH $HOME
+#set CDPATH $HOME
 
 #}}},
 # **************************************************************************** #
