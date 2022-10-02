@@ -12,7 +12,7 @@ end
 
 #}}},
 # **************************************************************************** #
-# PATH {{{
+# Environment {{{
 # **************************************************************************** #
 
 function add_path_for_command
@@ -25,6 +25,15 @@ add_path_for_command "$HOME/.opam/bin" opam
 add_path_for_command "$HOME/.local/share/gem/ruby/3.0.0/bin" ruby
 
 #set CDPATH $HOME
+
+if type -q nvim
+	set -x EDITOR nvim
+else if -x type -q vim
+	set -x EDITOR vim
+else if type -q vi
+	set -x EDITOR vi
+end
+
 
 #}}},
 # **************************************************************************** #
