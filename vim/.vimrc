@@ -116,6 +116,7 @@ call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'srcery-colors/srcery-vim'
 call s:PlugLightline()
 call s:PlugTmuxLine()
 Plug 'leafgarland/typescript-vim', { 'for': 'typesript' }
