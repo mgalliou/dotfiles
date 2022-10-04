@@ -15,14 +15,11 @@ end
 # Environment {{{
 # **************************************************************************** #
 
-function add_path_for_command
-	fish_add_path -p $argv[1] $argv[2]
-end
-
-fish_add_path -Pp "$HOME/bin"
-add_path_for_command "$HOME/.linuxbrew/bin" brew
-add_path_for_command "$HOME/.opam/bin" opam
-add_path_for_command "$HOME/.local/share/gem/ruby/3.0.0/bin" ruby
+fish_add_path $HOME/bin
+fish_add_path $HOME/.linuxbrew/bin
+fish_add_path $HOME/.opam/bin
+fish_add_path $HOME/.local/share/gem/ruby/3.0.0/bin
+fish_add_path $HOME/node_modules/.bin
 
 #set CDPATH $HOME
 
@@ -47,11 +44,11 @@ function replace_cmd
 end
 
 function enable_abbr
-	replace_cmd ls exa
+	replace_cmd ls  exa
 	replace_cmd cat bat
-	replace_cmd v vi
-	replace_cmd v vim
-	replace_cmd v nvim
+	replace_cmd vi  nvim
+	replace_cmd vim nvim
+	abbr 		v	$EDITOR
 
 	abbr -a rm "rm -I"
 
