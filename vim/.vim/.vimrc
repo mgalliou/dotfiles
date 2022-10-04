@@ -154,7 +154,7 @@ if has("nvim")
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'ThePrimeagen/harpoon'
-	Plug 'github/copilot.vim'
+	"Plug 'github/copilot.vim'
 endif
 call plug#helptags()
 call plug#end()
@@ -233,7 +233,9 @@ augroup END
 set wildmenu
 "set textwidth=80
 set colorcolumn=81
-lua require("virt-column").setup()
+if s:PluginIsLoaded("todo-comments.nvim")
+	lua require("virt-column").setup()
+endif
 set cursorline
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 
