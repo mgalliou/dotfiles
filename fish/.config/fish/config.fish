@@ -28,7 +28,7 @@ add_path_for_command "$HOME/.local/share/gem/ruby/3.0.0/bin" ruby
 
 if type -q nvim
 	set -x EDITOR nvim
-else if -x type -q vim
+else if type -q vim
 	set -x EDITOR vim
 else if type -q vi
 	set -x EDITOR vi
