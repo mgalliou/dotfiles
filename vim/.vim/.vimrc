@@ -147,7 +147,7 @@ if has("nvim")
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'DanilaMihailov/beacon.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
-	Plug 'lukas-reineke/virt-column.nvim'
+	Plug 'xiyaowong/virtcolumn.nvim'
 	Plug 'folke/todo-comments.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
 	"Plug 'Shougo/deoplete.nvim'
@@ -234,9 +234,6 @@ augroup END
 set wildmenu
 "set textwidth=80
 set colorcolumn=81
-if s:PluginIsLoaded("virt-column.nvim")
-	lua require("virt-column").setup()
-endif
 set cursorline
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 " allow paragraph justification with _j
