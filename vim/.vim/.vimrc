@@ -234,11 +234,13 @@ augroup END
 set wildmenu
 "set textwidth=80
 set colorcolumn=81
-if s:PluginIsLoaded("todo-comments.nvim")
+if s:PluginIsLoaded("virt-column.nvim")
 	lua require("virt-column").setup()
 endif
 set cursorline
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
+" allow paragraph justification with _j
+runtime macros/justify.vim
 
 " Bell
 "set noerrorbells
@@ -261,6 +263,13 @@ augroup project
 augroup END
 
 let g:asmsyntax = 'nasm'
+
+" Spellcheking
+" TODO: add mapping for toggling spellchecking
+" set spell
+set spelllang=en,fr
+set spellsuggest=best,10
+
 "}}}
 
 
