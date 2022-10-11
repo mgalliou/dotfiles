@@ -14,6 +14,10 @@ vim/.vim/autoload
 # FISH
 fish/.config/fish/fish_variables
 
+# AWESEOMEWM
+awesome/.config/awesome/awesome-wm-widgets/
+
+
 # MISC
 **/*.DS_Store
 tags*

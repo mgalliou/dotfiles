@@ -14,6 +14,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+local power = require("power_widget")
+--local connman = require("connman_widget")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -105,7 +108,8 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%a %d %b, %T")
+mytextclock.refresh = 1
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -161,7 +165,8 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
-
+local separator = wibox.widget.separator()
+separator.forced_width = 10
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -207,6 +212,10 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+			separator,
+			volume_widget(),
+			separator,
+			power,
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
