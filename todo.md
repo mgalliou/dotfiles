@@ -6,6 +6,7 @@
 - tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - nvim: try smooth scroll plugin
 - vim: customize lightline gruvbox theme
+- nvim: configure lsp for C
 
 ## Doing
 
