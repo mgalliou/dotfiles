@@ -1,0 +1,27 @@
+## To Do
+
+- vim: split vimrc
+- nvim: install and configure twilight
+- nvim: install and configure lightbulb and nvim-code-action-menu
+- tmux/nvim: enable currly underline support with lsp-color.nvim plugin
+- nvim: try smooth scroll plugin
+
+## Doing
+
+- nvim: install and configure tree-sitter
+    * [x] install
+    * [ ] configure
+
+## Done
+
+- nvim: install indent-blankline
+- fish: add 'git diff --staged abbreviation
+- nvim: install virt-column plugin
+- nvim: add lspconfig plugin
+- fish: improve path extension
+- fish: add 'git restore --staged' abbreviation
+- fish: add 'v' abbreviation
+- alacritty: configure
+- fish: set EDITOR envvar
+- nvim: try virtcolumn (virt-column alternative)
+    > https://github.com/xiyaowong/virtcolumn.nvim
