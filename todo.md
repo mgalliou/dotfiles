@@ -1,10 +1,16 @@
 ## To Do
 
 - vim: split vimrc
-- nvim: install and configure twilight
+- fish: split config
+- tmux: split tmux.conf
 - nvim: install and configure lightbulb and nvim-code-action-menu
-- tmux/nvim: enable currly underline support with lsp-color.nvim plugin
+- nvim: try autopair plugin
+- nvim: configure spellchecking with lsp
+- nvim: try nvim-cmp plugin
+- nvim: try LuaSnip plugin
+- nvim: install and configure twilight
 - nvim: try smooth scroll plugin
+- tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - vim: customize lightline gruvbox theme
 
 ## Doing
