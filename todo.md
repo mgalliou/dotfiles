@@ -1,5 +1,6 @@
 ## To Do
 
+- nvim: configure lsp-config mappings
 - vim: split vimrc
 - fish: split config
 - tmux: split tmux.conf

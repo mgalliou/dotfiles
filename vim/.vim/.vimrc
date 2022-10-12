@@ -176,7 +176,7 @@ syntax on
 if s:PluginIsLoaded("gruvbox")
 	set background=dark
 	let g:gruvbox_italic=1
-	let g:gruvbox_contrast_dark='hard'
+	let g:gruvbox_contrast_dark='soft'
 	let g:gruvbox_contrast_light='soft'
 	let g:gruvbox_invert_signs=1
 	colorscheme gruvbox
