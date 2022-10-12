@@ -8,6 +8,7 @@ if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'dstein64/vim-startuptime'
 Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -47,6 +48,7 @@ if has("nvim")
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'kosayoda/nvim-lightbulb'
 	Plug 'ThePrimeagen/harpoon'
 endif
 call plug#end()
@@ -112,6 +114,7 @@ set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
 " allow paragraph justification with _j
 runtime macros/justify.vim
 
+
 " Bell
 "set noerrorbells
 "set visualbell
@@ -173,19 +176,5 @@ nnoremap <leader>t <CMD>Texplore<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 nnoremap <leader>n <CMD>call tools#ToggleLineNumberMode()<CR>
-
-if tools#PluginIsLoaded("fzf.vim")
-	nnoremap <leader>f <CMD>Files<CR>
-endif
-
-if tools#PluginIsLoaded("harpoon")
-	nnoremap <leader>Ha <CMD>lua require("harpoon.mark").add_file()<CR>
-	nnoremap <leader>Ht <CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>
-	nnoremap <leader><leader>h <CMD>lua require("harpoon.ui").nav_file(vim.v.count1)<CR>
-endif
-
-if tools#PluginIsLoaded("ale")
-	nnoremap <leader>ar <CMD>ALERename<CR>
-endif
 
 "}}}

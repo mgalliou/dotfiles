@@ -1,10 +1,7 @@
 ## To Do
 
-- nvim: configure lsp-config mappings
-- vim: split vimrc
 - fish: split config
 - tmux: split tmux.conf
-- nvim: install and configure lightbulb and nvim-code-action-menu
 - nvim: try autopair plugin
 - nvim: configure spellchecking with lsp
 - nvim: try nvim-cmp plugin
@@ -13,12 +10,15 @@
 - nvim: try smooth scroll plugin
 - tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - vim: customize lightline gruvbox theme
+- nvim: fix tmux checkhealth errors
 
 ## Doing
 
 - nvim: install and configure tree-sitter
     * [x] install
     * [ ] configure
+- nvim: install and configure lightbulb and nvim-code-action-menu
+- nvim: configure lsp-config mappings
 
 ## Done
 
@@ -35,3 +35,7 @@
     > https://github.com/xiyaowong/virtcolumn.nvim
 - tmux: remove pane line
 - nvim: configure lsp for C
+- vim: split vimrc
+    * [x] split filetype settings
+    * [x] split plugin settings
+    * [x] split plugin mappings

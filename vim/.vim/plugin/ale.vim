@@ -9,4 +9,6 @@ if tools#PluginIsLoaded("ale")
 	let g:ale_c_cc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
 	" TODO: add OS check
 	let g:ale_nasm_nasm_options = '-f macho64'
+
+	nnoremap <leader>ar <CMD>ALERename<CR>
 endif
