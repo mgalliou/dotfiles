@@ -182,9 +182,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=0
 augroup indentation
-	autocmd FileType html setlocal shiftwidth=2 softtabstop=2
-	autocmd FileType typescript setlocal shiftwidth=2 softtabstop=2
-	autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2
 augroup END
 
 " UI
