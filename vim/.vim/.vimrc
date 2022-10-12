@@ -208,11 +208,6 @@ set showmatch
 set foldmethod=marker
 
 " Filetype
-augroup project
-    autocmd!
-    autocmd BufRead,BufNewFile *.h,*.c set filetype=c
-augroup END
-
 let g:asmsyntax = 'nasm'
 
 " Spellcheking
