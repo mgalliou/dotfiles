@@ -1,16 +1,3 @@
-" **************************************************************************** "
-"                                                                              "
-"                                                         :::      ::::::::    "
-"    .vimrc                                             :+:      :+:    :+:    "
-"                                                     +:+ +:+         +:+      "
-"    By: mgalliou <mgalliou@student.42.fr>          +#+  +:+       +#+         "
-"                                                 +#+#+#+#+#+   +#+            "
-"    Created: 2016/11/02 16:20:01 by mgalliou          #+#    #+#              "
-"    Updated: 2022/07/18 12:18:32 by mgalliou         ###   ########.fr        "
-"                                                                              "
-" **************************************************************************** "
-
-
 " Plugins {{{
 
 " auto install vimplug
@@ -38,14 +25,8 @@ function! s:PlugAle()
 	let g:ale_nasm_nasm_options = '-f macho64'
 endfunction
 
-function! s:PlugIndentLine()
-	Plug 'Yggdroot/indentLine'
-	let g:indentLine_char = '|'
-endfunction
-
 function! s:PlugRainbow()
 	Plug 'luochen1990/rainbow'
-	let g:rainbow_active = 1
 	nnoremap <leader>b <ESC>:RainbowToggle<CR>
 endfunction
 
@@ -73,19 +54,6 @@ function! s:PlugGutentags()
 	call s:PlugGutentags_Plus()
 endfunction
 
-function! s:PlugVimspector()
-	Plug 'puremourning/vimspector'
-	let g:vimspector_enable_mappings = 'HUMAN'
-	"packadd! vimspector
-endfunction
-
-function! s:PlugUltiSnips()
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsListSnippets="<s-tab>"
-	let g:UltiSnipsJumpForwardTrigger="<c-b>"
-	let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-endfunction
-
 function! s:PlugLightline()
 	Plug 'itchyny/lightline.vim'
 	Plug 'shinchu/lightline-gruvbox.vim'
@@ -108,17 +76,13 @@ function! s:PlugLightline()
 				\ }
 endfunction
 
-function! s:PlugTmuxLine()
-	Plug 'edkolev/tmuxline.vim'
-endfunction
-
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'srcery-colors/srcery-vim'
 call s:PlugLightline()
-call s:PlugTmuxLine()
+Plug 'edkolev/tmuxline.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'typesript' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
@@ -129,18 +93,13 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 call s:PlugRainbow()
-"call s:PlugIndentLine()
 call s:PlugAle()
 "call PlugGutentags()
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-"Plug 'sbdchd/neoformat'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
-"call s:PlugVimspector()
 call s:PlugFZF()
-"call s:PlugUltiSnips()
-"Plug 'honza/vim-snippets'
 "Plug 'tpope/vim-classpath'
 if has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
@@ -150,11 +109,9 @@ if has("nvim")
 	Plug 'xiyaowong/virtcolumn.nvim'
 	Plug 'folke/todo-comments.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
-	"Plug 'Shougo/deoplete.nvim'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'ThePrimeagen/harpoon'
-	"Plug 'github/copilot.vim'
 endif
 call plug#helptags()
 call plug#end()
@@ -165,9 +122,8 @@ if s:PluginIsLoaded('nvim-lspconfig')
 	lua require'lspconfig'.sumneko_lua.setup{}
 	lua require'lspconfig'.ccls.setup{}
 endif
+
 "}}}
-
-
 " Syntax / Filetype / Colorscheme... {{{
 
 " Colorsheme
@@ -268,9 +224,20 @@ let g:asmsyntax = 'nasm'
 set spelllang=en,fr
 set spellsuggest=best,10
 
+" Backup
+set history=200
+set noswapfile
+set backup
+set backupdir-=.
+set undofile
+set undodir-=.
+
+" netrw 
+let g:netrw_banner = 0
+let g:netrw_keepdir = 0
+"let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
 "}}}
-
-
 " Mappings {{{
 
 let mapleader = " "
@@ -322,26 +289,6 @@ if s:PluginIsLoaded("ale")
 endif
 
 "}}}
-
-
-" Backup {{{
-
-set history=200
-set noswapfile
-set backup
-set backupdir-=.
-set undofile
-set undodir-=.
-
-
-" netrw {{{
-
-let g:netrw_banner = 0
-let g:netrw_keepdir = 0
-"let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-"}}}
-
-
 " Merlin {{{
 
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
