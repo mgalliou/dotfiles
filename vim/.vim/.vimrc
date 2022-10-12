@@ -7,78 +7,13 @@ if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
-function! s:PlugAle()
-	let g:ale_completion_enabled = 1
-	Plug 'dense-analysis/ale',
-	let g:ale_linters =  {
-	 			\'c': ['clang', 'gcc']
-	 			\}
-	 let g:ale_fixers = {
-	 			\'*': ['remove_trailing_lines', 'trim_whitespace']
-	 			\}
-	let g:ale_c_cc_options = '-Wall -Wextra -Werror -Iinclude -Ilibft/include -Ilibftest/include'
-	" TODO: add OS check
-	let g:ale_nasm_nasm_options = '-f macho64'
-endfunction
-
-function! s:PlugRainbow()
-	Plug 'luochen1990/rainbow'
-	nnoremap <leader>b <ESC>:RainbowToggle<CR>
-endfunction
-
-function! s:PlugFZF()
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
-	"set rtp+=/usr/local/opt/fzf
-endfunction
-
-function! s:PlugGutentags_Plus()
-	Plug 'skywind3000/gutentags_plus'
-	" enable gtags module
-	let g:gutentags_modules = ['ctags', 'gtags_cscope']
-	" config project root markers.
-	let g:gutentags_project_root = ['.root']
-	" generate datebases in my cache directory, prevent gtags files polluting my project
-	let g:gutentags_cache_dir = expand('~/.cache/tags')
-endfunction
-
-function! s:PlugGutentags()
-	Plug 'ludovicchabant/vim-gutentags'
-	if 1 != executable("ctags")
-		let g:gutentags_enabled = 0
-	endif
-	call s:PlugGutentags_Plus()
-endfunction
-
-function! s:PlugLightline()
-	Plug 'itchyny/lightline.vim'
-	Plug 'shinchu/lightline-gruvbox.vim'
-	set laststatus=2
-	set noshowmode
-	let g:lightline = {}
-	"let g:lightline.colorscheme = 'gruvbox'
-	let g:lightline.mode_map = {
-				\ 'n' : 'N',
-				\ 'i' : 'I',
-				\ 'R' : 'R',
-				\ 'v' : 'V',
-				\ 'V' : 'VL',
-				\ "\<C-v>": 'VB',
-				\ 'c' : 'C',
-				\ 's' : 'S',
-				\ 'S' : 'SL',
-				\ "\<C-s>": 'SB',
-				\ 't': 'T',
-				\ }
-endfunction
-
 call plug#begin()
 Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'srcery-colors/srcery-vim'
-call s:PlugLightline()
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'typesript' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
@@ -86,18 +21,22 @@ Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'vim-scripts/tf2.vim', { 'for': 'tf2' }
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
+"Plug 'tpope/vim-classpath', { 'for': 'java' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-call s:PlugRainbow()
-call s:PlugAle()
-"call PlugGutentags()
+Plug 'luochen1990/rainbow'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
-call s:PlugFZF()
-"Plug 'tpope/vim-classpath'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+if !has("nvim")
+	Plug 'dense-analysis/ale'
+endif
 if has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -113,27 +52,18 @@ endif
 call plug#helptags()
 call plug#end()
 
-if tools#PluginIsLoaded('nvim-lspconfig')
-	lua require'lspconfig'.vimls.setup{}
-	lua require'lspconfig'.solargraph.setup{}
-	lua require'lspconfig'.sumneko_lua.setup{}
-	lua require'lspconfig'.ccls.setup{}
-endif
-
 "}}}
 " Syntax / Filetype / Colorscheme... {{{
 
 " Colorsheme
-filetype plugin indent on
-syntax on
 if tools#PluginIsLoaded("gruvbox")
 	set background=dark
 	let g:gruvbox_italic=1
 	let g:gruvbox_contrast_dark='soft'
 	let g:gruvbox_contrast_light='soft'
 	let g:gruvbox_invert_signs=1
-	colorscheme gruvbox
 endif
+colorscheme gruvbox
 
 " enable 256 color and set tmux as term if in a Windows terminal {{{
 if has("win32") && !has("gui_running")
@@ -150,14 +80,6 @@ elseif (-1 < stridx("xterm", $TERM))
 endif
 "}}},
 
-" needs to be loaded last to not be overwritten by colorscheme
-if tools#PluginIsLoaded("beacon.nvim")
-	highlight Beacon guibg=white ctermbg=15
-endif
-
-if tools#PluginIsLoaded("todo-comments.nvim")
-	lua require("todo-comments").setup{}
-end
 
 " Behavior
 set hidden
