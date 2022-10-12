@@ -7,9 +7,6 @@ if !has('win32') && empty(glob('~/.vim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-function! s:PluginIsLoaded(plugin)
-	return has_key(g:plugs, a:plugin)
-endfunction
 
 function! s:PlugAle()
 	let g:ale_completion_enabled = 1
@@ -116,7 +113,7 @@ endif
 call plug#helptags()
 call plug#end()
 
-if s:PluginIsLoaded('nvim-lspconfig')
+if tools#PluginIsLoaded('nvim-lspconfig')
 	lua require'lspconfig'.vimls.setup{}
 	lua require'lspconfig'.solargraph.setup{}
 	lua require'lspconfig'.sumneko_lua.setup{}
@@ -129,7 +126,7 @@ endif
 " Colorsheme
 filetype plugin indent on
 syntax on
-if s:PluginIsLoaded("gruvbox")
+if tools#PluginIsLoaded("gruvbox")
 	set background=dark
 	let g:gruvbox_italic=1
 	let g:gruvbox_contrast_dark='soft'
@@ -154,11 +151,11 @@ endif
 "}}},
 
 " needs to be loaded last to not be overwritten by colorscheme
-if s:PluginIsLoaded("beacon.nvim")
+if tools#PluginIsLoaded("beacon.nvim")
 	highlight Beacon guibg=white ctermbg=15
 endif
 
-if s:PluginIsLoaded("todo-comments.nvim")
+if tools#PluginIsLoaded("todo-comments.nvim")
 	lua require("todo-comments").setup{}
 end
 
@@ -266,17 +263,17 @@ function! ToggleLineNumberMode()
 endfunction
 nnoremap <leader>n <CMD>call ToggleLineNumberMode()<CR>
 
-if s:PluginIsLoaded("fzf.vim")
+if tools#PluginIsLoaded("fzf.vim")
 	nnoremap <leader>f <CMD>Files<CR>
 endif
 
-if s:PluginIsLoaded("harpoon")
+if tools#PluginIsLoaded("harpoon")
 	nnoremap <leader>Ha <CMD>lua require("harpoon.mark").add_file()<CR>
 	nnoremap <leader>Ht <CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>
 	nnoremap <leader><leader>h <CMD>lua require("harpoon.ui").nav_file(vim.v.count1)<CR>
 endif
 
-if s:PluginIsLoaded("ale")
+if tools#PluginIsLoaded("ale")
 	nnoremap <leader>ar <CMD>ALERename<CR>
 endif
 
