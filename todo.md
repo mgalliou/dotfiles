@@ -11,6 +11,8 @@
 - tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - vim: customize lightline gruvbox theme
 - nvim: fix tmux checkhealth errors
+- nvim: configure lsp-config mapping
+- nvim: fix virtcolumn issue (invisible chars)
 
 ## Doing
 
@@ -18,7 +20,6 @@
     * [x] install
     * [ ] configure
 - nvim: install and configure lightbulb and nvim-code-action-menu
-- nvim: configure lsp-config mappings
 
 ## Done
 
@@ -31,11 +32,11 @@
 - fish: add 'v' abbreviation
 - alacritty: configure
 - fish: set EDITOR envvar
-- nvim: try virtcolumn (virt-column alternative)
-    > https://github.com/xiyaowong/virtcolumn.nvim
 - tmux: remove pane line
 - nvim: configure lsp for C
 - vim: split vimrc
     * [x] split filetype settings
     * [x] split plugin settings
     * [x] split plugin mappings
+- nvim: try virtcolumn (virt-column alternative)
+    > https://github.com/xiyaowong/virtcolumn.nvim

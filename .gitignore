@@ -9,7 +9,8 @@ vim/.vim/pack/plugins/start/*
 !vim/.vim/pack/plugins/start/header42
 !vim/.vim/pack/plugins/start/jsl
 vim/.vim/plugged
-vim/.vim/autoload
+vim/.vim/autoload/plug.vim
+vim/.vim/autoload/plug.vim.old
 
 # FISH
 fish/.config/fish/fish_variables
