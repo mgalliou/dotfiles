@@ -49,12 +49,13 @@ if has("nvim")
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'kosayoda/nvim-lightbulb'
+	Plug 'windwp/nvim-autopairs'
 	Plug 'ThePrimeagen/harpoon'
 endif
 call plug#end()
 
 "}}}
-" Colorscheme... {{{
+" Options ... {{{
 
 " Colorsheme
 if tools#PluginIsLoaded("gruvbox")
@@ -80,7 +81,6 @@ elseif (-1 < stridx("256", $TERM))
 elseif (-1 < stridx("xterm", $TERM))
 	colorscheme default
 endif
-"}}},
 "}}},
 
 " Behavior
