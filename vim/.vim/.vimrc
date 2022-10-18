@@ -57,7 +57,7 @@ call plug#end()
 "}}}
 " Options ... {{{
 
-" Colorsheme
+" Colorscheme
 if tools#PluginIsLoaded("gruvbox")
 	set background=dark
 	let g:gruvbox_italic=1
@@ -119,7 +119,7 @@ set foldmethod=marker
 " Filetype
 let g:asmsyntax = 'nasm'
 
-" Spellcheking
+" Spellchecking
 " TODO: add mapping for toggling spellchecking
 " set spell
 set spelllang=en,fr
@@ -146,7 +146,7 @@ let mapleader = " "
 nnoremap <leader>r <CMD>so $MYVIMRC<CR>
 " remove highlights
 nnoremap <leader>l <CMD>nohl<CR>
-" remove trailing whitespace
+" remove trailing white spaces
 nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``:w<CR>
 " toggle invisible chars
 nnoremap <leader>i <CMD>set list!<CR>
@@ -155,7 +155,7 @@ nnoremap <leader>e <CMD>Explore<CR>
 nnoremap <leader>v <CMD>Vexplore<CR>
 nnoremap <leader>s <CMD>Sexplore<CR>
 nnoremap <leader>t <CMD>Texplore<CR>
-" save files with root privileges.
+" save files with root privileges
 cmap w!! w !sudo tee % >/dev/null
 
 nnoremap <leader>n <CMD>call tools#ToggleLineNumberMode()<CR>

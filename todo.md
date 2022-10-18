@@ -10,17 +10,14 @@
 - tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - vim: customize lightline gruvbox theme
 - nvim: fix tmux checkhealth errors
-- nvim: configure lsp-config mappings
 - nvim: fix virtcolumn issue (invisible chars)
 
 ## Doing
 
-- nvim: install and configure tree-sitter
-    * [x] install
-    * [ ] configure
 - nvim: install and configure lightbulb and nvim-code-action-menu
     * [x] lightbulb
     * [ ] code-action-menu
+- nvim: configure lsp-config mappings
 
 ## Done
 
@@ -43,3 +40,4 @@
     > https://github.com/xiyaowong/virtcolumn.nvim
 - nvim: try autopair plugin
 - nvim: install nvim-renamer
+- nvim: install tree-sitter with default configs
