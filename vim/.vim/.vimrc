@@ -37,8 +37,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 if !has("nvim")
 	Plug 'dense-analysis/ale'
-endif
-if has("nvim")
+elseif has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'DanilaMihailov/beacon.nvim'
@@ -49,7 +48,8 @@ if has("nvim")
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'kosayoda/nvim-lightbulb'
-	Plug 'windwp/nvim-autopairs'
+	"Plug 'windwp/nvim-autopairs'
+	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
 	Plug 'ThePrimeagen/harpoon'
 endif
 call plug#end()
@@ -84,17 +84,14 @@ endif
 "}}},
 
 " Behavior
-set hidden
-"set mouse=a
-set mousehide
 set backspace=indent,eol,start
 set scrolloff=4
 set sidescrolloff=4
 set splitright
 set splitbelow
+" TODO: set next option in autocommand group
 " disable auto comment:
 set formatoptions-=cro
-" set nowrap
 set updatetime=100
 
 " Indentation
@@ -102,25 +99,15 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
-augroup indentation
-augroup END
 
 " UI
 set wildmenu
-"set textwidth=80
 set colorcolumn=81
 set cursorline
 set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
-" allow paragraph justification with _j
-runtime macros/justify.vim
-
-
-" Bell
-"set noerrorbells
-"set visualbell
+runtime macros/justify.vim "allow paragraph justification with _j 
 
 " Searching
-"set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -157,10 +144,6 @@ let g:netrw_keepdir = 0
 let mapleader = " "
 " reload vimrc
 nnoremap <leader>r <CMD>so $MYVIMRC<CR>
-" quit
-"nnoremap <leader>q <CMD>q<CR>
-" save
-"nnoremap <leader><space> <CMD>w<CR>
 " remove highlights
 nnoremap <leader>l <CMD>nohl<CR>
 " remove trailing whitespace

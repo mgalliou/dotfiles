@@ -2,7 +2,6 @@
 
 - fish: split config
 - tmux: split tmux.conf
-- nvim: try autopair plugin
 - nvim: configure spellchecking with lsp
 - nvim: try nvim-cmp plugin
 - nvim: try LuaSnip plugin
@@ -11,7 +10,7 @@
 - tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - vim: customize lightline gruvbox theme
 - nvim: fix tmux checkhealth errors
-- nvim: configure lsp-config mapping
+- nvim: configure lsp-config mappings
 - nvim: fix virtcolumn issue (invisible chars)
 
 ## Doing
@@ -20,6 +19,8 @@
     * [x] install
     * [ ] configure
 - nvim: install and configure lightbulb and nvim-code-action-menu
+    * [x] lightbulb
+    * [ ] code-action-menu
 
 ## Done
 
@@ -40,3 +41,5 @@
     * [x] split plugin mappings
 - nvim: try virtcolumn (virt-column alternative)
     > https://github.com/xiyaowong/virtcolumn.nvim
+- nvim: try autopair plugin
+- nvim: install nvim-renamer
