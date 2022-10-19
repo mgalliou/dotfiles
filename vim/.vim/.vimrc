@@ -47,6 +47,7 @@ elseif has("nvim")
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'nvim-treesitter/nvim-treesitter-context'
 	Plug 'kosayoda/nvim-lightbulb'
 	"Plug 'windwp/nvim-autopairs'
 	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
@@ -101,6 +102,8 @@ set shiftwidth=4
 set softtabstop=0
 
 " UI
+set number
+set relativenumber
 set wildmenu
 set colorcolumn=81
 set cursorline

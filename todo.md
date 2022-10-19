@@ -41,3 +41,4 @@
 - nvim: try autopair plugin
 - nvim: install nvim-renamer
 - nvim: install tree-sitter with default configs
+- nvim: install tree-sitter-context
