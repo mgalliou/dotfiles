@@ -33,9 +33,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 if !has("nvim")
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 	Plug 'dense-analysis/ale'
 elseif has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
@@ -51,6 +51,7 @@ elseif has("nvim")
 	Plug 'kosayoda/nvim-lightbulb'
 	"Plug 'windwp/nvim-autopairs'
 	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
+	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 	Plug 'ThePrimeagen/harpoon'
 endif
 call plug#end()
