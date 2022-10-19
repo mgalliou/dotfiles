@@ -44,7 +44,7 @@ function replace_cmd
 end
 
 function enable_abbr
-	replace_cmd ls  exa
+	replace_cmd l  exa
 	replace_cmd cat bat
 	replace_cmd vi  nvim
 	replace_cmd vim nvim
@@ -55,6 +55,7 @@ function enable_abbr
 	abbr -a ga   "git add"
 	abbr -a gc   "git clone"
 	abbr -a gcm  "git commit"
+	abbr -a gcma "git commit --amend"
 	abbr -a gco  "git checkout"
 	abbr -a gd   "git diff"
 	abbr -a gds  "git diff --staged"
