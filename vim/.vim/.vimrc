@@ -107,7 +107,9 @@ set relativenumber
 set wildmenu
 set colorcolumn=81
 set cursorline
-set listchars=tab:>-,trail:-,nbsp:-,extends:>,precedes:<,eol:\|
+set list
+set listchars+=space:·
+set listchars+=eol:↴
 runtime macros/justify.vim "allow paragraph justification with _j 
 
 " Searching
