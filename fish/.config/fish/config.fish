@@ -16,11 +16,11 @@ end
 # **************************************************************************** #
 
 fish_add_path $HOME/bin
+fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.linuxbrew/bin
 fish_add_path $HOME/.opam/bin
 fish_add_path $HOME/.local/share/gem/ruby/3.0.0/bin
 fish_add_path $HOME/node_modules/.bin
-
 #set CDPATH $HOME
 
 if type -q nvim
