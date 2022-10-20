@@ -18,6 +18,7 @@ Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'leafgarland/typescript-vim',
 Plug 'cespare/vim-toml',
+Plug 'pearofducks/ansible-vim'
 Plug 'dag/vim-fish',
 Plug 'vim-scripts/tf2.vim', { 'for': 'tf2' }
 Plug 'tbastos/vim-lua',
