@@ -128,8 +128,6 @@ set foldmethod=marker
 let g:asmsyntax = 'nasm'
 
 " Spellchecking
-" TODO: add mapping for toggling spellchecking
-" set spell
 set spelllang=en,fr
 set spellsuggest=best,10
 
@@ -166,6 +164,7 @@ nnoremap <leader>t <CMD>Texplore<CR>
 " save files with root privileges
 cmap w!! w !sudo tee % >/dev/null
 
+nnoremap <leader>sc <CMD>set spell!<CR>
 nnoremap <leader>n <CMD>call tools#ToggleLineNumberMode()<CR>
 
 "}}}
