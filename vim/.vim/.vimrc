@@ -92,9 +92,10 @@ set scrolloff=4
 set sidescrolloff=4
 set splitright
 set splitbelow
-" TODO: set next option in autocommand group
-" disable auto comment:
-set formatoptions-=cro
+augroup disableautocomment
+	autocmd!
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END
 set updatetime=100
 
 " Indentation
