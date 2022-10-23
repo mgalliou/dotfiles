@@ -149,22 +149,17 @@ let g:netrw_keepdir = 0
 
 let mapleader = " "
 " reload vimrc
-nnoremap <leader>r <CMD>so $MYVIMRC<CR>
+nnoremap <leader>rl <CMD>so $MYVIMRC<CR>
 " remove highlights
-nnoremap <leader>l <CMD>nohl<CR>
+nnoremap <leader>hl <CMD>nohl<CR>
 " remove trailing white spaces
-nnoremap <leader>w m`:%s/\s\+$//<CR>:let @/=''<CR>``:w<CR>
+nnoremap <leader>ws m`:%s/\s\+$//<CR>:let @/=''<CR>``:w<CR>
 " toggle invisible chars
-nnoremap <leader>i <CMD>set list!<CR>
-" explore netrw
-nnoremap <leader>e <CMD>Explore<CR>
-nnoremap <leader>v <CMD>Vexplore<CR>
-nnoremap <leader>s <CMD>Sexplore<CR>
-nnoremap <leader>t <CMD>Texplore<CR>
+nnoremap <leader>lst <CMD>set list!<CR>
 " save files with root privileges
 cmap w!! w !sudo tee % >/dev/null
 
 nnoremap <leader>sc <CMD>set spell!<CR>
-nnoremap <leader>n <CMD>call tools#ToggleLineNumberMode()<CR>
+nnoremap <leader>ln <CMD>call tools#ToggleLineNumberMode()<CR>
 
 "}}}
