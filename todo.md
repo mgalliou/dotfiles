@@ -1,7 +1,6 @@
 ## To Do
 
 - fish: split config
-- tmux: split tmux.conf
 - nvim: configure spellchecking with lsp
 - nvim: try nvim-cmp plugin
 - nvim: try LuaSnip plugin
@@ -18,6 +17,7 @@
     * [x] lightbulb
     * [ ] code-action-menu
 - nvim: configure lsp-config mappings
+- tmux: split tmux.conf
 
 ## Done
 
