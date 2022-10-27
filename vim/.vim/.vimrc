@@ -52,6 +52,7 @@ elseif has("nvim")
 	Plug 'kosayoda/nvim-lightbulb'
 	"Plug 'windwp/nvim-autopairs'
 	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
+	Plug 'weilbith/nvim-code-action-menu'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 	Plug 'ThePrimeagen/harpoon'
 endif
