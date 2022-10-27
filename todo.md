@@ -1,14 +1,11 @@
 ## To Do
 
-- fish: split config
 - nvim: configure spellchecking with lsp
 - nvim: try nvim-cmp plugin
 - nvim: try LuaSnip plugin
-- nvim: install and configure twilight
 - nvim: try smooth scroll plugin
 - tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - vim: customize lightline gruvbox theme
-- nvim: fix tmux checkhealth errors
 - nvim: fix virtcolumn issue (invisible chars)
 
 ## Doing
@@ -42,3 +39,5 @@
     * [x] lightbulb
     * [x] code-action-menu
 - nvim: configure lsp-config mappings
+- fish: split config
+- nvim: fix tmux checkhealth errors
