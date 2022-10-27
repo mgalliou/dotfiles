@@ -13,10 +13,6 @@
 
 ## Doing
 
-- nvim: install and configure lightbulb and nvim-code-action-menu
-    * [x] lightbulb
-    * [ ] code-action-menu
-- nvim: configure lsp-config mappings
 - tmux: split tmux.conf
 
 ## Done
@@ -42,3 +38,7 @@
 - nvim: install nvim-renamer
 - nvim: install tree-sitter with default configs
 - nvim: install tree-sitter-context
+- nvim: install and configure lightbulb and nvim-code-action-menu
+    * [x] lightbulb
+    * [x] code-action-menu
+- nvim: configure lsp-config mappings
