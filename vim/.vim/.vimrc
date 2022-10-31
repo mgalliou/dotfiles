@@ -31,13 +31,13 @@ Plug 'luochen1990/rainbow'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'skywind3000/gutentags_plus'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
 if !has("nvim")
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'dense-analysis/ale'
+	Plug 'airblade/vim-gitgutter'
 elseif has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -55,6 +55,7 @@ elseif has("nvim")
 	Plug 'weilbith/nvim-code-action-menu'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 	Plug 'ThePrimeagen/harpoon'
+	Plug 'lewis6991/gitsigns.nvim'
 endif
 call plug#end()
 
@@ -67,7 +68,7 @@ if tools#PluginIsLoaded("gruvbox")
 	let g:gruvbox_italic=1
 	let g:gruvbox_contrast_dark='soft'
 	let g:gruvbox_contrast_light='soft'
-	let g:gruvbox_invert_signs=1
+	"let g:gruvbox_invert_signs=1
 endif
 colorscheme gruvbox
 
@@ -106,6 +107,7 @@ set shiftwidth=4
 set softtabstop=0
 
 " UI
+set signcolumn=yes
 set number
 set relativenumber
 set wildmenu
