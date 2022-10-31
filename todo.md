@@ -8,7 +8,6 @@
 - nvim: try smooth scroll plugin
 - tmux/nvim: enable currly underline support with lsp-color.nvim plugin
 - vim: customize lightline gruvbox theme
-- nvim: fix tmux checkhealth errors
 - nvim: fix virtcolumn issue (invisible chars)
 
 ## Doing
@@ -42,3 +41,4 @@
     * [x] lightbulb
     * [x] code-action-menu
 - nvim: configure lsp-config mappings
+- nvim: fix tmux checkhealth errors
