@@ -99,6 +99,7 @@ augroup disableautocomment
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 set updatetime=100
+set virtualedit=all
 
 " Indentation
 set autoindent
