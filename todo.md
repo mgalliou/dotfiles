@@ -12,7 +12,6 @@
 
 ## Doing
 
-- tmux: split tmux.conf
 
 ## Done
 
@@ -42,3 +41,4 @@
     * [x] code-action-menu
 - nvim: configure lsp-config mappings
 - nvim: fix tmux checkhealth errors
+- tmux: split tmux.conf
