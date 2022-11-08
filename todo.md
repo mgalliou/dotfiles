@@ -1,6 +1,5 @@
 ## To Do
 
-- fish: split config
 - nvim: configure spellchecking with lsp
 - nvim: try nvim-cmp plugin
 - nvim: try LuaSnip plugin
@@ -42,3 +41,4 @@
 - nvim: configure lsp-config mappings
 - nvim: fix tmux checkhealth errors
 - tmux: split tmux.conf
+- fish: split config
