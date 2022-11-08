@@ -13,9 +13,10 @@ abbr 		v	$EDITOR
 abbr -a rm "rm -I"
 
 abbr -a ga   "git add"
-abbr -a gc   "git clone"
-abbr -a gcm  "git commit"
-abbr -a gcma "git commit --amend"
+abbr -a gcl  "git clone"
+abbr -a gc   "git commit -v"
+abbr -a gca  "git commit --amend"
+abbr -a gcan "git commit --amend --no-edit"
 abbr -a gco  "git checkout"
 abbr -a gd   "git diff"
 abbr -a gds  "git diff --staged"
