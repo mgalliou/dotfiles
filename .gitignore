@@ -18,6 +18,9 @@ fish/.config/fish/fish_variables
 # AWESEOMEWM
 awesome/.config/awesome/awesome-wm-widgets/
 
+# TMUX
+tmux/.config/tmux/plugins/
+
 
 # MISC
 **/*.DS_Store
