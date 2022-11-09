@@ -13,8 +13,6 @@ Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'srcery-colors/srcery-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'leafgarland/typescript-vim',
 Plug 'cespare/vim-toml',
