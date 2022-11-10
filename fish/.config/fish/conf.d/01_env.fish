@@ -12,3 +12,4 @@ else if type -q vim
 else if type -q vi
     set -x EDITOR vi
 end
+abbr 		v	$EDITOR
