@@ -37,6 +37,28 @@ local lsp_flags = {
 	debounce_text_changes = 150,
 }
 
+require('lspconfig').rust_analyzer.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	settings = {
+		["rust-analyzer"] = {
+			imports = {
+				granularity = {
+					group = "module",
+				},
+				prefix = "self",
+			},
+			cargo = {
+				buildScripts = {
+					enable = true,
+				},
+			},
+			procMacro = {
+				enable = true
+			},
+		}
+	}
+}
 require('lspconfig').vimls.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
