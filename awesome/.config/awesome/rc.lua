@@ -198,8 +198,15 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons
     }
 
-    -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, fg = beautiful.cs.fg, bg = beautiful.cs.bg })
+	-- Create the wibox
+	s.mywibox = awful.wibar {
+		position = "top",
+		screen = s,
+		fg = beautiful.cs.fg,
+		bg = beautiful.cs.bg,
+		border_width = 6,
+		border_color = beautiful.cs.bg
+	}
 
     -- Add widgets to the wibox
     s.mywibox:setup {
