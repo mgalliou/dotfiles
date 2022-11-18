@@ -1,5 +1,6 @@
 ## To Do
 
+- nvim: setup icons for lsp diagnostics
 - nvim: configure spellchecking with lsp
 - nvim: try nvim-cmp plugin
 - nvim: try LuaSnip plugin
