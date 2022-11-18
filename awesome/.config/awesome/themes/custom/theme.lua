@@ -101,7 +101,7 @@ t.fg_focus      = cs.black
 t.fg_urgent     = cs.black
 t.fg_minimize   = cs.black
 
-t.useless_gap   = dpi(0)
+t.useless_gap   = dpi(2)
 t.border_width  = dpi(2)
 t.border_normal = t.bg_normal
 t.border_focus  = t.bg_focus
