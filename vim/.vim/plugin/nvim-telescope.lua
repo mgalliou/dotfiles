@@ -1,7 +1,10 @@
-require('telescope').setup{
+require('telescope').setup {
+	defaults = {
+		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		file_ignore_patterns = { ".git/" }
+	},
 	pickers = {
 		find_files = {
-			theme = "dropdown",
 			hidden = true
 		}
 	}
