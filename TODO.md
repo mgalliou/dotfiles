@@ -1,5 +1,6 @@
 ## To Do
 
+- vim: try vim-illuminate plugin
 - nvim: configure spellchecking with lsp
 - nvim: try nvim-cmp plugin
 - nvim: try LuaSnip plugin
