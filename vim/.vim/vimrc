@@ -54,6 +54,8 @@ elseif has("nvim")
 	"Plug 'windwp/nvim-autopairs'
 	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
 	Plug 'weilbith/nvim-code-action-menu'
+	Plug 'mfussenegger/nvim-dap'
+	Plug 'rcarriga/nvim-dap-ui'
 	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'lewis6991/gitsigns.nvim'
