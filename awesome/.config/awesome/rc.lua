@@ -165,8 +165,11 @@ end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
-local separator = wibox.widget.separator()
-separator.forced_width = 10
+local separator = wibox.widget.separator {
+	forced_width = 20,
+	opacity = 0
+}
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -195,7 +198,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
     }
 
 	-- Create the wibox
@@ -223,9 +226,13 @@ awful.screen.connect_for_each_screen(function(s)
 			volume_widget(),
 			separator,
 			power,
+			separator,
             mykeyboardlayout,
+			separator,
             wibox.widget.systray(),
+			separator,
             mytextclock,
+			separator,
         },
     }
 end)
@@ -590,3 +597,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Custom settings
 os.execute("xset r rate 200 50")
+os.execute("nm-applet &")
