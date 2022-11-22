@@ -25,3 +25,4 @@ tmux/.config/tmux/plugins/
 # MISC
 **/*.DS_Store
 tags*
+.luarc.json

@@ -44,6 +44,7 @@ elseif has("nvim")
 	Plug 'DanilaMihailov/beacon.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'xiyaowong/virtcolumn.nvim'
+	Plug 'RRethy/vim-illuminate'
 	Plug 'folke/todo-comments.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'nvim-lualine/lualine.nvim'
