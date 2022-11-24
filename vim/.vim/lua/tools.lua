@@ -7,4 +7,6 @@ function M.PluginIsLoaded(plugin)
 	return true
 end
 
+M.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+
 return M
