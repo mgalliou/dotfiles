@@ -1,5 +1,13 @@
-require("renamer").setup {}
+local renamer = require("renamer")
 
-vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+local function rename()
+	return renamer.rename {
+		empty = true
+	}
+end
+
+renamer.setup {
+	border_chars = require("tools").borderchars,
+}
+vim.keymap.set('i', '<F2>', rename, { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>rn', rename, { noremap = true, silent = true })
