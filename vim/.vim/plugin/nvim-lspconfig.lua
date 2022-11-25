@@ -111,7 +111,7 @@ end
 vim.diagnostic.config {
 	virtual_text = true,
 	signs = true,
-	underline = false,
+	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
 }
