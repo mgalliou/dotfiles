@@ -6,8 +6,8 @@ require('lualine').setup {
 		lualine_a = {'mode'},
 		lualine_b = {'branch', 'diff', 'diagnostics'},
 		lualine_c = {'filename', "require('nvim-lightbulb').get_status_text()"},
-		lualine_x = {},
-		lualine_y = {'filetype'},
+		lualine_x = {'filetype'},
+		lualine_y = {},
 		lualine_z = {'progress'}
 	}
 }
