@@ -99,6 +99,10 @@ require('lspconfig').ansiblels.setup {
 	on_attach = on_attach,
 	flags = lsp_flags
 }
+require('lspconfig').terraformls.setup {
+	on_attach = on_attach,
+	flags = lsp_flags
+}
 
 --vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
