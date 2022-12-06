@@ -11,6 +11,6 @@ require('nvim-lightbulb').setup {
 	},
 	autocmd = {
 		enabled = true,
-		events = { "CursorMoved", "CursorMovedI" }
+		events = { "CursorHold", "CursorHoldI" }
 	}
 }
