@@ -9,10 +9,7 @@ endif
 
 call plug#begin()
 Plug 'dstein64/vim-startuptime'
-Plug 'felixhummel/setcolors.vim'
 Plug 'gruvbox-community/gruvbox'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'srcery-colors/srcery-vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'leafgarland/typescript-vim',
 Plug 'cespare/vim-toml',
@@ -26,8 +23,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'luochen1990/rainbow'
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'skywind3000/gutentags_plus'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
@@ -35,12 +30,13 @@ if !has("nvim")
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'dense-analysis/ale'
+	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'skywind3000/gutentags_plus'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'itchyny/lightline.vim'
 	Plug 'shinchu/lightline-gruvbox.vim'
 elseif has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
-	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 	Plug 'DanilaMihailov/beacon.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'xiyaowong/virtcolumn.nvim'
@@ -50,10 +46,8 @@ elseif has("nvim")
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'nvim-treesitter/nvim-treesitter-context'
 	Plug 'm-demare/hlargs.nvim'
 	Plug 'kosayoda/nvim-lightbulb'
-	"Plug 'windwp/nvim-autopairs'
 	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'rcarriga/nvim-dap-ui'
