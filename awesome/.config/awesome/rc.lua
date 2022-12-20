@@ -598,3 +598,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Custom settings
 os.execute("xset r rate 200 50")
 os.execute("nm-applet &")
+os.execute("blueman-applet &")
