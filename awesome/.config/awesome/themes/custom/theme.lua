@@ -211,6 +211,20 @@ t.awesome_icon = theme_assets.awesome_icon(
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 t.icon_theme = nil
 
+local widgets = {
+    mic = require("widgets/mic"),
+}
+t.mic = widgets.mic({
+    timeout = 10,
+    settings = function(self)
+        if self.state == "muted" then
+            self.widget:set_markup_silently("<b>muted</b>")
+        else
+            self.widget:set_markup_silently("<b>unmuted</b>")
+        end
+    end
+})
+
 return t
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
