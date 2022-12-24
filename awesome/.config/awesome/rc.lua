@@ -304,9 +304,9 @@ globalkeys = gears.table.join(
               {description = "open a file explorer", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Control", "Shift" }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey, "Control" }, "l", function () awful.spawn("slock") end,
+    awful.key({ modkey, "Control", "Shift" }, "l", function () awful.spawn("slock") end,
               {description = "lock awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
