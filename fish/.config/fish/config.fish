@@ -6,4 +6,7 @@ if status is-interactive
 	source $CONFIG_PATH/abbr.fish
 	source $CONFIG_PATH/fzf.fish
 	source $CONFIG_PATH/bobthefish.fish
+
+	starship init fish | source
 end
+
