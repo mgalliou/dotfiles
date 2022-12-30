@@ -109,7 +109,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock("%a %d %b, %T")
 mytextclock.refresh = 1
-local widget_mic = wibox.widget { beautiful.mic.widget, layout = wibox.layout.align.horizontal }
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -224,8 +223,6 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
 			separator,
 			volume_widget(),
-			separator,
-			widget_mic,
 			separator,
             mykeyboardlayout,
 			separator,
@@ -608,3 +605,4 @@ os.execute("xset r rate 200 50")
 os.execute("nm-applet &")
 os.execute("blueman-applet &")
 os.execute("powerkit &")
+os.execute("mictray &")
