@@ -15,7 +15,6 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
-local power = require("power_widget")
 --local connman = require("connman_widget")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -227,8 +226,6 @@ awful.screen.connect_for_each_screen(function(s)
 			volume_widget(),
 			separator,
 			widget_mic,
-			separator,
-			power,
 			separator,
             mykeyboardlayout,
 			separator,
@@ -610,3 +607,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 os.execute("xset r rate 200 50")
 os.execute("nm-applet &")
 os.execute("blueman-applet &")
+os.execute("powerkit &")
