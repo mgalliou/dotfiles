@@ -37,10 +37,12 @@ if !has("nvim")
 	Plug 'shinchu/lightline-gruvbox.vim'
 elseif has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
+	Plug 'm4xshen/autoclose.nvim'
 	Plug 'DanilaMihailov/beacon.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'xiyaowong/virtcolumn.nvim'
 	Plug 'RRethy/vim-illuminate'
+	Plug 'asiryk/auto-hlsearch.nvim'
 	Plug 'folke/todo-comments.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'nvim-lualine/lualine.nvim'
