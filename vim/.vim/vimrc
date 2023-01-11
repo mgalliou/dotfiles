@@ -58,6 +58,7 @@ elseif has("nvim")
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'lewis6991/gitsigns.nvim'
 	Plug 'simrat39/rust-tools.nvim'
+	Plug 'mfussenegger/nvim-jdtls'
 endif
 call plug#end()
 
