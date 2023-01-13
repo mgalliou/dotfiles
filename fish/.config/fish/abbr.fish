@@ -1,10 +1,9 @@
 function replace_cmd
 	if type -q $argv[2]
-		abbr $argv[1] $argv[2]
+		abbr -a $argv[1] $argv[2]
 	end
 end
 
-replace_cmd l  exa
 replace_cmd cat bat
 replace_cmd vi  nvim
 replace_cmd vim nvim
@@ -35,8 +34,10 @@ abbr -a mfc "make fclean"
 abbr -a mr  "make re"
 
 if type -q exa
-	abbr -a ll  "exa -l"
-	abbr -a la  "exa -la"
+	abbr -a ls "exa --icons"
+	abbr -a l  "exa --icons"
+	abbr -a ll  "exa -l --icons"
+	abbr -a la  "exa -la --icons"
 end
 
 abbr -a t "taskell"
