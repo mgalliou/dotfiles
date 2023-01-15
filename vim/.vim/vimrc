@@ -9,7 +9,6 @@ endif
 
 call plug#begin()
 Plug 'dstein64/vim-startuptime'
-Plug 'gruvbox-community/gruvbox'
 Plug 'edkolev/tmuxline.vim'
 Plug 'leafgarland/typescript-vim',
 Plug 'cespare/vim-toml',
@@ -27,6 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
 if !has("nvim")
+	Plug 'gruvbox-community/gruvbox'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'dense-analysis/ale'
@@ -37,6 +37,7 @@ if !has("nvim")
 	Plug 'shinchu/lightline-gruvbox.vim'
 elseif has("nvim")
 	Plug 'nvim-lua/plenary.nvim'
+	Plug 'ellisonleao/gruvbox.nvim'
 	Plug 'm4xshen/autoclose.nvim'
 	Plug 'DanilaMihailov/beacon.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
