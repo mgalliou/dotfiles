@@ -48,7 +48,8 @@ vim.keymap.set('n', "[d", diag.goto_prev, opts)
 vim.keymap.set('n', "]d", diag.goto_next, opts)
 vim.keymap.set('n', "<leader>sll", diag.setloclist, opts)
 
-
+require("mason").setup {}
+require("mason-lspconfig").setup()
 local lspc = require("lspconfig")
 local lsp_flags = {
 	-- This is the default in Nvim 0.7+
