@@ -120,6 +120,11 @@ lspc.terraformls.setup {
 	flags = lsp_flags,
 }
 
+lspc.yamlls.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
+
 require("rust-tools").setup {
 	server = {
 		on_attach = on_attach,
