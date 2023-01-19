@@ -94,6 +94,11 @@ lspc.ccls.setup {
 	flags = lsp_flags,
 }
 
+lspc.lemminx.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
+
 lspc.ansiblels.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
