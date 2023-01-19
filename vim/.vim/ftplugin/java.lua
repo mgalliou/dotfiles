@@ -1,5 +1,5 @@
 local config = {
-    cmd = {'/home/linuxbrew/.linuxbrew/bin/jdtls'},
+    cmd = {'/home/mgalliou/.local/share/nvim/mason/bin/jdtls'},
     root_dir = vim.fs.dirname(vim.fs.find({'.gradlew', '.git', 'mvnw'}, { upward = true })[1]),
 }
 require("tools").on_attach("jdtls", 0)
