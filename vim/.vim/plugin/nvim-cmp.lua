@@ -21,7 +21,7 @@ cmp.setup {
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "luasnip", option = { show_autosnippets = true } },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "nvim_lua" },
