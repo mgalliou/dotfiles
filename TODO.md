@@ -1,10 +1,8 @@
 ## To Do
 
+- nvim: configure lsp capabilities (see cmp-nvim-lsp)
 - tmux: customize status line
-- nvim: try neorg
 - nvim: configure spellchecking with lsp
-- nvim: try nvim-cmp plugin
-- nvim: try LuaSnip plugin
 - nvim: try smooth scroll plugin
 - vim: customize lightline gruvbox theme
 
@@ -45,3 +43,6 @@
 - vim: try vim-illuminate plugin
 - nvim(lightbulb): put hint as virtual text
 - tmux/nvim: enable curly underline support
+- nvim: try nvim-cmp plugin
+- nvim: try LuaSnip plugin
+- nvim: try neorg
