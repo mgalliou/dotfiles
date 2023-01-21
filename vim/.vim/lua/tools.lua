@@ -10,27 +10,31 @@ end
 M.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
 
 M.kind_icons = {
-	Class = " ",
+	Class = "ﴯ ",
 	Color = " ",
 	Constant = " ",
 	Constructor = " ",
-	Enum = "了 ",
+	Enum = " ",
 	EnumMember = " ",
+	Event = " ",
 	Field = " ",
 	File = " ",
 	Folder = " ",
 	Function = " ",
-	Interface = "ﰮ ",
-	Keyword = " ",
+	Interface = " ",
+	Keyword = " ",
 	Method = "ƒ ",
 	Module = " ",
+	Operator = " ",
 	Property = " ",
-	Snippet = " ",
+	Reference = " ",
+	Snippet = " ",
 	Struct = " ",
 	Text = " ",
+	TypeParameter = " ",
 	Unit = " ",
 	Value = " ",
-	Variable = " ",
+	Variable = " ",
 }
 
 M.on_attach = function(client, bufnr)
