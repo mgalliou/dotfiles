@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local kind_icons = require("tools").kind_icons
 cmp.setup {
 	snippet = {
 		expand = function(args)
@@ -6,8 +7,21 @@ cmp.setup {
 		end,
 	},
 	completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
+		completeopt = "menu,menuone,noinsert",
+	},
+	formatting = {
+		format = function(entry, vim_item)
+			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+			vim_item.menu = ({
+				buffer = "[buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				nvim_lua = "[nvim_lua]",
+				latex_symbols = "[LaTeX]",
+			})[entry.source.name]
+			return vim_item
+		end
+	},
 	window = {
 		-- completion = cmp.config.window.bordered(),
 		-- documentation = cmp.config.window.bordered(),
