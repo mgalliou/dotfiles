@@ -40,5 +40,10 @@ cmp.setup {
 		{ name = "path" },
 		{ name = "nvim_lua" },
 		{ name = "neorg" },
-	})
+	}),
+	experimental = {
+		ghost_text = {
+			hl_group = "LspCodeLens",
+		},
+	},
 }
