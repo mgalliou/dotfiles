@@ -38,7 +38,6 @@ cmp.setup {
 		{ name = "luasnip", option = { show_autosnippets = true } },
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "path" },
-		{ name = "nvim_lua" },
 		{ name = "neorg" },
 	}),
 	experimental = {
