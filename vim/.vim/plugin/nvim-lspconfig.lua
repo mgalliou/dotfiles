@@ -60,6 +60,11 @@ lspc.lemminx.setup {
 	flags = lsp_flags,
 }
 
+lspc.dockerls.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
+
 lspc.ansiblels.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
