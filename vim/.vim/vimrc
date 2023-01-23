@@ -71,6 +71,7 @@ elseif has("nvim")
 	Plug 'simrat39/rust-tools.nvim'
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'folke/neodev.nvim'
+	Plug 'towolf/vim-helm'
 	Plug 'nvim-neorg/neorg', {'do': ':Neorg sync-parsers'}
 endif
 call plug#end()
