@@ -73,6 +73,7 @@ elseif has("nvim")
 	Plug 'folke/neodev.nvim'
 	Plug 'towolf/vim-helm'
 	Plug 'nvim-neorg/neorg', {'do': ':Neorg sync-parsers'}
+	Plug 'folke/which-key.nvim'
 endif
 call plug#end()
 
