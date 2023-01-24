@@ -16,3 +16,6 @@ require("neorg").setup {
 		["core.integrations.nvim-cmp"] = {},
 	},
 }
+
+vim.keymap.set('n', "<leader>nww", ":Neorg workspace work<CR>", nil)
+vim.keymap.set('n', "<leader>njt", ":Neorg journal today<CR>", nil)
