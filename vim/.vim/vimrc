@@ -64,7 +64,7 @@ elseif has("nvim")
 	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
 	Plug 'mfussenegger/nvim-dap'
 	Plug 'rcarriga/nvim-dap-ui'
-	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 	Plug 'nvim-telescope/telescope-ui-select.nvim'
 	Plug 'ThePrimeagen/harpoon'
 	Plug 'lewis6991/gitsigns.nvim'
