@@ -5,6 +5,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$kubernetes\
 $line_break\
 $cmd_duration\
 $jobs\
@@ -44,6 +45,11 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
+[kubernetes]
+symbol = 'k8: '
+format = ' [$symbol$context( \($namespace\))]($style)'
+disabled = false
 
 [jobs]
 symbol = "%"
