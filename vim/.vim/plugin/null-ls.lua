@@ -7,4 +7,5 @@ null_ls.setup {
 		null_ls.builtins.formatting.shellharden,
 		null_ls.builtins.formatting.jq
     },
+	on_attach = require("tools").on_attach
 }
