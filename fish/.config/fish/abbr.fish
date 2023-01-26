@@ -33,6 +33,10 @@ abbr -a md  "make debug"
 abbr -a mfc "make fclean"
 abbr -a mr  "make re"
 
+#TODO: add more abbrs
+abbr -a k kubectl
+abbr -a ka kubectl apply
+
 if type -q exa
 	abbr -a ls "exa --icons"
 	abbr -a l  "exa --icons"
