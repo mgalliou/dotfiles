@@ -136,6 +136,9 @@ set cursorline
 set listchars+=space:·
 set listchars+=eol:↴
 runtime macros/justify.vim "allow paragraph justification with _j 
+if !has("nvim")
+	set cmdheight=0
+endif
 
 " Searching
 set incsearch
