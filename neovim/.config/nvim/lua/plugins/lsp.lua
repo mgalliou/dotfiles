@@ -1,15 +1,16 @@
 return {
 	{
-		'williamboman/mason.nvim',
-		cmd = "Mason",
-		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
-	},
-	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			{
 		 	  	{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
+				{
+					'williamboman/mason.nvim',
+					cmd = "Mason",
+					keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
+					config = true
+				},
 				'williamboman/mason-lspconfig.nvim',
 			},
 		},
@@ -138,5 +139,5 @@ return {
 				on_attach = require("tools").on_attach,
 			})
 		end
-	}
+	},
 }
