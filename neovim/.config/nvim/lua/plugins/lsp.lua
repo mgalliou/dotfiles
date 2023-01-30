@@ -1,22 +1,15 @@
 return {
 	{
-		"folke/neodev.nvim",
-		-- TODO: config
-		config = true,
-	},
-	{
 		'williamboman/mason.nvim',
-		config = true,
-	},
-	{
-		'williamboman/mason-lspconfig.nvim',
 		config = true,
 	},
 	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			{
+				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
+				'williamboman/mason-lspconfig.nvim',
 			},
 		},
 		-- TODO: Refactor

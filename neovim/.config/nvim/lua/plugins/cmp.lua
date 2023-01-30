@@ -35,11 +35,14 @@ return {
 	},
 	{
 		'hrsh7th/nvim-cmp',
+		version = false,
 		dependencies = {
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-nvim-lsp',
+			'saadparwaiz1/cmp_luasnip',
 		},
-		config = function()
+		opts = function()
 			local cmp = require("cmp")
 			local kind_icons = require("tools").kind_icons
 			cmp.setup {
@@ -89,12 +92,6 @@ return {
 					},
 				},
 			}
-		end,
+		end
 	},
-	{
-		'hrsh7th/cmp-nvim-lsp',
-	},
-	{
-		'saadparwaiz1/cmp_luasnip'
-	}
 }
