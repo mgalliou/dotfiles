@@ -3,7 +3,7 @@ return {
 	version = false,
 	build = ":TSUpdate",
 	event = "BufReadPost",
-	-- More config
+	-- TODO: More config, ensure_installed, etc...
 	opts = {
 		highlight = { enable = true },
 		indent = { enable = true },
