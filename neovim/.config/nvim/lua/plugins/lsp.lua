@@ -1,13 +1,14 @@
 return {
 	{
 		'williamboman/mason.nvim',
-		config = true,
+		cmd = "Mason",
+		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
 	},
 	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			{
-				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+		 	  	{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
 				'williamboman/mason-lspconfig.nvim',
 			},
