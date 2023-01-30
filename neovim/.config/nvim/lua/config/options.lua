@@ -7,40 +7,42 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.virtualedit = "all"
 
+-- Behavior
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 0
 
+-- TODO: lua implem
 --[[
-" Behavior
 augroup disableautocomment
 	autocmd!
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 set updatetime=100
+]] --
 
+-- UI
+vim.opt.showmode = false
+vim.opt.signcolumn = "yes"
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.wildmenu = true
+vim.opt.colorcolumn = "81"
+vim.opt.cursorline = true
+-- TODO: lua implem
+--vim.opt.listchars = { "space:·", "eol:↴" }
+--runtime macros/justify.vim "allow paragraph justification with _j 
+vim.opt.cmdheight = 0
 
-" UI
-set noshowmode
-set signcolumn=yes
-set number
-set relativenumber
-set wildmenu
-set colorcolumn=81
-set cursorline
-set listchars+=space:·
-set listchars+=eol:↴
-runtime macros/justify.vim "allow paragraph justification with _j 
-if has("nvim")
-	set cmdheight=0
-endif
+-- Searching
+vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.showmatch = true
 
-" Searching
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
+-- TODO: lua implem
+--[[
 if exists("##CmdLineEnter")
 	augroup dynamic\_smartcase
 		autocmd!
@@ -48,17 +50,21 @@ if exists("##CmdLineEnter")
 		autocmd CmdLineLeave : set smartcase
 	augroup END
 endif
+]]--
 
-" Folding
-set foldmethod=marker
+-- Folding
+vim.opt.foldmethod = "marker"
 
-" Filetype
-let g:asmsyntax = 'nasm'
+-- Filetype
+vim.g.asmsyntax = 'nasm'
 
-" Spellchecking
-set spelllang=en,fr
-set spellsuggest=best,10
+-- Spellchecking
+-- TODO: lua implem
+--vim.o.spelllang = { "en" }
+vim.o.spellsuggest=best,10
 
+-- TODO: finish migration
+--[[
 " Backup
 set history=200
 set noswapfile
@@ -91,4 +97,4 @@ nnoremap <leader>sc <CMD>set spell!<CR>
 nnoremap <leader>ln <CMD>call tools#ToggleLineNumberMode()<CR>
 
 "}}}
-]] --
+]]--
