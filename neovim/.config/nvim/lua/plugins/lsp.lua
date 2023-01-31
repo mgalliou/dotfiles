@@ -3,7 +3,7 @@ return {
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			{
-		 	  	{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
 				{
 					'williamboman/mason.nvim',
@@ -12,6 +12,16 @@ return {
 					config = true
 				},
 				'williamboman/mason-lspconfig.nvim',
+				{
+					'filipdutescu/renamer.nvim',
+					opts = {
+						border_chars = require("tools").borderchars,
+					},
+					keys = {
+						{ "<F2>", function() require("renamer").rename({}) end, mode = 'i', desc = "Rename with lsp" },
+						{ "<leader>rn", function() require("renamer").rename({}) end, mode = { 'n', 'v' }, desc = "Rename with lsp" }
+					},
+				},
 			},
 		},
 		-- TODO: Refactor
@@ -125,10 +135,10 @@ return {
 	{
 		'jose-elias-alvarez/null-ls.nvim',
 		-- TODO: config
-		config = function ()
+		config = function()
 			local null_ls = require("null-ls")
 
-			null_ls.setup ({
+			null_ls.setup({
 				sources = {
 					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.formatting.beautysh,
