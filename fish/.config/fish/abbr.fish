@@ -12,6 +12,7 @@ abbr 		v	$EDITOR
 abbr -a rm "rm -I"
 
 abbr -a ga   "git add"
+abbr -a gaa   "git add -A"
 abbr -a gcl  "git clone"
 abbr -a gc   "git commit -v"
 abbr -a gca  "git commit --amend"
