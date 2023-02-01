@@ -1,15 +1,17 @@
 format = """
-$username\
+ $username\
 $hostname\
 $directory\
 $git_branch\
 $git_state\
 $git_status\
-$kubernetes\
+$fill\
+$kubernetes \
 $line_break\
 $cmd_duration\
 $jobs\
 $character"""
+
 
 [directory]
 style = "blue"
@@ -19,8 +21,11 @@ success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
+[fill]
+symbol = " "
+
 [git_branch]
-format = "[$branch]($style)"
+format = "$symbol[$branch]($style)"
 style = "bright-black"
 
 [git_status]
@@ -47,8 +52,8 @@ format = "[$virtualenv]($style) "
 style = "bright-black"
 
 [kubernetes]
-symbol = 'k8: '
-format = ' [$symbol$context( \($namespace\))]($style)'
+symbol = 'k8'
+format = '[$symbol://$context/$namespace]($style)'
 disabled = false
 
 [jobs]
