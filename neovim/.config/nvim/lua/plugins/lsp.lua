@@ -5,6 +5,7 @@ return {
 			{
 				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
+				'mfussenegger/nvim-jdtls',
 				{
 					'williamboman/mason.nvim',
 					cmd = "Mason",
