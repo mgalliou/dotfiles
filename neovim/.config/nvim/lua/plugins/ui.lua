@@ -1,4 +1,13 @@
 return {
+	{
+		'lukas-reineke/indent-blankline.nvim',
+		opts = {
+			-- TODO: improve configuration
+			show_current_context = true,
+			show_end_of_line = true,
+			space_char_blankline = " ",
+		},
+	},
 	{ 'asiryk/auto-hlsearch.nvim', config = true },
 	{
 		'm-demare/hlargs.nvim',
