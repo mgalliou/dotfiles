@@ -17,6 +17,8 @@ return {
 			},
 		},
 	},
+	-- TODO: configure
+	{ 'RRethy/vim-illuminate' },
 	-- TODO: add configuration/keymaps
 	{ 'folke/todo-comments.nvim', config = true },
 	{ 'kyazdani42/nvim-web-devicons' },
