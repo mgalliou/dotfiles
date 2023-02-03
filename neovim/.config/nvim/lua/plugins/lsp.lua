@@ -23,6 +23,25 @@ return {
 						{ "<leader>rn", function() require("renamer").rename({}) end, mode = { 'n', 'v' }, desc = "Rename with lsp" }
 					},
 				},
+				{
+					'kosayoda/nvim-lightbulb',
+					opts = {
+						sign = {
+							enabled = false,
+						},
+						virtual_text = {
+							enabled = true,
+							hl_mode = "combine",
+						},
+						status_text = {
+							enabled = true,
+						},
+						autocmd = {
+							enabled = true,
+							events = { "CursorHold", "CursorHoldI" }
+						}
+					}
+				},
 			},
 		},
 		-- TODO: Refactor
