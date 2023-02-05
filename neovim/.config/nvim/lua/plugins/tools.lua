@@ -21,7 +21,7 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>nww", "<cmd>Neorg workspace<CR>", desc = "Neorg work workspace" },
+		{ "<leader>nww", "<cmd>Neorg workspace work<CR>", desc = "Neorg work workspace" },
 		{ "<leader>njt", "<cmd>Neorg journal today<CR>", desc = "Neorg today journal" }
 	}
 }
