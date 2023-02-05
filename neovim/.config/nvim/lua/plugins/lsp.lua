@@ -1,17 +1,13 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
+		event = "BufReadPre",
 		dependencies = {
 			{
 				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
 				'mfussenegger/nvim-jdtls',
-				{
-					'williamboman/mason.nvim',
-					cmd = "Mason",
-					keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
-					config = true
-				},
+				'mason.nvim',
 				'williamboman/mason-lspconfig.nvim',
 				{
 					'filipdutescu/renamer.nvim',
@@ -154,6 +150,8 @@ return {
 	},
 	{
 		'jose-elias-alvarez/null-ls.nvim',
+		event = "BufReadPre",
+		depenpencies = "mason.nvim",
 		-- TODO: config
 		config = function()
 			local null_ls = require("null-ls")
@@ -169,5 +167,12 @@ return {
 				on_attach = require("tools").on_attach,
 			})
 		end
+	},
+	{
+		'williamboman/mason.nvim',
+		cmd = "Mason",
+		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
+		-- TODO: configure `ensure_installed`
+		config = true
 	},
 }

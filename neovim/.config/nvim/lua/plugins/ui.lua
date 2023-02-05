@@ -1,6 +1,7 @@
 return {
 	{
 		'lukas-reineke/indent-blankline.nvim',
+		event = "BufReadPost",
 		opts = {
 			-- TODO: improve configuration
 			show_current_context = true,
@@ -8,9 +9,14 @@ return {
 			space_char_blankline = " ",
 		},
 	},
-	{ 'asiryk/auto-hlsearch.nvim', config = true },
+	{
+		'asiryk/auto-hlsearch.nvim',
+		event = "BufReadPost",
+		config = true
+	},
 	{
 		'm-demare/hlargs.nvim',
+		event = "CursorMoved",
 		opts = {
 			highlight = {
 				italic = true
@@ -18,9 +24,17 @@ return {
 		},
 	},
 	-- TODO: configure
-	{ 'RRethy/vim-illuminate' },
+	{
+		'RRethy/vim-illuminate',
+		event = "BufReadPost"
+	},
 	-- TODO: add configuration/keymaps
-	{ 'folke/todo-comments.nvim', config = true },
+	{
+		'folke/todo-comments.nvim',
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = "BufReadPost",
+		config = true
+	},
 	{ 'kyazdani42/nvim-web-devicons' },
 	{
 		"nvim-lualine/lualine.nvim",
@@ -40,6 +54,7 @@ return {
 	},
 	{
 		'lewis6991/gitsigns.nvim',
+		event = "BufReadPre",
 		opts = {
 			on_attach = function(buffer)
 				local gs = package.loaded.gitsigns

@@ -8,7 +8,7 @@ return {
 	},
 	{
 		'folke/which-key.nvim',
-		config = function ()
+		config = function()
 			--TODO: Improve configuration
 			vim.o.timeout = true
 			vim.o.timeoutlen = 500
@@ -16,8 +16,8 @@ return {
 			})
 		end,
 	},
-	{ "tpope/vim-repeat" },
-	{ "tpope/vim-surround" },
-	{ "tpope/vim-commentary" },
-	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-repeat", event = "BufReadPost" },
+	{ "tpope/vim-surround", event = "BufReadPost" },
+	{ "tpope/vim-commentary", event = "BufReadPost" },
+	{ "tpope/vim-fugitive", cmd = "Git" },
 }

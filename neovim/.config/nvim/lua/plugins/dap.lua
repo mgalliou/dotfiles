@@ -1,10 +1,11 @@
 return {
 	{
 		'mfussenegger/nvim-dap',
+		event = "BufReadPre",
 		dependencies = {
 			{
-				'rcarriga/nvim-dap-ui',
-				config = true,
+				'mason.nvim',
+				{ 'rcarriga/nvim-dap-ui', config = true },
 			},
 			-- TODO: plug "jbyuki/one-small-step-for-vimkind"
 		},
