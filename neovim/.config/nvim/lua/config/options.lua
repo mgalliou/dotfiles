@@ -11,15 +11,6 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.virtualedit = "all"
 
--- TODO: lua implem
---[[
-augroup disableautocomment
-	autocmd!
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-augroup END
-set updatetime=100
-]] --
-
 -- UI
 vim.opt.termguicolors = true
 vim.opt.showmode = false
@@ -39,16 +30,6 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.showmatch = true
-
---[[TODO: lua implem
-if exists("##CmdLineEnter")
-	augroup dynamic\_smartcase
-		autocmd!
-		autocmd CmdLineEnter : set nosmartcase
-		autocmd CmdLineLeave : set smartcase
-	augroup END
-endif
-]] --
 
 -- Folding
 vim.opt.foldmethod = "marker"
