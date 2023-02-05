@@ -5,8 +5,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$fill\
-$kubernetes \
+$kubernetes\
 $line_break\
 $cmd_duration\
 $jobs\
