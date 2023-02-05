@@ -1,17 +1,14 @@
-vim.g.mapleader = " "
-
---vim.o.backspace = "indent", "eol", "start"
+-- Behavior
+vim.opt.backspace = { "indent", "eol", "start" }
+vim.opt.autoindent = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 0
 vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 4
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.virtualedit = "all"
-
--- Behavior
-vim.opt.autoindent = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 0
 
 -- TODO: lua implem
 --[[
@@ -59,42 +56,17 @@ vim.opt.foldmethod = "marker"
 vim.g.asmsyntax = 'nasm'
 
 -- Spellchecking
--- TODO: lua implem
---vim.o.spelllang = { "en" }
-vim.o.spellsuggest=best,10
+vim.opt.spellsuggest= { "best", "10" }
 
--- TODO: finish migration
---[[
-" Backup
-set history=200
-set noswapfile
-set backup
-set backupdir-=.
-set undofile
-set undodir-=.
+-- Backup
+vim.opt.history = 200
+vim.opt.swapfile = true
+vim.opt.backup = true
+vim.opt.backupdir:remove(".")
+vim.opt.undofile = true
+vim.opt.undodir:remove(".")
 
-" netrw 
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-"let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-
-"}}}
-" Mappings {{{
-
-let mapleader = " "
-" reload vimrc
-nnoremap <leader>rl <CMD>so $MYVIMRC<CR>
-" remove highlights
-nnoremap <leader>hl <CMD>nohl<CR>
-" remove trailing white spaces
-nnoremap <leader>ws m`:%s/\s\+$//<CR>:let @/=''<CR>``:w<CR>
-" toggle invisible chars
-nnoremap <leader>lst <CMD>set list!<CR>
-" save files with root privileges
-cmap w!! w !sudo tee % >/dev/null
-
-nnoremap <leader>sc <CMD>set spell!<CR>
-nnoremap <leader>ln <CMD>call tools#ToggleLineNumberMode()<CR>
-
-"}}}
-]]--
+-- netrw 
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_list_hide = "(^|ss)zs.S+"
