@@ -1,10 +1,10 @@
 return {
 	-- TODO: lazy load on filetype; check configuration
-	'dag/vim-fish',
-	'tmux-plugins/vim-tmux',
-	'cespare/vim-toml',
-	'leafgarland/typescript-vim',
-	'pearofducks/ansible-vim',
-	'towolf/vim-helm',
-	'vim-scripts/tf2.vim',
+	{ 'dag/vim-fish', ft = "fish"},
+	{ 'tmux-plugins/vim-tmux', ft = "tmux" },
+	{ 'cespare/vim-toml', ft = "toml" },
+	{ 'leafgarland/typescript-vim', ft = "typescript" },
+	{ 'pearofducks/ansible-vim', ft = "yaml" },
+	{ 'towolf/vim-helm', ft = "yaml" },
+	{ 'vim-scripts/tf2.vim', ft = "cfg" }
 }
