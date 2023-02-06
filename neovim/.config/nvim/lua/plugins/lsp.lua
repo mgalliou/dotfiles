@@ -151,7 +151,7 @@ return {
 	{
 		'jose-elias-alvarez/null-ls.nvim',
 		event = "BufReadPre",
-		depenpencies = "mason.nvim",
+		dependencies = "mason.nvim",
 		-- TODO: config
 		config = function()
 			local null_ls = require("null-ls")
