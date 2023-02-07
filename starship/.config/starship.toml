@@ -28,7 +28,7 @@ format = "$symbol[$branch]($style)"
 style = "bright-black"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style) "
 style = "cyan"
 conflicted = "​"
 untracked = "​"
@@ -52,7 +52,7 @@ style = "bright-black"
 
 [kubernetes]
 symbol = 'k8'
-format = '[$symbol://$context/$namespace]($style)'
+format = '[[$symbol://$context/$namespace](fg:black bg:cyan)](fg:cyan bg:black)'
 disabled = false
 
 [jobs]
