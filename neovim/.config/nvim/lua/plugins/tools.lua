@@ -1,5 +1,10 @@
 return {
 	{
+		"sindrets/diffview.nvim",
+		cmd = { "DiffviewOpen" }
+		-- TODO: configure
+	},
+	{
 		"folke/trouble.nvim",
 		-- TODO: configure
 		opts = {
