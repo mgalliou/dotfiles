@@ -5,7 +5,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$kubernetes\
+$kubernetes \
 $line_break\
 $cmd_duration\
 $jobs\
@@ -51,8 +51,14 @@ format = "[$virtualenv]($style) "
 style = "bright-black"
 
 [kubernetes]
-symbol = 'k8'
-format = '[[$symbol://$context/$namespace](fg:black bg:cyan)](fg:cyan bg:black)'
+symbol = 'k8s'
+#format = '[[$symbol://$context/$namespace](fg:black bg:cyan)](fg:cyan bg:black) '
+format = """\
+[](fg:blue bg:black)[$symbol](fg:black bg:blue)[](fg:blue bg:bright-blue)\
+[ $context](fg:black bg:bright-blue)[](fg:bright-blue bg:bright-white)\
+[ $namespace](fg:black bg:bright-white)\
+[](fg:bright-white bg:black)\
+"""
 disabled = false
 
 [jobs]
