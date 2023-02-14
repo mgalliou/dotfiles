@@ -38,4 +38,5 @@ return {
 			{ "<leader>njt", "<cmd>Neorg journal today<CR>", desc = "Neorg today journal" }
 		},
 	},
+	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 }
