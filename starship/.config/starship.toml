@@ -59,6 +59,7 @@ format = """\
 [ $namespace](fg:black bg:bright-white)\
 [](fg:bright-white bg:black)\
 """
+detect_extensions = [ "k8s.yaml", "k8s" ]
 disabled = false
 
 [jobs]
