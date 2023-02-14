@@ -46,7 +46,7 @@ return {
 			local opts = { noremap = true, silent = true }
 
 			diag.config {
-				virtual_text = true,
+				virtual_text = { spacing = 4, prefix = "●" },
 				signs = true,
 				underline = true,
 				update_in_insert = false,
@@ -97,6 +97,11 @@ return {
 			}
 
 			lspc.lemminx.setup {
+				on_attach = on_attach,
+				flags = lsp_flags,
+			}
+
+			lspc.marksman.setup {
 				on_attach = on_attach,
 				flags = lsp_flags,
 			}
