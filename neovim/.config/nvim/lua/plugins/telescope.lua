@@ -45,6 +45,24 @@ return {
 				desc = "Find buffer with Telescope",
 			},
 			{
+				"<leader>ss",
+				function() require("telescope.builtin").lsp_document_symbols({
+					symbols = {
+						"Class",
+						"Function",
+						"Method",
+						"Constructor",
+						"Interface",
+						"Module",
+						"Struct",
+						"Trait",
+						"Field",
+						"Property",
+					}
+				}) end,
+				desc = "Goto Symbol",
+			},
+			{
 				"<leader>fh",
 				function() require("telescope.builtin").help_tags() end,
 				desc = "Find helptags with Telescope",
