@@ -33,7 +33,7 @@ lspc.vimls.setup {
 	flags = lsp_flags,
 }
 
-lspc.sumneko_lua.setup {
+lspc.lua_ls.setup {
 	settings = {
 		Lua = {
 			completion = {
