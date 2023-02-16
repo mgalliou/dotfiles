@@ -22,5 +22,5 @@ return {
 	{ "tpope/vim-repeat", event = "BufReadPost" },
 	{ "tpope/vim-surround", event = "BufReadPost" },
 	{ "tpope/vim-commentary", event = "BufReadPost" },
-	{ "tpope/vim-fugitive", cmd = "Git" },
+	{ "tpope/vim-fugitive" },
 }
