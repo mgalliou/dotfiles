@@ -25,56 +25,15 @@ Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/goyo.vim'
-if !has("nvim")
-	Plug 'gruvbox-community/gruvbox'
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
-	Plug 'dense-analysis/ale'
-	Plug 'ludovicchabant/vim-gutentags'
-	Plug 'skywind3000/gutentags_plus'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'itchyny/lightline.vim'
-	Plug 'shinchu/lightline-gruvbox.vim'
-elseif has("nvim")
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'ellisonleao/gruvbox.nvim'
-	Plug 'm4xshen/autoclose.nvim'
-	Plug 'DanilaMihailov/beacon.nvim'
-	Plug 'lukas-reineke/indent-blankline.nvim'
-	Plug 'xiyaowong/virtcolumn.nvim'
-	Plug 'RRethy/vim-illuminate'
-	Plug 'asiryk/auto-hlsearch.nvim'
-	Plug 'folke/todo-comments.nvim'
-	Plug 'kyazdani42/nvim-web-devicons'
-	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'jose-elias-alvarez/null-ls.nvim'
-	Plug 'williamboman/mason.nvim'
-	Plug 'williamboman/mason-lspconfig.nvim'
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'L3MON4D3/LuaSnip'
-	Plug 'rafamadriz/friendly-snippets'
-	Plug 'hrsh7th/nvim-cmp'
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/cmp-path'
-	Plug 'saadparwaiz1/cmp_luasnip'
-	Plug 'm-demare/hlargs.nvim'
-	Plug 'kosayoda/nvim-lightbulb'
-	Plug 'filipdutescu/renamer.nvim', { 'branch': 'master' }
-	Plug 'mfussenegger/nvim-dap'
-	Plug 'rcarriga/nvim-dap-ui'
-	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-	Plug 'nvim-telescope/telescope-ui-select.nvim'
-	Plug 'ThePrimeagen/harpoon'
-	Plug 'lewis6991/gitsigns.nvim'
-	Plug 'simrat39/rust-tools.nvim'
-	Plug 'mfussenegger/nvim-jdtls'
-	Plug 'folke/neodev.nvim'
-	Plug 'towolf/vim-helm'
-	Plug 'nvim-neorg/neorg', {'do': ':Neorg sync-parsers'}
-	Plug 'folke/which-key.nvim'
-endif
+Plug 'gruvbox-community/gruvbox'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 call plug#end()
 
 "}}}
@@ -136,9 +95,6 @@ set cursorline
 set listchars+=space:·
 set listchars+=eol:↴
 runtime macros/justify.vim "allow paragraph justification with _j 
-if has("nvim")
-	set cmdheight=0
-endif
 
 " Searching
 set incsearch
