@@ -1,3 +1,9 @@
+local function T(s, o)
+	return function()
+		require("telescope.builtin")[s](o)
+	end
+end
+
 return {
 	{
 		'nvim-telescope/telescope.nvim',
@@ -13,8 +19,10 @@ return {
 		},
 		opts = {
 			defaults = {
-				borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-				file_ignore_patterns = { ".git/" }
+				file_ignore_patterns = { ".git/" },
+				borderchars = require("tools").borderchars,
+				prompt_prefix = " ",
+				selection_caret = " "
 			},
 			pickers = {
 				find_files = {
@@ -24,29 +32,15 @@ return {
 		},
 		-- TODO: change and add more keybind
 		keys = {
-			{
-				"<leader>ff",
-				function() require("telescope.builtin").find_files() end,
-				desc = "Find files with Telescope",
-			},
-			{
-				"<leader>fd",
-				function() require("telescope.builtin").find_files({ cwd = "~/dotfiles" }) end,
-				desc = "Find dotfiles with Telescope",
-			},
-			{
-				"<leader>fg",
-				function() require("telescope.builtin").live_grep() end,
-				desc = "Grep in currend directory with Telescope",
-			},
-			{
-				"<leader>fb",
-				function() require("telescope.builtin").buffers() end,
-				desc = "Find buffer with Telescope",
-			},
+			{ "<leader>ff", T("find_files"),                         desc = "Find files with Telescope" },
+			{ "<leader>fF", T("find_files", { cwd = false }),        desc = "Find files in current working directory Telescope" },
+			{ "<leader>fd", T("find_files", { cwd = "~/dotfiles" }), desc = "Find dotfiles with Telescope" },
+			{ "<leader>fg", T("live_grep"),                          desc = "Grep in currend directory with Telescope" },
+			{ "<leader>fb", T("buffers"),                            desc = "Find buffer with Telescope" },
+			{ "<leader>fh", T("help_tags"),                          desc = "Find helptags with Telescope" },
 			{
 				"<leader>ss",
-				function() require("telescope.builtin").lsp_document_symbols({
+				T("lsp_document_symbols", {
 					symbols = {
 						"Class",
 						"Function",
@@ -57,15 +51,10 @@ return {
 						"Struct",
 						"Trait",
 						"Field",
-						"Property",
+						"Property"
 					}
-				}) end,
+				}),
 				desc = "Goto Symbol",
-			},
-			{
-				"<leader>fh",
-				function() require("telescope.builtin").help_tags() end,
-				desc = "Find helptags with Telescope",
 			},
 		},
 	},
