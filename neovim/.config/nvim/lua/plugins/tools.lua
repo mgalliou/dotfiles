@@ -38,6 +38,10 @@ return {
 			{ "<leader>njt", "<cmd>Neorg journal today<CR>", desc = "Neorg today journal" }
 		},
 	},
+	{
+		-- TODO: configure zk-nvim
+		"mickael-menu/zk-nvim",
+	},
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	{
 		"trmckay/based.nvim",
