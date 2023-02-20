@@ -39,8 +39,16 @@ return {
 		},
 	},
 	{
-		-- TODO: configure zk-nvim
 		"mickael-menu/zk-nvim",
+		config = function ()
+			require("zk").setup({
+				-- TODO: check if needed
+				picker = "telescope",
+				lsp = {
+					on_attach = require("tools").on_attach
+				},
+			})
+		end
 	},
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	{
