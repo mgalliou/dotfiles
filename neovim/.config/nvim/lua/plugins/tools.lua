@@ -1,3 +1,8 @@
+local function Z(cmd, opt)
+	return function()
+		require("zk.commands").get(cmd)(opt)
+	end
+end
 return {
 	{
 		"sindrets/diffview.nvim",
@@ -41,14 +46,37 @@ return {
 	{
 		"mickael-menu/zk-nvim",
 		config = function ()
+			vim.env.ZK_NOTEBOOK_DIR = os.getenv("HOME") .. "/notes/zk"
 			require("zk").setup({
-				-- TODO: check if needed
 				picker = "telescope",
 				lsp = {
 					on_attach = require("tools").on_attach
 				},
 			})
-		end
+		end,
+		keys = {
+			{ "<leader>zf", Z("ZkNotes", {}), desc = "Find note" },
+			{
+				"<leader>zn",
+				function()
+					local title = vim.fn.input("Title: ")
+					require("zk").new({ title = title })
+				end,
+				desc = "New note"
+			},
+			{
+				"<leader>zc",
+				function()
+					local title = vim.fn.input("Title: ")
+					require("zk.commands").get("ZkNewFromTitleSelection")({ title = title })
+				end,
+				desc = "New note with selection as title"
+			},
+			{ "<leader>zt", Z("ZkNewFromTitleSelection", {}), desc = "New note with selection as content" },
+			{ "<leader>zx", Z("ZkLinks"), desc = "Pick links in current buffer" },
+			{ "<leader>zb", Z("ZkBackLinks"), desc = "Pick backlinks in the current buffer" },
+			{ "<leader>zl", Z("ZkInsertLink"), desc = "Pick backlinks in the current buffer" },
+		}
 	},
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	{
