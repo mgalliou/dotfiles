@@ -15,3 +15,7 @@ else if type -q vi
     set -x EDITOR vi
 end
 abbr 		v	$EDITOR
+
+if type -q zk
+	set -x ZK_NOTEBOOK_DIR $HOME/notes/zk
+end
