@@ -46,7 +46,6 @@ return {
 	{
 		"mickael-menu/zk-nvim",
 		config = function ()
-			vim.env.ZK_NOTEBOOK_DIR = os.getenv("HOME") .. "/notes/zk"
 			require("zk").setup({
 				picker = "telescope",
 				lsp = {
@@ -68,7 +67,7 @@ return {
 				"<leader>zc",
 				function()
 					local title = vim.fn.input("Title: ")
-					require("zk.commands").get("ZkNewFromTitleSelection")({ title = title })
+					require("zk.commands").get("ZkNewFromContentSelection")({ title = title })
 				end,
 				desc = "New note with selection as title"
 			},
