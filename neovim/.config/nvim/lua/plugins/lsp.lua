@@ -6,7 +6,6 @@ return {
 			{
 				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
-				'mfussenegger/nvim-jdtls',
 				'mason.nvim',
 				'williamboman/mason-lspconfig.nvim',
 				{
@@ -153,6 +152,7 @@ return {
 			end
 		end
 	},
+	{ 'mfussenegger/nvim-jdtls' },
 	{
 		'jose-elias-alvarez/null-ls.nvim',
 		event = "BufReadPre",
