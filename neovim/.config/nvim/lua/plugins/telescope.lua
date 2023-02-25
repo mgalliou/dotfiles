@@ -22,7 +22,17 @@ return {
 				file_ignore_patterns = { ".git/" },
 				borderchars = require("tools").borderchars,
 				prompt_prefix = " ",
-				selection_caret = " "
+				selection_caret = " ",
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"-.",
+				}
 			},
 			pickers = {
 				find_files = {
