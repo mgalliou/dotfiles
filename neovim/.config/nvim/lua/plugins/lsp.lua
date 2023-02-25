@@ -131,6 +131,11 @@ return {
 				flags = lsp_flags,
 			}
 
+			lspc.kotlin_language_server.setup {
+				on_attach = on_attach,
+				flags = lsp_flags,
+			}
+
 			require("rust-tools").setup {
 				server = {
 					on_attach = on_attach,
