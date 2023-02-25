@@ -39,7 +39,6 @@ return {
 				},
 			},
 		},
-		-- TODO: Refactor
 		config = function()
 			local diag = vim.diagnostic
 			local opts = { noremap = true, silent = true }
@@ -56,25 +55,14 @@ return {
 			vim.keymap.set('n', "]d", diag.goto_next, opts)
 			vim.keymap.set('n', "<leader>sll", diag.setloclist, opts)
 
-			local lspc = require("lspconfig")
+			local lspconfig = require("lspconfig")
 			local on_attach = require("tools").on_attach
 			local lsp_flags = {
 				-- This is the default in Nvim 0.7+
 				debounce_text_changes = 150,
 			}
-
-			lspc.bashls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.vimls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.lua_ls.setup {
-				settings = {
+			local servers = {
+				lua_ls = {
 					Lua = {
 						completion = {
 							callSnippet = "Replace"
@@ -86,55 +74,26 @@ return {
 						},
 					},
 				},
-				on_attach = on_attach,
-				flags = lsp_flags,
+				bashls = {},
+				vimls = {},
+				ccls = {},
+				lemminx = {},
+				marksman = {},
+				dockerls = {},
+				ansiblels = {},
+				solargraph = {},
+				terraformls = {},
+				yamlls = {},
+				kotlin_language_server = {}
 			}
 
-			lspc.ccls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.lemminx.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.marksman.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.dockerls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.ansiblels.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			--ruby lsp
-			lspc.solargraph.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.terraformls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.yamlls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
-
-			lspc.kotlin_language_server.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-			}
+			for ls, opt in pairs(servers) do
+				lspconfig[ls].setup({
+					on_attach = on_attach,
+					flags = lsp_flags,
+					settings = opt
+				})
+			end
 
 			require("rust-tools").setup {
 				server = {
