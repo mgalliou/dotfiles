@@ -115,5 +115,21 @@ return {
 				enabled = false,
 			}
 		}
-	}
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		dependencies = {
+			{ "MunifTanjim/nui.nvim", lazy = true }
+		},
+		opts = {
+			filesystem = {
+				filtered_items = {
+					hide_dotfiles = false,
+					hide_hidden = false,
+					hide_gitignored = false,
+				},
+			},
+		},
+		-- TODO: add keymaps
+	},
 }
