@@ -14,7 +14,12 @@ return {
 		-- TODO: configure
 		opts = {
 			use_diagnostic_signs = true
+		},
+		keys = {
+			{ "<leader>xx", ":TroubleToggle<CR>", desc = "Toggle Trouble" },
+			{ "<leader>xt", ":TodoTrouble<CR>", desc = "Toggle Trouble" },
 		}
+
 	},
 	{
 		"nvim-neorg/neorg",
