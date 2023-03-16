@@ -39,6 +39,11 @@ abbr -a mr  "make re"
 abbr -a k kubectl
 abbr -a ka kubectl apply
 
+abbr -a h  "helm"
+abbr -a hl "helm list"
+abbr -a hi "helm install"
+abbr -a hu "helm uninstall"
+
 if type -q exa
 	abbr -a ls "exa --icons"
 	abbr -a l  "exa --icons"
