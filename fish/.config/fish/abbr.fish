@@ -36,8 +36,11 @@ abbr -a mfc "make fclean"
 abbr -a mr  "make re"
 
 #TODO: add more abbrs
-abbr -a k kubectl
-abbr -a ka kubectl apply
+abbr -a k   "kubectl"
+abbr -a ka  "kubectl apply"
+abbr -a kc  "kubectl config"
+abbr -a kgx "kubectl config get-contexts"
+abbr -a ksx "kubectl config set-context"
 
 abbr -a h  "helm"
 abbr -a hl "helm list"
