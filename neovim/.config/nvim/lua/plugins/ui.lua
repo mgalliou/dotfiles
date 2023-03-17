@@ -49,7 +49,8 @@ return {
 				lualine_x = { 'filetype' },
 				lualine_y = {},
 				lualine_z = { 'progress' }
-			}
+			},
+			extensions = { "neo-tree" }
 		},
 	},
 	{
@@ -131,5 +132,8 @@ return {
 			},
 		},
 		-- TODO: add keymaps
+		keys = {
+			{ "<A-1>", "<cmd>NeoTreeFocusToggle<cr>", desc = "Toggle Neo-tree" }
+		}
 	},
 }
