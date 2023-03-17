@@ -40,7 +40,9 @@ return {
 		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {
-				theme = 'gruvbox'
+				theme = 'gruvbox',
+				component_separators = { left = '|', right = '|' },
+				section_separators = {},
 			},
 			sections = {
 				lualine_a = { 'mode' },
