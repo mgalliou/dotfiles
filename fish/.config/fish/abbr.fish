@@ -45,6 +45,7 @@ abbr -a ksx "kubectl config set-context"
 abbr -a h  "helm"
 abbr -a hl "helm list"
 abbr -a hi "helm install"
+abbr -a hup "helm upgrade --install"
 abbr -a hu "helm uninstall"
 
 if type -q exa
