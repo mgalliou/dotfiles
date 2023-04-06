@@ -97,7 +97,11 @@ return {
 				ansiblels = {},
 				solargraph = {},
 				terraformls = {},
-				yamlls = {},
+				yamlls = {
+					yaml = {
+						keyOrdering = false
+					}
+				},
 				helm_ls = {
 					filetypes = { "helm" },
 					cmd = { "helm_ls", "serve" },
