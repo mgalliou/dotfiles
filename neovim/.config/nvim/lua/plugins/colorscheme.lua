@@ -38,5 +38,7 @@ return {
 			highlight link GitSignsChange GruvboxYellowSign
 			]])
 		end,
-	}
+	},
+	{ "folke/tokyonight.nvim" },
+	{ "catppuccin/nvim", name = "catppuccin" }
 }
