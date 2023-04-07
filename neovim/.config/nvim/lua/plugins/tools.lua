@@ -90,5 +90,12 @@ return {
 			{ "<leader>Bh", function() require("based").convert("hex") end, desc = "Convert form hex" },
 			{ "<leader>Bd", function() require("based").convert("dec") end, desc = "Convert from decimal" },
 		}
+	},
+	{
+		"junegunn/vim-easy-align",
+		cmd = "EasyAlign",
+		keys = {
+			{ "<leader>ga", ":EasyAlign", mode = { 'n', 'v' }, desc = "Align with easy-align" },
+		}
 	}
 }
