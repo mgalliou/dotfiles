@@ -132,6 +132,7 @@ return {
 					hide_gitignored = false,
 				},
 			},
+			follow_current_file = true
 		},
 		-- TODO: add keymaps
 		keys = {
