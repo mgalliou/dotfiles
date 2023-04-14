@@ -106,6 +106,7 @@ return {
 					filetypes = { "helm" },
 					cmd = { "helm_ls", "serve" },
 				},
+				angularls = {},
 				kotlin_language_server = {}
 			}
 
