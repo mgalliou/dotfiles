@@ -23,7 +23,7 @@ vim.opt.cursorline = true
 vim.opt.listchars:append("space:·")
 vim.opt.listchars:append("eol:↴")
 vim.cmd([[runtime macros/justify.vim]]) --allow paragraph justification with `_j`
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 
 -- Searching
 vim.opt.incsearch = true
