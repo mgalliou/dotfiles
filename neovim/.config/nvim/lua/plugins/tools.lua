@@ -28,7 +28,7 @@ return {
 		opts = {
 			load = {
 				["core.defaults"] = {},
-				["core.norg.dirman"] = {
+				["core.dirman"] = {
 					config = {
 						workspaces = {
 							work = "~/notes/work",
