@@ -37,7 +37,7 @@ return {
 					},
 				},
 				["core.concealer"] = {},
-				["core.norg.completion"] = {
+				["core.completion"] = {
 					config = { engine = "nvim-cmp" },
 				},
 				["core.integrations.nvim-cmp"] = {},
