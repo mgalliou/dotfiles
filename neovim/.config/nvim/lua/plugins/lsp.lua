@@ -166,6 +166,9 @@ return {
 	{
 		'williamboman/mason.nvim',
 		cmd = "Mason",
+		dependencies = {
+			"nvim-telescope/telescope-ui-select.nvim",
+		},
 		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
 		-- TODO: configure `ensure_installed`
 		config = true
