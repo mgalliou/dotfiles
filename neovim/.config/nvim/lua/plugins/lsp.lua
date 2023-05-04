@@ -98,6 +98,7 @@ return {
 				dockerls = {},
 				ansiblels = {},
 				solargraph = {},
+				taplo = {},
 				terraformls = {},
 				yamlls = {
 					yaml = {
@@ -155,6 +156,7 @@ return {
 					}),
 					null_ls.builtins.diagnostics.markdownlint,
 					null_ls.builtins.diagnostics.fish,
+					null_ls.builtins.diagnostics.gitlint,
 					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.formatting.beautysh,
 					null_ls.builtins.formatting.shellharden,
