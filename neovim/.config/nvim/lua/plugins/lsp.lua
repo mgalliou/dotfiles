@@ -160,7 +160,8 @@ return {
 					null_ls.builtins.formatting.shellharden,
 					null_ls.builtins.formatting.jq,
 					null_ls.builtins.formatting.prettierd,
-          null_ls.builtins.formatting.fish_indent
+          null_ls.builtins.formatting.fish_indent,
+          null_ls.builtins.formatting.shellharden
 				},
 
 				on_attach = require("tools").on_attach,
