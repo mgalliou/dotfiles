@@ -1,3 +1,5 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
  $username\
 $hostname\
@@ -10,7 +12,6 @@ $line_break\
 $cmd_duration\
 $jobs\
 $character"""
-
 
 [directory]
 style = "blue"
@@ -28,15 +29,19 @@ format = "$symbol[$branch]($style)"
 style = "bright-black"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style) "
+format = "[[($conflicted$deleted$renamed$modified$staged$untracked)](218) ($ahead_behind$stashed)]($style) "
 style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
+up_to_date = ""
+conflicted = "="
+deleted ="-"
+staged = "+"
+renamed = "»"
+diverged = "⇕"
+modified = "~"
+untracked = "?"
+ahead = "⇡"
+behind = "⇣"
+stashed = "#"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
