@@ -152,7 +152,8 @@ return {
 				sources = {
 					null_ls.builtins.diagnostics.yamllint.with({
 						filetypes = { "yaml", "helm" },
-						extra_args = { "-d", "relaxed" },
+            -- TODO: check if `new-lines: false` is still needed
+						extra_args = { "-d", "{extends: relaxed, rules: {new-lines: false}}" },
 					}),
 					null_ls.builtins.diagnostics.markdownlint,
 					null_ls.builtins.diagnostics.fish,
