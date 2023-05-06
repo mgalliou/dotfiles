@@ -29,7 +29,16 @@ format = "$symbol[$branch]($style)"
 style = "bright-black"
 
 [git_status]
-format = "[[($conflicted$deleted$renamed$modified$staged$untracked)](218) ($ahead_behind$stashed)]($style) "
+format = """\
+		  [\
+		  [$staged](green)\
+		  [$modified](red)\
+		  [$conflicted$deleted](red)\
+		  [$renamed](yellow)\
+		  [$untracked](bright-black) \
+		  ($ahead_behind$stashed)\
+		  ]($style)
+"""
 style = "cyan"
 up_to_date = ""
 conflicted = "="
@@ -38,7 +47,7 @@ staged = "+"
 renamed = "»"
 diverged = "⇕"
 modified = "~"
-untracked = "?"
+untracked = "*"
 ahead = "⇡"
 behind = "⇣"
 stashed = "#"
