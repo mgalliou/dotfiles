@@ -37,8 +37,8 @@ format = """\
 		  [$renamed](yellow)\
 		  [$untracked](bright-black) \
 		  ($ahead_behind$stashed)\
-		  ]($style)
-"""
+		  ]($style)\
+		  """
 style = "cyan"
 up_to_date = ""
 conflicted = "="
