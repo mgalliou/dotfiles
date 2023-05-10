@@ -49,10 +49,11 @@ abbr -a hup "helm upgrade --install"
 abbr -a hu  "helm uninstall"
 
 if type -q exa
-	abbr -a ls "exa --icons"
-	abbr -a l  "exa --icons"
-	abbr -a ll  "exa -l --icons"
-	abbr -a la  "exa -la --icons"
+  set -l EXA_BASE "exa --icons --group-directories-first"
+  abbr -a ls  "$EXA_BASE"
+  abbr -a l   "$EXA_BASE"
+  abbr -a ll  "$EXA_BASE -l"
+  abbr -a la  "$EXA_BASE -la"
 end
 
 abbr -a t "taskell"
