@@ -30,16 +30,16 @@ style = "bright-black"
 
 [git_status]
 format = """\
-		  [\
+		  [(:\
 		  [$staged](green)\
 		  [$modified](red)\
 		  [$conflicted$deleted](red)\
 		  [$renamed](yellow)\
-		  [$untracked](bright-black) \
-		  ($ahead_behind$stashed)\
-		  ]($style)\
+		  [$untracked](bright-white)\
+		  [ ($ahead_behind$stashed)](cyan)\
+		  )]($style)\
 		  """
-style = "cyan"
+style = "bright-purple"
 up_to_date = ""
 conflicted = "="
 deleted ="-"
