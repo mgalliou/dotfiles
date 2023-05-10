@@ -30,19 +30,19 @@ style = "bright-black"
 
 [git_status]
 format = """\
-		  [(:\
-		  [$staged](green)\
-		  [$modified](red)\
-		  [$conflicted$deleted](red)\
-		  [$renamed](yellow)\
-		  [$untracked](bright-white)\
-		  [ ($ahead_behind$stashed)](cyan)\
-		  )]($style)\
-		  """
+[(:\
+[$staged](green)\
+[$modified](red)\
+[$conflicted$deleted](red)\
+[$renamed](yellow)\
+[$untracked](bright-white)\
+[ ($ahead_behind$stashed)](cyan)\
+)]($style)\
+"""
 style = "bright-purple"
 up_to_date = ""
 conflicted = "="
-deleted ="-"
+deleted = "-"
 staged = "+"
 renamed = "»"
 diverged = "⇕"
@@ -73,7 +73,7 @@ format = """\
 [ $namespace](fg:black bg:bright-white)\
 [](fg:bright-white bg:black)\
 """
-detect_extensions = [ "k8s.yaml", "k8s" ]
+detect_extensions = ["k8s.yaml", "k8s"]
 disabled = false
 
 [jobs]
