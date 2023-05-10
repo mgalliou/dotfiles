@@ -50,11 +50,14 @@ abbr -a hup "helm upgrade --install"
 abbr -a hu  "helm uninstall"
 
 if type -q exa
-  set -l EXA_BASE "exa --icons --group-directories-first"
-  abbr -a ls  "$EXA_BASE"
-  abbr -a l   "$EXA_BASE"
-  abbr -a ll  "$EXA_BASE -l"
-  abbr -a la  "$EXA_BASE -la"
+	set -l EXA_BASE "exa --icons --group-directories-first"
+	if exa -v | grep "\+git"
+		set EXA_BASE "$EXA_BASE --git"
+	end
+	abbr -a ls  "$EXA_BASE"
+	abbr -a l   "$EXA_BASE"
+	abbr -a ll  "$EXA_BASE -l"
+	abbr -a la  "$EXA_BASE -la"
 end
 
 abbr -a t "taskell"
