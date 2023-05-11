@@ -32,7 +32,8 @@ vim.opt.smartcase = true
 vim.opt.showmatch = true
 
 -- Folding
-vim.opt.foldmethod = "marker"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Filetype
 vim.g.asmsyntax = 'nasm'
