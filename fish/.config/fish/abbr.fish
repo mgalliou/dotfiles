@@ -51,7 +51,7 @@ abbr -a hu  "helm uninstall"
 
 if type -q exa
 	set -l EXA_BASE "exa --icons --group-directories-first"
-	if exa -v | grep "\+git"
+	if exa -v | grep -q '+git'
 		set EXA_BASE "$EXA_BASE --git"
 	end
 	abbr -a ls  "$EXA_BASE"
