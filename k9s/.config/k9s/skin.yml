@@ -1,0 +1,172 @@
+# K9s Gruvbox Dark Skin Contributed by [@indiebrain](https://github.com/indiebrain)
+foreground: &foreground "#ebdbb2"
+background: &background "#272727"
+current_line: &current_line "#ebdbb2"
+selection: &selection "#3c3735"
+comment: &comment "#bdad93"
+cyan: &cyan "#689d69"
+green: &green "#989719"
+orange: &orange "#d79920"
+magenta: &magenta "#b16185"
+blue: &blue "#448488"
+red: &red "#cc231c"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *blue
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *orange
+  info:
+    fgColor: *magenta
+    sectionColor: *foreground
+  help:
+    fgColor: *foreground
+    bgColor: *background
+    keyColor: *magenta
+    numKeyColor: *blue
+    sectionColor: *green
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *magenta
+    buttonFocusFgColor: white
+    buttonFocusBgColor: *cyan
+    labelFgColor: *orange
+    fieldFgColor: *foreground
+  frame:
+    border:
+      fgColor: *selection
+      focusColor: *current_line
+    menu:
+      fgColor: *foreground
+      keyColor: *magenta
+      numKeyColor: *magenta
+    crumbs:
+      fgColor: *foreground
+      bgColor: *comment
+      activeColor: *blue
+    status:
+      newColor: *cyan
+      modifyColor: *blue
+      addColor: *green
+      errorColor: *red
+      highlightColor: *orange
+      killColor: *comment
+      completedColor: *comment
+    title:
+      fgColor: *foreground
+      bgColor: *background
+      highlightColor: *orange
+      counterColor: *blue
+      filterColor: *magenta
+  views:
+    charts:
+      bgColor: background
+      defaultDialColors:
+        - *blue
+        - *red
+      defaultChartColors:
+        - *blue
+        - *red
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: "#fff"
+      cursorBgColor: *current_line
+      header:
+        fgColor: *foreground
+        bgColor: *background
+        sorterColor: *selection
+    xray:
+      fgColor: *foreground
+      bgColor: *background
+      cursorColor: *current_line
+      graphicColor: *blue
+      showIcons: false
+    yaml:
+      keyColor: *magenta
+      colonColor: *blue
+      valueColor: *foreground
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *foreground
+        bgColor: *background
+# k9s:
+#   # General K9s styles
+#   body:
+#     fgColor: white
+#     bgColor: black
+#     logoColor: aqua
+
+#   # ClusterInfoView styles
+#   info:
+#     fgColor: yellow
+#     sectionColor: red
+
+#   # Frame styles
+#   frame:
+#     # Borders styles
+#     border:
+#       fgColor: white
+#       focusColor: black
+
+#     # MenuView attributes and styles
+#     menu:
+#       fgColor: white
+#       keyColor: cyan
+#       # Used for favorite namespaces
+#       numKeyColor: blue
+
+#     # CrumbView attributes for history navigation.
+#     crumbs:
+#       fgColor: white
+#       bgColor: black
+#       activeColor: gray
+
+#     # Resource status and update styles
+#     status:
+#       newColor: '#00ff00'
+#       modifyColor: purple
+#       addColor: aqua
+#       errorColor: red
+#       highlightcolor: blue
+#       killColor: slategray
+#       completedColor: green
+
+#     # Border title styles.
+#     title:
+#       fgColor: white
+#       bgColor: black
+#       highlightColor: purple
+#       counterColor: green
+#       filterColor: yellow
+#   # Specific views styles
+#   views:
+#     # TableView attributes.
+#     table:
+#       fgColor: white
+#       bgColor: black
+#       cursorColor: cyan
+#       # Header row styles.
+#       header:
+#         fgColor: white
+#         bgColor: black
+#         sorterColor: orange
+
+#     # YAML info styles.
+#     yaml:
+#       keyColor: blue
+#       colonColor: black
+#       valueColor: aqua
+
+#     # Logs styles.
+#     logs:
+#       fgColor: white
+#       bgColor: black
