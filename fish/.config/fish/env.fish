@@ -6,6 +6,7 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.opam/bin
 fish_add_path $HOME/.local/share/gem/ruby/3.0.0/bin
 fish_add_path $HOME/node_modules/.bin
+fish_add_path $HOME/.local/share/nvim/mason/bin/
 
 if type -q nvim
     set -x EDITOR nvim
