@@ -19,6 +19,7 @@ return {
 		event = "BufReadPre",
 		dependencies = {
 			{
+				'hrsh7th/cmp-nvim-lsp',
 				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 				'simrat39/rust-tools.nvim',
 				'mason.nvim',
@@ -72,6 +73,7 @@ return {
 
 			local lspconfig = require("lspconfig")
 			local on_attach = require("tools").on_attach
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local lsp_flags = {
 				-- This is the default in Nvim 0.7+
 				debounce_text_changes = 150,
@@ -119,6 +121,7 @@ return {
 				lspconfig[ls].setup({
 					on_attach = on_attach,
 					flags = lsp_flags,
+					capabilities = capabilities,
 					settings = opt
 				})
 			end
@@ -126,6 +129,8 @@ return {
 			require("rust-tools").setup {
 				server = {
 					on_attach = on_attach,
+					flags = lsp_flags,
+					capabilities = capabilities,
 				},
 			}
 
