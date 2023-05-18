@@ -65,6 +65,7 @@ return {
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[nvim_lua]",
 							latex_symbols = "[LaTeX]",
+							tmux = "[tmux]",
 						})[entry.source.name]
 						return vim_item
 					end
