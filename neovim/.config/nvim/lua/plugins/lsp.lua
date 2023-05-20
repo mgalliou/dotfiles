@@ -20,7 +20,7 @@ return {
 		dependencies = {
 			{
 				'hrsh7th/cmp-nvim-lsp',
-				"folke/neodev.nvim",
+				{ "folke/neodev.nvim", config = true },
 				'simrat39/rust-tools.nvim',
 				'mason.nvim',
 				'williamboman/mason-lspconfig.nvim',
