@@ -19,7 +19,8 @@ return {
 		event = "BufReadPre",
 		dependencies = {
 			{
-				{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+				'hrsh7th/cmp-nvim-lsp',
+				{ "folke/neodev.nvim", config = true },
 				'simrat39/rust-tools.nvim',
 				'mason.nvim',
 				'williamboman/mason-lspconfig.nvim',
@@ -72,6 +73,7 @@ return {
 
 			local lspconfig = require("lspconfig")
 			local on_attach = require("tools").on_attach
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local lsp_flags = {
 				-- This is the default in Nvim 0.7+
 				debounce_text_changes = 150,
@@ -81,9 +83,14 @@ return {
 				lua_ls = {
 					Lua = {
 						completion = {
-							callSnippet = "Replace"
+							callSnippet = "Both",
+              workspaceWord = true
 						},
+            format = {
+              enable = false
+            },
 						workspace = {
+              checkThirdParty = true,
 							library = {
 								"/usr/share/awesome/lib",
 							},
@@ -114,6 +121,7 @@ return {
 				lspconfig[ls].setup({
 					on_attach = on_attach,
 					flags = lsp_flags,
+					capabilities = capabilities,
 					settings = opt
 				})
 			end
@@ -121,6 +129,8 @@ return {
 			require("rust-tools").setup {
 				server = {
 					on_attach = on_attach,
+					flags = lsp_flags,
+					capabilities = capabilities,
 				},
 			}
 
@@ -164,7 +174,8 @@ return {
 					null_ls.builtins.formatting.jq,
 					null_ls.builtins.formatting.prettierd,
           null_ls.builtins.formatting.fish_indent,
-          null_ls.builtins.formatting.shellharden
+          null_ls.builtins.formatting.shellharden,
+          null_ls.builtins.formatting.stylua
 				},
 
 				on_attach = require("tools").on_attach,

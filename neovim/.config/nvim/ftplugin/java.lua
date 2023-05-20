@@ -2,6 +2,7 @@ local config = {
   cmd = { vim.env.MASON .. "/bin/jdtls" },
   root_dir = vim.fs.dirname(vim.fs.find({ '.gradlew', '.git', 'mvnw' }, { upward = true })[1]),
   on_attach = require("tools").on_attach,
+	capabilities = require('cmp_nvim_lsp').default_capabilities(),
   settings = {
     java = {
       -- configuration = {

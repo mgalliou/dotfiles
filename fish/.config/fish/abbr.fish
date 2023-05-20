@@ -15,6 +15,7 @@ if type -q git
 	abbr -a g    "git"
 	abbr -a ga   "git add"
 	abbr -a gaa  "git add -A"
+	abbr -a gb   "git branch"
 	abbr -a gcl  "git clone"
 	abbr -a gc   "git commit -v"
 	abbr --set-cursor gcm "git commit -m\"%\""

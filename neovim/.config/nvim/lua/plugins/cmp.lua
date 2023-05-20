@@ -42,6 +42,7 @@ return {
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-nvim-lsp',
 			'saadparwaiz1/cmp_luasnip',
+			'andersevenrud/cmp-tmux',
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -64,6 +65,7 @@ return {
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[nvim_lua]",
 							latex_symbols = "[LaTeX]",
+							tmux = "[tmux]",
 						})[entry.source.name]
 						return vim_item
 					end
@@ -86,6 +88,7 @@ return {
 					{ name = "buffer", keyword_length = 3 },
 					{ name = "path" },
 					{ name = "neorg" },
+					{ name = "tmux" },
 				}),
 				experimental = {
 					ghost_text = {
