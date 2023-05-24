@@ -34,6 +34,7 @@ vim.opt.showmatch = true
 -- Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
 
 -- Filetype
 vim.g.asmsyntax = 'nasm'
