@@ -2,7 +2,7 @@ if not status is-interactive
     return
 end
 
-set CONFIG_PATH ~/.config/fish
+set -l CONFIG_PATH ~/.config/fish
 
 source $CONFIG_PATH/fundle.fish
 source $CONFIG_PATH/env.fish
