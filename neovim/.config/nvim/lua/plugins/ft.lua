@@ -8,5 +8,9 @@ return {
 	},
 	{ 'towolf/vim-helm' },
 	{ 'vim-scripts/tf2.vim', ft = "cfg" },
-	{ 'preservim/vim-markdown' },
+	{ 'preservim/vim-markdown',
+    dependencies = {
+      "godlygeek/tabular"
+    },
+  },
 }
