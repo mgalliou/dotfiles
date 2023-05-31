@@ -108,7 +108,11 @@ return {
 				taplo = {},
 				terraformls = {},
 				jsonls = {},
-				yamlls = {},
+				yamlls = {
+					yaml = {
+						customTags = { "!reference scalar" },
+					},
+				},
 				helm_ls = {},
 				angularls = {},
 				kotlin_language_server = {}
