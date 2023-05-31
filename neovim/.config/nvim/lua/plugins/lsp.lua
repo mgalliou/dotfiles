@@ -107,7 +107,7 @@ return {
 				solargraph = {},
 				taplo = {},
 				terraformls = {},
-				yamlls = {
+				jsonls = {},
 				yamlls = {},
 				helm_ls = {},
 				angularls = {},
