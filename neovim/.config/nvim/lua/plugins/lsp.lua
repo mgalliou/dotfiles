@@ -108,10 +108,7 @@ return {
 				taplo = {},
 				terraformls = {},
 				yamlls = {
-					yaml = {
-						keyOrdering = false
-					}
-				},
+				yamlls = {},
 				helm_ls = {},
 				angularls = {},
 				kotlin_language_server = {}
