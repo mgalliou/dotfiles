@@ -24,6 +24,7 @@ vim.opt.listchars:append("space:·")
 vim.opt.listchars:append("eol:↴")
 vim.cmd([[runtime macros/justify.vim]]) --allow paragraph justification with `_j`
 vim.opt.cmdheight = 1
+vim.cmd([[colorscheme gruvbox]])
 
 -- Searching
 vim.opt.incsearch = true
