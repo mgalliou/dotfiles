@@ -16,8 +16,9 @@ return {
 			use_diagnostic_signs = true
 		},
 		keys = {
-			{ "<leader>xx", ":TroubleToggle<CR>", desc = "Toggle Trouble" },
-			{ "<leader>xt", ":TodoTrouble<CR>", desc = "Toggle Trouble" },
+			{ "<leader>d", ":TroubleToggle document_diagnostics<CR>", desc = "Toggle Trouble" },
+			{ "<leader>D", ":TroubleToggle workspace_diagnostics<CR>", desc = "Toggle Trouble" },
+			{ "<leader>x", ":TodoTrouble<CR>", desc = "Toggle TodoTrouble" },
 		}
 
 	},

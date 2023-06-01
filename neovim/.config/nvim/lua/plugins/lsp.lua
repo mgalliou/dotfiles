@@ -31,7 +31,7 @@ return {
 					},
 					keys = {
 						{ "<F2>", function() require("renamer").rename({}) end, mode = 'i', desc = "Rename with lsp" },
-						{ "<leader>rn", function() require("renamer").rename({}) end, mode = { 'n', 'v' }, desc = "Rename with lsp" }
+						{ "<leader>r", function() require("renamer").rename({}) end, mode = { 'n', 'v' }, desc = "Rename with lsp" }
 					},
 				},
 				{
