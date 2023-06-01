@@ -93,6 +93,7 @@ return {
 	},
 	{
 		"junegunn/vim-easy-align",
+		enabled = false,
 		cmd = "EasyAlign",
 		keys = {
 			{ "<leader>ga", ":EasyAlign", mode = { 'n', 'v' }, desc = "Align with easy-align" },
