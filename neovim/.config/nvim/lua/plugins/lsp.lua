@@ -26,6 +26,9 @@ return {
 				'williamboman/mason-lspconfig.nvim',
 				{
 					'filipdutescu/renamer.nvim',
+					dependencies = {
+						"nvim-lua/plenary.nvim"
+					},
 					opts = {
 						border_chars = require("tools").borderchars,
 					},
