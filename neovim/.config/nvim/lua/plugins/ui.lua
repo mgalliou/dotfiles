@@ -97,7 +97,7 @@ return {
 			'MunifTanjim/nui.nvim',
 			'rcarriga/nvim-notify'
 		},
-		config = {
+		opts = {
 			lsp = {
 				-- over ride markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
