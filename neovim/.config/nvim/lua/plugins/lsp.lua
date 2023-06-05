@@ -115,6 +115,9 @@ return {
 					yaml = {
 						customTags = { "!reference scalar" },
 					},
+					schemas = {
+						["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml"
+					}
 				},
 				helm_ls = {},
 				angularls = {},
