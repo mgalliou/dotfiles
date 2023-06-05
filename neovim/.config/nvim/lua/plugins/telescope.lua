@@ -42,14 +42,14 @@ return {
 		},
 		-- TODO: change and add more keybind
 		keys = {
-			{ "<leader>ff", T("find_files"),                         desc = "Find files with Telescope" },
-			{ "<leader>fF", T("find_files", { cwd = false }),        desc = "Find files in current working directory Telescope" },
-			{ "<leader>fd", T("find_files", { cwd = "~/dotfiles" }), desc = "Find dotfiles with Telescope" },
-			{ "<leader>fg", T("live_grep"),                          desc = "Grep in currend directory with Telescope" },
-			{ "<leader>fb", T("buffers"),                            desc = "Find buffer with Telescope" },
-			{ "<leader>fh", T("help_tags"),                          desc = "Find helptags with Telescope" },
+			{ "<leader>f", T("find_files"),                         desc = "Find files with Telescope" },
+			{ "<leader>F", T("find_files", { cwd = false }),        desc = "Find files in current working directory Telescope" },
+			--{ "<leader>fd", T("find_files", { cwd = "~/dotfiles" }), desc = "Find dotfiles with Telescope" },
+			{ "<leader>/", T("live_grep"),                          desc = "Grep in currend directory with Telescope" },
+			{ "<leader>b", T("buffers"),                            desc = "Find buffer with Telescope" },
+			{ "<leader>H", T("help_tags"),                          desc = "Find helptags with Telescope" },
 			{
-				"<leader>ss",
+				"<leader>s",
 				T("lsp_document_symbols", {
 					symbols = {
 						"Class",

@@ -16,8 +16,9 @@ return {
 			use_diagnostic_signs = true
 		},
 		keys = {
-			{ "<leader>xx", ":TroubleToggle<CR>", desc = "Toggle Trouble" },
-			{ "<leader>xt", ":TodoTrouble<CR>", desc = "Toggle Trouble" },
+			{ "<leader>d", ":TroubleToggle document_diagnostics<CR>", desc = "Toggle Trouble" },
+			{ "<leader>D", ":TroubleToggle workspace_diagnostics<CR>", desc = "Toggle Trouble" },
+			{ "<leader>x", ":TodoTrouble<CR>", desc = "Toggle TodoTrouble" },
 		}
 
 	},
@@ -93,6 +94,7 @@ return {
 	},
 	{
 		"junegunn/vim-easy-align",
+		enabled = false,
 		cmd = "EasyAlign",
 		keys = {
 			{ "<leader>ga", ":EasyAlign", mode = { 'n', 'v' }, desc = "Align with easy-align" },

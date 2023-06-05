@@ -97,7 +97,7 @@ return {
 			'MunifTanjim/nui.nvim',
 			'rcarriga/nvim-notify'
 		},
-		config = {
+		opts = {
 			lsp = {
 				-- over ride markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
@@ -121,18 +121,27 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		enabled = false,
 		dependencies = {
 			{ "MunifTanjim/nui.nvim", lazy = true }
 		},
 		opts = {
+			-- NOTE: workaround to prevent flickering when changing source
+			git_status_async = false,
 			filesystem = {
+				-- NOTE: workaround to prevent flickering when changing source
+				async_directory_scan = "never",
 				filtered_items = {
 					hide_dotfiles = false,
 					hide_hidden = false,
 					hide_gitignored = false,
 				},
 			},
-			follow_current_file = true
+			source_selector = {
+				winbar = true,
+			},
+			add_blank_line_at_top = true,
+			close_if_last_window = true
 		},
 		-- TODO: add keymaps
 		keys = {

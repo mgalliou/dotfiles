@@ -26,12 +26,15 @@ return {
 				'williamboman/mason-lspconfig.nvim',
 				{
 					'filipdutescu/renamer.nvim',
+					dependencies = {
+						"nvim-lua/plenary.nvim"
+					},
 					opts = {
 						border_chars = require("tools").borderchars,
 					},
 					keys = {
 						{ "<F2>", function() require("renamer").rename({}) end, mode = 'i', desc = "Rename with lsp" },
-						{ "<leader>rn", function() require("renamer").rename({}) end, mode = { 'n', 'v' }, desc = "Rename with lsp" }
+						{ "<leader>r", function() require("renamer").rename({}) end, mode = { 'n', 'v' }, desc = "Rename with lsp" }
 					},
 				},
 				{
@@ -107,9 +110,13 @@ return {
 				solargraph = {},
 				taplo = {},
 				terraformls = {},
+				jsonls = {},
 				yamlls = {
 					yaml = {
-						keyOrdering = false
+						customTags = { "!reference scalar" },
+					},
+					schemas = {
+						["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml"
 					}
 				},
 				helm_ls = {},

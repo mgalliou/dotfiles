@@ -7,5 +7,10 @@ return {
 		enabled = false
 	},
 	{ 'towolf/vim-helm' },
-	{ 'vim-scripts/tf2.vim', ft = "cfg" }
+	{ 'vim-scripts/tf2.vim', ft = "cfg" },
+	{ 'preservim/vim-markdown',
+    dependencies = {
+      "godlygeek/tabular"
+    },
+  },
 }
