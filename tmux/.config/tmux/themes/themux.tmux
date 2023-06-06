@@ -143,7 +143,7 @@ main() {
 
 	setw window-status-style "none,fg=$BG4,bg=$BG"
 	setw window-status-activity-style "none,fg=$FG,bg=$BG"
-	setw window-status-separator " "
+	setw window-status-separator ""
 	setw window-status-format "$(window_status_format)"
 	setw window-status-current-format "$(window_status_current_format)"
 	set message-style "fg=$FG,bg=$BG2"
