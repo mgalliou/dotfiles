@@ -51,11 +51,16 @@ setw() {
 }
 
 session() {
-	local session_style
+	local indicator
+	local indicator_style
+	local style
+	local session
 
-	readonly session_style="#[fg=$BG,bg=$GREEN,bold]"
-
-	echo "${session_style} #S #[default]"
+	readonly indicator="  "
+	readonly indicator_style="#[fg=$BG,bg=$GREEN,bold]"
+	readonly style="#[fg=$FG,bg=$BG2]"
+  	readonly session=" #S "
+	echo "${indicator_style}${indicator}${style}${session}#[default]"
 }
 
 user() {
@@ -98,7 +103,7 @@ date_time() {
 }
 
 status_left() {
-	echo " $(session) "
+	echo "$(session)"
 }
 
 status_right() {
