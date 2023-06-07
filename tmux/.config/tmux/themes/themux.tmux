@@ -133,7 +133,7 @@ main() {
 
 	set status "on"
 	set status-justify "left"
-	set status-style "none,bg=$BG"
+	set status-style "none,bg=$BG1"
 	set status-left-style "none"
 	set status-right-style "none"
 	set status-left-length "100"
