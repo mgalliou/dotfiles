@@ -113,7 +113,7 @@ return {
 				jsonls = {},
 				yamlls = {
 					yaml = {
-						customTags = { "!reference scalar" },
+						customTags = { "!reference sequence" },
 					},
 					schemas = {
 						["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml"
