@@ -111,16 +111,16 @@ pane_current_path() {
 	readonly indicator="   "
 	readonly indicator_style="#[fg=$BG,bg=$MAGENTA]"
 	readonly style="#[fg=$FG,bg=$BG2]"
-	readonly path=" #{pane_current_path} "
+	readonly path=" #{s|$HOME|~|:pane_current_path} "
 	echo "${indicator_style}${indicator}${style}${path}"
 }
 
 status_left() {
-	echo "$(session)$(pane_current_path)"
+	echo "$(session)"
 }
 
 status_right() {
-	echo "$(user)$(host)$(date_time)"
+	echo "$(pane_current_path)$(user)$(host)$(date_time)"
 }
 
 window_status_format() {
