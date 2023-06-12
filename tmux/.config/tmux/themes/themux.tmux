@@ -102,8 +102,21 @@ date_time() {
 	echo "${indicator_style}${indicator}${style}${date_time}"
 }
 
+pane_current_path() {
+	local indicator
+	local indicator_style
+	local style
+	local path
+
+	readonly indicator="   "
+	readonly indicator_style="#[fg=$BG,bg=$MAGENTA]"
+	readonly style="#[fg=$FG,bg=$BG2]"
+	readonly path=" #{pane_current_path} "
+	echo "${indicator_style}${indicator}${style}${path}"
+}
+
 status_left() {
-	echo "$(session)"
+	echo "$(session)$(pane_current_path)"
 }
 
 status_right() {
