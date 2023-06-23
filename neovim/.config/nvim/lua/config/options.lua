@@ -1,57 +1,60 @@
+local g = vim.g
+local o = vim.opt
+
 -- Behavior
-vim.opt.autowrite = true
-vim.opt.backspace = { "indent", "eol", "start" }
-vim.opt.autoindent = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 0
-vim.opt.scrolloff = 4
-vim.opt.sidescrolloff = 4
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.virtualedit = "all"
+o.autowrite = true
+o.backspace = { "indent", "eol", "start" }
+o.autoindent = true
+o.tabstop = 4
+o.shiftwidth = 4
+o.softtabstop = 0
+o.scrolloff = 4
+o.sidescrolloff = 4
+o.splitright = true
+o.splitbelow = true
+o.virtualedit = "all"
 
 -- UI
-vim.opt.termguicolors = true
-vim.opt.showmode = false
-vim.opt.signcolumn = "yes"
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.wildmenu = true
-vim.opt.colorcolumn = "81"
-vim.opt.cursorline = true
-vim.opt.listchars:append("space:·")
-vim.opt.listchars:append("eol:↴")
+o.termguicolors = true
+o.showmode = false
+o.signcolumn = "yes"
+o.number = true
+o.relativenumber = true
+o.wildmenu = true
+o.colorcolumn = "81"
+o.cursorline = true
+o.listchars:append("space:·")
+o.listchars:append("eol:↴")
 vim.cmd([[runtime macros/justify.vim]]) --allow paragraph justification with `_j`
-vim.opt.cmdheight = 1
+o.cmdheight = 1
 vim.cmd([[colorscheme gruvbox]])
 
 -- Searching
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.showmatch = true
+o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
+o.showmatch = true
 
 -- Folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldenable = false
 
 -- Filetype
-vim.g.asmsyntax = 'nasm'
+g.asmsyntax = 'nasm'
 
 -- Spellchecking
-vim.opt.spellsuggest = { "best", "10" }
+o.spellsuggest = { "best", "10" }
 
 -- Backup
-vim.opt.history = 200
-vim.opt.swapfile = true
-vim.opt.backup = true
-vim.opt.backupdir:remove(".")
-vim.opt.undofile = true
-vim.opt.undodir:remove(".")
+o.history = 200
+o.swapfile = true
+o.backup = true
+o.backupdir:remove(".")
+o.undofile = true
+o.undodir:remove(".")
 
 -- netrw
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_list_hide = "(^|ss)zs.S+"
+g.netrw_banner = 0
+g.netrw_liststyle = 3
+g.netrw_list_hide = "(^|ss)zs.S+"
