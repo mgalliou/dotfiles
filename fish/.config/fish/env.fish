@@ -17,6 +17,10 @@ else if type -q vi
 end
 abbr 		v	$EDITOR
 
+if type -q gpg
+	set -x GPG_TTY $(tty)
+end
+
 if type -q zk
 	set -x ZK_NOTEBOOK_DIR $HOME/notes/zk
 end
