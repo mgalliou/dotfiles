@@ -1,0 +1,18 @@
+k9s:
+  views:
+    v1/pods:
+      columns:
+        - PF
+        - NAME
+        - AGE
+        - READY
+        - STATUS
+        - RESTARTS
+        - MEM
+        - "%CPU/R"
+    v1/services:
+      columns:
+        - NAME
+        - AGE
+        - TYPE
+        - CLUSTER-IP
