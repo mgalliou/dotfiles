@@ -22,6 +22,7 @@ if type -q git
 	abbr -a gca  "git commit --amend"
 	abbr -a gcan "git commit --amend --no-edit"
 	abbr -a gco  "git checkout"
+	abbr -a gcom "git checkout master"
 	abbr -a gd   "git diff"
 	abbr -a gds  "git diff --staged"
 	abbr -a gl   "git log"
