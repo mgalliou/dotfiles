@@ -32,6 +32,12 @@ if type -q git
 	abbr -a gfp  "git fetch --prune"
 	abbr -a gr   "git restore"
 	abbr -a grs  "git restore --staged"
+	abbr -a gmr  "git merge"
+	abbr -a gmrc "git merge --continue"
+	abbr -a gmra "git merge --abort"
+	abbr -a grb  "git rebase"
+	abbr -a grbc "git rebase --continue"
+	abbr -a grba "git rebase --abort"
 	abbr -a gs   "git status"
 end
 
