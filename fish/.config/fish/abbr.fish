@@ -28,6 +28,8 @@ if type -q git
 	abbr -a gl   "git log"
 	abbr -a gpl  "git pull"
 	abbr -a gps  "git push"
+	abbr -a gf   "git fetch"
+	abbr -a gfp  "git fetch --prune"
 	abbr -a gr   "git restore"
 	abbr -a grs  "git restore --staged"
 	abbr -a gs   "git status"
