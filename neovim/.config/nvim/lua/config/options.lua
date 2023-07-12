@@ -13,6 +13,7 @@ o.sidescrolloff = 4
 o.splitright = true
 o.splitbelow = true
 o.virtualedit = "all"
+o.clipboard:append("unnamedplus")
 
 -- UI
 o.termguicolors = true
