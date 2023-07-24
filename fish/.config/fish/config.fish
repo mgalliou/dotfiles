@@ -9,6 +9,8 @@ source $CONFIG_PATH/env.fish
 source $CONFIG_PATH/abbr.fish
 source $CONFIG_PATH/fzf.fish
 
+set -a fish_complete_path /home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d/
+
 if type -q zoxide
 	zoxide init fish | source
 end
