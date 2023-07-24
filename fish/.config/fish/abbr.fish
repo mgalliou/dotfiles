@@ -68,6 +68,14 @@ if type -q helm
 	abbr -a hu  "helm uninstall"
 end
 
+if type -q helmfile
+	abbr -a hf  "helmfile"
+	abbr -a hfl "helmfile list"
+	abbr -a hft "helmfile template"
+	abbr -a hfa "helmfile apply"
+	abbr -a hfd "helmfile destroy"
+end
+
 if type -q exa
 	set -l EXA_BASE "exa --icons --group-directories-first"
 	if exa -v | grep -q '+git'
