@@ -8,9 +8,13 @@ return {
 	},
 	{ 'towolf/vim-helm' },
 	{ 'vim-scripts/tf2.vim', ft = "cfg" },
-	{ 'preservim/vim-markdown',
+	{
+		'preservim/vim-markdown',
     dependencies = {
       "godlygeek/tabular"
     },
+		config = function ()
+			vim.g.vim_markdown_new_list_indent = 2
+		end
   },
 }
