@@ -21,6 +21,7 @@ return {
 			defaults = {
 				file_ignore_patterns = { ".git/" },
 				borderchars = require("tools").borderchars,
+				wrap_results = true,
 				prompt_prefix = " ",
 				selection_caret = " ",
 				vimgrep_arguments = {
