@@ -99,5 +99,6 @@ return {
 		keys = {
 			{ "<leader>ga", ":EasyAlign", mode = { 'n', 'v' }, desc = "Align with easy-align" },
 		}
-	}
+	},
+	{ "nanotee/zoxide.vim"  }
 }
