@@ -47,7 +47,7 @@ return {
 			sections = {
 				lualine_a = { 'mode' },
 				lualine_b = { 'branch', 'diff', 'diagnostics' },
-				lualine_c = { { 'filename', path = 4 }, "require('nvim-lightbulb').get_status_text()" },
+				lualine_c = { { 'filename', path = 4 } },
 				lualine_x = { 'filetype' },
 				lualine_y = {},
 				lualine_z = { 'progress' }

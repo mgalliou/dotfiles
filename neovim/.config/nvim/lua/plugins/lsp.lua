@@ -39,6 +39,7 @@ return {
 				},
 				{
 					'kosayoda/nvim-lightbulb',
+					enabled = false,
 					opts = {
 						sign = {
 							enabled = false,
