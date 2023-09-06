@@ -69,6 +69,10 @@ if type -q helm
 	abbr -a hi  "helm install"
 	abbr -a hup "helm upgrade --install"
 	abbr -a hu  "helm uninstall"
+	abbr -a hps "helm push"
+	abbr -a hpl "helm pull"
+	abbr -a hsr "helm search repo"
+	abbr -a hsh "helm search hub"
 end
 
 if type -q helmfile
