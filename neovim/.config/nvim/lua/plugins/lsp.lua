@@ -1,18 +1,3 @@
-local function config_custom_server(name, cmd, filetypes, root_pattern)
-	local configs = require("lspconfig.configs")
-	if not configs[name] then
-		configs[name] = {
-			default_config = {
-				cmd = cmd,
-				filetypes = filetypes,
-				root_dir = function(fname)
-					return require("lspconfig.util").root_pattern(root_pattern)(fname)
-				end,
-			},
-		}
-	end
-end
-
 return {
 	{
 		"neovim/nvim-lspconfig",
