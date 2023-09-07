@@ -168,7 +168,9 @@ return {
             -- TODO: check if `new-lines: false` is still needed
 						extra_args = { "-d", "{extends: relaxed, rules: {new-lines: false}}" },
 					}),
-					null_ls.builtins.diagnostics.markdownlint,
+					null_ls.builtins.diagnostics.markdownlint.with({
+						extra_args = { "--disable", "MD041" }
+					}),
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gitlint,
 					null_ls.builtins.code_actions.shellcheck,
