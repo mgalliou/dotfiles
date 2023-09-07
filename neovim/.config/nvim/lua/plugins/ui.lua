@@ -1,6 +1,6 @@
 return {
 	{
-		'lukas-reineke/indent-blankline.nvim',
+		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPost",
 		opts = {
 			-- TODO: improve configuration
@@ -10,53 +10,53 @@ return {
 		},
 	},
 	{
-		'asiryk/auto-hlsearch.nvim',
+		"asiryk/auto-hlsearch.nvim",
 		event = "BufReadPost",
-		config = true
+		config = true,
 	},
 	{
-		'm-demare/hlargs.nvim',
+		"m-demare/hlargs.nvim",
 		event = "CursorMoved",
 		opts = {
 			highlight = {
-				italic = true
+				italic = true,
 			},
 		},
 	},
 	-- TODO: configure
 	{
-		'RRethy/vim-illuminate',
-		event = "BufReadPost"
+		"RRethy/vim-illuminate",
+		event = "BufReadPost",
 	},
 	-- TODO: add configuration/keymaps
 	{
-		'folke/todo-comments.nvim',
+		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoTelescope" },
 		event = "BufReadPost",
-		config = true
+		config = true,
 	},
-	{ 'kyazdani42/nvim-web-devicons' },
+	{ "kyazdani42/nvim-web-devicons" },
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {
-				theme = 'gruvbox',
-				component_separators = { left = '|', right = '|' },
+				theme = "gruvbox",
+				component_separators = { left = "|", right = "|" },
 				section_separators = {},
 			},
 			sections = {
-				lualine_a = { 'mode' },
-				lualine_b = { 'branch', 'diff', 'diagnostics' },
-				lualine_c = { { 'filename', path = 4 } },
-				lualine_x = { 'filetype' },
+				lualine_a = { "mode" },
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_c = { { "filename", path = 4 } },
+				lualine_x = { "filetype" },
 				lualine_y = {},
-				lualine_z = { 'progress' }
+				lualine_z = { "progress" },
 			},
-			extensions = { "neo-tree" }
+			extensions = { "neo-tree" },
 		},
 	},
 	{
-		'lewis6991/gitsigns.nvim',
+		"lewis6991/gitsigns.nvim",
 		opts = {
 			current_line_blame = false,
 			current_line_blame_opts = {
@@ -74,28 +74,32 @@ return {
 				map("n", "]h", gs.next_hunk, "Next Hunk")
 				map("n", "[h", gs.prev_hunk, "Prev Hunk")
 				-- Actions
-				map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>', "Stage Hunk")
-				map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>', "Reset Hunk")
-				map('n', '<leader>hS', gs.stage_buffer, "Stage Buffer")
-				map('n', '<leader>hu', gs.undo_stage_hunk, "Undo Stage Hunk")
-				map('n', '<leader>hR', gs.reset_buffer, "Reset Buffer")
-				map('n', '<leader>hp', gs.preview_hunk, "Prevew Hunk")
-				map('n', '<leader>hb', function() gs.blame_line({ full = true }) end, "Blame Line")
-				map('n', '<leader>htb', gs.toggle_current_line_blame, "Toggle Blame")
-				map('n', '<leader>hd', gs.diffthis, "Diff This")
-				map('n', '<leader>hD', function() gs.diffthis('~') end, "Diff This ~")
-				map('n', '<leader>td', gs.toggle_deleted, "Toggle Deleted")
+				map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+				map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+				map("n", "<leader>hS", gs.stage_buffer, "Stage Buffer")
+				map("n", "<leader>hu", gs.undo_stage_hunk, "Undo Stage Hunk")
+				map("n", "<leader>hR", gs.reset_buffer, "Reset Buffer")
+				map("n", "<leader>hp", gs.preview_hunk, "Prevew Hunk")
+				map("n", "<leader>hb", function()
+					gs.blame_line({ full = true })
+				end, "Blame Line")
+				map("n", "<leader>htb", gs.toggle_current_line_blame, "Toggle Blame")
+				map("n", "<leader>hd", gs.diffthis, "Diff This")
+				map("n", "<leader>hD", function()
+					gs.diffthis("~")
+				end, "Diff This ~")
+				map("n", "<leader>td", gs.toggle_deleted, "Toggle Deleted")
 				-- Text object
-				map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', "GitSigns Select Hunk")
-			end
-		}
+				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+			end,
+		},
 	},
 	{
-		'folke/noice.nvim',
+		"folke/noice.nvim",
 		enabled = false,
 		dependencies = {
-			'MunifTanjim/nui.nvim',
-			'rcarriga/nvim-notify'
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
 		},
 		opts = {
 			lsp = {
@@ -116,14 +120,14 @@ return {
 			},
 			messages = {
 				enabled = false,
-			}
-		}
+			},
+		},
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		enabled = false,
 		dependencies = {
-			{ "MunifTanjim/nui.nvim", lazy = true }
+			{ "MunifTanjim/nui.nvim", lazy = true },
 		},
 		opts = {
 			-- NOTE: workaround to prevent flickering when changing source
@@ -141,11 +145,11 @@ return {
 				winbar = true,
 			},
 			add_blank_line_at_top = true,
-			close_if_last_window = true
+			close_if_last_window = true,
 		},
 		-- TODO: add keymaps
 		keys = {
-			{ "<A-1>", "<cmd>NeoTreeFocusToggle<cr>", desc = "Toggle Neo-tree" }
-		}
+			{ "<A-1>", "<cmd>NeoTreeFocusToggle<cr>", desc = "Toggle Neo-tree" },
+		},
 	},
 }

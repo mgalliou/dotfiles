@@ -1,11 +1,11 @@
 return {
 	{
-		'L3MON4D3/LuaSnip',
+		"L3MON4D3/LuaSnip",
 		dependencies = {
-			'rafamadriz/friendly-snippets',
+			"rafamadriz/friendly-snippets",
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
-			end
+			end,
 		},
 		keys = {
 			{
@@ -13,44 +13,44 @@ return {
 				function()
 					return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
 				end,
-				expr = true, silent = true, mode = 'i',
+				expr = true,
+				silent = true,
+				mode = "i",
 			},
 			{
 				"<tab>",
 				function()
 					return require("luasnip").jumpable(1)
 				end,
-				mode = 's',
+				mode = "s",
 			},
 			{
 				"<s-tab>",
 				function()
 					return require("luasnip").jumpable(-1)
 				end,
-				mode = {'i', 's'},
-			}
-
-
+				mode = { "i", "s" },
+			},
 		},
 	},
 	{
-		'hrsh7th/nvim-cmp',
+		"hrsh7th/nvim-cmp",
 		version = false,
 		event = "InsertEnter",
 		dependencies = {
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-nvim-lsp',
-			'saadparwaiz1/cmp_luasnip',
-			'andersevenrud/cmp-tmux',
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp",
+			"saadparwaiz1/cmp_luasnip",
+			"andersevenrud/cmp-tmux",
 		},
 		opts = function()
 			local cmp = require("cmp")
 			local kind_icons = require("tools").kind_icons
-			cmp.setup {
+			cmp.setup({
 				snippet = {
 					expand = function(args)
-						require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 					end,
 				},
 				completion = {
@@ -58,7 +58,7 @@ return {
 				},
 				formatting = {
 					format = function(entry, vim_item)
-						vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 						vim_item.menu = ({
 							buffer = "[buffer]",
 							nvim_lsp = "[LSP]",
@@ -68,18 +68,18 @@ return {
 							tmux = "[tmux]",
 						})[entry.source.name]
 						return vim_item
-					end
+					end,
 				},
 				window = {
 					-- completion = cmp.config.window.bordered(),
 					-- documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-					['<C-b>'] = cmp.mapping.scroll_docs(-4),
-					['<C-f>'] = cmp.mapping.scroll_docs(4),
-					['<C-Space>'] = cmp.mapping.complete(),
+					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
 					-- ['<Esc>'] = cmp.mapping.abort(),
-					['<C-e>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					["<C-e>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
@@ -94,7 +94,7 @@ return {
 						hl_group = "LspCodeLens",
 					},
 				},
-			}
-		end
+			})
+		end,
 	},
 }

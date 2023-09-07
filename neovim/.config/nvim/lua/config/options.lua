@@ -42,7 +42,7 @@ o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = false
 
 -- Filetype
-g.asmsyntax = 'nasm'
+g.asmsyntax = "nasm"
 
 -- Spellchecking
 o.spellsuggest = { "best", "10" }

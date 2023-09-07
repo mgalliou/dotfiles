@@ -6,7 +6,7 @@ end
 
 return {
 	{
-		'nvim-telescope/telescope.nvim',
+		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
@@ -33,22 +33,26 @@ return {
 					"--column",
 					"--smart-case",
 					"-.",
-				}
+				},
 			},
 			pickers = {
 				find_files = {
-					hidden = true
-				}
-			}
+					hidden = true,
+				},
+			},
 		},
 		-- TODO: change and add more keybind
 		keys = {
-			{ "<leader>f", T("find_files"),                         desc = "Find files with Telescope" },
-			{ "<leader>F", T("find_files", { cwd = false }),        desc = "Find files in current working directory Telescope" },
+			{ "<leader>f", T("find_files"), desc = "Find files with Telescope" },
+			{
+				"<leader>F",
+				T("find_files", { cwd = false }),
+				desc = "Find files in current working directory Telescope",
+			},
 			--{ "<leader>fd", T("find_files", { cwd = "~/dotfiles" }), desc = "Find dotfiles with Telescope" },
-			{ "<leader>/", T("live_grep"),                          desc = "Grep in currend directory with Telescope" },
-			{ "<leader>b", T("buffers"),                            desc = "Find buffer with Telescope" },
-			{ "<leader>H", T("help_tags"),                          desc = "Find helptags with Telescope" },
+			{ "<leader>/", T("live_grep"), desc = "Grep in currend directory with Telescope" },
+			{ "<leader>b", T("buffers"), desc = "Find buffer with Telescope" },
+			{ "<leader>H", T("help_tags"), desc = "Find helptags with Telescope" },
 			{
 				"<leader>s",
 				T("lsp_document_symbols", {
@@ -62,8 +66,8 @@ return {
 						"Struct",
 						"Trait",
 						"Field",
-						"Property"
-					}
+						"Property",
+					},
 				}),
 				desc = "Goto Symbol",
 			},
