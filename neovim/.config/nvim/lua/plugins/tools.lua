@@ -24,6 +24,7 @@ return {
 	},
 	{
 		"nvim-neorg/neorg",
+		enabled = false,
 		ft = "norg",
 		build = ":Neorg sync-parsers",
 		opts = {
@@ -51,6 +52,7 @@ return {
 	},
 	{
 		"mickael-menu/zk-nvim",
+		enabled = flase,
 		config = function ()
 			require("zk").setup({
 				picker = "telescope",
