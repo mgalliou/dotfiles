@@ -37,7 +37,7 @@ M.kind_icons = {
 	Variable = " ",
 }
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(ev)
 	local buf = vim.lsp.buf
 
 	local function quick_code_action()
@@ -53,9 +53,9 @@ M.on_attach = function(client, bufnr)
 	end
 
 	local km = vim.keymap
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	local bufopts = { buffer = ev.buf }
 
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 	km.set('n', "<leader>gc", buf.declaration, bufopts)
 	km.set('n', "<leader>gd", buf.definition, bufopts)
 	km.set('n', "<leader>h", buf.hover, bufopts)

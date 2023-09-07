@@ -62,27 +62,8 @@ return {
 		config = function()
 			local diag = vim.diagnostic
 			local opts = { noremap = true, silent = true }
-
-			diag.config {
-				virtual_text = { spacing = 4, prefix = "●" },
-				signs = true,
-				underline = true,
-				update_in_insert = false,
-				severity_sort = true,
-			}
-			vim.keymap.set('n', "<leader>e", diag.open_float, opts)
-			vim.keymap.set('n', "[d", diag.goto_prev, opts)
-			vim.keymap.set('n', "]d", diag.goto_next, opts)
-			vim.keymap.set('n', "<leader>sll", diag.setloclist, opts)
-
 			local lspconfig = require("lspconfig")
-			local on_attach = require("tools").on_attach
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-			local lsp_flags = {
-				-- This is the default in Nvim 0.7+
-				debounce_text_changes = 150,
-			}
-
 			local servers = {
 				lua_ls = {
 					Lua = {
@@ -125,10 +106,26 @@ return {
 				kotlin_language_server = {}
 			}
 
+			diag.config {
+				virtual_text = { spacing = 4, prefix = "●" },
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+			}
+
+			vim.keymap.set('n', "<leader>e", diag.open_float, opts)
+			vim.keymap.set('n', "[d", diag.goto_prev, opts)
+			vim.keymap.set('n', "]d", diag.goto_next, opts)
+			vim.keymap.set('n', "<leader>sll", diag.setloclist, opts)
+
+			vim.api.nvim_create_autocmd('LspAttach', {
+				group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+				callback = require("tools").on_attach
+			})
+
 			for ls, opt in pairs(servers) do
 				lspconfig[ls].setup({
-					on_attach = on_attach,
-					flags = lsp_flags,
 					capabilities = capabilities,
 					settings = opt
 				})
@@ -136,8 +133,6 @@ return {
 
 			require("rust-tools").setup {
 				server = {
-					on_attach = on_attach,
-					flags = lsp_flags,
 					capabilities = capabilities,
 				},
 			}
@@ -185,8 +180,6 @@ return {
           null_ls.builtins.formatting.shellharden,
           null_ls.builtins.formatting.stylua
 				},
-
-				on_attach = require("tools").on_attach,
 			})
 		end
 	},
