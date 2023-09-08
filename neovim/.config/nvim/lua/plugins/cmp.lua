@@ -41,6 +41,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-emoji",
 			"saadparwaiz1/cmp_luasnip",
 			"andersevenrud/cmp-tmux",
 		},
@@ -88,6 +89,7 @@ return {
 					{ name = "path" },
 					{ name = "neorg" },
 					{ name = "tmux" },
+					{ name = "emoji"},
 				}),
 				experimental = {
 					ghost_text = {
