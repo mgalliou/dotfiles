@@ -29,6 +29,8 @@ o.listchars:append("eol:↴")
 vim.cmd([[runtime macros/justify.vim]]) --allow paragraph justification with `_j`
 o.cmdheight = 1
 vim.cmd([[colorscheme gruvbox]])
+o.conceallevel = 2
+o.concealcursor = "nc"
 
 -- Searching
 o.incsearch = true
