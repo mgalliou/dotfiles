@@ -167,7 +167,7 @@ return {
 						extra_args = { "-d", "{extends: relaxed, rules: {new-lines: false}}" },
 					}),
 					null_ls.builtins.diagnostics.markdownlint.with({
-						extra_args = { "--disable", "MD041" },
+						extra_args = { "--disable", "MD024", "MD033", "MD041" },
 					}),
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gitlint,
