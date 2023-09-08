@@ -2,11 +2,12 @@ fish_add_path $HOME/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.opam/bin
-fish_add_path $HOME/.local/share/gem/ruby/3.0.0/bin
+fish_add_path $HOME/.local/share/gem/ruby/3.2.0/bin
 fish_add_path $HOME/node_modules/.bin
 fish_add_path -aP $HOME/.local/share/nvim/mason/bin/
 fish_add_path -aP $HOME/.linuxbrew/bin
 fish_add_path -aP /home/linuxbrew/.linuxbrew/bin
+fish_add_path -aP /home/linuxbrew/.linuxbrew/lib/ruby/gems/3.2.0/bin
 
 if type -q nvim
     set -x EDITOR nvim
