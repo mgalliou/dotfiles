@@ -38,20 +38,23 @@ return {
 		version = false,
 		event = "InsertEnter",
 		dependencies = {
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-emoji",
-			"saadparwaiz1/cmp_luasnip",
 			"andersevenrud/cmp-tmux",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-emoji",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
 		},
-		opts = function()
+		config = function()
 			local cmp = require("cmp")
+			local cmp_buffer = require("cmp_buffer")
 			local kind_icons = require("tools").kind_icons
+
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+						require("luasnip").lsp_expand(args.body)
 					end,
 				},
 				completion = {
@@ -62,40 +65,64 @@ return {
 						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 						vim_item.menu = ({
 							buffer = "[buffer]",
-							nvim_lsp = "[LSP]",
-							luasnip = "[LuaSnip]",
-							nvim_lua = "[nvim_lua]",
 							latex_symbols = "[LaTeX]",
+							luasnip = "[LuaSnip]",
+							nvim_lsp = "[LSP]",
+							nvim_lua = "[nvim_lua]",
 							tmux = "[tmux]",
 						})[entry.source.name]
 						return vim_item
 					end,
 				},
-				window = {
-					-- completion = cmp.config.window.bordered(),
-					-- documentation = cmp.config.window.bordered(),
-				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					-- ['<Esc>'] = cmp.mapping.abort(),
-					["<C-e>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
+					{
+						name = "buffer",
+						option = {
+							keyword_length = 1,
+							get_bufnrs = function()
+								return vim.api.nvim_list_bufs()
+							end,
+						},
+					},
+					{ name = "emoji" },
 					{ name = "luasnip", option = { show_autosnippets = true } },
-					{ name = "buffer", keyword_length = 3 },
-					{ name = "path" },
 					{ name = "neorg" },
+					{ name = "nvim_lsp" },
+					{ name = "path" },
 					{ name = "tmux" },
-					{ name = "emoji"},
 				}),
+				sorting = {
+					comparators = {
+						function(...)
+							return cmp_buffer:compare_locality(...)
+						end,
+					},
+				},
 				experimental = {
 					ghost_text = {
 						hl_group = "LspCodeLens",
 					},
 				},
+			})
+
+			cmp.setup.cmdline({ "/", "?" }, {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{ name = "buffer" },
+				},
+			})
+
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{ name = "cmdline" },
+				}),
 			})
 		end,
 	},
