@@ -124,6 +124,7 @@ return {
 
 			null_ls.setup({
 				sources = {
+					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.diagnostics.yamllint.with({
 						filetypes = { "yaml", "helm" },
 						-- TODO: check if `new-lines: false` is still needed
@@ -134,9 +135,6 @@ return {
 					}),
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gitlint,
-					null_ls.builtins.code_actions.shellcheck,
-					null_ls.builtins.formatting.beautysh,
-					null_ls.builtins.formatting.shellharden,
 					null_ls.builtins.formatting.jq,
 					null_ls.builtins.formatting.prettierd.with({
 						env = {
@@ -145,7 +143,9 @@ return {
 						extra_filetypes = { "gotmpl", "helm" },
 					}),
 					null_ls.builtins.formatting.fish_indent,
-					null_ls.builtins.formatting.shellharden,
+					null_ls.builtins.formatting.shellharden.with({
+						extra_filetypes = { "tmux" },
+					}),
 					null_ls.builtins.formatting.stylua,
 				},
 			})
