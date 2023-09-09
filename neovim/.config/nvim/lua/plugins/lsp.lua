@@ -175,7 +175,14 @@ return {
 					null_ls.builtins.formatting.beautysh,
 					null_ls.builtins.formatting.shellharden,
 					null_ls.builtins.formatting.jq,
-					null_ls.builtins.formatting.prettierd,
+					null_ls.builtins.formatting.prettierd.with({
+						env = {
+							PRETTIERD_DEFAULT_CONFIG = vim.fn.expand(
+								"~/.config/nvim/utils/linter-config/.prettierrc"
+							),
+						},
+						extra_filetypes = { "gotmpl", "helm" }
+					}),
 					null_ls.builtins.formatting.fish_indent,
 					null_ls.builtins.formatting.shellharden,
 					null_ls.builtins.formatting.stylua,
