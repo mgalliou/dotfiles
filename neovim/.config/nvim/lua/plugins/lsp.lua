@@ -62,48 +62,6 @@ return {
 			local diag = vim.diagnostic
 			local opts = { noremap = true, silent = true }
 			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local servers = {
-				lua_ls = {
-					Lua = {
-						completion = {
-							callSnippet = "Both",
-							workspaceWord = true,
-						},
-						format = {
-							enable = false,
-						},
-						workspace = {
-							checkThirdParty = true,
-							library = {
-								"/usr/share/awesome/lib",
-							},
-						},
-					},
-				},
-				bashls = {},
-				vimls = {},
-				ccls = {},
-				lemminx = {},
-				marksman = {},
-				dockerls = {},
-				ansiblels = {},
-				solargraph = {},
-				taplo = {},
-				terraformls = {},
-				jsonls = {},
-				yamlls = {
-					yaml = {
-						customTags = { "!reference sequence" },
-					},
-					schemas = {
-						["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
-					},
-				},
-				--helm_ls = {},
-				angularls = {},
-				kotlin_language_server = {},
-			}
 
 			diag.config({
 				virtual_text = { spacing = 4, prefix = "●" },
@@ -123,20 +81,25 @@ return {
 				callback = require("tools").on_attach,
 			})
 
-			for ls, opt in pairs(servers) do
-				lspconfig[ls].setup({
-					capabilities = capabilities,
-					settings = opt,
-				})
-			end
-
-			require("rust-tools").setup({
-				server = {
-					capabilities = capabilities,
-				},
-			})
-
 			--vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+			require("mason-lspconfig").setup_handlers({
+				function(server_name)
+					local capabilities = require("cmp_nvim_lsp").default_capabilities()
+					require("lspconfig")[server_name].setup({
+						settings = require("tools").servers[server_name] or {},
+						capabilities = capabilities,
+					})
+				end,
+				["rust_analyzer"] = function()
+					local capabilities = require("cmp_nvim_lsp").default_capabilities()
+					require("rust-tools").setup({
+						server = {
+							capabilities = capabilities,
+						},
+					})
+				end,
+			})
 
 			local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 			for type, icon in pairs(signs) do
@@ -177,11 +140,9 @@ return {
 					null_ls.builtins.formatting.jq,
 					null_ls.builtins.formatting.prettierd.with({
 						env = {
-							PRETTIERD_DEFAULT_CONFIG = vim.fn.expand(
-								"~/.config/nvim/utils/linter-config/.prettierrc"
-							),
+							PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc"),
 						},
-						extra_filetypes = { "gotmpl", "helm" }
+						extra_filetypes = { "gotmpl", "helm" },
 					}),
 					null_ls.builtins.formatting.fish_indent,
 					null_ls.builtins.formatting.shellharden,

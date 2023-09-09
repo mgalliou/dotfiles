@@ -37,7 +37,7 @@ M.kind_icons = {
 	Variable = " ",
 }
 
-M.config_custom_server = function (name, cmd, filetypes, root_pattern)
+M.config_custom_server = function(name, cmd, filetypes, root_pattern)
 	local configs = require("lspconfig.configs")
 	if not configs[name] then
 		configs[name] = {
@@ -90,5 +90,33 @@ M.on_attach = function(ev)
 		buf.format({ async = true })
 	end, bufopts)
 end
+
+M.servers = {
+	lua_ls = {
+		Lua = {
+			completion = {
+				callSnippet = "Both",
+				workspaceWord = true,
+			},
+			format = {
+				enable = false,
+			},
+			workspace = {
+				checkThirdParty = true,
+				library = {
+					"/usr/share/awesome/lib",
+				},
+			},
+		},
+	},
+	yamlls = {
+		yaml = {
+			customTags = { "!reference sequence" },
+		},
+		schemas = {
+			["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
+		},
+	},
+}
 
 return M
