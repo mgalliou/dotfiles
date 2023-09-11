@@ -51,7 +51,7 @@ return {
 	},
 	{
 		"mickael-menu/zk-nvim",
-		enabled = flase,
+		enabled = false,
 		config = function()
 			require("zk").setup({
 				picker = "telescope",
