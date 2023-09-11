@@ -61,7 +61,6 @@ return {
 		config = function()
 			local diag = vim.diagnostic
 			local opts = { noremap = true, silent = true }
-			local lspconfig = require("lspconfig")
 
 			diag.config({
 				virtual_text = { spacing = 4, prefix = "●" },
@@ -158,7 +157,26 @@ return {
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
-		-- TODO: configure `ensure_installed`
-		config = true,
+		opts = {
+			ensure_installed = {
+				"bash-language-server",
+				"gitlint",
+				"helm-ls",
+				"jdtls",
+				"jq",
+				"jq",
+				"lua-language-server",
+				"markdownlint",
+				"marksman",
+				"prettierd",
+				"shellcheck",
+				"shellharden",
+				"stylua",
+				"taplo",
+				"vim-language-server",
+				"yaml-language-server",
+				"yamllint",
+			},
+		},
 	},
 }
