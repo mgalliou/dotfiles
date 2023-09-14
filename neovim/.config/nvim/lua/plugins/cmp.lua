@@ -48,7 +48,6 @@ return {
 		},
 		config = function()
 			local cmp = require("cmp")
-			local cmp_buffer = require("cmp_buffer")
 			local kind_icons = require("tools").kind_icons
 
 			cmp.setup({
@@ -79,6 +78,9 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 				}),
 				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "luasnip", option = { show_autosnippets = true } },
+					{ name = "path" },
 					{
 						name = "buffer",
 						option = {
@@ -88,12 +90,8 @@ return {
 							end,
 						},
 					},
-					{ name = "emoji" },
-					{ name = "luasnip", option = { show_autosnippets = true } },
-					{ name = "neorg" },
-					{ name = "nvim_lsp" },
-					{ name = "path" },
 					{ name = "tmux" },
+					{ name = "emoji" },
 				}),
 				experimental = {
 					ghost_text = {
