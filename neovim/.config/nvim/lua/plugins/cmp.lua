@@ -95,13 +95,6 @@ return {
 					{ name = "path" },
 					{ name = "tmux" },
 				}),
-				sorting = {
-					comparators = {
-						function(...)
-							return cmp_buffer:compare_locality(...)
-						end,
-					},
-				},
 				experimental = {
 					ghost_text = {
 						hl_group = "LspCodeLens",
