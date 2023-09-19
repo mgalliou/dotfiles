@@ -123,7 +123,9 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.code_actions.shellcheck,
-					null_ls.builtins.diagnostics.yamllint,
+					null_ls.builtins.diagnostics.yamllint.with({
+						extra_args = { "-d", "{extends: relaxed}" },
+					}),
 					null_ls.builtins.diagnostics.markdownlint.with({
 						extra_args = { "--disable", "MD024", "MD033", "MD041" },
 					}),
