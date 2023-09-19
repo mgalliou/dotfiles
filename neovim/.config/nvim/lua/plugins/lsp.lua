@@ -123,11 +123,7 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.code_actions.shellcheck,
-					null_ls.builtins.diagnostics.yamllint.with({
-						filetypes = { "yaml", "helm" },
-						-- TODO: check if `new-lines: false` is still needed
-						extra_args = { "-d", "{extends: relaxed, rules: {new-lines: false}}" },
-					}),
+					null_ls.builtins.diagnostics.yamllint,
 					null_ls.builtins.diagnostics.markdownlint.with({
 						extra_args = { "--disable", "MD024", "MD033", "MD041" },
 					}),
