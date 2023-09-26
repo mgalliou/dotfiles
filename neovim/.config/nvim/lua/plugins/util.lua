@@ -19,7 +19,7 @@ return {
 			})
 		end,
 	},
-	{ "tpope/vim-repeat", event = { "BufReadPost", "BufNewFile" } },
+	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = { "BufReadPost", "BufNewFile" } },
 	{ "tpope/vim-commentary", event = { "BufReadPost", "BufNewFile" } },
 	{ "tpope/vim-fugitive" },
