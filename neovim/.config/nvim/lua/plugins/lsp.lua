@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
 				"hrsh7th/cmp-nvim-lsp",
@@ -115,7 +115,7 @@ return {
 	{ "mfussenegger/nvim-jdtls" },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = "mason.nvim",
 		config = function()
 			local null_ls = require("null-ls")
