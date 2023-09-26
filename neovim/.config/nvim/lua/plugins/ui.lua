@@ -1,7 +1,7 @@
 return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPost",
+	event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			-- TODO: improve configuration
 			show_current_context = true,
@@ -11,7 +11,7 @@ return {
 	},
 	{
 		"asiryk/auto-hlsearch.nvim",
-		event = "BufReadPost",
+	event = { "BufReadPost", "BufNewFile" },
 		config = true,
 	},
 	{
@@ -26,13 +26,13 @@ return {
 	-- TODO: configure
 	{
 		"RRethy/vim-illuminate",
-		event = "BufReadPost",
+	event = { "BufReadPost", "BufNewFile" },
 	},
 	-- TODO: add configuration/keymaps
 	{
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTrouble", "TodoTelescope" },
-		event = "BufReadPost",
+	event = { "BufReadPost", "BufNewFile" },
 		config = true,
 	},
 	{ "kyazdani42/nvim-web-devicons" },

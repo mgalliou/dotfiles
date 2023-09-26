@@ -2,7 +2,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	version = false,
 	build = ":TSUpdate",
-	event = "BufReadPost",
+	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		auto_install = { enable = true },
 		highlight = { enable = true, additional_vim_regex_highlighting = true },
