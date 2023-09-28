@@ -78,9 +78,11 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
 					{ name = "luasnip", option = { show_autosnippets = true } },
+					{ name = "nvim_lsp" },
 					{ name = "path" },
+					{ name = "emoji" },
+					{ name = "tmux" },
 					{
 						name = "buffer",
 						option = {
@@ -90,8 +92,6 @@ return {
 							end,
 						},
 					},
-					{ name = "tmux" },
-					{ name = "emoji" },
 				}),
 				experimental = {
 					ghost_text = {
