@@ -95,7 +95,7 @@ M.servers = {
 	lua_ls = {
 		Lua = {
 			completion = {
-				callSnippet = "Both",
+				callSnippet = "Replace",
 				workspaceWord = true,
 			},
 			format = {
