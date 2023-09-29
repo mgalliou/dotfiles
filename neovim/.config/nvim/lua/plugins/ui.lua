@@ -1,9 +1,17 @@
+local highlight = {
+	"CursorColumn",
+	"Whitespace",
+}
+
 return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		main = "ibl",
-		config = true,
+		opts = {
+			indent = { char = "" },
+			whitespace = { highlight = highlight, remove_blankline_trail = false },
+		},
 	},
 	{
 		"asiryk/auto-hlsearch.nvim",
