@@ -70,10 +70,11 @@ return {
 				severity_sort = true,
 			})
 
-			vim.keymap.set("n", "<leader>e", diag.open_float, opts)
-			vim.keymap.set("n", "[d", diag.goto_prev, opts)
-			vim.keymap.set("n", "]d", diag.goto_next, opts)
-			vim.keymap.set("n", "<leader>sll", diag.setloclist, opts)
+			local km = require("tools").set_keymap_opts
+			km("n", "<leader>e", diag.open_float, opts, "Diagnostic float" )
+			km("n", "[d", diag.goto_prev, opts, "Previous Diagnostic")
+			km("n", "]d", diag.goto_next, opts, "Next Diagnostic")
+			km("n", "<leader>sll", diag.setloclist, opts, "Diagnostics in quickfix")
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
