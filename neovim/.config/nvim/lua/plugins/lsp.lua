@@ -71,7 +71,7 @@ return {
 			})
 
 			local km = require("tools").set_keymap_opts
-			km("n", "<leader>e", diag.open_float, opts, "Diagnostic float" )
+			km("n", "<leader>e", diag.open_float, opts, "Diagnostic float")
 			km("n", "[d", diag.goto_prev, opts, "Previous Diagnostic")
 			km("n", "]d", diag.goto_next, opts, "Next Diagnostic")
 			km("n", "<leader>sll", diag.setloclist, opts, "Diagnostics in quickfix")

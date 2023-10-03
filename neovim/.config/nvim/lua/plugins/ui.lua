@@ -5,39 +5,17 @@ local highlight = {
 
 return {
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		main = "ibl",
-		opts = {
-			indent = { char = "" },
-			whitespace = { highlight = highlight, remove_blankline_trail = false },
-		},
-	},
-	{
-		"asiryk/auto-hlsearch.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		config = true,
-	},
-	{
-		"m-demare/hlargs.nvim",
-		event = "CursorMoved",
-		opts = {
-			highlight = {
-				italic = true,
-			},
-		},
-	},
-	-- TODO: configure
-	{
-		"RRethy/vim-illuminate",
-		event = { "BufReadPost", "BufNewFile" },
-	},
-	-- TODO: add configuration/keymaps
-	{
-		"folke/todo-comments.nvim",
-		cmd = { "TodoTrouble", "TodoTelescope" },
-		event = { "BufReadPost", "BufNewFile" },
-		config = true,
+		"folke/which-key.nvim",
+		config = function()
+			--TODO: Improve configuration
+			vim.o.timeout = true
+			vim.o.timeoutlen = 500
+			require("which-key").setup({
+				spelling = {
+					enabled = true,
+				},
+			})
+		end,
 	},
 	{ "kyazdani42/nvim-web-devicons" },
 	{
@@ -58,6 +36,39 @@ return {
 			},
 			extensions = { "neo-tree" },
 		},
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		main = "ibl",
+		opts = {
+			indent = { char = "" },
+			whitespace = { highlight = highlight, remove_blankline_trail = false },
+		},
+	},
+	{
+		"RRethy/vim-illuminate",
+		event = { "BufReadPost", "BufNewFile" },
+	},
+	{
+		"m-demare/hlargs.nvim",
+		event = "CursorMoved",
+		opts = {
+			highlight = {
+				italic = true,
+			},
+		},
+	},
+	{
+		"asiryk/auto-hlsearch.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		config = true,
+	},
+	{
+		"folke/todo-comments.nvim",
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = { "BufReadPost", "BufNewFile" },
+		config = true,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -125,35 +136,6 @@ return {
 			messages = {
 				enabled = false,
 			},
-		},
-	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		enabled = false,
-		dependencies = {
-			{ "MunifTanjim/nui.nvim", lazy = true },
-		},
-		opts = {
-			-- NOTE: workaround to prevent flickering when changing source
-			git_status_async = false,
-			filesystem = {
-				-- NOTE: workaround to prevent flickering when changing source
-				async_directory_scan = "never",
-				filtered_items = {
-					hide_dotfiles = false,
-					hide_hidden = false,
-					hide_gitignored = false,
-				},
-			},
-			source_selector = {
-				winbar = true,
-			},
-			add_blank_line_at_top = true,
-			close_if_last_window = true,
-		},
-		-- TODO: add keymaps
-		keys = {
-			{ "<A-1>", "<cmd>NeoTreeFocusToggle<cr>", desc = "Toggle Neo-tree" },
 		},
 	},
 }
