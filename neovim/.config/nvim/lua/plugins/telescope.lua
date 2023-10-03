@@ -16,6 +16,13 @@ return {
 					require("telescope").load_extension("ui-select")
 				end,
 			},
+			{
+				"johmsalas/text-case.nvim",
+				config = function()
+					require("telescope").load_extension("textcase")
+					vim.keymap.set({ "n", "v" }, "<leader>~", "<CMD>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+				end,
+			},
 		},
 		opts = {
 			defaults = {
