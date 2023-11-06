@@ -128,7 +128,7 @@ return {
 						extra_args = { "-d", "{extends: relaxed}" },
 					}),
 					null_ls.builtins.diagnostics.markdownlint.with({
-						extra_args = { "--disable", "MD024", "MD033", "MD041" },
+						extra_args = { "--config", vim.fn.expand("~/.config/nvim/utils/linter-config/.markdownlint.yaml") },
 					}),
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gitlint,

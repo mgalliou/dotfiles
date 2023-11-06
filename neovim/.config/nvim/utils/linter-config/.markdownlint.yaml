@@ -1,0 +1,9 @@
+default: true
+MD013:
+  tables: false
+  stern: true
+MD024:
+  allow_different_nesting: true
+  siblings_only: true
+MD033: false
+MD041: false
