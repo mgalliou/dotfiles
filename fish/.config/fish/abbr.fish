@@ -82,6 +82,7 @@ if type -q helmfile
 	abbr -a hft "helmfile template"
 	abbr -a hfa "helmfile apply"
 	abbr -a hfd "helmfile destroy"
+	abbr -a hhcc "helmfile cache cleanup"
 end
 
 if type -q exa
