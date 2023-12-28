@@ -20,3 +20,7 @@ if type -q starship
 else
     source $CONFIG_PATH/prompt.fish
 end
+
+function delete_last_history_entry
+	history delete -Ce $(history --max 1)
+end
