@@ -95,7 +95,12 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "emoji" },
-					{ name = "tmux" },
+					{
+						name = "tmux",
+						option = {
+							all_panes = true,
+						},
+					},
 					{
 						name = "buffer",
 						option = {
