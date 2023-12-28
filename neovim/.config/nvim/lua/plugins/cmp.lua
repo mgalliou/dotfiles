@@ -91,8 +91,8 @@ return {
 					end,
 				}),
 				sources = cmp.config.sources({
-					{ name = "luasnip", option = { show_autosnippets = true } },
 					{ name = "nvim_lsp" },
+					{ name = "luasnip", option = { show_autosnippets = true } },
 					{ name = "path" },
 					{ name = "emoji" },
 					{
