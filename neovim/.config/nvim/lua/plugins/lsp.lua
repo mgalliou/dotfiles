@@ -132,7 +132,7 @@ return {
 					}),
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gitlint,
-					null_ls.builtins.formatting.jq,
+					null_ls.builtins.diagnostics.eslint_d,
 					null_ls.builtins.formatting.prettierd.with({
 						env = {
 							PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc"),
