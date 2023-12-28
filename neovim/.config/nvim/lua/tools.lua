@@ -62,6 +62,11 @@ M.on_attach = function(ev)
 	local buf = vim.lsp.buf
 	local bufopts = { buffer = ev.buf }
 
+  local client = vim.lsp.get_client_by_id(ev.data.client_id)
+	if client.name == "tsserver" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+
 	local function quick_code_action()
 		buf.code_action({
 			context = {
