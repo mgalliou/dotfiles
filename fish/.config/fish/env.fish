@@ -5,6 +5,7 @@ fish_add_path $HOME/.opam/bin
 fish_add_path $HOME/.local/share/gem/ruby/3.2.0/bin
 fish_add_path $HOME/node_modules/.bin
 fish_add_path $HOME/.krew/bin
+fish_add_path $HOME/go/bin
 fish_add_path -aP $HOME/.local/share/nvim/mason/bin/
 fish_add_path -aP $HOME/.linuxbrew/bin
 fish_add_path -aP /home/linuxbrew/.linuxbrew/bin
