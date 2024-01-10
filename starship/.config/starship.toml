@@ -31,6 +31,7 @@ format = "$symbol[$branch]($style)"
 style = "bright-black"
 
 [git_commit]
+disabled = true
 commit_hash_length = 4
 only_detached = false
 tag_disabled = false
