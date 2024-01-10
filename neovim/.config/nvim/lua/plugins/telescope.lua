@@ -45,22 +45,20 @@ return {
 			pickers = {
 				find_files = {
 					hidden = true,
-					no_ignore = true,
 				},
 			},
 		},
-		-- TODO: change and add more keybind
 		keys = {
-			{ "<leader>f", T("find_files"), desc = "Find files with Telescope" },
+			{ "<leader>f", T("find_files"), desc = "Find git files (Telescope)" },
 			{
 				"<leader>F",
-				T("find_files", { cwd = false }),
-				desc = "Find files in current working directory Telescope",
+				T("find_files", { no_ignore = true }),
+				desc = "Find files (Telescope)",
 			},
 			--{ "<leader>fd", T("find_files", { cwd = "~/dotfiles" }), desc = "Find dotfiles with Telescope" },
-			{ "<leader>/", T("live_grep"), desc = "Grep in currend directory with Telescope" },
-			{ "<leader>b", T("buffers"), desc = "Find buffer with Telescope" },
-			{ "<leader>H", T("help_tags"), desc = "Find helptags with Telescope" },
+			{ "<leader>/", T("live_grep"), desc = "Grep (Telescope)" },
+			{ "<leader>b", T("buffers"), desc = "Find buffers (Telescope)" },
+			{ "<leader>H", T("help_tags"), desc = "Find helptags (Telescope)" },
 			{
 				"<leader>s",
 				T("lsp_document_symbols", {
@@ -77,7 +75,7 @@ return {
 						"Property",
 					},
 				}),
-				desc = "Goto Symbol",
+				desc = "List Lsp Symbols (Telescope)",
 			},
 		},
 	},
