@@ -11,6 +11,7 @@ return {
 				"williamboman/mason-lspconfig.nvim",
 				{
 					"filipdutescu/renamer.nvim",
+					enabled = false,
 					dependencies = {
 						"nvim-lua/plenary.nvim",
 					},
