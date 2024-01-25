@@ -83,7 +83,7 @@ M.on_attach = function(ev)
 	local km = M.set_keymap_opts
 	km("n", "<leader>gc", buf.declaration, bufopts, "Go to declaration")
 	km("n", "<leader>gd", buf.definition,  bufopts,"Go to definition")
-	km("n", "<leader>h", buf.hover, bufopts, "Hover")
+	km("n", "<leader>H", buf.hover, bufopts, "Hover symbol")
 	km("n", "<leader>gi", buf.implementation, bufopts, "Go to implementation")
 	km("n", "<leader><C-k>", buf.signature_help, bufopts, "Signature help")
 	km("n", "<leader>wa", buf.add_workspace_folder, bufopts, "Add workspace folder")
