@@ -62,8 +62,8 @@ M.on_attach = function(ev)
 	local buf = vim.lsp.buf
 	local bufopts = { buffer = ev.buf }
 
-  local client = vim.lsp.get_client_by_id(ev.data.client_id)
-	if client.name == "tsserver" then
+	local client = vim.lsp.get_client_by_id(ev.data.client_id)
+	if client and (client.name == "tsserver" or client.name == "typescript-tools") then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 

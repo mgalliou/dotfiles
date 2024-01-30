@@ -116,6 +116,11 @@ return {
 	},
 	{ "mfussenegger/nvim-jdtls" },
 	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
+	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = "mason.nvim",
