@@ -83,7 +83,13 @@ return {
 		"FabianWirth/search.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		keys = {
-			{ "<leader><leader>", function () require("search").open() end, desc = "Open finder" },
+			{
+				"<leader><leader>",
+				function()
+					require("search").open()
+				end,
+				desc = "Open finder",
+			},
 		},
 	},
 }
