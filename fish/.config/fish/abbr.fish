@@ -85,9 +85,15 @@ if type -q helmfile
 	abbr -a hfcc "helmfile cache cleanup"
 end
 
-if type -q exa
-	set -l EXA_BASE "exa --icons --group-directories-first"
-	if exa -v | grep -q '+git'
+if type -q eza
+	set LISTER eza
+else if type -q exa
+	set LISTER exa
+end
+
+if type -q "$LISTER"
+	set -l EXA_BASE "$LISTER --icons --group-directories-first"
+	if "$LISTER" -v | grep -q '+git'
 		set EXA_BASE "$EXA_BASE --git"
 	end
 	abbr -a ls  "$EXA_BASE"
