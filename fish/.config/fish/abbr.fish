@@ -85,6 +85,12 @@ if type -q helmfile
 	abbr -a hfcc "helmfile cache cleanup"
 end
 
+if type -q npm
+	abbr -a ni  "npm install"
+	abbr -a nb "npm run build"
+	abbr -a ns "npm run start"
+end
+
 if type -q eza
 	set LISTER eza
 else if type -q exa
