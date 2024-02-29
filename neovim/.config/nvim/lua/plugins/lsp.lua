@@ -129,7 +129,7 @@ return {
 		},
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = "mason.nvim",
 		config = function()
@@ -137,7 +137,6 @@ return {
 
 			null_ls.setup({
 				sources = {
-					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.diagnostics.yamllint.with({
 						extra_args = { "-d", "{extends: relaxed}" },
 					}),
@@ -149,8 +148,6 @@ return {
 					}),
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gitlint,
-					null_ls.builtins.diagnostics.eslint_d,
-					null_ls.builtins.diagnostics.flake8,
 					null_ls.builtins.formatting.prettierd.with({
 						env = {
 							PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc"),
