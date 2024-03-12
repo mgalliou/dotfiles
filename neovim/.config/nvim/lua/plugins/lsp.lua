@@ -121,10 +121,8 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {
 			settings = {
-				code_lens = "all",
 				complete_function_calls = true,
 				expose_as_code_action = "all",
-				disable_member_code_lens = false,
 			},
 		},
 	},
