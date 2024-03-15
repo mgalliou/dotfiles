@@ -8,9 +8,9 @@ end
 fish_add_path $HOME/node_modules/.bin
 fish_add_path $HOME/.krew/bin
 fish_add_path $HOME/go/bin
-fish_add_path -aP $HOME/.local/share/nvim/mason/bin/
-fish_add_path -aP $HOME/.linuxbrew/bin
-fish_add_path -aP /home/linuxbrew/.linuxbrew/bin
+fish_add_path -a $HOME/.local/share/nvim/mason/bin/
+fish_add_path -a $HOME/.linuxbrew/bin
+fish_add_path -a /home/linuxbrew/.linuxbrew/bin
 if type -q ruby
     fish_add_path -a /home/linuxbrew/.linuxbrew/lib/ruby/gems/$(ruby -v | awk '{print $2}')/bin
 end
@@ -22,12 +22,12 @@ else if type -q vim
 else if type -q vi
     set -x EDITOR vi
 end
-abbr 		v	$EDITOR
+abbr v $EDITOR
 
 if type -q gpg
-	set -x GPG_TTY $(tty)
+    set -x GPG_TTY $(tty)
 end
 
 if type -q zk
-	set -x ZK_NOTEBOOK_DIR $HOME/notes/zk
+    set -x ZK_NOTEBOOK_DIR $HOME/notes/zk
 end
