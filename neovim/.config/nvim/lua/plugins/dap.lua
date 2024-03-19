@@ -5,6 +5,7 @@ return {
 		dependencies = {
 			{
 				"mason.nvim",
+				"nvim-neotest/nvim-nio",
 				{ "rcarriga/nvim-dap-ui", config = true },
 			},
 			-- TODO: plug "jbyuki/one-small-step-for-vimkind"
