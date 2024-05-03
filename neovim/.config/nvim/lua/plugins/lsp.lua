@@ -6,7 +6,6 @@ return {
 			{
 				"hrsh7th/cmp-nvim-lsp",
 				{ "folke/neodev.nvim", config = true },
-				"simrat39/rust-tools.nvim",
 				"mason.nvim",
 				"williamboman/mason-lspconfig.nvim",
 				{
@@ -92,14 +91,7 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-				["rust_analyzer"] = function()
-					local capabilities = require("cmp_nvim_lsp").default_capabilities()
-					require("rust-tools").setup({
-						server = {
-							capabilities = capabilities,
-						},
-					})
-				end,
+				["rust_analyzer"] = function() end,
 				["tsserver"] = function() end,
 				["yamlls"] = function() end,
 			})
@@ -115,6 +107,15 @@ return {
 				kinds[i] = kind_icons[kind] or kind
 			end
 		end,
+	},
+	{
+		"mrcjkb/rustaceanvim",
+		lazy = false,
+		opt = {
+			server = {
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			},
+		},
 	},
 	{ "mfussenegger/nvim-jdtls" },
 	{
