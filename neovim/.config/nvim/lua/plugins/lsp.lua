@@ -111,11 +111,13 @@ return {
 	{
 		"mrcjkb/rustaceanvim",
 		lazy = false,
-		opt = {
-			server = {
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			},
-		},
+		config = function()
+			vim.g.rustaceanvim = {
+				server = {
+					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+				},
+			}
+		end,
 	},
 	{ "mfussenegger/nvim-jdtls" },
 	{
