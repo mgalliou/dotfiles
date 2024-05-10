@@ -8,22 +8,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{
-				"nvim-telescope/telescope-ui-select.nvim",
-				config = function()
-					require("telescope").load_extension("ui-select")
-				end,
-			},
-			{
-				"johmsalas/text-case.nvim",
-				config = function()
-					require("telescope").load_extension("textcase")
-					vim.keymap.set({ "n", "v" }, "<leader>~", "<CMD>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
-				end,
-			},
-		},
+		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			defaults = {
 				file_ignore_patterns = { ".git/" },
@@ -78,6 +63,21 @@ return {
 				desc = "List Lsp Symbols (Telescope)",
 			},
 		},
+	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("telescope").load_extension("ui-select")
+		end,
+	},
+	{
+		"johmsalas/text-case.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("telescope").load_extension("textcase")
+			vim.keymap.set({ "n", "v" }, "<leader>~", "<CMD>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+		end,
 	},
 	{
 		"FabianWirth/search.nvim",

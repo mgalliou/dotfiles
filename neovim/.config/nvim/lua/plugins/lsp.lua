@@ -1,13 +1,41 @@
 return {
 	{
+		"williamboman/mason.nvim",
+		cmd = "Mason",
+		dependencies = {
+			"nvim-telescope/telescope-ui-select.nvim",
+		},
+		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
+		opts = {
+			ensure_installed = {
+				"bash-language-server",
+				"gitlint",
+				"helm-ls",
+				"jdtls",
+				"jq",
+				"jq",
+				"lua-language-server",
+				"markdownlint",
+				"marksman",
+				"prettierd",
+				"shellcheck",
+				"shellharden",
+				"stylua",
+				"taplo",
+				"vim-language-server",
+				"yaml-language-server",
+				"yamllint",
+			},
+		},
+	},
+	{ "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" }, config = true },
+	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
-				"hrsh7th/cmp-nvim-lsp",
-				{ "folke/neodev.nvim", config = true },
-				"mason.nvim",
 				"williamboman/mason-lspconfig.nvim",
+				"hrsh7th/cmp-nvim-lsp",
 				{
 					"filipdutescu/renamer.nvim",
 					enabled = false,
@@ -132,8 +160,8 @@ return {
 	},
 	{
 		"nvimtools/none-ls.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = "mason.nvim",
 		config = function()
 			local null_ls = require("null-ls")
 
@@ -168,33 +196,5 @@ return {
 			})
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		cmd = "Mason",
-		dependencies = {
-			"nvim-telescope/telescope-ui-select.nvim",
-		},
-		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
-		opts = {
-			ensure_installed = {
-				"bash-language-server",
-				"gitlint",
-				"helm-ls",
-				"jdtls",
-				"jq",
-				"jq",
-				"lua-language-server",
-				"markdownlint",
-				"marksman",
-				"prettierd",
-				"shellcheck",
-				"shellharden",
-				"stylua",
-				"taplo",
-				"vim-language-server",
-				"yaml-language-server",
-				"yamllint",
-			},
-		},
-	},
+	{ "folke/neodev.nvim", config = true },
 }

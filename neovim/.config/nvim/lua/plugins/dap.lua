@@ -4,9 +4,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
-				"mason.nvim",
 				"nvim-neotest/nvim-nio",
-				{ "rcarriga/nvim-dap-ui", config = true },
 			},
 			-- TODO: plug "jbyuki/one-small-step-for-vimkind"
 		},
@@ -53,4 +51,5 @@ return {
 			}
 		end,
 	},
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 }

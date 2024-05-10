@@ -17,9 +17,9 @@ return {
 			})
 		end,
 	},
-	{ "kyazdani42/nvim-web-devicons" },
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = { "kyazdani42/nvim-web-devicons" },
 		opts = {
 			options = {
 				theme = "gruvbox",
@@ -67,6 +67,9 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
 		cmd = { "TodoTrouble", "TodoTelescope" },
 		event = { "BufReadPost", "BufNewFile" },
 		config = true,
