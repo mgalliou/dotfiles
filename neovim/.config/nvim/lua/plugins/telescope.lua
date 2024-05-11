@@ -74,10 +74,23 @@ return {
 	{
 		"johmsalas/text-case.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function()
+		opts = {
+			default_keymappings_enabled = false,
+		},
+		config = function(_, opts)
+			require("textcase").setup(opts)
 			require("telescope").load_extension("textcase")
-			vim.keymap.set({ "n", "v" }, "<leader>~", "<CMD>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
 		end,
+		keys = {
+			{ "<leader>~", "<CMD>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Text case (Telescope)" },
+		},
+		cmd = {
+			"Subs",
+			"TextCaseOpenTelescope",
+			"TextCaseOpenTelescopeQuickChange",
+			"TextCaseOpenTelescopeLSPChange",
+			"TextCaseStartReplacingCommand",
+		},
 	},
 	{
 		"FabianWirth/search.nvim",
