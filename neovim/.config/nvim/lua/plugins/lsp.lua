@@ -157,6 +157,7 @@ return {
 				expose_as_code_action = "all",
 			},
 		},
+		ft = { "javascript", "typescript" },
 	},
 	{
 		"nvimtools/none-ls.nvim",
