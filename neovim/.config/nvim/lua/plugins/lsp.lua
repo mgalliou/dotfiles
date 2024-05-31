@@ -35,6 +35,7 @@ return {
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
+				{ "folke/neodev.nvim", config = true },
 				"hrsh7th/cmp-nvim-lsp",
 				{
 					"filipdutescu/renamer.nvim",
@@ -198,5 +199,4 @@ return {
 			})
 		end,
 	},
-	{ "folke/neodev.nvim", config = true },
 }
