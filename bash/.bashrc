@@ -1,13 +1,9 @@
-#
-# ~/.bashrc
-#
+# shellcheck disable=SC2135
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-################################################################################
 # PROMPT
-################################################################################
 
 #PS1='\u@\H \w \\$ \[$(tput sgr0)\]'
 #PS1='\w \\$ \[$(tput sgr0)\]'
@@ -17,90 +13,85 @@ GREY="$(tput setaf 8)"
 BLINK="$(tput blink)"
 NOCOLOR="$(tput sgr0)"
 
-print_time()
-{
-	printf "%s%s:%s%s" "$(date +%H)" "${BLINK}" "${NOCOLOR}" "$(date +%M)"
+print_time() {
+	printf "%s%s:%s%s" "$(date +%H)" "$BLINK" "$NOCOLOR" "$(date +%M)"
 }
 
 PS1='[$(print_time)] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
 
-################################################################################
-# ALIASES
-################################################################################
+# ENVIRONNEMENT VARIABLES
 
-replace_cmd()
-{
+if command -v nvim >/dev/null; then
+	export EDITOR=nvim
+elif command -v vim >/dev/null; then
+	export EDITOR=vim
+elif command -v vi >/dev/null; then
+	export EDITOR=vi
+fi
+
+# ALIASES
+
+replace_cmd() {
 	if command -v "$2" >/dev/null 2>&1; then
 		alias "$1"="$2"
 	fi
 }
 
-replace_cmd "ls" "exa"
-replace_cmd "vim" "nvim"
+replace_cmd "v" "$EDITOR"
 replace_cmd "cat" "bat"
 
-# listing
-alias la="ls -la"
-
-# git
 if command -v git >/dev/null 2>&1; then
-	alias gs="git status"
+	alias g="git"
 	alias ga="git add"
-	alias gc="git commit"
+	alias gaa="git add -A"
+	alias gb="git branch"
+	alias gcl="git clone"
+	alias gc="git commit -v"
+	alias gca="git commit --amend"
+	alias gca="git commit --amend --no-edit"
+	alias gco="git checkout"
+	alias gcom="git checkout master"
+	alias gcob="git checkout -b"
 	alias gd="git diff"
+	alias gds="git diff --staged"
+	alias gl="git log"
+	alias gpl="git pull"
+	alias gps="git push"
+	alias gpst="git push --tags"
+	alias gf="git fetch"
+	alias gfp="git fetch --prune"
+	alias gr="git restore"
+	alias grs="git restore --staged"
+	alias grv="git revert"
+	alias grvh="git revert HEAD"
+	alias gm="git merge"
+	alias gmc="git merge --continue"
+	alias gma="git merge --abort"
+	alias gmm="git merge master"
+	alias grb="git rebase"
+	alias grbc="git rebase --continue"
+	alias grba="git rebase --abort"
+	alias gs="git status"
 fi
 
-alias gccf="gcc -Wall -Wextra -Werror"
-alias newmakefile="cp ~/dotfile/Makefile ./"
-alias checker="sh ~/Applications/42FileChecker/42FileChecker.sh"
+if command -v eza >/dev/null; then
+	LISTER="eza"
+elif command -v exa >/dev/null; then
+	LISTER="exa"
+else
+	LISTER="ls"
+fi
 
-################################################################################
-# ENVIRONNEMENT VARIABLES 
-################################################################################
+if [[ $LISTER == "exa" || $LISTER == "eza" ]]; then
+	LISTER_BASE="$LISTER --icons --group-directories-first"
+	if "$LISTER" -v | grep -q '+git'; then
+		LISTER_BASE="$LISTER_BASE --git"
+	fi
+else
+	LISTER_BASE="ls"
+fi
 
-#export USER="mgalliou"
-#export MAIL="$USER@student.42.fr"
-
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
-#export MAVEN_HOME=/Users/mgalliou/tools/maven/
-#export PYTHON_HOME=
-
-################################################################################
-# PATH 
-################################################################################
-
-# brew
-#export PATH=$HOME/.brew/bin:$PATH
-
-# go
-#export PATH=$HOME/go/bin:$PATH
-
-# custom binaries
-#export PATH=$HOME/bin:$PATH
-
-# maven
-#export PATH=$MAVEN_HOME/bin:$PATH
-
-# mysql
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-
-# custom scrips
-export PATH=$PATH:~/dotfiles/scripts
-
-# cargo
-#export PATH="$HOME/.cargo/bin:$PATH"
-
-################################################################################
-# COMPLETION 
-################################################################################
-
-# bash
-#source /usr/share/git/competion/git-completion.bash
-
-# brew
-#for completion_file in $(brew --prefix)/etc/bash_completion.d/* ; do
-#	source $completion_file
-#done
-
+alias ls="$LISTER_BASE"
+alias l="$LISTER_BASE"
+alias ll="$LISTER_BASE -l"
+alias la="$LISTER_BASE -la"
