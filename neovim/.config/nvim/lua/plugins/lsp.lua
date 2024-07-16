@@ -111,6 +111,39 @@ return {
 			})
 
 			--vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+			vim.filetype.add({
+				extension = {
+					as = function(path, _)
+						if vim.fs.find({ "info.toml" }, {
+							upward = true,
+							path = path,
+						})[1] then
+							vim.o.commentstring = "// %s"
+							return "angelscript"
+						end
+					end,
+				},
+			})
+
+			local lsp_configurations = require("lspconfig.configs")
+			if not lsp_configurations.openplanet_angelscript_ls then
+				lsp_configurations.openplanet_angelscript_ls = {
+					default_config = {
+						name = "openplanet_angelscript_ls",
+						cmd = { "openplanet-angelscript-ls", "--stdio" },
+						init_options = { hostInfo = "neovim" },
+						filetypes = { "angelscript" },
+						root_dir = require("lspconfig.util").root_pattern("info.toml"),
+					},
+				}
+			end
+
+			require("lspconfig").openplanet_angelscript_ls.setup({
+				cmd_env = {
+					OPENPLANET_NEXT_DIR = "/mnt/c/Users/jio/OpenplanetNext",
+					OPENPLANET_PLUGINS_DIR = "/mnt/c/Users/jio/OpenplanetNext/Plugins",
+				},
+			})
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
