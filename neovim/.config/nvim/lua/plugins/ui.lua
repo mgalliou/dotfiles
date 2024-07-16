@@ -6,16 +6,22 @@ local highlight = {
 return {
 	{
 		"folke/which-key.nvim",
-		config = function()
-			--TODO: Improve configuration
-			vim.o.timeout = true
-			vim.o.timeoutlen = 500
-			require("which-key").setup({
-				spelling = {
-					enabled = true,
-				},
-			})
-		end,
+		event = "VeryLazy",
+		opts = {
+			preset = "helix",
+			icons = {
+				rules = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
 	},
 	{
 		"nvim-lualine/lualine.nvim",
