@@ -5,19 +5,23 @@
 
 # PROMPT
 
-#PS1='\u@\H \w \\$ \[$(tput sgr0)\]'
-#PS1='\w \\$ \[$(tput sgr0)\]'
-BLUE="$(tput setaf 4)"
-BBLUE="$(tput setaf 14)"
-GREY="$(tput setaf 8)"
-BLINK="$(tput blink)"
-NOCOLOR="$(tput sgr0)"
+if command -v starship >/dev/null; then
+	eval "$(starship init bash)"
+else
+	#PS1='\u@\H \w \\$ \[$(tput sgr0)\]'
+	#PS1='\w \\$ \[$(tput sgr0)\]'
+	BLUE="$(tput setaf 4)"
+	BBLUE="$(tput setaf 14)"
+	GREY="$(tput setaf 8)"
+	BLINK="$(tput blink)"
+	NOCOLOR="$(tput sgr0)"
 
-print_time() {
-	printf "%s%s:%s%s" "$(date +%H)" "$BLINK" "$NOCOLOR" "$(date +%M)"
-}
+	print_time() {
+		printf "%s%s:%s%s" "$(date +%H)" "$BLINK" "$NOCOLOR" "$(date +%M)"
+	}
 
-PS1='[$(print_time)] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
+	PS1='[$(print_time)] \[${BBLUE}\]\u\[${NOCOLOR}\]@\[${GREY}\]\h\[${NOCOLOR}\[: \w\n\\$ '
+fi
 
 # ENVIRONNEMENT VARIABLES
 
