@@ -35,7 +35,16 @@ return {
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
-				{ "folke/neodev.nvim", config = true },
+				{
+					"folke/lazydev.nvim",
+					ft = "lua",
+					opts = {
+						library = {
+							{ path = "luvit-meta/library", words = { "vim%.uv" } },
+						},
+					},
+				},
+				{ "Bilal2453/luvit-meta", lazy = true },
 				"hrsh7th/cmp-nvim-lsp",
 				{
 					"filipdutescu/renamer.nvim",
