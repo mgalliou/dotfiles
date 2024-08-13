@@ -1,5 +1,6 @@
-function fish_mode_prompt; end
+function fish_mode_prompt
+end
 
 if not type -q omf
-	source $HOME/.config/fish/custom_prompt.fish
+    source $HOME/.config/fish/custom_prompt.fish
 end

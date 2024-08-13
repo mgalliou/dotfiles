@@ -12,7 +12,7 @@ source $CONFIG_PATH/fzf.fish
 set -a fish_complete_path /home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d/
 
 if type -q zoxide
-	zoxide init fish | source
+    zoxide init fish | source
 end
 
 if type -q starship
@@ -22,5 +22,5 @@ else
 end
 
 function delete_last_history_entry
-	history delete -Ce $(history --max 1)
+    history delete -Ce $(history --max 1)
 end

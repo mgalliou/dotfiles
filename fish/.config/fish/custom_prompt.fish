@@ -5,23 +5,23 @@ set -U fish_greeting ""
 set -U fish_uid_symbol '$'
 
 if test (id -u) -eq 0
-	set -U fish_uid_symbol '#'
+    set -U fish_uid_symbol '#'
 end
 
 function fish_prompt --description 'Write out the prompt'
-	set -l last_status $status
+    set -l last_status $status
 
-	## Time
-	# set BLINK (tput blink)
-	# set NOCOLOR (tput sgr0)
-	# printf (date +%H):(date +%M):\
+    ## Time
+    # set BLINK (tput blink)
+    # set NOCOLOR (tput sgr0)
+    # printf (date +%H):(date +%M):\
 
     ## User
     # $set_color $fish_color_user
-	# printf (whoami)
-	# set_color normal
+    # printf (whoami)
+    # set_color normal
 
-	## Separator
+    ## Separator
     # printf '@'
 
     ## Host
@@ -31,21 +31,21 @@ function fish_prompt --description 'Write out the prompt'
 
 
     # PWD
-	# printf ': '
-	printf ' '
+    # printf ': '
+    printf ' '
     set_color $fish_color_cwd
-	printf (prompt_pwd)
+    printf (prompt_pwd)
 
     __terlar_git_prompt
     __fish_hg_prompt
-	## echo without arg just print a newline
-	# echo
+    ## echo without arg just print a newline
+    # echo
 
-	# Exit status
-	if not test $last_status -eq 0
-		set_color $fish_color_error
-	else
-		set_color normal
-	end
-	printf ' %c ' $fish_uid_symbol
+    # Exit status
+    if not test $last_status -eq 0
+        set_color $fish_color_error
+    else
+        set_color normal
+    end
+    printf ' %c ' $fish_uid_symbol
 end
