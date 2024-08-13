@@ -19,7 +19,7 @@ if type -q git
 	abbr -a gcl  "git clone"
 	abbr -a gc   "git commit -v"
 	abbr --set-cursor gcm "git commit -m\"%\""
-	abbr -a gca  "git commit --amend"
+	abbr -a gca  "git commit -v --amend"
 	abbr -a gcan "git commit --amend --no-edit"
 	abbr -a gco  "git checkout"
 	abbr -a gcom "git checkout master"
