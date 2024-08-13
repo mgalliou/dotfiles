@@ -43,6 +43,7 @@ if type -q git
 	abbr -a grb  "git rebase"
 	abbr -a grbc "git rebase --continue"
 	abbr -a grba "git rebase --abort"
+	abbr -a grmt "git remote -v"
 	abbr -a gs   "git status"
 end
 
