@@ -1,7 +1,11 @@
 return {
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 	{ "tpope/vim-surround", event = { "BufReadPost", "BufNewFile" } },
-	{ "tpope/vim-commentary", event = { "BufReadPost", "BufNewFile" } },
+	{
+		"tpope/vim-commentary",
+		enabled = false,
+		event = { "BufReadPost", "BufNewFile" },
+	},
 	{
 		"trmckay/based.nvim",
 		keys = {
