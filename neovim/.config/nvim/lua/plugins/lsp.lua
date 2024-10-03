@@ -130,7 +130,7 @@ return {
 					})
 				end,
 				["rust_analyzer"] = function() end,
-				["tsserver"] = function() end,
+				["ts_ls"] = function() end,
 				["yamlls"] = function() end,
 			})
 			local signs = { Error = " ", Warn = " ", Hint = "󰌶 ", Info = "󰋽 " }
