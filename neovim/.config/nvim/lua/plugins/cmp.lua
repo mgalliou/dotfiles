@@ -1,38 +1,61 @@
 return {
 	{
-		"L3MON4D3/LuaSnip",
+		"garymjr/nvim-snippets",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
 		},
-		build = "make install_jsregexp",
+		opts = {
+			friendly_snippets = true,
+		},
 		keys = {
 			{
-				"<tab>",
+				"<Tab>",
 				function()
-					return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+					if vim.snippet.active({ direction = 1 }) then
+						vim.schedule(function()
+							vim.snippet.jump(1)
+						end)
+						return
+					end
+					return "<Tab>"
 				end,
 				expr = true,
 				silent = true,
 				mode = "i",
 			},
 			{
-				"<tab>",
+				"<Tab>",
 				function()
-					return require("luasnip").jumpable(1)
+					vim.schedule(function()
+						vim.snippet.jump(1)
+					end)
 				end,
+				expr = true,
+				silent = true,
 				mode = "s",
 			},
 			{
-				"<s-tab>",
+				"<S-Tab>",
 				function()
-					return require("luasnip").jumpable(-1)
+					if vim.snippet.active({ direction = -1 }) then
+						vim.schedule(function()
+							vim.snippet.jump(-1)
+						end)
+						return
+					end
+					return "<S-Tab>"
 				end,
+				expr = true,
+				silent = true,
 				mode = { "i", "s" },
 			},
 		},
+	},
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({})
+		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -45,17 +68,16 @@ return {
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
+			"garymjr/nvim-snippets",
 		},
-		config = function()
+		opts = function()
 			local cmp = require("cmp")
 			local kind_icons = require("tools").kind_icons
 
-			cmp.setup({
+			return {
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						vim.snippet.expand(args.body)
 					end,
 				},
 				completion = {
@@ -67,7 +89,7 @@ return {
 						vim_item.menu = ({
 							buffer = "[buffer]",
 							latex_symbols = "[LaTeX]",
-							luasnip = "[LuaSnip]",
+							snippets = "[snippets]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[nvim_lua]",
 							tmux = "[tmux]",
@@ -104,6 +126,7 @@ return {
 							all_panes = true,
 						},
 					},
+					{ name = "supermaven" },
 					{
 						name = "buffer",
 						option = {
@@ -119,7 +142,7 @@ return {
 						hl_group = "LspCodeLens",
 					},
 				},
-			})
+			}
 		end,
 	},
 }
