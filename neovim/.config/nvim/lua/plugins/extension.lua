@@ -2,6 +2,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		cmd = { "Trouble" },
 		-- TODO: configure
 		opts = {
 			use_diagnostic_signs = true,
