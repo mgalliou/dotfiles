@@ -12,6 +12,10 @@ return {
 			icons = {
 				rules = false,
 			},
+			spec = {
+				{ "<BS>", desc = "Decrement Selection", mode = "x" },
+				{ "<C-space>", desc = "Increment Selection", mode = { "x", "n" } },
+			},
 		},
 		keys = {
 			{
