@@ -66,7 +66,6 @@ return {
 			"andersevenrud/cmp-tmux",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-emoji",
-			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"garymjr/nvim-snippets",

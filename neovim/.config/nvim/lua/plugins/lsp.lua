@@ -1,98 +1,25 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		cmd = "Mason",
 		dependencies = {
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
-		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Open Mason" } },
-		opts = {
-			ensure_installed = {
-				"bash-language-server",
-				"gitlint",
-				"helm-ls",
-				"jdtls",
-				"jq",
-				"jq",
-				"lua-language-server",
-				"markdownlint",
-				"marksman",
-				"prettierd",
-				"shellcheck",
-				"shellharden",
-				"stylua",
-				"taplo",
-				"vim-language-server",
-				"yaml-language-server",
-				"yamllint",
-			},
-		},
+		build = ":MasonUpdate",
+		cmd = "Mason",
+		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
+		config = true,
 	},
-	{ "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim" }, config = true },
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
-				"williamboman/mason-lspconfig.nvim",
 				{
-					"folke/lazydev.nvim",
-					ft = "lua",
-					opts = {
-						library = {
-							{ path = "luvit-meta/library", words = { "vim%.uv" } },
-						},
-					},
-				},
-				{ "Bilal2453/luvit-meta", lazy = true },
-				"hrsh7th/cmp-nvim-lsp",
-				{
-					"filipdutescu/renamer.nvim",
-					enabled = false,
+					"williamboman/mason-lspconfig.nvim",
 					dependencies = {
-						"nvim-lua/plenary.nvim",
+						"mason.nvim",
 					},
-					opts = {
-						border_chars = require("tools").borderchars,
-					},
-					keys = {
-						{
-							"<F2>",
-							function()
-								require("renamer").rename({})
-							end,
-							mode = "i",
-							desc = "Rename with lsp",
-						},
-						{
-							"<leader>r",
-							function()
-								require("renamer").rename({})
-							end,
-							mode = { "n", "v" },
-							desc = "Rename with lsp",
-						},
-					},
-				},
-				{
-					"kosayoda/nvim-lightbulb",
-					enabled = false,
-					opts = {
-						sign = {
-							enabled = false,
-						},
-						virtual_text = {
-							enabled = true,
-							hl_mode = "combine",
-						},
-						status_text = {
-							enabled = true,
-						},
-						autocmd = {
-							enabled = true,
-							events = { "CursorHold", "CursorHoldI" },
-						},
-					},
+					config = true,
 				},
 			},
 		},
@@ -209,4 +136,37 @@ return {
 			})
 		end,
 	},
+	{
+		"kosayoda/nvim-lightbulb",
+		enabled = false,
+		opts = {
+			sign = {
+				enabled = false,
+			},
+			virtual_text = {
+				enabled = true,
+				hl_mode = "combine",
+			},
+			status_text = {
+				enabled = true,
+			},
+			autocmd = {
+				enabled = true,
+				events = { "CursorHold", "CursorHoldI" },
+			},
+		},
+	},
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		cmd = "LazyDev",
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "wezterm-types", mods = { "wezterm" } },
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+			},
+		},
+	},
+	{ "Bilal2453/luvit-meta", lazy = true },
 }
