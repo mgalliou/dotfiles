@@ -2,9 +2,12 @@ return {
 	{
 		"folke/trouble.nvim",
 		cmd = { "Trouble" },
-		-- TODO: configure
 		opts = {
-			use_diagnostic_signs = true,
+			modes = {
+				lsp = {
+					win = { position = "right" },
+				},
+			},
 		},
 		keys = {
 			{
