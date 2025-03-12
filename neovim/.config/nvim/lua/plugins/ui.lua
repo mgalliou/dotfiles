@@ -15,6 +15,14 @@ return {
 			spec = {
 				{ "<BS>", desc = "Decrement Selection", mode = "x" },
 				{ "<C-space>", desc = "Increment Selection", mode = { "x", "n" } },
+				{ "[", group = "prev" },
+				{ "]", group = "next" },
+				{ "g", group = "goto" },
+				{ "z", group = "fold" },
+				{ "<leader>gh", group = "hunks" },
+				{ "<leader>B", group = "bases" },
+				{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+				{ "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
 			},
 		},
 		keys = {
