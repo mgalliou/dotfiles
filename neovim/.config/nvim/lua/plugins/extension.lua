@@ -20,12 +20,12 @@ return {
 			},
 			{
 				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
+				"<cmd>Trouble symbols toggle<cr>",
 				desc = "Symbols (Trouble)",
 			},
 			{
-				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				"<leader>cS",
+				"<cmd>Trouble lsp toggle<cr>",
 				desc = "LSP Definitions / references / ... (Trouble)",
 			},
 			{

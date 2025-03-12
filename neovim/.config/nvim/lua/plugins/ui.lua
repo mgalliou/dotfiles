@@ -19,7 +19,8 @@ return {
 				{ "]", group = "next" },
 				{ "g", group = "goto" },
 				{ "z", group = "fold" },
-				{ "<leader>gh", group = "hunks" },
+				{ "<leader>c", group = "code" },
+				{ "<leader>h", group = "hunks" },
 				{ "<leader>B", group = "bases" },
 				{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
 				{ "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
@@ -125,6 +126,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			signs = {
 				add = { text = "▎" },
