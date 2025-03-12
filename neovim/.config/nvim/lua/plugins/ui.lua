@@ -44,8 +44,11 @@ return {
 		},
 	},
 	{
+		"echasnovski/mini.icons",
+		lazy = true,
+	},
+	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			options = {
 				theme = "gruvbox",
