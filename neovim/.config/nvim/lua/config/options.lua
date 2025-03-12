@@ -3,7 +3,6 @@ local o = vim.opt
 
 -- Behavior
 o.autowrite = true
-o.backspace = { "indent", "eol", "start" }
 o.autoindent = true
 o.tabstop = 4
 o.shiftwidth = 4
