@@ -12,6 +12,7 @@ o.sidescrolloff = 4
 o.splitright = true
 o.splitbelow = true
 o.virtualedit = "block"
+o.linebreak = true
 --o.clipboard:append("unnamedplus")
 
 -- UI
