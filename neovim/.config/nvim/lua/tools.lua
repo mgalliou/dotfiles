@@ -67,38 +67,35 @@ M.on_attach = function(ev)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	local function quick_code_action()
-		buf.code_action({
-			context = {
-				only = {
-					"quickfix",
-					"refactor",
-				},
-			},
-			apply = true,
-		})
-	end
-
-	vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 	local km = M.set_keymap_opts
-	km("n", "<leader>gc", buf.declaration, bufopts, "Go to declaration")
-	km("n", "<leader>gd", buf.definition, bufopts, "Go to definition")
-	km("n", "<leader>H", buf.hover, bufopts, "Hover symbol")
-	km("n", "<leader>gi", buf.implementation, bufopts, "Go to implementation")
-	km("n", "<leader><C-k>", buf.signature_help, bufopts, "Signature help")
-	km("n", "<leader>wa", buf.add_workspace_folder, bufopts, "Add workspace folder")
-	km("n", "<leader>wr", buf.remove_workspace_folder, bufopts, "Remove workspace folder")
-	km("n", "<leader>wl", function()
-		print(vim.inspect(buf.list_workspace_folders()))
-	end, bufopts, "List workspace folder")
-	km("n", "<leader>gy", buf.type_definition, bufopts, "Type definition")
-	km("n", "<space>r", buf.rename, bufopts, "Rename symbol")
-	km({ "n", "v" }, "<leader>a", buf.code_action, bufopts, "Code action(s)")
-	km("n", "<leader>qf", quick_code_action, bufopts, "Quick code action")
-	km("n", "gr", buf.references, bufopts, "Reference")
-	km({ "n", "v" }, "<leader>=", function()
-		buf.format({ async = true })
-	end, bufopts, "Format")
+	if client and client.supports_method("textDocument/definition", {}) then
+		km("n", "gd", buf.definition, bufopts, "Go to definition")
+	end
+	if client and client.supports_method("textDocument/declaration") then
+		km("n", "gD", buf.declaration, bufopts, "Go to declaration")
+	end
+	if client and client.supports_method("textDocument/implementation") then
+		km("n", "gI", buf.implementation, bufopts, "Go to implementation")
+	end
+	if client and client.supports_method("textDocument/references") then
+		km("n", "gr", buf.references, bufopts, "Reference")
+	end
+	km("n", "gy", buf.type_definition, bufopts, "Type definition")
+	if client and client.supports_method("textDocument/signatureHelp") then
+		km("n", "gK", buf.signature_help, bufopts, "Signature help")
+	end
+	km("i", "<C-k>", buf.signature_help, bufopts, "Signature help")
+	if client and client.supports_method("textDocument/rename") then
+		km("n", "<space>r", buf.rename, bufopts, "Rename symbol")
+	end
+	if client and client.supports_method("textDocument/codeAction") then
+		km({ "n", "v" }, "<leader>a", buf.code_action, bufopts, "Code action(s)")
+	end
+	if client and client.supports_method("textDocument/formatting") then
+		km({ "n", "v" }, "<leader>=", function()
+			buf.format({ async = true })
+		end, bufopts, "Format")
+	end
 end
 
 M.servers = {

@@ -39,14 +39,11 @@ return {
 			km("n", "<leader>e", diag.open_float, opts, "Diagnostic float")
 			km("n", "[d", diag.goto_prev, opts, "Previous Diagnostic")
 			km("n", "]d", diag.goto_next, opts, "Next Diagnostic")
-			km("n", "<leader>sll", diag.setloclist, opts, "Diagnostics in quickfix")
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = require("tools").on_attach,
 			})
-
-			--vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
@@ -60,6 +57,7 @@ return {
 				["ts_ls"] = function() end,
 				["yamlls"] = function() end,
 			})
+
 			local signs = { Error = " ", Warn = " ", Hint = "󰌶 ", Info = "󰋽 " }
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
