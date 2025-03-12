@@ -74,9 +74,7 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		cmd = { "DiffviewOpen" },
-		-- TODO: configure
+		cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewLog" },
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
