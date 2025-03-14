@@ -1,8 +1,3 @@
-local highlight = {
-	"CursorColumn",
-	"Whitespace",
-}
-
 return {
 	{
 		"folke/which-key.nvim",
@@ -75,20 +70,6 @@ return {
 				},
 			},
 		},
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		enabled = false,
-		event = { "BufReadPost", "BufNewFile" },
-		main = "ibl",
-		opts = {
-			indent = { char = "" },
-			whitespace = { highlight = highlight, remove_blankline_trail = false },
-		},
-	},
-	{
-		"RRethy/vim-illuminate",
-		event = { "BufReadPost", "BufNewFile" },
 	},
 	{
 		"m-demare/hlargs.nvim",
