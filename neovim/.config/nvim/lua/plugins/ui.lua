@@ -196,7 +196,11 @@ return {
 			end,
 		},
 	},
-	{ "j-hui/fidget.nvim", opts = {} },
+	{
+		"j-hui/fidget.nvim",
+		enabled = false,
+		opts = {},
+	},
 	{
 		"folke/noice.nvim",
 		enabled = false,
