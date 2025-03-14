@@ -58,19 +58,22 @@ return {
 		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {
-				theme = "gruvbox",
+				theme = "auto",
 				component_separators = { left = "|", right = "|" },
 				section_separators = {},
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = { { "filename", path = 4 } },
-				lualine_x = { "filetype" },
-				lualine_y = { "progress" },
-				lualine_z = { "location" },
+				lualine_b = { "branch" },
+				lualine_c = { { "filename", path = 4 }, "diff", "diagnostics" },
+
+				lualine_x = { { "lsp_status", ignore_lsp = { "null-ls" } } },
+				lualine_y = { "filetype" },
+				lualine_z = {
+					{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+					{ "location", padding = { left = 0, right = 1 } },
+				},
 			},
-			extensions = { "neo-tree" },
 		},
 	},
 	{
