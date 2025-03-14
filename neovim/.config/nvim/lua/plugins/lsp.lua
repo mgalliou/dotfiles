@@ -160,9 +160,10 @@ return {
 		cmd = "LazyDev",
 		opts = {
 			library = {
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				{ path = "wezterm-types", mods = { "wezterm" } },
-				{ path = "lazy.nvim", words = { "LazyVim" } },
 			},
 		},
 	},
