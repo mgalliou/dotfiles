@@ -10,7 +10,7 @@ return {
 	{ "vim-scripts/tf2.vim", ft = "cfg" },
 	{
 		"preservim/vim-markdown",
-		config = function()
+		init = function()
 			vim.g.vim_markdown_new_list_indent = 2
 		end,
 	},
