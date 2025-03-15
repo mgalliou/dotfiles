@@ -82,7 +82,9 @@ return {
 			}
 		end,
 	},
-	{ "mfussenegger/nvim-jdtls" },
+	{
+		"mfussenegger/nvim-jdtls",
+	},
 	{
 		"pmizio/typescript-tools.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -167,5 +169,8 @@ return {
 			},
 		},
 	},
-	{ "Bilal2453/luvit-meta", lazy = true },
+	{
+		"Bilal2453/luvit-meta",
+		lazy = true,
+	},
 }
