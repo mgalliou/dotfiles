@@ -13,7 +13,6 @@ return {
 		"neovim/nvim-lspconfig",
 		event = Utils.buf_events,
 		dependencies = {
-			{
 				{
 					"williamboman/mason-lspconfig.nvim",
 					dependencies = {
@@ -21,7 +20,6 @@ return {
 					},
 					config = true,
 				},
-			},
 		},
 		config = function()
 			vim.diagnostic.config({
