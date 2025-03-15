@@ -11,7 +11,7 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
+		event = Utils.buf_events,
 		dependencies = {
 			{
 				{
@@ -35,21 +35,23 @@ return {
 				severity_sort = true,
 			})
 
-			local km = require("tools").set_keymap_opts
-			km("n", "<leader>e", diag.open_float, opts, "Diagnostic float")
-			km("n", "[d", diag.goto_prev, opts, "Previous Diagnostic")
-			km("n", "]d", diag.goto_next, opts, "Next Diagnostic")
+			local map = Utils.set_keymap_opts
+
+			map("n", "<leader>e", diag.open_float, opts, "Diagnostic float")
+			map("n", "[d", diag.goto_prev, opts, "Previous Diagnostic")
+			map("n", "]d", diag.goto_next, opts, "Next Diagnostic")
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-				callback = require("tools").on_attach,
+				callback = Utils.on_attach,
 			})
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
 					local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 					require("lspconfig")[server_name].setup({
-						settings = require("tools").servers[server_name] or {},
+						settings = Utils.servers[server_name] or {},
 						capabilities = capabilities,
 					})
 				end,
@@ -65,7 +67,7 @@ return {
 			end
 
 			local kinds = vim.lsp.protocol.CompletionItemKind
-			local kind_icons = require("tools").kind_icons
+			local kind_icons = Utils.kind_icons
 			for i, kind in ipairs(kinds) do
 				kinds[i] = kind_icons[kind] or kind
 			end
@@ -87,7 +89,7 @@ return {
 	},
 	{
 		"pmizio/typescript-tools.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = Utils.buf_events,
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {
 			settings = {
@@ -100,7 +102,7 @@ return {
 	{
 		"nvimtools/none-ls.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		event = { "BufReadPre", "BufNewFile" },
+		event = Utils.buf_events,
 		config = function()
 			local null_ls = require("null-ls")
 

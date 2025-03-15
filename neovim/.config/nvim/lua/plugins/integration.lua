@@ -14,7 +14,7 @@ return {
 			require("zk").setup({
 				picker = "telescope",
 				lsp = {
-					on_attach = require("tools").on_attach,
+					on_attach = Utils.on_attach,
 				},
 			})
 		end,

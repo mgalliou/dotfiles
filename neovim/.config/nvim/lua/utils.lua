@@ -133,4 +133,6 @@ M.servers = {
 	},
 }
 
+M.buf_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
+
 return M

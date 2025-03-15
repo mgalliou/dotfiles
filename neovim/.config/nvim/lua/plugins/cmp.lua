@@ -73,7 +73,7 @@ return {
 		},
 		opts = function()
 			local cmp = require("cmp")
-			local kind_icons = require("tools").kind_icons
+			local kind_icons = Utils.kind_icons
 
 			return {
 				snippet = {

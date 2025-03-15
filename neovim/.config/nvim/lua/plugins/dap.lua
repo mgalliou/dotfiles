@@ -1,7 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		event = { "BufReadPre", "BufNewFile" },
+		event = Utils.buf_events,
 		dependencies = {
 			{
 				"nvim-neotest/nvim-nio",

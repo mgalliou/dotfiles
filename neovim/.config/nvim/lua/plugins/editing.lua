@@ -1,6 +1,12 @@
 return {
-	{ "tpope/vim-repeat", event = "VeryLazy" },
-	{ "tpope/vim-surround", event = { "BufReadPost", "BufNewFile" } },
+	{
+		"tpope/vim-repeat",
+		event = "VeryLazy",
+	},
+	{
+		"tpope/vim-surround",
+		event = Utils.buf_events,
+	},
 	{
 		"trmckay/based.nvim",
 		keys = {

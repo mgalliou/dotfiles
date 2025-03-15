@@ -12,7 +12,7 @@ return {
 		opts = {
 			defaults = {
 				file_ignore_patterns = { ".git/" },
-				borderchars = require("tools").borderchars,
+				borderchars = Utils.borderchars,
 				wrap_results = true,
 				prompt_prefix = " ",
 				selection_caret = " ",

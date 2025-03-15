@@ -73,7 +73,7 @@ return {
 	},
 	{
 		"m-demare/hlargs.nvim",
-		event = "CursorMoved",
+		event = Utils.buf_events,
 		opts = {
 			highlight = {
 				italic = true,
@@ -82,14 +82,14 @@ return {
 	},
 	{
 		"asiryk/auto-hlsearch.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		event = Utils.buf_events,
 		config = true,
 	},
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		event = Utils.buf_events,
 		cmd = { "TodoTrouble", "TodoTelescope" },
-		event = { "BufReadPost", "BufNewFile" },
 		opts = {},
 		keys = {
 			{
@@ -118,7 +118,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		event = Utils.buf_events,
 		opts = {
 			signs = {
 				add = { text = "▎" },
