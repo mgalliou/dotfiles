@@ -1,14 +1,7 @@
 local M = {}
 
-function M.PluginIsLoaded(plugin)
-	if 0 == vim.fn["tools#PluginIsLoaded"](plugin) then
-		return false
-	end
-	return true
-end
-
+M.buf_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
 M.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
-
 M.kind_icons = {
 	Class = " ",
 	Color = " ",
@@ -37,8 +30,16 @@ M.kind_icons = {
 	Variable = " ",
 }
 
+M.PluginIsLoaded = function(plugin)
+	if 0 == vim.fn["tools#PluginIsLoaded"](plugin) then
+		return false
+	end
+	return true
+end
+
 M.config_custom_server = function(name, cmd, filetypes, root_pattern)
 	local configs = require("lspconfig.configs")
+
 	if not configs[name] then
 		configs[name] = {
 			default_config = {
@@ -54,6 +55,7 @@ end
 
 M.set_keymap_opts = function(mode, bind, action, base_opt, desc)
 	local opts = base_opt
+
 	opts.desc = desc
 	vim.keymap.set(mode, bind, action, opts)
 end
@@ -61,38 +63,38 @@ end
 M.on_attach = function(ev)
 	local buf = vim.lsp.buf
 	local bufopts = { buffer = ev.buf }
-
 	local client = vim.lsp.get_client_by_id(ev.data.client_id)
+	local map = M.set_keymap_opts
+
 	if client and (client.name == "tsserver" or client.name == "typescript-tools") then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	local km = M.set_keymap_opts
 	if client and client.supports_method("textDocument/definition", {}) then
-		km("n", "gd", buf.definition, bufopts, "Go to definition")
+		map("n", "gd", buf.definition, bufopts, "Go to definition")
 	end
 	if client and client.supports_method("textDocument/declaration") then
-		km("n", "gD", buf.declaration, bufopts, "Go to declaration")
+		map("n", "gD", buf.declaration, bufopts, "Go to declaration")
 	end
 	if client and client.supports_method("textDocument/implementation") then
-		km("n", "gI", buf.implementation, bufopts, "Go to implementation")
+		map("n", "gI", buf.implementation, bufopts, "Go to implementation")
 	end
 	if client and client.supports_method("textDocument/references") then
-		km("n", "gr", buf.references, bufopts, "Reference")
+		map("n", "gr", buf.references, bufopts, "Reference")
 	end
-	km("n", "gy", buf.type_definition, bufopts, "Type definition")
+	map("n", "gy", buf.type_definition, bufopts, "Type definition")
 	if client and client.supports_method("textDocument/signatureHelp") then
-		km("n", "gK", buf.signature_help, bufopts, "Signature help")
+		map("n", "gK", buf.signature_help, bufopts, "Signature help")
 	end
-	km("i", "<C-k>", buf.signature_help, bufopts, "Signature help")
+	map("i", "<C-k>", buf.signature_help, bufopts, "Signature help")
 	if client and client.supports_method("textDocument/rename") then
-		km("n", "<space>r", buf.rename, bufopts, "Rename symbol")
+		map("n", "<space>r", buf.rename, bufopts, "Rename symbol")
 	end
 	if client and client.supports_method("textDocument/codeAction") then
-		km({ "n", "v" }, "<leader>a", buf.code_action, bufopts, "Code action(s)")
+		map({ "n", "v" }, "<leader>a", buf.code_action, bufopts, "Code action(s)")
 	end
 	if client and client.supports_method("textDocument/formatting") then
-		km({ "n", "v" }, "<leader>=", function()
+		map({ "n", "v" }, "<leader>=", function()
 			buf.format({ async = true })
 		end, bufopts, "Format")
 	end
@@ -132,7 +134,5 @@ M.servers = {
 		},
 	},
 }
-
-M.buf_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
 
 return M
