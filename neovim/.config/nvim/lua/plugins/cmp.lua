@@ -127,7 +127,6 @@ return {
 							all_panes = true,
 						},
 					},
-					{ name = "supermaven" },
 					{
 						name = "buffer",
 						option = {

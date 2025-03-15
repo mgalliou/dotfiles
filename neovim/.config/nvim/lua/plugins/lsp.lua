@@ -11,16 +11,17 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = Utils.buf_events,
 		dependencies = {
-				{
-					"williamboman/mason-lspconfig.nvim",
-					dependencies = {
-						"mason.nvim",
-					},
-					config = true,
+			{
+				"williamboman/mason-lspconfig.nvim",
+				dependencies = {
+					"mason.nvim",
 				},
+				config = true,
+			},
+			"cmp-nvim-lsp",
 		},
+		event = Utils.buf_events,
 		config = function()
 			vim.diagnostic.config({
 				virtual_text = { spacing = 4, prefix = "●" },
@@ -37,16 +38,14 @@ return {
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
-					local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-					require("lspconfig")[server_name].setup({
-						settings = Utils.servers[server_name] or {},
-						capabilities = capabilities,
-					})
+					local opts = Utils.servers[server_name]
+					if opts and not opts.disable_auto_setup then
+						require("lspconfig")[server_name].setup({
+							settings = opts.settings or {},
+							capabilities = Utils.capabilities(),
+						})
+					end
 				end,
-				["rust_analyzer"] = function() end,
-				["ts_ls"] = function() end,
-				["yamlls"] = function() end,
 			})
 
 			local signs = { Error = " ", Warn = " ", Hint = "󰌶 ", Info = "󰋽 " }
@@ -64,29 +63,36 @@ return {
 	},
 	{
 		"mrcjkb/rustaceanvim",
-		lazy = false,
+		dependencies = {
+			"cmp-nvim-lsp",
+		},
+		ft = { "rust" },
 		config = function()
 			vim.g.rustaceanvim = {
 				server = {
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+					capabilities = Utils.capabilities(),
 				},
 			}
 		end,
 	},
 	{
 		"mfussenegger/nvim-jdtls",
+		dependencies = {
+			"cmp-nvim-lsp",
+		},
+		ft = "java"
 	},
 	{
 		"pmizio/typescript-tools.nvim",
-		event = Utils.buf_events,
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		ft = { "javascript", "typescript" },
 		opts = {
+			on_attach = Utils.on_attach,
 			settings = {
 				complete_function_calls = true,
 				expose_as_code_action = "all",
 			},
 		},
-		ft = { "javascript", "typescript" },
 	},
 	{
 		"nvimtools/none-ls.nvim",

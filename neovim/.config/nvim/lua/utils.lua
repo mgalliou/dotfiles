@@ -102,37 +102,62 @@ end
 
 M.servers = {
 	lua_ls = {
-		Lua = {
-			completion = {
-				callSnippet = "Replace",
-				workspaceWord = true,
-			},
-			format = {
-				enable = false,
-			},
-			workspace = {
-				checkThirdParty = true,
-				library = {
-					"/usr/share/awesome/lib",
+		settings = {
+			Lua = {
+				completion = {
+					callSnippet = "Replace",
+					workspaceWord = true,
+				},
+				format = {
+					enable = false,
+				},
+				workspace = {
+					checkThirdParty = true,
+					library = {
+						"/usr/share/awesome/lib",
+					},
 				},
 			},
 		},
 	},
 	yamlls = {
-		yaml = {
-			customTags = { "!reference sequence" },
-		},
-		schemas = {
-			["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
-		},
-	},
-	helm_ls = {
-		["helm-ls"] = {
-			yamlls = {
-				enabled = true,
+		disable_auto_setup = true,
+		settings = {
+			yaml = {
+				customTags = { "!reference sequence" },
+			},
+			schemas = {
+				["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
 			},
 		},
 	},
+	helm_ls = {
+		settings = {
+			["helm-ls"] = {
+				yamlls = {
+					enabled = true,
+				},
+			},
+		},
+	},
+	rust_analyzer = {
+		disable_auto_setup = true,
+	},
+	jdtls = {
+		disable_auto_setup = true,
+	},
+	ts_ls = {
+		disable_auto_setup = true,
+	},
 }
+
+M.capabilities = function()
+	return vim.tbl_deep_extend(
+		"force",
+		{},
+		vim.lsp.protocol.make_client_capabilities(),
+		require("cmp_nvim_lsp").default_capabilities()
+	)
+end
 
 return M
