@@ -20,10 +20,10 @@ map("v", ">", ">gv")
 
 -- location list
 map("n", "<leader>xl", function()
-  local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
-  if not success and err then
-    vim.notify(err, vim.log.levels.ERROR)
-  end
+	local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
+	if not success and err then
+		vim.notify(err, vim.log.levels.ERROR)
+	end
 end, { desc = "Location List" })
 
 -- quickfix list
@@ -36,6 +36,13 @@ end, { desc = "Quickfix List" })
 
 map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+
+-- diagnostics
+local diag = vim.diagnostic
+
+map("n", "<leader>e", diag.open_float, { desc = "Diagnostic float" })
+map("n", "[d", diag.goto_prev, { desc = "Previous Diagnostic" })
+map("n", "]d", diag.goto_next, { desc = "Next Diagnostic" })
 
 -- map("n", "<leader>rl", "<CMD>so $MYVIMRC", { desc = "Reload configuration" })
 -- map("n", "<leader>ws", "m`:%s/\\s\\+$//<CR>:let @/=''<CR>``:w<CR>", { desc = "Remove trailing whitespaces" })

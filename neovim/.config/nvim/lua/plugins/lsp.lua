@@ -24,22 +24,13 @@ return {
 			},
 		},
 		config = function()
-			local diag = vim.diagnostic
-			local opts = { noremap = true, silent = true }
-
-			diag.config({
+			vim.diagnostic.config({
 				virtual_text = { spacing = 4, prefix = "●" },
 				signs = true,
 				underline = true,
 				update_in_insert = false,
 				severity_sort = true,
 			})
-
-			local map = Utils.set_keymap_opts
-
-			map("n", "<leader>e", diag.open_float, opts, "Diagnostic float")
-			map("n", "[d", diag.goto_prev, opts, "Previous Diagnostic")
-			map("n", "]d", diag.goto_next, opts, "Next Diagnostic")
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
