@@ -8,7 +8,10 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
+		},
 		opts = {
 			defaults = {
 				file_ignore_patterns = { ".git/" },
@@ -33,6 +36,10 @@ return {
 				},
 			},
 		},
+		config = function(opts)
+			require("telescope").setup(opts)
+			require("telescope").load_extension("ui-select")
+		end,
 		keys = {
 			{ "<leader>f", T("find_files"), desc = "Find git files (Telescope)" },
 			{
@@ -63,13 +70,6 @@ return {
 				desc = "List Lsp Symbols (Telescope)",
 			},
 		},
-	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function()
-			require("telescope").load_extension("ui-select")
-		end,
 	},
 	{
 		"johmsalas/text-case.nvim",

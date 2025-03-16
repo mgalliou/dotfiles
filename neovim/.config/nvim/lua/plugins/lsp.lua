@@ -1,9 +1,6 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		dependencies = {
-			"nvim-telescope/telescope-ui-select.nvim",
-		},
 		build = ":MasonUpdate",
 		cmd = "Mason",
 		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
