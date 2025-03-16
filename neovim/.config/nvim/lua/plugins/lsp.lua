@@ -95,6 +95,23 @@ return {
 		},
 	},
 	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		cmd = "LazyDev",
+		opts = {
+			library = {
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "wezterm-types", mods = { "wezterm" } },
+			},
+		},
+	},
+	{
+		"Bilal2453/luvit-meta",
+		lazy = true,
+	},
+	{
 		"nvimtools/none-ls.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = Utils.buf_events,
@@ -152,22 +169,5 @@ return {
 				events = { "CursorHold", "CursorHoldI" },
 			},
 		},
-	},
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		cmd = "LazyDev",
-		opts = {
-			library = {
-				{ path = "lazy.nvim", words = { "LazyVim" } },
-				{ path = "snacks.nvim", words = { "Snacks" } },
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				{ path = "wezterm-types", mods = { "wezterm" } },
-			},
-		},
-	},
-	{
-		"Bilal2453/luvit-meta",
-		lazy = true,
 	},
 }
