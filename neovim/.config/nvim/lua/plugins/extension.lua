@@ -119,6 +119,15 @@ return {
 			gitbrowse = { enabled = true },
 			notifier = { enabled = true },
 			statuscolumn = { enabled = true },
+			input = { enabled = true },
+			styles = {
+				input = {
+					border = "single",
+					relative = "cursor",
+					row = 1,
+					col = 0,
+				}
+			}
 		},
 		init = function()
 			vim.api.nvim_create_autocmd("User", {
