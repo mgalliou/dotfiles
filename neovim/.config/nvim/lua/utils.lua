@@ -1,7 +1,11 @@
 local M = {}
 
 M.buf_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
-M.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+M.borderchars = {
+	default = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+	bottom_linked = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+	top_linked = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+}
 M.kind_icons = {
 	Class = " ",
 	Color = " ",

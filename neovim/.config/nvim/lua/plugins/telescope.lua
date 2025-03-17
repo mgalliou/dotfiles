@@ -7,6 +7,7 @@ end
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+		version = false,
 		cmd = "Telescope",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -15,7 +16,7 @@ return {
 		opts = {
 			defaults = {
 				file_ignore_patterns = { ".git/" },
-				borderchars = Utils.borderchars,
+				borderchars = Utils.borderchars.default,
 				wrap_results = true,
 				prompt_prefix = " ",
 				selection_caret = " ",
@@ -35,8 +36,19 @@ return {
 					hidden = true,
 				},
 			},
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_cursor({
+						borderchars = {
+							prompt = Utils.borderchars.bottom_linked,
+							results = Utils.borderchars.top_linked,
+							preview = Utils.borderchars.defaults,
+						},
+					}),
+				},
+			},
 		},
-		config = function(opts)
+		config = function(_, opts)
 			require("telescope").setup(opts)
 			require("telescope").load_extension("ui-select")
 		end,
@@ -47,7 +59,6 @@ return {
 				T("find_files", { no_ignore = true }),
 				desc = "Find files (Telescope)",
 			},
-			--{ "<leader>fd", T("find_files", { cwd = "~/dotfiles" }), desc = "Find dotfiles with Telescope" },
 			{ "<leader>/", T("live_grep"), desc = "Grep (Telescope)" },
 			{ "<leader>b", T("buffers"), desc = "Find buffers (Telescope)" },
 			{ "<leader>H", T("help_tags"), desc = "Find helptags (Telescope)" },
