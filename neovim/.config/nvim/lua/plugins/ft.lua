@@ -23,9 +23,31 @@ return {
 		ft = "cfg",
 	},
 	{
-		"preservim/vim-markdown",
-		init = function()
-			vim.g.vim_markdown_new_list_indent = 2
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = "markdown",
+		opts = {
+			code = {
+				width = "block",
+				right_pad = 1,
+			},
+			completetions = { lsp = { enabled = true } },
+		},
+		config = function(_, opts)
+			require("render-markdown").setup(opts)
+			Snacks.toggle({
+				name = "Render Markdown",
+				get = function()
+					return require("render-markdown.state").enabled
+				end,
+				set = function(enabled)
+					local m = require("render-markdown")
+					if enabled then
+						m.enable()
+					else
+						m.disable()
+					end
+				end,
+			}):map("<leader>um")
 		end,
 	},
 }

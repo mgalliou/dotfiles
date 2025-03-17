@@ -117,8 +117,8 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "render-markdown" },
 					{ name = "lazydev", group_index = 0 },
-					{ name = "luasnip", option = { show_autosnippets = true } },
 					{ name = "path" },
 					{ name = "emoji" },
 					{

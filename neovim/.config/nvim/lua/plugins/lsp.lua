@@ -36,9 +36,9 @@ return {
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
 					local opts = Utils.servers[server_name]
-					if opts and not opts.disable_auto_setup then
+					if not opts or opts and not opts.disable_auto_setup then
 						require("lspconfig")[server_name].setup({
-							settings = opts.settings or {},
+							settings = opts and opts.settings or {},
 							capabilities = Utils.capabilities(),
 						})
 					end
@@ -77,7 +77,7 @@ return {
 		dependencies = {
 			"cmp-nvim-lsp",
 		},
-		ft = "java"
+		ft = "java",
 	},
 	{
 		"pmizio/typescript-tools.nvim",
@@ -120,11 +120,8 @@ return {
 					null_ls.builtins.diagnostics.yamllint.with({
 						extra_args = { "-d", "{extends: relaxed}" },
 					}),
-					null_ls.builtins.diagnostics.markdownlint.with({
-						extra_args = {
-							"--config",
-							vim.fn.expand("~/.config/nvim/utils/linter-config/.markdownlint.yaml"),
-						},
+					null_ls.builtins.diagnostics.markdownlint_cli2.with({
+						args = { "**/*.md" },
 					}),
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gitlint,

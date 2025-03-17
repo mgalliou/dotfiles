@@ -59,3 +59,6 @@ o.undodir:remove(".")
 g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_list_hide = "(^|ss)zs.S+"
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
