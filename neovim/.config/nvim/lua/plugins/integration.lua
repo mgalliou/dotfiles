@@ -4,6 +4,7 @@ local function Z(cmd, opt)
 	end
 end
 
+---@type LazyPluginSpec[]
 return {
 	{ "tpope/vim-fugitive" },
 	{ "nanotee/zoxide.vim" },

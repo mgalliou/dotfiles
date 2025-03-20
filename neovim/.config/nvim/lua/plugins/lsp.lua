@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
 	{
 		"williamboman/mason.nvim",
@@ -10,6 +11,11 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{
+				"folke/neoconf.nvim",
+				cmd = "Neoconf",
+				opts = {},
+			},
+			{
 				"williamboman/mason-lspconfig.nvim",
 				dependencies = {
 					"mason.nvim",
@@ -19,14 +25,101 @@ return {
 			"cmp-nvim-lsp",
 		},
 		event = Utils.buf_events,
-		config = function()
-			vim.diagnostic.config({
+		---@class PluginLspOpts
+		opts = {
+			---@type vim.diagnostic.Opts
+			diagnostics = {
 				virtual_text = { spacing = 4, prefix = "●" },
 				signs = true,
 				underline = true,
 				update_in_insert = false,
 				severity_sort = true,
-			})
+			},
+			---@class lspconfig.options
+			servers = {
+				lua_ls = {
+					settings = {
+						Lua = {
+							completion = {
+								callSnippet = "Replace",
+								workspaceWord = true,
+							},
+							format = {
+								enable = false,
+							},
+							workspace = {
+								checkThirdParty = true,
+								library = {
+									"/usr/share/awesome/lib",
+								},
+							},
+						},
+					},
+				},
+				yamlls = {
+					disable_auto_setup = true,
+					settings = {
+						yaml = {
+							customTags = { "!reference sequence" },
+						},
+						schemas = {
+							["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
+						},
+					},
+				},
+				helm_ls = {
+					settings = {
+						["helm-ls"] = {
+							yamlls = {
+								enabled = true,
+							},
+						},
+					},
+				},
+				rust_analyzer = {
+					disable_auto_setup = true,
+				},
+				jdtls = {
+					disable_auto_setup = true,
+				},
+				ts_ls = {
+					disable_auto_setup = true,
+					settings = {
+						typescript = {
+							format = {
+								enable = false,
+							},
+						},
+						javascript = {
+							format = {
+								enable = false,
+							},
+						},
+					},
+				},
+				html = {
+					settings = {
+						html = {
+							format = {
+								enable = false,
+							},
+						},
+					},
+				},
+				cssls = {
+					settings = {
+						css = {
+							format = {
+								enable = false,
+							},
+						},
+					},
+				},
+			},
+		},
+		---@param opts PluginLspOpts
+		config = function(_, opts)
+			vim.diagnostic.config(opts.diagnostics)
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -35,10 +128,10 @@ return {
 
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
-					local opts = Utils.servers[server_name]
-					if not opts or opts and not opts.disable_auto_setup then
+					local server_opts = opts.servers[server_name]
+					if not server_opts or server_opts and not server_opts.disable_auto_setup then
 						require("lspconfig")[server_name].setup({
-							settings = opts and opts.settings or {},
+							settings = server_opts and server_opts.settings or {},
 							capabilities = Utils.capabilities(),
 						})
 					end

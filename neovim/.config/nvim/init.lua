@@ -1,4 +1,4 @@
-Utils = require("utils")
+_G.Utils = require("utils")
 
 require("config.mappings")
 require("config.lazy")

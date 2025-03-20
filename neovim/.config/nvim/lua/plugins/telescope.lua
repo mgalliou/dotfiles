@@ -4,6 +4,7 @@ local function T(s, o)
 	end
 end
 
+---@type LazyPluginSpec[]
 return {
 	{
 		"nvim-telescope/telescope.nvim",

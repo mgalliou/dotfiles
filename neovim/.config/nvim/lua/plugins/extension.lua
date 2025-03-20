@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
 	{
 		"folke/trouble.nvim",
@@ -126,8 +127,8 @@ return {
 					relative = "cursor",
 					row = 1,
 					col = 0,
-				}
-			}
+				},
+			},
 		},
 		init = function()
 			vim.api.nvim_create_autocmd("User", {

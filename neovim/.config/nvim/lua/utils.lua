@@ -57,103 +57,58 @@ M.config_custom_server = function(name, cmd, filetypes, root_pattern)
 	end
 end
 
-M.set_keymap_opts = function(mode, bind, action, base_opt, desc)
-	local opts = base_opt
+---@alias LazyKeysLspSpec LazyKeysSpec|{capa?:string|string[], cond?:fun():boolean}
+---@alias LazyKeysLsp LazyKeys|{capa?:string|string[], cond?:fun():boolean}
 
-	opts.desc = desc
-	vim.keymap.set(mode, bind, action, opts)
-end
-
-M.on_attach = function(ev)
-	local buf = vim.lsp.buf
-	local bufopts = { buffer = ev.buf }
-	local client = vim.lsp.get_client_by_id(ev.data.client_id)
-	local map = M.set_keymap_opts
-
-	if client and (client.name == "tsserver" or client.name == "typescript-tools") then
-		client.server_capabilities.documentFormattingProvider = false
-	end
-
-	if client and client.supports_method("textDocument/definition", {}) then
-		map("n", "gd", buf.definition, bufopts, "Go to definition")
-	end
-	if client and client.supports_method("textDocument/declaration") then
-		map("n", "gD", buf.declaration, bufopts, "Go to declaration")
-	end
-	if client and client.supports_method("textDocument/implementation") then
-		map("n", "gI", buf.implementation, bufopts, "Go to implementation")
-	end
-	if client and client.supports_method("textDocument/references") then
-		map("n", "gr", buf.references, bufopts, "Reference")
-	end
-	map("n", "gy", buf.type_definition, bufopts, "Type definition")
-	if client and client.supports_method("textDocument/signatureHelp") then
-		map("n", "gK", buf.signature_help, bufopts, "Signature help")
-	end
-	map("i", "<C-k>", buf.signature_help, bufopts, "Signature help")
-	if client and client.supports_method("textDocument/rename") then
-		map("n", "<space>r", buf.rename, bufopts, "Rename symbol")
-	end
-	if client and client.supports_method("textDocument/codeAction") then
-		map({ "n", "v" }, "<leader>a", buf.code_action, bufopts, "Code action(s)")
-	end
-	if client and client.supports_method("textDocument/formatting") then
-		map({ "n", "v" }, "<leader>=", function()
-			buf.format({ async = true })
-		end, bufopts, "Format")
-	end
-end
-
-M.servers = {
-	lua_ls = {
-		settings = {
-			Lua = {
-				completion = {
-					callSnippet = "Replace",
-					workspaceWord = true,
-				},
-				format = {
-					enable = false,
-				},
-				workspace = {
-					checkThirdParty = true,
-					library = {
-						"/usr/share/awesome/lib",
-					},
-				},
-			},
-		},
-	},
-	yamlls = {
-		disable_auto_setup = true,
-		settings = {
-			yaml = {
-				customTags = { "!reference sequence" },
-			},
-			schemas = {
-				["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
-			},
-		},
-	},
-	helm_ls = {
-		settings = {
-			["helm-ls"] = {
-				yamlls = {
-					enabled = true,
-				},
-			},
-		},
-	},
-	rust_analyzer = {
-		disable_auto_setup = true,
-	},
-	jdtls = {
-		disable_auto_setup = true,
-	},
-	ts_ls = {
-		disable_auto_setup = true,
+---@type LazyKeysLspSpec[]|nil
+local keymaps_specs = {
+	{ "gd", vim.lsp.buf.definition, desc = "Go to definition", capa = "definition" },
+	{ "gD", vim.lsp.buf.feclaration, desc = "Go to declaration", capa = "declaration" },
+	{ "gI", vim.lsp.buf.implementation, desc = "Go to implementation", capa = "implementation" },
+	{ "gr", vim.lsp.buf.references, desc = "Reference", capa = "references" },
+	{ "gy", vim.lsp.buf.type_definition, desc = "Type definition" },
+	{ "gK", vim.lsp.buf.signature_help, desc = "Signature help", capa = "signatureHelp" },
+	{ "<C-k>", vim.lsp.buf.signature_help, desc = "Signature help", mode = "i", capa = "signatureHelp" },
+	{ "<space>r", vim.lsp.buf.rename, "Rename symbol", capa = "rename" },
+	{ "<leader>a", vim.lsp.buf.code_action, mode = { "n", "v" }, desc = "Code action(s)", capa = "codeAction" },
+	{
+		"<leader>=",
+		function()
+			vim.lsp.buf.format({ async = true })
+		end,
+		mode = { "n", "v" },
+		desc = "Format",
+		capa = "formatting",
 	},
 }
+
+---@param bufnbr integer
+---@param client vim.lsp.Client
+local function map_keys(bufnbr, client)
+	local Keys = require("lazy.core.handler.keys")
+	local keymaps = Keys.resolve(keymaps_specs)
+
+	for _, key in pairs(keymaps) do
+		local opts = Keys.opts(key) --[[@as vim.keymap.set.Opts]]
+		if client and opts.capa and client.supports_method("textDocument/" .. opts.capa, {}) then
+			opts.cond = nil ---@diagnostic disable-line: inject-field
+			opts.capa = nil ---@diagnostic disable-line: inject-field
+			opts.silent = opts.silent ~= false
+			opts.buffer = bufnbr
+			vim.keymap.set(key.mode or "n", key.lhs, key.rhs, opts)
+		end
+	end
+end
+
+M.on_attach = function(args)
+	---@type integer
+	local bufnr = args.buf
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+
+	for _, client in ipairs(clients) do
+		map_keys(bufnr, client)
+	end
+end
 
 M.capabilities = function()
 	return vim.tbl_deep_extend(
