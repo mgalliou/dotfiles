@@ -63,7 +63,7 @@ end
 ---@type LazyKeysLspSpec[]|nil
 local keymaps_specs = {
 	{ "gd", vim.lsp.buf.definition, desc = "Go to definition", capa = "definition" },
-	{ "gD", vim.lsp.buf.feclaration, desc = "Go to declaration", capa = "declaration" },
+	{ "gD", vim.lsp.buf.declaration, desc = "Go to declaration", capa = "declaration" },
 	{ "gI", vim.lsp.buf.implementation, desc = "Go to implementation", capa = "implementation" },
 	{ "gr", vim.lsp.buf.references, desc = "Reference", capa = "references" },
 	{ "gy", vim.lsp.buf.type_definition, desc = "Type definition" },
