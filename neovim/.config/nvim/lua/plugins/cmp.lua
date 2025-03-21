@@ -74,8 +74,8 @@ return {
 		},
 		opts = function()
 			local cmp = require("cmp")
-			local kind_icons = Utils.kind_icons
 
+			---@class cmp.ConfigSchema
 			return {
 				snippet = {
 					expand = function(args)
@@ -85,9 +85,10 @@ return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
 				},
+				---@class cmp.FormattingConfig
 				formatting = {
 					format = function(entry, vim_item)
-						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+						vim_item.kind = string.format("%s %s", Utils.kind_icons[vim_item.kind], vim_item.kind)
 						vim_item.menu = ({
 							buffer = "[buffer]",
 							latex_symbols = "[LaTeX]",

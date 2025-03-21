@@ -35,7 +35,7 @@ return {
 				update_in_insert = false,
 				severity_sort = true,
 			},
-			---@class lspconfig.options
+			---@type lspconfig.options
 			servers = {
 				lua_ls = {
 					settings = {
@@ -188,9 +188,11 @@ return {
 		"folke/lazydev.nvim",
 		ft = "lua",
 		cmd = "LazyDev",
+		---@type lazydev.Config
 		opts = {
 			library = {
-				{ path = "lazy.nvim", words = { "LazyVim" } },
+				{ path = "lazy.nvim" },
+				{ path = "lazydev.nvim" },
 				{ path = "snacks.nvim", words = { "Snacks" } },
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				{ path = "wezterm-types", mods = { "wezterm" } },

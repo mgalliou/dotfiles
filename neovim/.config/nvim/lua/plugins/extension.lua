@@ -3,6 +3,7 @@ return {
 	{
 		"folke/trouble.nvim",
 		cmd = { "Trouble" },
+		---@type trouble.Config
 		opts = {
 			modes = {
 				lsp = {
@@ -115,7 +116,11 @@ return {
 	},
 	{
 		"folke/snacks.nvim",
+		---@type snacks.Config
 		opts = {
+			words = {
+				enabled = true,
+			},
 			indent = { enabled = true },
 			gitbrowse = { enabled = true },
 			notifier = { enabled = true },

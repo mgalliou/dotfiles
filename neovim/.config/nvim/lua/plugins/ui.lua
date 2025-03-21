@@ -3,6 +3,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
+		---@type wk.Opts
 		opts = {
 			preset = "helix",
 			icons = {
@@ -91,6 +92,7 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = Utils.buf_events,
 		cmd = { "TodoTrouble", "TodoTelescope" },
+		---@class TodoOptions
 		opts = {},
 		keys = {
 			{
