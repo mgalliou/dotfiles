@@ -20,6 +20,7 @@ return {
 				{ "<leader>c", group = "code", icon = { icon = "󰘦 ", color = "yellow" } },
 				{ "<leader>h", group = "hunks", icon = { icon = " ", color = "yellow" } },
 				{ "<leader>B", group = "bases", icon = { icon = " ", color = "yellow" } },
+				{ "<leader>f", group = "find", icon = { icon = " ", color = "yellow" } },
 				{ "<leader>s", group = "search", icon = { icon = " ", color = "yellow" } },
 				{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "yellow" } },
 				{ "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "yellow" } },

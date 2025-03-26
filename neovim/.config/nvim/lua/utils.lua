@@ -33,6 +33,18 @@ M.kind_icons = {
 	Value = " ",
 	Variable = " ",
 }
+M.symbol_types = {
+	"Class",
+	"Function",
+	"Method",
+	"Constructor",
+	"Interface",
+	"Module",
+	"Struct",
+	"Trait",
+	"Field",
+	"Property",
+}
 
 M.PluginIsLoaded = function(plugin)
 	if 0 == vim.fn["tools#PluginIsLoaded"](plugin) then
