@@ -2,6 +2,7 @@
 return {
 	{
 		"garymjr/nvim-snippets",
+		enabled = false,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
@@ -61,7 +62,93 @@ return {
 		},
 	},
 	{
+		"saghen/blink.cmp",
+		version = "1.*",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			"andersevenrud/cmp-tmux",
+			{
+				"saghen/blink.compat",
+				verion = "*",
+				lazy = true,
+				otps = {},
+			},
+			"moyiz/blink-emoji.nvim",
+			"MahanRahmati/blink-nerdfont.nvim",
+		},
+		event = "InsertEnter",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			appearance = {
+				nerd_font_variant = "normal",
+			},
+			completion = {
+				accept = {
+					auto_brackets = {
+						enabled = true,
+					},
+				},
+				ghost_text = {
+					enabled = true,
+				},
+				documentation = { auto_show = true },
+				menu = {
+					draw = {
+						columns = {
+							{ "label", "label_description", gap = 1 },
+							{ "kind_icon", "kind" },
+						},
+						treesitter = { "lsp" },
+					},
+				},
+			},
+			sources = {
+				default = {
+					"lsp",
+					"path",
+					"snippets",
+					"buffer",
+					"lazydev",
+					"tmux",
+					"emoji",
+					"nerdfont",
+				},
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100, -- show at a higher priority than lsp
+					},
+					tmux = {
+						name = "tmux",
+						module = "blink.compat.source",
+						score_offset = -3,
+						min_keyword_length = 3,
+						-- opts = {
+						-- 	all_panes = true,
+						-- },
+					},
+					emoji = {
+						name = "emoji",
+						module = "blink-emoji",
+						async = true
+					},
+					nerdfont = {
+						name = "Nerd Fonts",
+						module = "blink-nerdfont",
+						async = true
+					},
+				},
+			},
+		},
+		opts_extend = { "sources.default" },
+	},
+	{
 		"hrsh7th/nvim-cmp",
+		enabled = false,
 		version = false,
 		event = "InsertEnter",
 		dependencies = {
