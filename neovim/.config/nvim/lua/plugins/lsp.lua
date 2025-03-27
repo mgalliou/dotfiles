@@ -22,7 +22,6 @@ return {
 				},
 				config = true,
 			},
-			--"cmp-nvim-lsp",
 		},
 		event = Utils.buf_events,
 		---@class PluginLspOpts
@@ -153,9 +152,6 @@ return {
 	},
 	{
 		"mrcjkb/rustaceanvim",
-		dependencies = {
-			--"cmp-nvim-lsp",
-		},
 		ft = { "rust" },
 		config = function()
 			vim.g.rustaceanvim = {
@@ -184,9 +180,6 @@ return {
 	},
 	{
 		"mfussenegger/nvim-jdtls",
-		dependencies = {
-			--"cmp-nvim-lsp",
-		},
 		ft = "java",
 	},
 	{
