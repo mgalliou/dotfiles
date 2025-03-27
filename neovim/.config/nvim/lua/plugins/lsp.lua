@@ -29,7 +29,14 @@ return {
 			---@type vim.diagnostic.Opts
 			diagnostics = {
 				virtual_text = { spacing = 4, prefix = "●" },
-				signs = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = " ",
+						[vim.diagnostic.severity.WARN] = " ",
+						[vim.diagnostic.severity.HINT] = "󰌶 ",
+						[vim.diagnostic.severity.INFO] = "󰋽 ",
+					},
+				},
 				underline = true,
 				update_in_insert = false,
 				severity_sort = true,
@@ -136,12 +143,6 @@ return {
 					end
 				end,
 			})
-
-			local signs = { Error = " ", Warn = " ", Hint = "󰌶 ", Info = "󰋽 " }
-			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-			end
 
 			local kinds = vim.lsp.protocol.CompletionItemKind
 			local kind_icons = Utils.kind_icons
