@@ -10,8 +10,6 @@ map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, 
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
 -- buffers
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- better indenting
@@ -35,16 +33,6 @@ map("n", "<leader>xq", function()
 		vim.notify(err, vim.log.levels.ERROR)
 	end
 end, { desc = "Quickfix List" })
-
-map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
-
--- diagnostics
-local diag = vim.diagnostic
-
-map("n", "<leader>e", diag.open_float, { desc = "Diagnostic float" })
-map("n", "[d", diag.goto_prev, { desc = "Previous Diagnostic" })
-map("n", "]d", diag.goto_next, { desc = "Next Diagnostic" })
 
 -- map("n", "<leader>rl", "<CMD>so $MYVIMRC", { desc = "Reload configuration" })
 -- map("n", "<leader>ws", "m`:%s/\\s\\+$//<CR>:let @/=''<CR>``:w<CR>", { desc = "Remove trailing whitespaces" })
