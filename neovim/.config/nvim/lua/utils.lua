@@ -72,7 +72,7 @@ end
 ---@alias LazyKeysLspSpec LazyKeysSpec|{capa?:string|string[], cond?:fun():boolean}
 ---@alias LazyKeysLsp LazyKeys|{capa?:string|string[], cond?:fun():boolean}
 
----@type LazyKeysLspSpec[]|nil
+---@type LazyKeysLspSpec[]
 local keymaps_specs = {
 	{ "gd", vim.lsp.buf.definition, desc = "Go to definition", capa = "definition" },
 	{ "gD", vim.lsp.buf.declaration, desc = "Go to declaration", capa = "declaration" },
@@ -94,19 +94,19 @@ local keymaps_specs = {
 	},
 }
 
----@param bufnbr integer
+---@param bufnr integer
 ---@param client vim.lsp.Client
-local function map_keys(bufnbr, client)
+local function map_keys(bufnr, client)
 	local Keys = require("lazy.core.handler.keys")
 	local keymaps = Keys.resolve(keymaps_specs)
 
 	for _, key in pairs(keymaps) do
 		local opts = Keys.opts(key) --[[@as vim.keymap.set.Opts]]
-		if client and opts.capa and client.supports_method("textDocument/" .. opts.capa, {}) then
+		if client and opts.capa and client:supports_method("textDocument/" .. opts.capa, bufnr) then
 			opts.cond = nil ---@diagnostic disable-line: inject-field
 			opts.capa = nil ---@diagnostic disable-line: inject-field
 			opts.silent = opts.silent ~= false
-			opts.buffer = bufnbr
+			opts.buffer = bufnr
 			vim.keymap.set(key.mode or "n", key.lhs, key.rhs, opts)
 		end
 	end
