@@ -154,15 +154,14 @@ return {
 					else
 						gitsigns.nav_hunk("next")
 					end
-				end)
-
+				end, "Next Hunk")
 				map("n", "[h", function()
 					if vim.wo.diff then
 						vim.cmd.normal({ "[c", bang = true })
 					else
 						gitsigns.nav_hunk("prev")
 					end
-				end)
+				end, "Prev Hunk")
 				map("n", "]H", function()
 					gitsigns.nav_hunk("last")
 				end, "Last Hunk")
