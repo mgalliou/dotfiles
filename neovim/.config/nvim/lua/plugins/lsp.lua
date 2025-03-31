@@ -185,7 +185,9 @@ return {
 	},
 	{
 		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
 		ft = { "javascript", "typescript" },
 		opts = {
 			on_attach = Utils.on_attach,
@@ -216,7 +218,6 @@ return {
 	},
 	{
 		"nvimtools/none-ls.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
 		event = Utils.buf_events,
 		config = function()
 			local null_ls = require("null-ls")

@@ -91,7 +91,6 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
 		event = Utils.buf_events,
 		cmd = { "TodoTrouble", "TodoTelescope" },
 		---@class TodoOptions
@@ -233,5 +232,9 @@ return {
 				enabled = false,
 			},
 		},
+	},
+	{
+		"nvim-lua/plenary.nvim",
+		lazy = true
 	},
 }
