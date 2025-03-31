@@ -2,10 +2,13 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		event = Utils.buf_events,
+		enabled = false,
 		dependencies = {
 			{
-				"nvim-neotest/nvim-nio",
+				"rcarriga/nvim-dap-ui",
+				dependencies = {
+					"nvim-neotest/nvim-nio",
+				},
 			},
 			-- TODO: plug "jbyuki/one-small-step-for-vimkind"
 		},
@@ -51,12 +54,5 @@ return {
 				},
 			}
 		end,
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"nvim-neotest/nvim-nio",
-		},
 	},
 }
