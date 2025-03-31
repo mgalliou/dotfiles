@@ -41,7 +41,7 @@ return {
 				right_pad = 1,
 				sign = false,
 			},
-			completetions = {
+			completions = {
 				lsp = {
 					enabled = true,
 				},
