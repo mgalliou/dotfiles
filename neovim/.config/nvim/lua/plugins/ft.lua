@@ -26,12 +26,26 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = "markdown",
+		---@module "render.md"
+		---@type render.md.UserConfig
 		opts = {
 			code = {
 				width = "block",
+				min_width = 80,
 				right_pad = 1,
+				sign = false,
 			},
-			completetions = { lsp = { enabled = true } },
+			heading = {
+				width = "block",
+				min_width = 80,
+				right_pad = 1,
+				sign = false,
+			},
+			completetions = {
+				lsp = {
+					enabled = true,
+				},
+			},
 		},
 		config = function(_, opts)
 			require("render-markdown").setup(opts)
