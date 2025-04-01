@@ -3,10 +3,10 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		version = false,
-		cmd = "Telescope",
 		dependencies = {
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
+		cmd = "Telescope",
 		opts = {
 			defaults = {
 				file_ignore_patterns = { ".git/" },
@@ -72,6 +72,13 @@ return {
 	{
 		"johmsalas/text-case.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
+		cmd = {
+			"Subs",
+			"TextCaseOpenTelescope",
+			"TextCaseOpenTelescopeQuickChange",
+			"TextCaseOpenTelescopeLSPChange",
+			"TextCaseStartReplacingCommand",
+		},
 		opts = {
 			default_keymappings_enabled = false,
 		},
@@ -82,12 +89,9 @@ return {
 		keys = {
 			{ "<leader>~", "<CMD>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Text case (Telescope)" },
 		},
-		cmd = {
-			"Subs",
-			"TextCaseOpenTelescope",
-			"TextCaseOpenTelescopeQuickChange",
-			"TextCaseOpenTelescopeLSPChange",
-			"TextCaseStartReplacingCommand",
-		},
+	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		lazy = true,
 	},
 }

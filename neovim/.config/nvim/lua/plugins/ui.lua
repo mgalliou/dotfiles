@@ -87,7 +87,7 @@ return {
 	{
 		"asiryk/auto-hlsearch.nvim",
 		event = Utils.buf_events,
-		config = true,
+		opts = {},
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -235,6 +235,6 @@ return {
 	},
 	{
 		"nvim-lua/plenary.nvim",
-		lazy = true
+		lazy = true,
 	},
 }

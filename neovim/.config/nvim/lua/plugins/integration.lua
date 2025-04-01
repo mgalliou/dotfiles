@@ -38,14 +38,13 @@ return {
 	{
 		"mickael-menu/zk-nvim",
 		enabled = false,
-		config = function()
-			require("zk").setup({
-				picker = "telescope",
-				lsp = {
-					on_attach = Utils.on_attach,
-				},
-			})
-		end,
+		main = "zk",
+		opts = {
+			picker = "telescope",
+			lsp = {
+				on_attach = Utils.on_attach,
+			},
+		},
 		keys = {
 			{ "<leader>zf", Z("ZkNotes", {}), desc = "Find note" },
 			{
@@ -73,8 +72,8 @@ return {
 	{
 		"nvim-neorg/neorg",
 		enabled = false,
-		ft = "norg",
 		build = ":Neorg sync-parsers",
+		ft = "norg",
 		opts = {
 			load = {
 				["core.defaults"] = {},

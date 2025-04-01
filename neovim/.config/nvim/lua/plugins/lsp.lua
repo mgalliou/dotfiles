@@ -4,23 +4,23 @@ return {
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
 		cmd = "Mason",
+		opts = {},
 		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
-		config = true,
 	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{
 				"folke/neoconf.nvim",
-				cmd = "Neoconf",
 				opts = {},
+				cmd = "Neoconf",
 			},
 			{
 				"williamboman/mason-lspconfig.nvim",
 				dependencies = {
 					"mason.nvim",
 				},
-				config = true,
+				opts = {},
 			},
 		},
 		event = Utils.buf_events,
