@@ -2,6 +2,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
+		enabled = false,
 		version = false,
 		dependencies = {
 			"nvim-telescope/telescope-ui-select.nvim",
