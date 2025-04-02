@@ -43,9 +43,9 @@ return {
 				sign = false,
 			},
 			completions = {
-				lsp = {
-					enabled = true,
-				},
+				blink = {
+					enabled = true
+				}
 			},
 		},
 		config = function(_, opts)
