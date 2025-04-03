@@ -13,7 +13,7 @@ return {
 			},
 			"moyiz/blink-emoji.nvim",
 			"MahanRahmati/blink-nerdfont.nvim",
-			"mgalliou/blink-cmp-tmux"
+			"mgalliou/blink-cmp-tmux",
 		},
 		event = "InsertEnter",
 		---@module 'blink.cmp'
@@ -62,16 +62,17 @@ return {
 							all_panes = true,
 							capture_history = true,
 						},
+						score_offset = -15,
 					},
 					emoji = {
 						name = "emoji",
 						module = "blink-emoji",
-						async = true
+						score_offset = -15,
 					},
 					nerdfont = {
 						name = "Nerd Fonts",
 						module = "blink-nerdfont",
-						async = true
+						score_offset = -15,
 					},
 				},
 			},
