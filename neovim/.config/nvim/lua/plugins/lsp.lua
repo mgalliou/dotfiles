@@ -104,21 +104,18 @@ return {
 					},
 				},
 				html = {
-					settings = {
-						html = {
-							format = {
-								enable = false,
-							},
-						},
+					init_options = {
+						provideFormatter = false,
 					},
 				},
 				cssls = {
-					settings = {
-						css = {
-							format = {
-								enable = false,
-							},
-						},
+					init_options = {
+						provideFormatter = false,
+					},
+				},
+				jsonls = {
+					init_options = {
+						provideFormatter = false,
 					},
 				},
 			},
@@ -139,6 +136,7 @@ return {
 						require("lspconfig")[server_name].setup({
 							settings = server_opts and server_opts.settings or {},
 							capabilities = Utils.capabilities(),
+							init_options = server_opts and server_opts.init_options or {},
 						})
 					end
 				end,
