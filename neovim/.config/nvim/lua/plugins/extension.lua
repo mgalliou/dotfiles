@@ -126,7 +126,10 @@ return {
 			notifier = { enabled = true },
 			statuscolumn = { enabled = true },
 			input = { enabled = true },
-			picker = { enabled = true },
+			picker = {
+				enabled = true,
+				layout = "telescope",
+			},
 			styles = {
 				input = {
 					border = "single",
@@ -136,6 +139,7 @@ return {
 				},
 			},
 		},
+		-- stylua: ignore
 		keys = {
 			{ "<leader>/", function() Snacks.picker.grep() end, desc = "grep (Root Dir)", },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History", },
@@ -150,12 +154,13 @@ return {
 			{ "<leader>sm", function() Snacks.picker.marks() end, desc = "Registers", },
 			{ "<leader>sh", function() Snacks.picker.help() end, desc = "Search helptags", },
 			{ "<leader>sm", function() Snacks.picker.man() end, desc = "Search man pages", },
+			{ "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
 			{ "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "Search Symbols", },
-			{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Search Symbols (Workspace)",
-			},
+			{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Search Symbols (Workspace)", },
 			{ "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume last picker", },
 		},
 		init = function()
+			vim.api.nvim_set_hl(0, "SnacksPickerDir", { link = "GruvboxGray" })
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
 				callback = function()
