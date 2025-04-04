@@ -8,41 +8,43 @@ return {
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		cmd = "Telescope",
-		opts = {
-			defaults = {
-				file_ignore_patterns = { ".git/" },
-				borderchars = Utils.borderchars.default,
-				wrap_results = true,
-				prompt_prefix = " ",
-				selection_caret = " ",
-				vimgrep_arguments = {
-					"rg",
-					"--color=never",
-					"--no-heading",
-					"--with-filename",
-					"--line-number",
-					"--column",
-					"--smart-case",
-					"-.",
+		opts = function()
+			return {
+				defaults = {
+					file_ignore_patterns = { ".git/" },
+					borderchars = Utils.borderchars.default,
+					wrap_results = true,
+					prompt_prefix = " ",
+					selection_caret = " ",
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"-.",
+					},
 				},
-			},
-			pickers = {
-				find_files = {
-					hidden = true,
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
 				},
-			},
-			extensions = {
-				["ui-select"] = {
-					require("telescope.themes").get_cursor({
-						borderchars = {
-							prompt = Utils.borderchars.bottom_linked,
-							results = Utils.borderchars.top_linked,
-							preview = Utils.borderchars.defaults,
-						},
-					}),
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_cursor({
+							borderchars = {
+								prompt = Utils.borderchars.bottom_linked,
+								results = Utils.borderchars.top_linked,
+								preview = Utils.borderchars.defaults,
+							},
+						}),
+					},
 				},
-			},
-		},
+			}
+		end,
 		config = function(_, opts)
 			require("telescope").setup(opts)
 			require("telescope").load_extension("ui-select")
@@ -72,6 +74,7 @@ return {
 	},
 	{
 		"johmsalas/text-case.nvim",
+		enabled = false,
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		cmd = {
 			"Subs",
@@ -93,6 +96,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
+		enabled = false,
 		lazy = true,
 	},
 }
