@@ -4,7 +4,9 @@ end
 
 fundle plugin danhper/fish-completion-helpers
 fundle plugin gazorby/fish-abbreviation-tips
-fundle plugin reitzig/sdkman-for-fish
+if functions -q sdkman
+    fundle plugin reitzig/sdkman-for-fish
+end
 fundle plugin laughedelic/brew-completions
 
 fundle init
