@@ -141,11 +141,11 @@ return {
 		},
 		-- stylua: ignore
 		keys = {
-			{ "<leader>/", function() Snacks.picker.grep() end, desc = "grep (Root Dir)", },
+			{ "<leader>/", function() Snacks.picker.grep({ hidden = true}) end, desc = "grep (Root Dir)", },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History", },
 			{ "<leader><space>", function() Snacks.picker.smart() end, desc = "Find files (Root Dir))", },
-			{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find files (Root Dir))", },
-			{ "<leader>fF", function() Snacks.picker.files({ cwd = vim.fn.expand "%:p:h" }) end, desc = "Find files (Buffer Dir)", },
+			{ "<leader>ff", function() Snacks.picker.files({ hidden = true}) end, desc = "Find files (Root Dir))", },
+			{ "<leader>fF", function() Snacks.picker.files({ cwd = vim.fn.expand "%:p:h", hidden = true }) end, desc = "Find files (Buffer Dir)", },
 			{ "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find git files (Root Dir)", },
 			{ "<leader>fG", function() Snacks.picker.git_files({ root = false }) end, desc = "Find git files (Buffer Dir)", },
 			{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Find recent files", },
