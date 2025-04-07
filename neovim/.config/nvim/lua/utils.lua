@@ -112,6 +112,7 @@ local function map_keys(bufnr, client)
 	end
 end
 
+---@param args vim.api.keyset.create_autocmd.callback_args
 M.on_attach = function(args)
 	---@type integer
 	local bufnr = args.buf

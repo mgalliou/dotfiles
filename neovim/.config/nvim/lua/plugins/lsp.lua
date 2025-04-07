@@ -152,13 +152,6 @@ return {
 	{
 		"mrcjkb/rustaceanvim",
 		ft = { "rust" },
-		config = function()
-			vim.g.rustaceanvim = {
-				server = {
-					capabilities = Utils.capabilities(),
-				},
-			}
-		end,
 	},
 	{
 		"Saecki/crates.nvim",
