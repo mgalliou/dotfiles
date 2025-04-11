@@ -81,7 +81,7 @@ local keymaps_specs = {
 	{ "gy", vim.lsp.buf.type_definition, desc = "Type definition" },
 	{ "gK", vim.lsp.buf.signature_help, desc = "Signature help", capa = "signatureHelp" },
 	{ "<C-k>", vim.lsp.buf.signature_help, desc = "Signature help", mode = "i", capa = "signatureHelp" },
-	{ "<space>r", vim.lsp.buf.rename, "Rename symbol", capa = "rename" },
+	{ "<space>r", vim.lsp.buf.rename, desc = "Rename symbol", capa = "rename" },
 	{ "<leader>a", vim.lsp.buf.code_action, mode = { "n", "v" }, desc = "Code action(s)", capa = "codeAction" },
 	{
 		"<leader>=",
