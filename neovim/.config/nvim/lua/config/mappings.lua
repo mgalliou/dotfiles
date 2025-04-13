@@ -34,6 +34,23 @@ map("n", "<leader>xq", function()
 	end
 end, { desc = "Quickfix List" })
 
+-- diagnostics
+local diag = vim.diagnostic
+
+map("n", "<leader>uF", diag.open_float, { desc = "Diagnostic float" })
+map("n", "[d", function()
+	diag.jump({
+		count = -1,
+		float = true,
+	})
+end, { desc = "Previous Diagnostic" })
+map("n", "]d", function()
+	diag.jump({
+		count = 1,
+		float = true,
+	})
+end, { desc = "Next Diagnostic" })
+
 -- map("n", "<leader>rl", "<CMD>so $MYVIMRC", { desc = "Reload configuration" })
 -- map("n", "<leader>ws", "m`:%s/\\s\\+$//<CR>:let @/=''<CR>``:w<CR>", { desc = "Remove trailing whitespaces" })
 
