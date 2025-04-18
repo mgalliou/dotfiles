@@ -33,5 +33,5 @@
 [tag]
 	sort = version:refname
 [user]
-	mail = matthias.galliou@gmail.com
+	email = matthias.galliou@gmail.com
 	name = mgalliou
