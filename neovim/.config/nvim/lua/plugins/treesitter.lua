@@ -17,10 +17,18 @@ return {
 			pcall(require, "nvim-treesitter.query_predicates")
 		end,
 		main = "nvim-treesitter.configs",
+		---@type TSConfig
 		opts = {
 			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
+			ensure_installed = {
+				"gitcommit",
+				"diff",
+				"markdown",
+				"markdown_inline",
+				"bash"
+			},
 			incremental_selection = {
 				enable = true,
 				keymaps = {
