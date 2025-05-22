@@ -17,8 +17,10 @@ end
 
 if type -q nvim
     set -x EDITOR nvim
+    set -x MANPAGER "nvim +Man!"
 else if type -q vim
     set -x EDITOR vim
+    set -x MANPAGER "vim -M +MANPAGER -"
 else if type -q vi
     set -x EDITOR vi
 end
