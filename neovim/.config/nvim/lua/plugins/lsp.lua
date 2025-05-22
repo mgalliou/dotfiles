@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec[]
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		build = ":MasonUpdate",
 		cmd = "Mason",
 		opts = {},
@@ -14,13 +14,6 @@ return {
 				"folke/neoconf.nvim",
 				opts = {},
 				cmd = "Neoconf",
-			},
-			{
-				"williamboman/mason-lspconfig.nvim",
-				dependencies = {
-					"mason.nvim",
-				},
-				opts = {},
 			},
 		},
 		event = Utils.buf_events,
@@ -63,7 +56,6 @@ return {
 					},
 				},
 				yamlls = {
-					disable_auto_setup = true,
 					settings = {
 						yaml = {
 							customTags = { "!reference sequence" },
@@ -82,14 +74,7 @@ return {
 						},
 					},
 				},
-				rust_analyzer = {
-					disable_auto_setup = true,
-				},
-				jdtls = {
-					disable_auto_setup = true,
-				},
 				ts_ls = {
-					disable_auto_setup = true,
 					settings = {
 						typescript = {
 							format = {
@@ -129,18 +114,13 @@ return {
 				callback = Utils.on_attach,
 			})
 
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					local server_opts = opts.servers[server_name]
-					if not server_opts or server_opts and not server_opts.disable_auto_setup then
-						require("lspconfig")[server_name].setup({
-							settings = server_opts and server_opts.settings or {},
-							capabilities = Utils.capabilities(),
-							init_options = server_opts and server_opts.init_options or {},
-						})
-					end
-				end,
-			})
+			for server_name, server_opts in pairs(opts.servers) do
+				vim.lsp.config(server_name, {
+					settings = server_opts and server_opts.settings or {},
+					capabilities = Utils.capabilities(),
+					init_options = server_opts and server_opts.init_options or {},
+				})
+			end
 
 			local kinds = vim.lsp.protocol.CompletionItemKind
 			local kind_icons = Utils.kind_icons
@@ -148,6 +128,26 @@ return {
 				kinds[i] = kind_icons[kind] or kind
 			end
 		end,
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			"mason.nvim",
+			"nvim-lspconfig",
+		},
+		event = Utils.buf_events,
+		---@module "mason-lspconfig"
+		---@type MasonLspconfigSettings
+		opts = {
+			automatic_enable = {
+				exclude = {
+					"rust_analyzer",
+					"jdtls",
+					"ts_ls",
+					"yamlls",
+				},
+			},
+		},
 	},
 	{
 		"mrcjkb/rustaceanvim",
