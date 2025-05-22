@@ -2,6 +2,8 @@ if not status is-interactive
     return
 end
 
+set -U fish_greeting
+
 set -l CONFIG_PATH ~/.config/fish
 
 source $CONFIG_PATH/fundle.fish
