@@ -92,6 +92,14 @@ if type -q npm
     abbr -a ns "npm run start"
 end
 
+if type -q pmbootstrap
+    abbr -a pmb pmbootstrap
+    abbr -a pmbb "pmbootstrap build"
+    abbr -a pmbl "pmbootstrap log"
+    abbr -a pmbz "pmbootstrap zap"
+    abbr -a pmbi "pmbootstrap install"
+end
+
 if type -q eza
     set LISTER eza
 else if type -q exa
