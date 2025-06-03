@@ -3,10 +3,11 @@ return {
 	{
 		"ellisonleao/gruvbox.nvim",
 		lazy = true,
-		init = function()
-			vim.api.nvim_set_hl(0, "FloatTitle", { link = "NormalFloat" })
-		end,
-		opts = {},
+		---@module "gruvbox"
+		---@type GruvboxConfig
+		opts = {
+			transparent_mode = true,
+		},
 	},
 	{
 		"folke/tokyonight.nvim",
