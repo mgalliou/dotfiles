@@ -1,13 +1,6 @@
 ---@type LazyPluginSpec[]
 return {
 	{
-		"mason-org/mason.nvim",
-		build = ":MasonUpdate",
-		cmd = "Mason",
-		opts = {},
-		keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
-	},
-	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{
@@ -132,11 +125,15 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
-			"mason.nvim",
+			{
+				"mason-org/mason.nvim",
+				build = ":MasonUpdate",
+				cmd = "Mason",
+				opts = {},
+				keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
+			},
 			"nvim-lspconfig",
 		},
-		event = Utils.buf_events,
-		---@module "mason-lspconfig"
 		---@type MasonLspconfigSettings
 		opts = {
 			automatic_enable = {
