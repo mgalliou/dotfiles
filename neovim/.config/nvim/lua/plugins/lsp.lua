@@ -134,8 +134,12 @@ return {
 			},
 			"nvim-lspconfig",
 		},
+		---@module "mason-lspconfig"
 		---@type MasonLspconfigSettings
 		opts = {
+			ensure_installed = {
+				"lua_ls",
+			},
 			automatic_enable = {
 				exclude = {
 					"rust_analyzer",
@@ -219,20 +223,33 @@ return {
 						args = { "**/*.md" },
 					}),
 					null_ls.builtins.diagnostics.fish,
-					null_ls.builtins.diagnostics.gitlint,
-					null_ls.builtins.diagnostics.checkmake,
 					null_ls.builtins.formatting.prettier.with({
 						extra_filetypes = { "gotmpl", "helm" },
 					}),
 					null_ls.builtins.formatting.fish_indent,
-					null_ls.builtins.formatting.black,
 					null_ls.builtins.formatting.shellharden.with({
 						extra_filetypes = { "tmux" },
 					}),
-					null_ls.builtins.formatting.stylua,
 				},
 			})
 		end,
+	},
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"mason.nvim",
+			"none-ls.nvim",
+		},
+		---@module "mason-null-ls"
+		---@type MasonNullLsSettings
+		opts = {
+			ensure_installed = {
+				"gitlint",
+				"markdownlint_cli2",
+			},
+			handlers = {},
+		},
 	},
 	{
 		"kosayoda/nvim-lightbulb",
