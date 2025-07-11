@@ -14,7 +14,6 @@ return {
 	},
 	{
 		"pearofducks/ansible-vim",
-		enabled = true,
 	},
 	{
 		"towolf/vim-helm",
