@@ -18,6 +18,7 @@ return {
 		end,
 		main = "nvim-treesitter.configs",
 		---@type TSConfig
+		---@diagnostic disable-next-line: missing-fields
 		opts = {
 			auto_install = true,
 			highlight = { enable = true },
@@ -27,7 +28,7 @@ return {
 				"diff",
 				"markdown",
 				"markdown_inline",
-				"bash"
+				"bash",
 			},
 			incremental_selection = {
 				enable = true,
@@ -63,11 +64,13 @@ return {
 						["[f"] = "@function.outer",
 						["[c"] = "@class.outer",
 						["[a"] = "@parameter.inner",
+						["[v"] = "@assignment.outer",
 					},
 					goto_next_start = {
 						["]f"] = "@function.outer",
 						["]c"] = "@class.outer",
 						["]a"] = "@parameter.inner",
+						["]v"] = "@assignment.outer",
 					},
 					goto_previous_end = {
 						["[F"] = "@function.outer",
@@ -78,6 +81,21 @@ return {
 						["]F"] = "@function.outer",
 						["]C"] = "@class.outer",
 						["]A"] = "@parameter.inner",
+					},
+				},
+				swap = {
+					enable = true,
+					swap_previous = {
+						["<leader>[f"] = "@function.outer",
+						["<leader>[c"] = "@class.outer",
+						["<leader>[a"] = "@parameter.inner",
+						["<leader>[v"] = "@assignment.outer",
+					},
+					swap_next = {
+						["<leader>]f"] = "@function.outer",
+						["<leader>]c"] = "@class.outer",
+						["<leader>]a"] = "@parameter.inner",
+						["<leader>]v"] = "@assignment.outer",
 					},
 				},
 			},
