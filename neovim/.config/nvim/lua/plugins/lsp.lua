@@ -27,7 +27,6 @@ return {
 				update_in_insert = false,
 				severity_sort = true,
 			},
-			---@type lspconfig.options
 			servers = {
 				lua_ls = {
 					settings = {
@@ -40,10 +39,7 @@ return {
 								enable = false,
 							},
 							workspace = {
-								checkThirdParty = true,
-								library = {
-									"/usr/share/awesome/lib",
-								},
+								checkThirdParty = false,
 							},
 						},
 					},
@@ -192,6 +188,17 @@ return {
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
+		dependencies = {
+			{
+				"DrKJeff16/wezterm-types",
+				lazy = true,
+				version = false,
+			},
+			{
+				"Bilal2453/luvit-meta",
+				lazy = true,
+			},
+		},
 		cmd = "LazyDev",
 		---@type lazydev.Config
 		opts = {
@@ -199,14 +206,11 @@ return {
 				{ path = "lazy.nvim" },
 				{ path = "lazydev.nvim" },
 				{ path = "snacks.nvim", words = { "Snacks" } },
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				{ path = "wezterm-types", mods = { "wezterm" } },
+				{ path = "/usr/share/awesome/lib/", mods = { "awesome" } },
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 			},
 		},
-	},
-	{
-		"Bilal2453/luvit-meta",
-		lazy = true,
 	},
 	{
 		"nvimtools/none-ls.nvim",
@@ -243,6 +247,7 @@ return {
 		},
 		---@module "mason-null-ls"
 		---@type MasonNullLsSettings
+		---@diagnostic disable-next-line: missing-fields
 		opts = {
 			ensure_installed = {
 				"gitlint",
