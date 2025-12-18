@@ -227,10 +227,12 @@ return {
 						args = { "**/*.md" },
 					}),
 					null_ls.builtins.diagnostics.fish,
+					null_ls.builtins.diagnostics.gdlint,
 					null_ls.builtins.formatting.prettier.with({
 						extra_filetypes = { "gotmpl", "helm" },
 					}),
 					null_ls.builtins.formatting.fish_indent,
+					null_ls.builtins.formatting.gdformat,
 					null_ls.builtins.formatting.shellharden.with({
 						extra_filetypes = { "tmux" },
 					}),
