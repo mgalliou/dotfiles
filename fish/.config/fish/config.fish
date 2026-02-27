@@ -3,6 +3,7 @@ if not status is-interactive
 end
 
 set -U fish_greeting
+set -U fish_cursor_default block
 
 set -l CONFIG_PATH ~/.config/fish
 
