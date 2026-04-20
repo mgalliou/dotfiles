@@ -25,7 +25,6 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = "markdown",
 		---@module "render.md"
 		---@type render.md.UserConfig
 		opts = {
@@ -43,25 +42,16 @@ return {
 			},
 			completions = {
 				blink = {
-					enabled = true
-				}
+					enabled = true,
+				},
 			},
 		},
 		config = function(_, opts)
 			require("render-markdown").setup(opts)
 			Snacks.toggle({
 				name = "Render Markdown",
-				get = function()
-					return require("render-markdown.state").enabled
-				end,
-				set = function(enabled)
-					local m = require("render-markdown")
-					if enabled then
-						m.enable()
-					else
-						m.disable()
-					end
-				end,
+				get = require("render-markdown").get,
+				set = require("render-markdown").set,
 			}):map("<leader>um")
 		end,
 	},

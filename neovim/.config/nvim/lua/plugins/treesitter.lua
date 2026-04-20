@@ -2,21 +2,15 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		version = false,
+		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
-		lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
 		event = { "VeryLazy", unpack(Utils.buf_events) },
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 		keys = {
 			{ "<C-space>", desc = "Increment Selection" },
 			{ "<BS>", desc = "Decrement Selection", mode = "x" },
 		},
-		init = function(plugin)
-			-- from LazyVim https://github.com/LazyVim/LazyVim/commit/1e1b68d633d4bd4faa912ba5f49ab6b8601dc0c9
-			require("lazy.core.loader").add_to_rtp(plugin)
-			pcall(require, "nvim-treesitter.query_predicates")
-		end,
-		main = "nvim-treesitter.configs",
 		---@type TSConfig
 		---@diagnostic disable-next-line: missing-fields
 		opts = {
