@@ -11,6 +11,7 @@ return {
 			{ "<C-space>", desc = "Increment Selection" },
 			{ "<BS>", desc = "Decrement Selection", mode = "x" },
 		},
+		---@module "nvim-treesitter"
 		---@type TSConfig
 		---@diagnostic disable-next-line: missing-fields
 		opts = {
@@ -97,7 +98,17 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
 		event = { "VeryLazy" },
+		-- TODO: finish configuring keymaps
+		-- config = function()
+		-- 	vim.keymap.set("n", "<leader>]a", function()
+		-- 		require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+		-- 	end)
+		-- 	vim.keymap.set("n", "<leader>[a", function()
+		-- 		require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.outer")
+		-- 	end)
+		-- end,
 	},
 	{
 		"mtrajano/tssorter.nvim",

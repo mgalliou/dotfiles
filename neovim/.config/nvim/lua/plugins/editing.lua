@@ -42,4 +42,9 @@ return {
 			{ "<leader>ga", ":EasyAlign", mode = { "n", "v" }, desc = "Align with easy-align" },
 		},
 	},
+	{
+		"nemanjamalesija/smart-paste.nvim",
+		event = "VeryLazy",
+		config = true,
+	},
 }
