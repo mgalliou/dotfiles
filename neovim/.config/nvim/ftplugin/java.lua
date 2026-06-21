@@ -1,6 +1,9 @@
+local mason_dir = vim.fn.stdpath("data") .. "/mason"
+local root_dir = vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]
+
 local config = {
-	cmd = { vim.env.MASON .. "/bin/jdtls" },
-	root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]),
+	cmd = { mason_dir .. "/bin/jdtls" },
+	root_dir = root_dir and vim.fs.dirname(root_dir) or vim.fn.getcwd(),
 	on_attach = Utils.on_attach,
 	capabilities = Utils.capabilities(),
 	settings = {
