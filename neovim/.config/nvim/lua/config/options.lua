@@ -18,7 +18,7 @@ o.linebreak = true
 -- UI
 o.termguicolors = true
 o.showmode = false
-o.signcolumn = "yes"
+o.signcolumn = "auto"
 o.number = true
 o.relativenumber = true
 o.wildmenu = true
