@@ -61,7 +61,7 @@ g.netrw_liststyle = 3
 g.netrw_list_hide = "(^|ss)zs.S+"
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown" },
+	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown", "json", "jsonc" },
 	callback = function()
 		vim.opt_local.tabstop = 2
 	end,
