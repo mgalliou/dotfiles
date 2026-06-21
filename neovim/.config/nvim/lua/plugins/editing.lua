@@ -5,8 +5,8 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"tpope/vim-surround",
-		event = Utils.buf_events,
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
 	},
 	{
 		"trmckay/based.nvim",
