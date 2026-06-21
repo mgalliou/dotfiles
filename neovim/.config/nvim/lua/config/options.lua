@@ -5,8 +5,8 @@ local o = vim.opt
 o.autowrite = true
 o.autoindent = true
 o.tabstop = 4
-o.shiftwidth = 4
-o.softtabstop = 0
+o.shiftwidth = 0
+o.softtabstop = -1
 o.scrolloff = 4
 o.sidescrolloff = 4
 o.splitright = true
@@ -60,12 +60,10 @@ g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_list_hide = "(^|ss)zs.S+"
 
--- Per-filetype indentation (consolidated from ftplugin/)
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown" },
 	callback = function()
 		vim.opt_local.tabstop = 2
-		vim.opt_local.shiftwidth = 2
 	end,
 })
 vim.api.nvim_create_autocmd("FileType", {
