@@ -18,20 +18,20 @@ map("v", ">", ">gv")
 
 -- location list
 map("n", "<leader>xl", function()
-	local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
-
-	if not success and err then
-		vim.notify(err, vim.log.levels.ERROR)
-	end
+	local ok, err = pcall(function()
+		local loclist = vim.fn.getloclist(0, { winid = 0 })
+		if loclist.winid ~= 0 then vim.cmd.lclose() else vim.cmd.lopen() end
+	end)
+	if not ok then vim.notify(err, vim.log.levels.ERROR) end
 end, { desc = "Location List" })
 
 -- quickfix list
 map("n", "<leader>xq", function()
-	local success, err = pcall(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose or vim.cmd.copen)
-
-	if not success and err then
-		vim.notify(err, vim.log.levels.ERROR)
-	end
+	local ok, err = pcall(function()
+		local qflist = vim.fn.getqflist({ winid = 0 })
+		if qflist.winid ~= 0 then vim.cmd.cclose() else vim.cmd.copen() end
+	end)
+	if not ok then vim.notify(err, vim.log.levels.ERROR) end
 end, { desc = "Quickfix List" })
 
 -- diagnostics
