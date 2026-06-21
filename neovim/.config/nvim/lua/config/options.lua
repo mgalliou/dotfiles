@@ -38,7 +38,7 @@ o.showmatch = true
 
 -- Folding
 o.foldmethod = "expr"
-o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 o.foldenable = false
 
 -- Filetype
