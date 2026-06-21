@@ -160,7 +160,6 @@ return {
 			{ "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume last picker", },
 		},
 		init = function()
-			vim.api.nvim_set_hl(0, "SnacksPickerDir", { link = "GruvboxGray" })
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
 				callback = function()
