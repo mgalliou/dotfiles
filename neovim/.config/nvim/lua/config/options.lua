@@ -60,5 +60,18 @@ g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_list_hide = "(^|ss)zs.S+"
 
--- Fix markdown indentation settings
+-- Per-filetype indentation (consolidated from ftplugin/)
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown" },
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.shiftwidth = 2
+	end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "toml", "helm", "markdown" },
+	callback = function()
+		vim.opt_local.expandtab = true
+	end,
+})
 vim.g.markdown_recommended_style = 0
