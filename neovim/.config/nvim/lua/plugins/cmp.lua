@@ -7,9 +7,9 @@ return {
 			"rafamadriz/friendly-snippets",
 			{
 				"saghen/blink.compat",
-				verion = "*",
+				version = "*",
 				lazy = true,
-				otps = {},
+				opts = {},
 			},
 			"moyiz/blink-emoji.nvim",
 			"MahanRahmati/blink-nerdfont.nvim",
