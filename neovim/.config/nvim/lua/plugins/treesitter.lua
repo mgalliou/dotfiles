@@ -3,7 +3,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
-		lazy = false,
 		build = ":TSUpdate",
 		event = { "VeryLazy", unpack(Utils.buf_events) },
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
