@@ -198,10 +198,4 @@ return {
 			})
 		end,
 	},
-	{
-		"nvim-mini/mini.pairs",
-		version = false,
-		event = "VeryLazy",
-		config = true,
-	},
 }

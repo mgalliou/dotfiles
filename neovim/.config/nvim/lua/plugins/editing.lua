@@ -35,12 +35,16 @@ return {
 		},
 	},
 	{
-		"junegunn/vim-easy-align",
-		enabled = false,
-		cmd = "EasyAlign",
-		keys = {
-			{ "<leader>ga", ":EasyAlign", mode = { "n", "v" }, desc = "Align with easy-align" },
-		},
+		"nvim-mini/mini.align",
+		version = false,
+		event = "VeryLazy",
+		config = true,
+	},
+	{
+		"nvim-mini/mini.pairs",
+		version = false,
+		event = "VeryLazy",
+		config = true,
 	},
 	{
 		"nemanjamalesija/smart-paste.nvim",
