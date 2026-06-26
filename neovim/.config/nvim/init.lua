@@ -17,3 +17,7 @@ if is_godot_project and not is_server_running then
 end
 
 vim.lsp.enable("gdscript")
+
+if Utils.is_termux() then
+	vim.lsp.enable("lua_ls")
+end
