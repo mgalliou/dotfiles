@@ -33,13 +33,15 @@ return {
 						Lua = {
 							completion = {
 								callSnippet = "Replace",
-								workspaceWord = true,
 							},
 							format = {
 								enable = false,
 							},
-							workspace = {
-								checkThirdParty = false,
+							hint = {
+								arrayIndex = "Disable",
+							},
+							runtime = {
+								version = "LuaJIT",
 							},
 						},
 					},
