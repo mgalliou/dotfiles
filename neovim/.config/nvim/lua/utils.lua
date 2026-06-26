@@ -46,6 +46,10 @@ M.symbol_types = {
 	"Property",
 }
 
+M.is_termux = function()
+	return vim.env.TERMUX_VERSION ~= nil
+end
+
 M.PluginIsLoaded = function(plugin)
 	if 0 == vim.fn["tools#PluginIsLoaded"](plugin) then
 		return false

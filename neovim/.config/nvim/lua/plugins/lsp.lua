@@ -131,20 +131,24 @@ return {
 			"nvim-lspconfig",
 		},
 		---@module "mason-lspconfig"
-		---@type MasonLspconfigSettings
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-			},
-			automatic_enable = {
-				exclude = {
-					"rust_analyzer",
-					"jdtls",
-					"ts_ls",
-					"yamlls",
+		---@type function|MasonLspconfigSettings
+		opts = function()
+			local ensure = {}
+			if not Utils.is_termux() then
+				ensure = { "lua_ls" }
+			end
+			return {
+				ensure_installed = ensure,
+				automatic_enable = {
+					exclude = {
+						"rust_analyzer",
+						"jdtls",
+						"ts_ls",
+						"yamlls",
+					},
 				},
-			},
-		},
+			}
+		end,
 	},
 	{
 		"mrcjkb/rustaceanvim",
