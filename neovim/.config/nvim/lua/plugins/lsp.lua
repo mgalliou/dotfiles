@@ -139,6 +139,14 @@ return {
 			end
 			return {
 				ensure_installed = ensure,
+				automatic_enable = {
+					exclude = {
+						"rust_analyzer",
+						"jdtls",
+						"ts_ls",
+						"yamlls",
+					},
+				},
 			}
 		end,
 	},
