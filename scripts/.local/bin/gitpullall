@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+for DIR in "$PWD"/*; do
+	cd "$DIR" || exit
+	git pull
+	cd - || exit
+done
