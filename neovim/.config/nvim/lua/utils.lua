@@ -110,7 +110,7 @@ local function map_keys(bufnr, client)
 			opts.cond = nil ---@diagnostic disable-line: inject-field
 			opts.capa = nil ---@diagnostic disable-line: inject-field
 			opts.silent = opts.silent ~= false
-			opts.buffer = bufnr
+			opts.buf = bufnr
 			vim.keymap.set(key.mode or "n", key.lhs, key.rhs, opts)
 		end
 	end
