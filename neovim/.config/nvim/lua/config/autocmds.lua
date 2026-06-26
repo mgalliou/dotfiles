@@ -8,13 +8,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 local dyn_smartcase_group = vim.api.nvim_create_augroup("dynamic_smartcase", { clear = true })
-vim.api.nvim_create_autocmd("CmdLineEnter", {
+vim.api.nvim_create_autocmd("CmdlineEnter", {
 	group = dyn_smartcase_group,
 	callback = function()
 		vim.opt.smartcase = false
 	end,
 })
-vim.api.nvim_create_autocmd("CmdLineLeave", {
+vim.api.nvim_create_autocmd("CmdlineLeave", {
 	group = dyn_smartcase_group,
 	callback = function()
 		vim.opt.smartcase = true
