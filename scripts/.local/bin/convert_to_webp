@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+err() { echo "${0##*/}: $*" >&2; }
+usage() { echo "Usage: ${0##*/} [-r] <directory>" >&2; }
+mib() { awk -v n="$1" 'BEGIN { printf "%.2f", n / 1048576 }'; }
+qesc() { printf '%s\n' "$1" | sed 's/[][\/&.]/\\&/g'; }
+
+command -v cwebp &>/dev/null || {
+	err "cwebp not found"
+	exit 1
+}
+
+recursive=false
+while [[ "${1-}" == -* ]]; do
+	case "$1" in
+	-r) recursive=true ;;
+	*)
+		usage
+		exit 1
+		;;
+	esac
+	shift
+done
+
+[[ "$#" -eq 1 ]] || {
+	usage
+	exit 1
+}
+[[ -d "$1" ]] || {
+	err "directory not found: $1"
+	exit 1
+}
+directory="${1%/}"
+
+declare -A stem_count
+declare -a all_images=() conversion_map=()
+start_ts=$SECONDS total=0 converted=0 skipped=0 failed=0 total_saved=0
+
+collect_images() {
+	local args=("$directory")
+	[[ "$recursive" != true ]] && args+=(-maxdepth 1)
+	args+=(-type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \))
+	while IFS= read -r -d '' img; do
+		all_images+=("$img")
+		local stem
+		stem="$(basename "${img%.*}")"
+		stem_count["$stem"]=$((${stem_count["$stem"]-0} + 1))
+	done < <(find "${args[@]}" -print0)
+}
+
+convert_images() {
+	for img in "${all_images[@]}"; do
+		local base stem output orig_size file_start webp_size elapsed_ms saved rel saved_mib
+		base=$(basename "$img")
+		stem="${base%.*}"
+		output="${img%.*}.webp"
+
+		if [[ -f "$output" ]]; then
+			echo "Skipped $base (webp exists)"
+			((++skipped))
+			continue
+		fi
+
+		orig_size=$(stat -c%s "$img")
+		file_start=$(date +%s%3N)
+
+		if cwebp -lossless -z 9 "$img" -o "$output" &>/dev/null; then
+			webp_size=$(stat -c%s "$output")
+			elapsed_ms=$(($(date +%s%3N) - file_start))
+			saved=$((orig_size - webp_size))
+			total_saved=$((total_saved + saved))
+			rm "$img"
+			saved_mib=$(mib "$saved")
+			echo "Converted $base (${saved_mib} MiB smaller, ${elapsed_ms}ms)"
+			((++converted))
+			rel="${img#"$directory"/}"
+			conversion_map+=("${stem}|${rel}|${output#"$directory"/}")
+		else
+			err "failed to convert $base"
+			((++failed))
+		fi
+	done
+}
+
+update_markdown() {
+	local sed_script
+	sed_script=$(mktemp)
+
+	for entry in "${conversion_map[@]}"; do
+		local stem old_rel new_rel old_name new_name eold enew eoldn enewn
+		IFS='|' read -r stem old_rel new_rel <<<"$entry"
+		old_name="${old_rel##*/}"
+		new_name="${new_rel##*/}"
+		eold=$(qesc "$old_rel")
+		enew=$(qesc "$new_rel")
+		eoldn=$(qesc "$old_name")
+		enewn=$(qesc "$new_name")
+
+		printf 's/\\[\\[%s\\]\\]/\\[\\[%s\\]\\]/g\ns/!\\[\\[%s\\]\\]/!\\[\\[%s\\]\\]/g\n' \
+			"$eold" "$enew" "$eold" "$enew" >>"$sed_script"
+		if ((stem_count["$stem"] == 1)); then
+			printf 's/\\[\\[%s\\]\\]/\\[\\[%s\\]\\]/g\ns/!\\[\\[%s\\]\\]/!\\[\\[%s\\]\\]/g\n' \
+				"$eoldn" "$enewn" "$eoldn" "$enewn" >>"$sed_script"
+		fi
+	done
+
+	while IFS= read -r -d '' md; do
+		sed -i -f "$sed_script" "$md" && echo "Updated $md"
+	done < <(find "$directory" -type f -name "*.md" -print0)
+
+	rm -f "$sed_script"
+}
+
+collect_images
+total=${#all_images[@]}
+convert_images
+((converted > 0)) && update_markdown
+
+elapsed=$((SECONDS - start_ts))
+echo "Done: $converted converted, $skipped skipped, $failed failed (of $total) - $(mib "$total_saved") MiB saved, ${elapsed}s"
+((failed > 0)) && exit 1
