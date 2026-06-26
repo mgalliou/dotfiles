@@ -134,7 +134,9 @@ return {
 		---@type function|MasonLspconfigSettings
 		opts = function()
 			local ensure = {}
-			if not Utils.is_termux() then
+			if Utils.is_termux() then
+				vim.lsp.enable("lua_ls")
+			else
 				ensure = { "lua_ls" }
 			end
 			return {
