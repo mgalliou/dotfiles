@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+err() { echo "${0##*/}: $*" >&2; }
+usage() { echo "Usage: ${0##*/} [-rq] <directory>" >&2; }
+
+command -v pngcrush &>/dev/null ||
+	{
+		err "pngcrush not found"
+		exit 1
+	}
+
+recursive=false quick=false
+while [[ "${1-}" == -* ]]; do
+	case "$1" in
+	-r) recursive=true ;;
+	-q) quick=true ;;
+	*)
+		usage
+		exit 1
+		;;
+	esac
+	shift
+done
+
+[[ "$#" -eq 1 ]] && [[ -d "$1" ]] || {
+	usage
+	exit 1
+}
+directory="$1"
+start_ts=$SECONDS
+total=0
+compressed=0
+skipped=0
+failed=0
+
+find_args=("$directory")
+[[ "$recursive" != true ]] && find_args+=(-maxdepth 1)
+find_args+=(-name "*.png" -type f)
+
+while IFS= read -r -d '' img; do
+	((++total))
+	file_start=$(date +%s%3N)
+	orig_size=$(stat -c%s "$img")
+	tmp=$(mktemp /tmp/pngcrush.XXXXXX)
+
+	crush_opts=("$img" "$tmp")
+	[[ "$quick" == true ]] && crush_opts=(-reduce -m 7 -m 25 -m 76 "$img" "$tmp")
+	if pngcrush "${crush_opts[@]}" &>/dev/null; then
+		new_size=$(stat -c%s "$tmp")
+		elapsed_ms=$(($(date +%s%3N) - file_start))
+		if ((new_size < orig_size)); then
+			mv "$tmp" "$img"
+			echo "Compressed $img ($((orig_size - new_size)) B, ${elapsed_ms}ms)"
+			((++compressed))
+		else
+			rm -f "$tmp"
+			echo "Skipped $img (no reduction, ${elapsed_ms}ms)"
+			((++skipped))
+		fi
+	else
+		rm -f "$tmp"
+		err "failed to compress $img"
+		((++failed))
+	fi
+done < <(find "${find_args[@]}" -print0)
+
+elapsed=$((SECONDS - start_ts))
+echo "Done: $compressed compressed, $skipped skipped, $failed failed (of $total) - ${elapsed}s"
+((failed > 0)) && exit 1
