@@ -111,16 +111,6 @@ return {
 				})
 			end
 
-			if Utils.is_termux() then
-				vim.schedule(function()
-					pcall(vim.lsp.start, {
-						name = "lua_ls",
-						cmd = { "lua-language-server" },
-						root_dir = vim.fn.getcwd(),
-					})
-				end)
-			end
-
 			local kinds = vim.lsp.protocol.CompletionItemKind
 			local kind_icons = Utils.kind_icons
 			for i, kind in ipairs(kinds) do
