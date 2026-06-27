@@ -1,0 +1,33 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    show_song_table_header: true,
+    symbols: (
+        song: "",
+        dir: "",
+        playlist: "󰲸",
+        marker: "",
+    ),
+    layout: Split(
+        direction: Vertical,
+        panes: [
+            (
+                pane: Pane(Header),
+                size: "3",
+            ),
+            (
+                pane: Pane(Tabs),
+                size: "1",
+            ),
+            (
+                pane: Pane(TabContent),
+                size: "100%",
+            ),
+            (
+                pane: Pane(ProgressBar),
+                size: "1",
+            ),
+        ],
+    ),
+)
