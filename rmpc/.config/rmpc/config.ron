@@ -3,7 +3,7 @@
 #![enable(unwrap_variant_newtypes)]
 (
     address: "/run/user/1000/mpd/socket",
-    theme: "overrides",
+    theme: "custom",
     tabs: [
         (
             name: "Queue",
