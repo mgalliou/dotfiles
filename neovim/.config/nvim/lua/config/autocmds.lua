@@ -70,7 +70,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo[event.buf].buflisted = false
 		vim.schedule(function()
 			vim.keymap.set("n", "q", function()
-				vim.cmd("close")
+				if vim.fn.winnr("$") > 1 then
+					vim.cmd("close")
+				else
+					vim.cmd("quit")
+				end
 				pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
 			end, {
 				buf = event.buf,
