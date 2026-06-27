@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cols=77
+max=255
+chars='\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/'
+
+for ((i = 0; i < cols; i++)); do
+    r=$((max - i * max / (cols - 1)))
+    g=$((i * max * 2 / (cols - 1)))
+    b=$((i * max / (cols - 1)))
+    ((g > max)) && g=$((max * 2 - g))
+
+    printf '\e[48;2;%d;%d;%dm\e[38;2;%d;%d;%dm%s\e[0m' \
+        "$r" "$g" "$b" \
+        $((max - r)) $((max - g)) $((max - b)) \
+        "${chars:i:1}"
+done
+echo
+
+j=0
+
+for style in single double curly dotted dashed; do
+    printf '\e[58:2::255:0:0m\e[4:%d;1m%s\e[0m\n' "$((++j))" "$style underline"
+done
