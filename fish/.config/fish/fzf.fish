@@ -1,3 +1,3 @@
 if type -q fzf
-    export FZF_DEFAULT_COMMAND="find * -type f"
+    set -x FZF_DEFAULT_COMMAND "find . -type f"
 end

@@ -1,5 +1,5 @@
 if not functions -q fundle
-    eval (curl -sfL https://git.io/fundle-install)
+    curl -sfL https://git.io/fundle-install | source
 end
 
 fundle plugin danhper/fish-completion-helpers

@@ -1,7 +1,5 @@
 function replace_cmd
-    if type -q $argv[2]
-        abbr -a $argv[1] $argv[2]
-    end
+    type -q $argv[2]; and abbr -a $argv[1] $argv[2]
 end
 
 replace_cmd cat bat
@@ -49,14 +47,13 @@ end
 
 if type -q make
     abbr -a m make
-    abbr -a mc "make check"
+    abbr -a mck "make check"
     abbr -a mc "make clean"
     abbr -a md "make debug"
     abbr -a mfc "make fclean"
     abbr -a mr "make re"
 end
 
-#TODO: add more abbrs
 if type -q kubectl
     abbr -a k kubectl
     abbr -a ka "kubectl apply"
@@ -100,23 +97,20 @@ if type -q pmbootstrap
     abbr -a pmbi "pmbootstrap install"
 end
 
-if type -q eza
-    set LISTER eza
-else if type -q exa
-    set LISTER exa
+set -l LISTER ls
+type -q exa; and set LISTER exa
+type -q eza; and set LISTER eza
+
+set -l LISTER_CMD "$LISTER --group-directories-first"
+if type -q eza; or type -q exa
+    "$LISTER" -v | string match -q '+git'; and set LISTER_CMD "$LISTER_CMD --git"
+else
+    set LISTER_CMD "$LISTER_CMD --color=auto"
 end
 
-if type -q "$LISTER"
-    set -l EXA_BASE "$LISTER --icons --group-directories-first"
-    if "$LISTER" -v | grep -q '+git'
-        set EXA_BASE "$EXA_BASE --git"
-    end
-    abbr -a ls "$EXA_BASE"
-    abbr -a l "$EXA_BASE"
-    abbr -a ll "$EXA_BASE -l"
-    abbr -a la "$EXA_BASE -la"
-end
+abbr -a ls "$LISTER_CMD"
+abbr -a l "$LISTER_CMD"
+abbr -a ll "$LISTER_CMD -l"
+abbr -a la "$LISTER_CMD -la"
 
-if type -q taskell
-    abbr -a t taskell
-end
+type -q taskell; and abbr -a t taskell

@@ -1,15 +1,13 @@
-set -U fish_color_cwd yellow
-set -U fish_color_host magenta
-set -U fish_color_user cyan
-set -U fish_greeting ""
-set -U fish_uid_symbol '$'
-
-if test (id -u) -eq 0
-    set -U fish_uid_symbol '#'
-end
-
 function fish_prompt --description 'Write out the prompt'
     set -l last_status $status
+    set -l fish_color_cwd yellow
+    set -l fish_color_host magenta
+    set -l fish_color_user cyan
+    set -l fish_uid_symbol '$'
+
+    if test (id -u) -eq 0
+        set fish_uid_symbol '#'
+    end
 
     ## Time
     # set BLINK (tput blink)
@@ -34,7 +32,7 @@ function fish_prompt --description 'Write out the prompt'
     # printf ': '
     printf ' '
     set_color $fish_color_cwd
-    printf (prompt_pwd)
+    printf '%s' (prompt_pwd)
 
     __terlar_git_prompt
     __fish_hg_prompt
