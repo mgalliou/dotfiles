@@ -18,6 +18,7 @@ return {
 				{ "g", group = "goto", icon = { icon = " ", color = "orange" } },
 				{ "z", group = "fold", icon = { icon = "", color = "orange" } },
 				{ "<leader>c", group = "code", icon = { icon = "󰘦 ", color = "yellow" } },
+				{ "<leader>d", group = "debug", icon = { icon = " ", color = "red" } },
 				{ "<leader>h", group = "hunks", icon = { icon = " ", color = "yellow" } },
 				{ "<leader>B", group = "bases", icon = { icon = " ", color = "yellow" } },
 				{ "<leader>f", group = "find", icon = { icon = " ", color = "yellow" } },

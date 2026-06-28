@@ -45,6 +45,19 @@ M.symbol_types = {
 	"Field",
 	"Property",
 }
+M.arrows = {
+	right = "",
+	left = "",
+	up = "",
+	down = "",
+}
+M.debug_icons = {
+	Stopped = { "", "DiagnosticWarn", "DapStoppedLine" },
+	Breakpoint = {"", "DiagnosticInfo" },
+	BreakpointCondition = {"", "DiagnosticInfo"},
+	BreakpointRejected = { "", "DiagnosticError" },
+	LogPoint = { M.arrows.right, "DiagnosticInfo" }
+}
 
 M.is_termux = function()
 	return vim.env.TERMUX_VERSION ~= nil
