@@ -19,7 +19,7 @@ return {
 			{ "<leader>di", function() require("dap").step_into() end, desc = "Step Into" },
 			{ "<leader>dj", function() require("dap").down() end, desc = "Down" },
 			{ "<leader>dk", function() require("dap").up() end, desc = "Up" },
-			{ "<leader>dL", function() require("osv").launch({ port = 8086 }) end, desc = "OSV Launch Server" },
+			{ "<leader>dL", function() require("osv").launch({ port = 8086 }) end, desc = "Launch OSV Server" },
 			{ "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
 			{ "<leader>do", function() require("dap").step_out() end, desc = "Step Out" },
 			{ "<leader>dO", function() require("dap").step_over() end, desc = "Step Over" },
@@ -55,6 +55,7 @@ return {
 	},
 	{
 		"rcarriga/nvim-dap-ui",
+		enabled = false,
 		dependencies = { "nvim-neotest/nvim-nio" },
 		-- stylua: ignore
 		keys = {
@@ -67,16 +68,22 @@ return {
 			local ui = require("dapui")
 
 			ui.setup(opts)
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				ui.open()
-			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				ui.close()
-			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
-				ui.close()
-			end
+			dap.listeners.after.event_initialized["dapui_config"] = ui.open
+			dap.listeners.before.event_terminated["dapui_config"] = ui.close
+			dap.listeners.before.event_exited["dapui_config"] = ui.close
 		end,
+	},
+	{
+		"igorlfs/nvim-dap-view",
+		keys = {
+			{
+				"<leader>du",
+				function()
+					require("dap-view").toggle()
+				end,
+				desc = "Open DAP UI",
+			},
+		},
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
