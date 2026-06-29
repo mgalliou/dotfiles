@@ -45,17 +45,9 @@ return {
 		},
 	},
 	{
-		"nvim-mini/mini.icons",
-		lazy = true,
-		init = function()
-			package.preload["nvim-web-devicons"] = function()
-				require("mini.icons").mock_nvim_web_devicons()
-				return package.loaded["nvim-web-devicons"]
-			end
-		end,
-	},
-	{
 		"nvim-lualine/lualine.nvim",
+		--- @module "lualine.nvim"
+		--- @typ
 		opts = {
 			options = {
 				theme = "auto",
@@ -75,20 +67,6 @@ return {
 				},
 			},
 		},
-	},
-	{
-		"m-demare/hlargs.nvim",
-		event = Utils.buf_events,
-		opts = {
-			highlight = {
-				italic = true,
-			},
-		},
-	},
-	{
-		"asiryk/auto-hlsearch.nvim",
-		event = Utils.buf_events,
-		opts = {},
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -201,9 +179,28 @@ return {
 		},
 	},
 	{
-		"j-hui/fidget.nvim",
-		enabled = false,
+		"asiryk/auto-hlsearch.nvim",
+		event = Utils.buf_events,
 		opts = {},
+	},
+	{
+		"m-demare/hlargs.nvim",
+		event = Utils.buf_events,
+		opts = {
+			highlight = {
+				italic = true,
+			},
+		},
+	},
+	{
+		"nvim-mini/mini.icons",
+		lazy = true,
+		init = function()
+			package.preload["nvim-web-devicons"] = function()
+				require("mini.icons").mock_nvim_web_devicons()
+				return package.loaded["nvim-web-devicons"]
+			end
+		end,
 	},
 	{
 		"folke/noice.nvim",
@@ -233,7 +230,8 @@ return {
 		},
 	},
 	{
-		"nvim-lua/plenary.nvim",
-		lazy = true,
+		"j-hui/fidget.nvim",
+		enabled = false,
+		opts = {},
 	},
 }

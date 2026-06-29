@@ -4,9 +4,9 @@ return {
 		"mfussenegger/nvim-dap",
 		enabled = true,
 		dependencies = {
+			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 			"rcarriga/nvim-dap-ui",
-			"theHamsta/nvim-dap-virtual-text",
-			"nvim-neotest/nvim-nio",
+			"rcarriga/nvim-dap-view",
 			"jbyuki/one-small-step-for-vimkind",
 		},
 		-- stylua: ignore
@@ -54,6 +54,13 @@ return {
 		end,
 	},
 	{
+		"igorlfs/nvim-dap-view",
+		-- stylua: ignore
+		keys = {
+			{ "<leader>du", function() require("dap-view").toggle() end, desc = "Open DAP UI" },
+		},
+	},
+	{
 		"rcarriga/nvim-dap-ui",
 		enabled = false,
 		dependencies = { "nvim-neotest/nvim-nio" },
@@ -74,28 +81,14 @@ return {
 		end,
 	},
 	{
-		"igorlfs/nvim-dap-view",
-		keys = {
-			{
-				"<leader>du",
-				function()
-					require("dap-view").toggle()
-				end,
-				desc = "Open DAP UI",
-			},
-		},
-	},
-	{
-		"theHamsta/nvim-dap-virtual-text",
-		opts = {},
-	},
-	{
 		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = "mason.nvim",
 		cmd = { "DapInstall", "DapUninstall" },
 		opts = {
 			automatic_installation = true,
-			ensure_installed = { "codelldb" },
+			ensure_installed = {
+				"codelldb",
+			},
 		},
 	},
 }

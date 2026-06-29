@@ -48,19 +48,12 @@ return {
 		init = function()
 			vim.g.no_plugin_maps = true
 		end,
+		--- @class TSTextObjects.Config
 		opts = {
 			select = {
 				lookahead = true,
-				selection_modes = {
-					["@parameter.outer"] = "v",
-					["@function.outer"] = "V",
-					["@class.outer"] = "V",
-				},
+				lookbehind = true,
 			},
-			move = {
-				set_jumps = true,
-			},
-			swap = {},
 		},
 		config = function(_, opts)
 			require("nvim-treesitter-textobjects").setup(opts)

@@ -4,7 +4,6 @@ return {
 		"saghen/blink.cmp",
 		version = "1.*",
 		dependencies = {
-			"rafamadriz/friendly-snippets",
 			{
 				"saghen/blink.compat",
 				version = "*",
@@ -14,6 +13,7 @@ return {
 			"moyiz/blink-emoji.nvim",
 			"MahanRahmati/blink-nerdfont.nvim",
 			"mgalliou/blink-cmp-tmux",
+			"rafamadriz/friendly-snippets",
 		},
 		event = "InsertEnter",
 		---@type blink.cmp.Config
@@ -30,7 +30,9 @@ return {
 				ghost_text = {
 					enabled = true,
 				},
-				documentation = { auto_show = true },
+				documentation = {
+					auto_show = true,
+				},
 				menu = {
 					draw = {
 						treesitter = { "lsp" },
@@ -79,7 +81,6 @@ return {
 				},
 			},
 		},
-		opts_extend = { "sources.default" },
 	},
 	{
 		"supermaven-inc/supermaven-nvim",

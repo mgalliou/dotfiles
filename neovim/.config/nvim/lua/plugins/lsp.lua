@@ -5,8 +5,8 @@ return {
 		dependencies = {
 			{
 				"folke/neoconf.nvim",
-				opts = {},
 				cmd = "Neoconf",
+				opts = {},
 			},
 		},
 		event = Utils.buf_events,
@@ -123,14 +123,14 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
+			"nvim-lspconfig",
 			{
 				"mason-org/mason.nvim",
 				build = ":MasonUpdate",
 				cmd = "Mason",
-				opts = {},
 				keys = { { "<leader>cm", "<cmd>Mason<CR>", desc = "Mason" } },
+				opts = {},
 			},
-			"nvim-lspconfig",
 		},
 		---@type function|MasonLspconfigSettings
 		opts = function()
@@ -210,13 +210,13 @@ return {
 		---@type lazydev.Config
 		opts = {
 			library = {
-				{ "lazy.nvim" },
 				{ "lazydev.nvim" },
 				{ "blink.cmp" },
 				{ "gruvbox.nvim" },
 				{ "mason-lspconfig.nvim" },
 				{ "mason-null-ls.nvim" },
 				{ "render-markdown.nvim" },
+				{ path = "lazy.nvim" },
 				{ path = "snacks.nvim", words = { "Snacks" } },
 				{ path = "wezterm-types", mods = { "wezterm" } },
 				{ path = "/usr/share/awesome/lib/", mods = { "awesome" } },

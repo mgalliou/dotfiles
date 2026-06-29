@@ -1,11 +1,14 @@
 local M = {}
 
+--- @type vim.api.keyset.events[]
 M.buf_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
+
 M.borderchars = {
 	default = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 	bottom_linked = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
 	top_linked = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
 }
+
 M.kind_icons = {
 	Class = " ",
 	Color = " ",
@@ -33,6 +36,7 @@ M.kind_icons = {
 	Value = " ",
 	Variable = " ",
 }
+
 M.symbol_types = {
 	"Class",
 	"Function",

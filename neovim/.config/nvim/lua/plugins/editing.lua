@@ -9,32 +9,6 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"trmckay/based.nvim",
-		keys = {
-			{
-				"<C-b>",
-				function()
-					require("based").convert()
-				end,
-				desc = "Try to detect base and convert",
-			},
-			{
-				"<leader>Bh",
-				function()
-					require("based").convert("hex")
-				end,
-				desc = "Convert form hex",
-			},
-			{
-				"<leader>Bd",
-				function()
-					require("based").convert("dec")
-				end,
-				desc = "Convert from decimal",
-			},
-		},
-	},
-	{
 		"nvim-mini/mini.align",
 		version = false,
 		event = "VeryLazy",
@@ -50,5 +24,14 @@ return {
 		"nemanjamalesija/smart-paste.nvim",
 		event = "VeryLazy",
 		config = true,
+	},
+	{
+		"trmckay/based.nvim",
+		-- stylua: ignore
+		keys = {
+			{ "<C-b>", function() require("based").convert() end, desc = "Try to detect base and convert" },
+			{ "<leader>Bh", function() require("based").convert("hex") end, desc = "Convert form hex" },
+			{ "<leader>Bd", function() require("based").convert("dec") end, desc = "Convert from decimal" },
+		},
 	},
 }
