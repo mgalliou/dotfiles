@@ -3,7 +3,6 @@ return {
 	{
 		"ellisonleao/gruvbox.nvim",
 		lazy = true,
-		---@module "gruvbox"
 		---@type GruvboxConfig
 		opts = {
 			transparent_mode = false,

@@ -25,7 +25,6 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		---@module "render.md"
 		---@type render.md.UserConfig
 		opts = {
 			code = {

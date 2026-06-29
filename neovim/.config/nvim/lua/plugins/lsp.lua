@@ -132,7 +132,6 @@ return {
 			},
 			"nvim-lspconfig",
 		},
-		---@module "mason-lspconfig"
 		---@type function|MasonLspconfigSettings
 		opts = function()
 			local ensure = {}
@@ -211,8 +210,13 @@ return {
 		---@type lazydev.Config
 		opts = {
 			library = {
-				{ path = "lazy.nvim" },
-				{ path = "lazydev.nvim" },
+				{ "lazy.nvim" },
+				{ "lazydev.nvim" },
+				{ "blink.cmp" },
+				{ "gruvbox.nvim" },
+				{ "mason-lspconfig.nvim" },
+				{ "mason-null-ls.nvim" },
+				{ "render-markdown.nvim" },
 				{ path = "snacks.nvim", words = { "Snacks" } },
 				{ path = "wezterm-types", mods = { "wezterm" } },
 				{ path = "/usr/share/awesome/lib/", mods = { "awesome" } },
@@ -255,9 +259,7 @@ return {
 			"mason.nvim",
 			"none-ls.nvim",
 		},
-		---@module "mason-null-ls"
-		---@type MasonNullLsSettings
-		---@diagnostic disable-next-line: missing-fields
+		---@class MasonNullLsSettings
 		opts = {
 			ensure_installed = {
 				"gitlint",
