@@ -62,8 +62,10 @@ return {
 					tmux = {
 						name = "tmux",
 						module = "blink-cmp-tmux",
+						---@module "blink-cmp-tmux"
+						---@class blink-cmp-tmux.Opts
 						opts = {
-							all_panes = true,
+							panes = 'all',
 							capture_history = true,
 						},
 						score_offset = -15,
