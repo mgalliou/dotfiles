@@ -6,6 +6,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Restore cursor position",
 	group = augroup("restore_cursor"),
 	callback = function(args)
+		if vim.bo[args.buf].filetype == "gitcommit" then
+			return
+		end
 		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
 		if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(args.buf) then
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
