@@ -103,7 +103,7 @@ type -q eza; and set LISTER eza
 
 set -l LISTER_CMD "$LISTER --group-directories-first"
 if type -q eza; or type -q exa
-    "$LISTER" -v | string match -q '+git'; and set LISTER_CMD "$LISTER_CMD --git"
+    "$LISTER" -v | string match -qe '+git'; and set LISTER_CMD "$LISTER_CMD --git"
 else
     set LISTER_CMD "$LISTER_CMD --color=auto"
 end
