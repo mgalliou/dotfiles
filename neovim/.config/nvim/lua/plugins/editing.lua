@@ -5,8 +5,9 @@ return {
 		event = "VeryLazy",
 	},
 	{
-		"kylechui/nvim-surround",
-		event = "VeryLazy",
+		"nvim-mini/mini.surround",
+		version = false,
+		opts = {},
 	},
 	{
 		"nvim-mini/mini.align",
