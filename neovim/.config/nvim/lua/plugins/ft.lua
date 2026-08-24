@@ -17,7 +17,6 @@ return {
 	},
 	{
 		"towolf/vim-helm",
-		ft = "helm",
 	},
 	{
 		"vim-scripts/tf2.vim",
