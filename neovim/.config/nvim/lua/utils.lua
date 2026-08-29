@@ -57,10 +57,10 @@ M.arrows = {
 }
 M.debug_icons = {
 	Stopped = { "", "DiagnosticWarn", "DapStoppedLine" },
-	Breakpoint = {"", "DiagnosticInfo" },
-	BreakpointCondition = {"", "DiagnosticInfo"},
+	Breakpoint = { "", "DiagnosticInfo" },
+	BreakpointCondition = { "", "DiagnosticInfo" },
 	BreakpointRejected = { "", "DiagnosticError" },
-	LogPoint = { M.arrows.right, "DiagnosticInfo" }
+	LogPoint = { M.arrows.right, "DiagnosticInfo" },
 }
 
 M.is_termux = function()
@@ -90,58 +90,88 @@ M.config_custom_server = function(name, cmd, filetypes, root_pattern)
 	end
 end
 
----@alias LazyKeysLspSpec LazyKeysSpec|{capa?:string|string[], cond?:fun():boolean}
----@alias LazyKeysLsp LazyKeys|{capa?:string|string[], cond?:fun():boolean}
+---@class LspKeymap
+---@field [1] string
+---@field [2] string|function
+---@field mode? string|string[]
+---@field desc string
 
----@type LazyKeysLspSpec[]
-local keymaps_specs = {
-	{ "gd", vim.lsp.buf.definition, desc = "Go to definition", capa = "definition" },
-	{ "gD", vim.lsp.buf.declaration, desc = "Go to declaration", capa = "declaration" },
-	{ "gI", vim.lsp.buf.implementation, desc = "Go to implementation", capa = "implementation" },
-	{ "gr", vim.lsp.buf.references, desc = "Reference", capa = "references" },
-	{ "gy", vim.lsp.buf.type_definition, desc = "Type definition" },
-	{ "gK", vim.lsp.buf.signature_help, desc = "Signature help", capa = "signatureHelp" },
-	{ "<C-k>", vim.lsp.buf.signature_help, desc = "Signature help", mode = "i", capa = "signatureHelp" },
-	{ "<space>r", vim.lsp.buf.rename, desc = "Rename symbol", capa = "rename" },
-	{ "<leader>a", vim.lsp.buf.code_action, mode = { "n", "v" }, desc = "Code action(s)", capa = "codeAction" },
-	{
-		"<leader>=",
-		function()
-			vim.lsp.buf.format({ async = true })
-		end,
-		mode = { "n", "v" },
-		desc = "Format",
-		capa = "formatting",
-	},
+-- stylua: ignore
+---@type LspKeymap[]
+local lsp_keymaps = {
+	{ "gd", vim.lsp.buf.definition, desc = "Go to definition"},
+	{ "gD", vim.lsp.buf.declaration, desc = "Go to declaration"},
+	{ "gK", vim.lsp.buf.signature_help, desc = "Signature help"},
+	{ "<leader>=", function() vim.lsp.buf.format({ async = true }) end, mode = { "n", "v" }, desc = "Format"},
 }
 
 ---@param bufnr integer
----@param client vim.lsp.Client
-local function map_keys(bufnr, client)
-	local Keys = require("lazy.core.handler.keys")
-	local keymaps = Keys.resolve(keymaps_specs)
-
-	for _, key in pairs(keymaps) do
-		local opts = Keys.opts(key) --[[@as vim.keymap.set.Opts]]
-		if client and opts.capa and client:supports_method("textDocument/" .. opts.capa, bufnr) then
-			opts.cond = nil ---@diagnostic disable-line: inject-field
-			opts.capa = nil ---@diagnostic disable-line: inject-field
-			opts.silent = opts.silent ~= false
-			opts.buf = bufnr
-			vim.keymap.set(key.mode or "n", key.lhs, key.rhs, opts)
-		end
+---@param keymaps LspKeymap[]
+function M.set_lsp_keymaps(bufnr, keymaps)
+	for _, keymap in ipairs(keymaps) do
+		vim.keymap.set(keymap.mode or "n", keymap[1], keymap[2], {
+			buf = bufnr,
+			desc = keymap.desc,
+			silent = true,
+		})
 	end
 end
 
 ---@param args vim.api.keyset.create_autocmd.callback_args
-M.on_attach = function(args)
-	---@type integer
-	local bufnr = args.buf
-	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+function M.on_attach(args)
+	local client_id = args.data and args.data.client_id
+	local client = client_id and vim.lsp.get_client_by_id(client_id)
 
-	for _, client in ipairs(clients) do
-		map_keys(bufnr, client)
+	if client then
+		M.set_lsp_keymaps(args.buf, lsp_keymaps)
 	end
+end
+
+function M.attach_jdtls()
+	local mason_dir = vim.fn.stdpath("data") .. "/mason"
+	local root_dir = vim.fs.root(0, {
+		"gradlew",
+		"mvnw",
+		"pom.xml",
+		"build.gradle",
+		".git",
+	})
+
+	local config = {
+		cmd = { mason_dir .. "/bin/jdtls" },
+		root_dir = root_dir or vim.fn.getcwd(),
+		capabilities = Utils.capabilities(),
+	}
+
+	local jdtls = require("jdtls")
+	jdtls.start_or_attach(config)
+
+	---@type LspKeymap[]
+	local keymaps = {
+		{ "<leader>co", jdtls.organize_imports, desc = "Organize Imports" },
+		{ "<leader>cv", jdtls.extract_variable, desc = "Extract Variable" },
+		{
+			"<leader>cv",
+			"<Esc><Cmd>lua require('jdtls').extract_variable({ visual = true })<CR>",
+			mode = "x",
+			desc = "Extract Variable",
+		},
+		{ "<leader>cc", jdtls.extract_constant, desc = "Extract Constant" },
+		{
+			"<leader>cc",
+			"<Esc><Cmd>lua require('jdtls').extract_constant({ visual = true })<CR>",
+			mode = "x",
+			desc = "Extract Constant",
+		},
+		{
+			"<leader>ce",
+			"<Esc><Cmd>lua require('jdtls').extract_method({ visual = true })<CR>",
+			mode = "x",
+			desc = "Extract Method",
+		},
+	}
+	local bufnr = vim.api.nvim_get_current_buf()
+	M.set_lsp_keymaps(bufnr, keymaps)
 end
 
 M.capabilities = function()

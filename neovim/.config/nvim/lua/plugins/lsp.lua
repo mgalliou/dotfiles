@@ -2,13 +2,6 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			{
-				"folke/neoconf.nvim",
-				cmd = "Neoconf",
-				opts = {},
-			},
-		},
 		event = Utils.buf_events,
 		---@class PluginLspOpts
 		opts = {
@@ -106,11 +99,10 @@ return {
 			})
 
 			for server_name, server_opts in pairs(opts.servers) do
-				vim.lsp.config(server_name, {
-					settings = server_opts and server_opts.settings or {},
-					capabilities = Utils.capabilities(),
-					init_options = server_opts and server_opts.init_options or {},
-				})
+				vim.lsp.config(
+					server_name,
+					vim.tbl_deep_extend("force", { capabilities = Utils.capabilities() }, server_opts)
+				)
 			end
 
 			local kinds = vim.lsp.protocol.CompletionItemKind
@@ -147,7 +139,6 @@ return {
 						"rust_analyzer",
 						"jdtls",
 						"ts_ls",
-						"yamlls",
 					},
 				},
 			}
@@ -156,6 +147,35 @@ return {
 	{
 		"mrcjkb/rustaceanvim",
 		ft = { "rust" },
+		---@module "rustaceanvim"
+		---@type rustaceanvim.Opts
+		opts = {
+			tools = {
+				---@diagnostic disable-next-line: missing-fields
+				code_actions = {
+					ui_select_fallback = true,
+				},
+			},
+			server = {
+				on_attach = function(_, bufnr)
+					-- stylua: ignore
+					---@type LspKeymap[]
+					local keymaps = {
+						{ "J", function() vim.cmd.RustLsp("joinLines") end, desc = "Join lines" },
+						{ "K", function() vim.cmd.RustLsp({ "hover", "actions" }) end, desc = "Hover" },
+						{ "gra", function() vim.cmd.RustLsp("codeAction") end, desc = "Code actions" },
+						{ "grD", function() vim.cmd.RustLsp("relatedDiagnostics") end, mode = { "n", "i" }, desc = "Go to related diagnostics" },
+						{ "grp", function() vim.cmd.RustLsp("parentModule") end, desc = "Go to parent module" },
+						{ "gC", function() vim.cmd.RustLsp("openCargo") end, desc = "Open Cargo.toml" },
+					}
+
+					Utils.set_lsp_keymaps(bufnr, keymaps)
+				end,
+			},
+		},
+		config = function(_, opts)
+			vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
+		end,
 	},
 	{
 		"Saecki/crates.nvim",
@@ -177,6 +197,12 @@ return {
 	{
 		"mfussenegger/nvim-jdtls",
 		ft = "java",
+		config = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "java",
+				callback = Utils.attach_jdtls,
+			})
+		end,
 	},
 	{
 		"pmizio/typescript-tools.nvim",
@@ -185,7 +211,6 @@ return {
 		},
 		ft = { "javascript", "typescript" },
 		opts = {
-			on_attach = Utils.on_attach,
 			settings = {
 				complete_function_calls = true,
 				expose_as_code_action = "all",
