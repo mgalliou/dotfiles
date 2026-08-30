@@ -48,7 +48,7 @@ return {
 							customTags = { "!reference sequence" },
 						},
 						schemas = {
-							["https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
+							["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
 						},
 					},
 				},
@@ -294,6 +294,7 @@ return {
 				"gitlint",
 				"markdownlint_cli2",
 			},
+			automatic_installation = true,
 			handlers = {
 				ansiblelint = function() end,
 			},
