@@ -40,7 +40,7 @@
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "render-markdown.nvim": { "branch": "main", "commit": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6" },
   "rose-pine": { "branch": "main", "commit": "ff483051a47e27d84bdef47703538df1ed9f4a47" },
-  "rustaceanvim": { "branch": "master", "commit": "3567efce84c223519d0dcbe19ebbfb24683ec493" },
+  "rustaceanvim": { "branch": "master", "commit": "9cb125de42c0256ed1bc1f9ded8d8f0381317a17" },
   "smart-paste.nvim": { "branch": "main", "commit": "a81e5511adc6fc145a7a71b08819440fd059af34" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "tf2.vim": { "branch": "master", "commit": "de4f08765792319af3f61ada565ea2dca8351357" },

@@ -149,6 +149,7 @@ return {
 	},
 	{
 		"mrcjkb/rustaceanvim",
+		version = '^9',
 		ft = { "rust" },
 		---@module "rustaceanvim"
 		---@type rustaceanvim.Opts
