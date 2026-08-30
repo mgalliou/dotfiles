@@ -60,16 +60,4 @@ g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_list_hide = "(^|ss)zs.S+"
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown", "json", "jsonc" },
-	callback = function()
-		vim.opt_local.tabstop = 2
-	end,
-})
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "toml", "helm", "markdown" },
-	callback = function()
-		vim.opt_local.expandtab = true
-	end,
-})
 vim.g.markdown_recommended_style = 0

@@ -2,6 +2,24 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("custom_" .. name, { clear = true })
 end
 
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Setup tabstop",
+	group = augroup("setup_tabstop"),
+	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown", "json", "jsonc" },
+	callback = function()
+		vim.opt_local.tabstop = 2
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Setup expandtab",
+	group = augroup("setup_expandtab"),
+	pattern = { "toml", "helm", "markdown" },
+	callback = function()
+		vim.opt_local.expandtab = true
+	end,
+})
+
 vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "Restore cursor position",
 	group = augroup("restore_cursor"),
