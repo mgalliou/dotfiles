@@ -45,10 +45,15 @@ return {
 					"path",
 					"snippets",
 					"buffer",
-					"lazydev",
 					"tmux",
 					"emoji",
 					"nerdfont",
+				},
+				per_filetype = {
+					lua = {
+						inherit_defaults = true,
+						"lazydev",
+					},
 				},
 				providers = {
 					lazydev = {
