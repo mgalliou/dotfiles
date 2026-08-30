@@ -14,6 +14,30 @@ return {
 	},
 	{
 		"pearofducks/ansible-vim",
+		init = function()
+			vim.filetype.add({
+				pattern = {
+					[".*/playbooks?/.*%.ya?ml"] = "ansible",
+				},
+			})
+		end,
+		config = function()
+			require("ansible").setup()
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "ansible",
+				callback = function(args)
+					vim.keymap.set({ "n", "x" }, "grR", function()
+						local tasks = vim.fn.expand("<cfile>") .. "/tasks/main.yml"
+						local role = vim.fn.findfile(tasks, vim.fn.expand("%:p:h") .. "/../roles")
+						if role == "" then
+							return vim.notify(tasks .. " not found", vim.log.levels.WARN)
+						end
+						vim.cmd.edit(vim.fn.fnameescape(role --[[@as string]]))
+					end, { buffer = args.buf, desc = "Go to Ansible role" })
+				end,
+			})
+		end,
 	},
 	{
 		"towolf/vim-helm",

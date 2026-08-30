@@ -65,7 +65,7 @@ return {
 						---@module "blink-cmp-tmux"
 						---@class blink-cmp-tmux.Opts
 						opts = {
-							panes = 'all',
+							panes = "all",
 							capture_history = true,
 						},
 						score_offset = -15,

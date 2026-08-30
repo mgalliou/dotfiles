@@ -21,6 +21,9 @@ return {
 				severity_sort = true,
 			},
 			servers = {
+				ansiblels = {
+					filetypes = { "ansible" },
+				},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -130,7 +133,7 @@ return {
 			if Utils.is_termux() then
 				vim.lsp.enable("lua_ls")
 			else
-				ensure = { "lua_ls" }
+				table.insert(ensure, "lua_ls")
 			end
 			return {
 				ensure_installed = ensure,
@@ -290,7 +293,9 @@ return {
 				"gitlint",
 				"markdownlint_cli2",
 			},
-			handlers = {},
+			handlers = {
+				ansiblelint = function() end,
+			},
 		},
 	},
 	{

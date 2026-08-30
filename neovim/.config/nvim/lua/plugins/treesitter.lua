@@ -13,6 +13,8 @@ return {
 				"diff",
 				"fish",
 				"gitcommit",
+				"jinja",
+				"jinja_inline",
 				"json",
 				"lua",
 				"luadoc",
