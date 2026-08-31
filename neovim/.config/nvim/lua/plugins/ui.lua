@@ -46,8 +46,6 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		--- @module "lualine.nvim"
-		--- @typ
 		opts = {
 			options = {
 				theme = "auto",
