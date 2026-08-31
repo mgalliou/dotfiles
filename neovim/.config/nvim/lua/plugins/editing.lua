@@ -31,7 +31,7 @@ return {
 		-- stylua: ignore
 		keys = {
 			{ "<C-b>", function() require("based").convert() end, desc = "Try to detect base and convert" },
-			{ "<leader>Bh", function() require("based").convert("hex") end, desc = "Convert form hex" },
+			{ "<leader>Bh", function() require("based").convert("hex") end, desc = "Convert from hex" },
 			{ "<leader>Bd", function() require("based").convert("dec") end, desc = "Convert from decimal" },
 		},
 	},

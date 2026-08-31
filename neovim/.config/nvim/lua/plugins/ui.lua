@@ -156,7 +156,7 @@ return {
 				end, "Reset Hunk")
 				map("n", "<leader>hS", gitsigns.stage_buffer, "Stage Buffer")
 				map("n", "<leader>hR", gitsigns.reset_buffer, "Reset Buffer")
-				map("n", "<leader>hp", gitsigns.preview_hunk, "Prevew Hunk")
+				map("n", "<leader>hp", gitsigns.preview_hunk, "Preview Hunk")
 				map("n", "<leader>hi", gitsigns.preview_hunk_inline, "Preview Hunk Inline")
 				map("n", "<leader>hb", function()
 					gitsigns.blame_line({ full = true })
