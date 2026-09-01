@@ -173,7 +173,7 @@ return {
 						{ "gC", function() vim.cmd.RustLsp("openCargo") end, desc = "Open Cargo.toml" },
 					}
 
-					Utils.set_lsp_keymaps(bufnr, keymaps)
+					Utils.set_lsp_keymaps(keymaps, bufnr)
 				end,
 			},
 		},
