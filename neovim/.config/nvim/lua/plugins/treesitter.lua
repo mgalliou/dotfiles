@@ -7,7 +7,6 @@ return {
 		event = { "VeryLazy", unpack(Utils.buf_events) },
 		cmd = { "TSInstall", "TSUpdate", "TSLog", "TSUninstall" },
 		opts = {
-			auto_install = true,
 			ensure_installed = {
 				"bash",
 				"diff",
@@ -34,6 +33,7 @@ return {
 		},
 		config = function(_, opts)
 			require("nvim-treesitter").setup(opts)
+			require('nvim-treesitter').install(opts.ensure_installed)
 
 			vim.api.nvim_create_autocmd("FileType", {
 				desc = "Start treesitter highlighting",
