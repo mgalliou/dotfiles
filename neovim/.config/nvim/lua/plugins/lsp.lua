@@ -107,12 +107,6 @@ return {
 					vim.tbl_deep_extend("force", { capabilities = Utils.capabilities() }, server_opts)
 				)
 			end
-
-			local kinds = vim.lsp.protocol.CompletionItemKind
-			local kind_icons = Utils.kind_icons
-			for i, kind in ipairs(kinds) do
-				kinds[i] = kind_icons[kind] or kind
-			end
 		end,
 	},
 	{
