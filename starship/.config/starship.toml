@@ -18,6 +18,12 @@ $character"""
 style = "blue"
 truncate_to_repo = false
 
+[username]
+format = "[$user]($style) "
+
+[hostname]
+format = "[$ssh_symbol$hostname]($style):"
+
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
