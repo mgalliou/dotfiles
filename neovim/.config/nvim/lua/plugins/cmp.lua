@@ -4,12 +4,6 @@ return {
 		"saghen/blink.cmp",
 		version = "1.*",
 		dependencies = {
-			{
-				"saghen/blink.compat",
-				version = "*",
-				lazy = true,
-				opts = {},
-			},
 			"moyiz/blink-emoji.nvim",
 			"MahanRahmati/blink-nerdfont.nvim",
 			"mgalliou/blink-cmp-tmux",
