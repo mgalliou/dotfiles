@@ -1,16 +1,8 @@
 ---@type LazyPluginSpec[]
 return {
 	{
-		"dag/vim-fish",
-		ft = "fish",
-	},
-	{
 		"tmux-plugins/vim-tmux",
 		ft = "tmux",
-	},
-	{
-		"leafgarland/typescript-vim",
-		ft = "typescript",
 	},
 	{
 		"pearofducks/ansible-vim",
