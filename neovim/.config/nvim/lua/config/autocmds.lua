@@ -27,9 +27,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		if vim.bo[args.buf].filetype == "gitcommit" then
 			return
 		end
+		local win = vim.api.nvim_get_current_win()
+		if vim.api.nvim_win_get_buf(win) ~= args.buf then
+			return
+		end
 		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
 		if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(args.buf) then
-			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+			pcall(vim.api.nvim_win_set_cursor, win, mark)
 		end
 	end,
 })
