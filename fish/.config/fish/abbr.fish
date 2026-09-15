@@ -5,7 +5,7 @@ end
 replace_cmd cat bat
 replace_cmd vi nvim
 replace_cmd vim nvim
-abbr v $EDITOR
+abbr v "$EDITOR"
 
 abbr -a rm "rm -I"
 
