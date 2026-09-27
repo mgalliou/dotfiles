@@ -143,7 +143,7 @@ return {
 	},
 	{
 		"mrcjkb/rustaceanvim",
-		version = '^9',
+		version = "^9",
 		ft = { "rust" },
 		---@module "rustaceanvim"
 		---@type rustaceanvim.Opts
@@ -264,7 +264,7 @@ return {
 					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.diagnostics.gdlint,
 					null_ls.builtins.formatting.prettier.with({
-						extra_filetypes = { "gotmpl", "helm" },
+						extra_filetypes = { "gotmpl", "helm", "ansible", "yaml.ansible" },
 					}),
 					null_ls.builtins.formatting.fish_indent,
 					null_ls.builtins.formatting.gdformat,
