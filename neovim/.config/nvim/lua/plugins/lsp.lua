@@ -207,7 +207,7 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-		ft = { "javascript", "typescript" },
+		ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 		opts = {
 			settings = {
 				complete_function_calls = true,
