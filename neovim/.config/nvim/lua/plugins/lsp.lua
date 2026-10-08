@@ -91,6 +91,21 @@ return {
 					init_options = {
 						provideFormatter = false,
 					},
+					settings = {
+						json = {
+							validate = { enable = true },
+							schemas = {
+								{
+									fileMatch = { ".markdownlint.json*" },
+									url = "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/refs/heads/main/schema/markdownlint-config-schema.json",
+								},
+								{
+									fileMatch = { ".markdownlint-cli2.json*" },
+									url = "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/refs/heads/main/schema/markdownlint-cli2-config-schema.json",
+								},
+							},
+						},
+					},
 				},
 			},
 		},
