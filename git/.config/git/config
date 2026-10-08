@@ -2,6 +2,8 @@
 	sort = -committerdate
 [commit]
 	verbose = true
+[core]
+	pager = less -x2
 [diff]
 	algorithm = histogram
 	colorMoved = plain
@@ -35,3 +37,4 @@
 [user]
 	email = matthias.galliou@gmail.com
 	name = mgalliou
+
