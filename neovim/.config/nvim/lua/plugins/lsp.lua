@@ -22,7 +22,7 @@ return {
 			},
 			servers = {
 				ansiblels = {
-					filetypes = { "ansible" },
+					filetypes = { "ansible", "yaml.ansible" },
 				},
 				lua_ls = {
 					settings = {
@@ -43,9 +43,11 @@ return {
 					},
 				},
 				yamlls = {
+					filetypes = { "yaml", "yaml.docker-compose", "yaml.ansible", "ansible" },
 					settings = {
 						yaml = {
-							customTags = { "!reference sequence" },
+							format = { enable = false },
+							customTags = { "!reference sequence", "!vault" },
 							schemas = {
 								["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
 							},
