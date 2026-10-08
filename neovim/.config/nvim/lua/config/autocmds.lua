@@ -5,7 +5,7 @@ end
 vim.api.nvim_create_autocmd("FileType", {
 	desc = "Setup tabstop",
 	group = augroup("setup_tabstop"),
-	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown", "json", "jsonc" },
+	pattern = { "lua", "html", "css", "javascript", "typescript", "toml", "helm", "markdown", "json", "jsonc", "gitcommit" },
 	callback = function()
 		vim.opt_local.tabstop = 2
 	end,
