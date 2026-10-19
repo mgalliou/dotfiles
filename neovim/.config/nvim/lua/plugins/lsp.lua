@@ -1,9 +1,12 @@
 ---@type LazyPluginSpec[]
 return {
 	{
+		"b0o/SchemaStore.nvim",
+		lazy = true,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		event = Utils.buf_events,
-		dependencies = { "b0o/SchemaStore.nvim" },
 		---@class PluginLspOpts
 		opts = {
 			---@type vim.diagnostic.Opts
@@ -19,13 +22,16 @@ return {
 				},
 				underline = true,
 				update_in_insert = false,
+
 				severity_sort = true,
 			},
+			---@type {[string]: vim.lsp.Config}
 			servers = {
 				ansiblels = {
 					filetypes = { "ansible", "yaml.ansible" },
 				},
 				lua_ls = {
+					---@type lspconfig.settings.lua_ls
 					settings = {
 						Lua = {
 							completion = {
@@ -43,16 +49,6 @@ return {
 						},
 					},
 				},
-				yamlls = {
-					filetypes = { "yaml", "yaml.docker-compose", "yaml.ansible", "ansible" },
-					settings = {
-						yaml = {
-							format = { enable = false },
-							customTags = { "!reference sequence", "!vault" },
-							schemaStore = { enable = false, url = "" },
-						},
-					},
-				},
 				helm_ls = {
 					settings = {
 						["helm-ls"] = {
@@ -63,6 +59,7 @@ return {
 					},
 				},
 				ts_ls = {
+					---@type lspconfig.settings.ts_ls
 					settings = {
 						typescript = {
 							format = {
@@ -90,10 +87,17 @@ return {
 					init_options = {
 						provideFormatter = false,
 					},
+					---@type lspconfig.settings.jsonls
 					settings = {
 						json = {
 							validate = { enable = true },
-							schemas = {
+						},
+					},
+					before_init = function(_, config)
+						---@type lspconfig.settings.jsonls
+						local settings = config.settings
+						settings.json.schemas = require("schemastore").json.schemas({
+							extra = {
 								{
 									name = "markdownlint-cli2",
 									description = "markdownlint-cli2 configuration",
@@ -101,8 +105,25 @@ return {
 									url = "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/refs/heads/main/schema/markdownlint-cli2-config-schema.json",
 								},
 							},
+						})
+					end,
+				},
+				yamlls = {
+					filetypes = { "yaml", "yaml.docker-compose", "yaml.ansible", "ansible" },
+					---@type lspconfig.settings.yamlls
+					settings = {
+						redhat = { telemetry = { enabled = false } },
+						yaml = {
+							format = { enable = false },
+							customTags = { "!reference sequence", "!vault" },
+							schemaStore = { enable = false, url = "" },
 						},
 					},
+					before_init = function(_, config)
+						---@type lspconfig.settings.yamlls
+						local settings = config.settings
+						settings.yaml.schemas = require("schemastore").yaml.schemas()
+					end,
 				},
 			},
 		},
@@ -114,12 +135,6 @@ return {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = Utils.on_attach,
 			})
-
-			local json = opts.servers.jsonls.settings.json
-			local yaml = opts.servers.yamlls.settings.yaml
-			local schemastore = require("schemastore")
-			json.schemas = schemastore.json.schemas({ extra = json.schemas })
-			yaml.schemas = schemastore.yaml.schemas({ extra = yaml.schemas })
 
 			for server_name, server_opts in pairs(opts.servers) do
 				vim.lsp.config(
@@ -259,6 +274,8 @@ return {
 				{ "mason-lspconfig.nvim" },
 				{ "mason-null-ls.nvim" },
 				{ "render-markdown.nvim" },
+				{ "lspconfig" },
+				{ "nvim-lspconfig" },
 				{ path = "lazy.nvim" },
 				{ path = "snacks.nvim", words = { "Snacks" } },
 				{ path = "wezterm-types", mods = { "wezterm" } },
