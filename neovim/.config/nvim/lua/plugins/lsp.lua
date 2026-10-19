@@ -3,6 +3,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = Utils.buf_events,
+		dependencies = { "b0o/SchemaStore.nvim" },
 		---@class PluginLspOpts
 		opts = {
 			---@type vim.diagnostic.Opts
@@ -48,9 +49,7 @@ return {
 						yaml = {
 							format = { enable = false },
 							customTags = { "!reference sequence", "!vault" },
-							schemas = {
-								["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.yml",
-							},
+							schemaStore = { enable = false, url = "" },
 						},
 					},
 				},
@@ -96,10 +95,8 @@ return {
 							validate = { enable = true },
 							schemas = {
 								{
-									fileMatch = { ".markdownlint.json*" },
-									url = "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/refs/heads/main/schema/markdownlint-config-schema.json",
-								},
-								{
+									name = "markdownlint-cli2",
+									description = "markdownlint-cli2 configuration",
 									fileMatch = { ".markdownlint-cli2.json*" },
 									url = "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/refs/heads/main/schema/markdownlint-cli2-config-schema.json",
 								},
@@ -117,6 +114,12 @@ return {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = Utils.on_attach,
 			})
+
+			local json = opts.servers.jsonls.settings.json
+			local yaml = opts.servers.yamlls.settings.yaml
+			local schemastore = require("schemastore")
+			json.schemas = schemastore.json.schemas({ extra = json.schemas })
+			yaml.schemas = schemastore.yaml.schemas({ extra = yaml.schemas })
 
 			for server_name, server_opts in pairs(opts.servers) do
 				vim.lsp.config(
