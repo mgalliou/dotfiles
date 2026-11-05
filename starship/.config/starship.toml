@@ -12,7 +12,13 @@ $kubernetes \
 $line_break\
 $cmd_duration\
 $jobs\
+$shell\
 $character"""
+
+[shell]
+disabled = false
+fish_indicator = ""
+format = "[$indicator]($style)"
 
 [directory]
 style = "blue"
