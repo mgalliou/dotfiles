@@ -73,10 +73,10 @@ main() {
 	if [[ $password_cmd == pass ]]; then
 		[[ -d $store ]] || fail "password store not found: $store"
 	fi
-	# Treat cancellation or picker failure as a no-op.
-
 	GPG_TTY=$(tty)
 	export GPG_TTY
+
+	# Treat cancellation or picker failure as a no-op.
 	entry=$(list_entries "$store" | fzf --reverse --prompt='Password: ') || return 0
 	secret=$(get_password "$entry") || return 1
 	printf '%s' "$secret" | paste_password "$pane"
