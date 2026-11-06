@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-fail() {
+msg() {
 	tmux display-message -d 3000 "pass-paste: $1" || true
 	exit 1
 }
@@ -13,14 +13,14 @@ check_dependencies() {
 	local cmd
 
 	for cmd in fzf tmux; do
-		command -v "$cmd" >/dev/null || fail "required command not found: $cmd"
+		command -v "$cmd" >/dev/null || msg "required command not found: $cmd"
 	done
 	if command -v gopass >/dev/null; then
 		password_cmd=gopass
 	elif command -v pass >/dev/null; then
 		password_cmd=pass
 	else
-		fail 'required command not found: gopass or pass'
+		msg 'required command not found: gopass or pass'
 	fi
 }
 
@@ -33,7 +33,7 @@ list_entries() (
 		return
 	fi
 
-	cd "$1" || fail 'could not open the password store'
+	cd "$1" || msg 'could not open the password store'
 	find -L . -type f -name '*.gpg' | while IFS= read -r path; do
 		path=${path#./}
 		printf '%s\n' "${path%.gpg}"
@@ -43,9 +43,9 @@ list_entries() (
 get_password() {
 	local secret
 
-	secret=$("$password_cmd" show "$1") || fail 'could not decrypt the selected entry'
+	secret=$("$password_cmd" show "$1") || msg 'could not decrypt the selected entry'
 	secret=${secret%%$'\n'*}
-	[[ -n $secret ]] || fail 'selected entry has an empty password'
+	[[ -n $secret ]] || msg 'selected entry has an empty password'
 	printf '%s' "$secret"
 }
 
@@ -56,8 +56,8 @@ paste_password() (
 	local error
 
 	trap 'tmux delete-buffer -b "$buffer" 2>/dev/null || true' EXIT
-	error=$(tmux load-buffer -b "$buffer" - 2>&1) || fail "could not load the password buffer: $error"
-	error=$(tmux paste-buffer -d -b "$buffer" -t "$1" 2>&1) || fail "could not paste into pane $1: $error"
+	error=$(tmux load-buffer -b "$buffer" - 2>&1) || msg "could not load the password buffer: $error"
+	error=$(tmux paste-buffer -d -b "$buffer" -t "$1" 2>&1) || msg "could not paste into pane $1: $error"
 )
 
 main() {
@@ -67,19 +67,20 @@ main() {
 
 	check_dependencies
 	if [[ -z $pane ]]; then
-		pane=$(tmux display-message -p '#{pane_id}') || fail 'could not determine the target pane'
+		pane=$(tmux display-message -p '#{pane_id}') || msg 'could not determine the target pane'
 	fi
-	tmux list-panes -a -F '#{pane_id}' | grep -Fx -- "$pane" >/dev/null || fail "target pane does not exist: $pane"
+	tmux list-panes -a -F '#{pane_id}' | grep -Fx -- "$pane" >/dev/null || msg "target pane does not exist: $pane"
 	if [[ $password_cmd == pass ]]; then
-		[[ -d $store ]] || fail "password store not found: $store"
+		[[ -d $store ]] || msg "password store not found: $store"
 	fi
 	GPG_TTY=$(tty)
 	export GPG_TTY
 
 	# Treat cancellation or picker failure as a no-op.
-	entry=$(list_entries "$store" | fzf --reverse --prompt='Password: ') || return 0
+	entry=$(list_entries "$store" | fzf --prompt='Password: ' --reverse --no-info --no-separator) || return 0
 	secret=$(get_password "$entry") || return 1
 	printf '%s' "$secret" | paste_password "$pane"
+	msg 'password pasted into buffer'
 }
 
 main "$@"
