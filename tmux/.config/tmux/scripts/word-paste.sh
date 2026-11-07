@@ -18,7 +18,8 @@ check_dependencies() {
 }
 
 list_words() {
-	local panes=$1 pane
+	local panes=$1
+	local pane
 
 	# Join wrapped lines and omit escape sequences. Split only on whitespace
 	# so paths, URLs, and other punctuation remain usable as complete tokens.

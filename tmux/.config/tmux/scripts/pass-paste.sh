@@ -10,7 +10,7 @@ msg() {
 }
 
 check_dependencies() {
-	local cmd
+	local cmd password_cmd
 
 	for cmd in fzf tmux; do
 		command -v "$cmd" >/dev/null || msg "required command not found: $cmd"
@@ -22,28 +22,33 @@ check_dependencies() {
 	else
 		msg 'required command not found: gopass or pass'
 	fi
+
+	printf '%s\n' "$password_cmd"
 }
 
 # Run in a subshell so cd does not change the caller's directory.
 list_entries() (
+	local password_cmd=$1 store=$2
 	local path
 
 	if [[ $password_cmd == gopass ]]; then
 		gopass ls --flat
-		return
+	else
+		cd "$store" || msg 'could not open the password store'
+		find -L . -type f -name '*.gpg' | while IFS= read -r path; do
+			path=${path#./}
+			printf '%s\n' "${path%.gpg}"
+		done
 	fi
 
-	cd "$1" || msg 'could not open the password store'
-	find -L . -type f -name '*.gpg' | while IFS= read -r path; do
-		path=${path#./}
-		printf '%s\n' "${path%.gpg}"
-	done
+	return
 )
 
 get_password() {
+	local password_cmd=$1 entry=$2
 	local secret
 
-	secret=$("$password_cmd" show "$1") || msg 'could not decrypt the selected entry'
+	secret=$("$password_cmd" show "$entry") || msg 'could not decrypt the selected entry'
 	secret=${secret%%$'\n'*}
 	[[ -n $secret ]] || msg 'selected entry has an empty password'
 	printf '%s' "$secret"
@@ -65,7 +70,7 @@ main() {
 	local store=${PASSWORD_STORE_DIR:-$HOME/.password-store}
 	local entry secret password_cmd
 
-	check_dependencies
+	password_cmd=$(check_dependencies) || return 1
 	if [[ -z $pane ]]; then
 		pane=$(tmux display-message -p '#{pane_id}') || msg 'could not determine the target pane'
 	fi
@@ -75,10 +80,9 @@ main() {
 	fi
 	GPG_TTY=$(tty)
 	export GPG_TTY
-
 	# Treat cancellation or picker failure as a no-op.
-	entry=$(list_entries "$store" | fzf --prompt='Password: ' --reverse --no-info --no-separator) || return 0
-	secret=$(get_password "$entry") || return 1
+	entry=$(list_entries "$password_cmd" "$store" | fzf --prompt='Password: ' --reverse --no-info --no-separator) || return 0
+	secret=$(get_password "$password_cmd" "$entry") || return 1
 	printf '%s' "$secret" | paste_password "$pane"
 	msg 'password pasted into buffer'
 }
